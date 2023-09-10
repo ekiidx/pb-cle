@@ -60,6 +60,3 @@ Route::middleware([
 Route::get('/logout', function () {
     return abort(404);
 });
-
-
-// Test
