@@ -88,7 +88,7 @@ defineProps({
                         >
                           Name
                         </th>
-                        <th
+                        <!-- <th
                           scope="col"
                           class="
                             px-3
@@ -105,7 +105,7 @@ defineProps({
                           class="relative py-3.5 pl-3 pr-4 sm:pr-6"
                         >
                           <span class="sr-only">Edit</span>
-                        </th>
+                        </th> -->
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
@@ -125,7 +125,7 @@ defineProps({
                             sm:pl-6
                           "
                         >
-                          <!-- <Link
+                          <Link
                             :href="
                               route('frontend.communities.show', community.slug)
                             "
@@ -135,7 +135,7 @@ defineProps({
                               font-semibold
                             "
                             >{{ community.name }}</Link
-                          > -->
+                          >
                         </td>
                         <td
                           class="
