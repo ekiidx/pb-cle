@@ -1,11 +1,3 @@
-<script setup>
-import { Link } from "@inertiajs/vue3";
-
-defineProps({
-  communities: Object,
-});
-</script>
-
 <template>
   <div class="w-full bg-white shadow-md border rounded-lg">
     <h2 class="font-semibold text-lg p-6 bg-indigo-700 text-white rounded-lg">
@@ -37,3 +29,11 @@ defineProps({
     </ul>
   </div>
 </template>
+
+<script setup>
+import { Link } from "@inertiajs/inertia-vue3";
+
+defineProps({
+  communities: Object,
+});
+</script>

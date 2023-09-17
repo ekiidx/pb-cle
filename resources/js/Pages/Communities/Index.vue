@@ -1,22 +1,10 @@
-<script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
-import Pagination from "@/Components/Pagination.vue";
-// import { Head, Link } from "@inertiajs/inertia-vue3";
-
-
-defineProps({
-  communities: Object,
-});
-</script>
-
 <template>
   <Head title="All Communities" />
 
-<AppLayout title="Dashboard">
+  <BreezeAuthenticatedLayout>
     <template #header>
-      <h2 class="font-semibold text-xl text-white leading-tight">
-        All Communities
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        The Boards
       </h2>
     </template>
 
@@ -88,7 +76,7 @@ defineProps({
                         >
                           Name
                         </th>
-                        <!-- <th
+                        <th
                           scope="col"
                           class="
                             px-3
@@ -105,7 +93,7 @@ defineProps({
                           class="relative py-3.5 pl-3 pr-4 sm:pr-6"
                         >
                           <span class="sr-only">Edit</span>
-                        </th> -->
+                        </th>
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
@@ -159,7 +147,7 @@ defineProps({
                             sm:pr-6
                           "
                         >
-                          <!-- <Link
+                          <Link
                             :href="route('communities.edit', community.slug)"
                             class="text-indigo-600 hover:text-indigo-900 mr-3"
                             >Edit</Link
@@ -171,7 +159,7 @@ defineProps({
                             as="button"
                             type="button"
                             >Delete</Link
-                          > -->
+                          >
                         </td>
                       </tr>
                     </tbody>
@@ -186,6 +174,16 @@ defineProps({
         </div>
       </div>
     </div>
-  </AppLayout>
+  </BreezeAuthenticatedLayout>
 </template>
+
+<script setup>
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
+import { Head, Link } from "@inertiajs/inertia-vue3";
+import Pagination from "../../Components/Pagination.vue";
+
+defineProps({
+  communities: Object,
+});
+</script>
 

@@ -1,11 +1,3 @@
-<script setup>
-import { Link } from "@inertiajs/vue3";
-
-defineProps({
-  links: [],
-});
-</script>
-
 <template>
   <div class="flex">
     <template v-for="(link, key) in links" :key="key">
@@ -44,3 +36,11 @@ defineProps({
     </template>
   </div>
 </template>
+
+<script setup>
+import { Link } from "@inertiajs/inertia-vue3";
+
+defineProps({
+  links: [],
+});
+</script>

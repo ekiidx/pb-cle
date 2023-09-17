@@ -1,7 +1,7 @@
 <template>
   <Head title="Create Community" />
 
-  <AppLayout title="Dashboard">
+  <BreezeAuthenticatedLayout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         Create Post for {{ community.name }}
@@ -62,11 +62,11 @@
         </div>
       </div>
     </div>
-  </AppLayout>
+  </BreezeAuthenticatedLayout>
 </template>
 
 <script setup>
-import AppLayout from "@/Layouts/AppLayout.vue";
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
 import BreezeButton from "@/Components/Button.vue";
 import BreezeInput from "@/Components/Input.vue";
 import BreezeInputError from "@/Components/InputError.vue";

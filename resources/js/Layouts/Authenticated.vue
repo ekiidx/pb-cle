@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import Dropdown from "@/Components/Dropdown.vue";
+import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
+import BreezeDropdown from "@/Components/Dropdown.vue";
 import BreezeDropdownLink from "@/Components/DropdownLink.vue";
 import BreezeNavLink from "@/Components/NavLink.vue";
 import BreezeResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
@@ -35,7 +35,7 @@ const showingNavigationDropdown = ref(false);
               <!-- Logo -->
               <div class="shrink-0 flex items-center">
                 <Link :href="route('communities.index')">
-                  <ApplicationLogo class="block h-9 w-auto" />
+                  <BreezeApplicationLogo class="block h-9 w-auto" />
                 </Link>
               </div>
 
@@ -52,7 +52,7 @@ const showingNavigationDropdown = ref(false);
             <div class="hidden sm:flex sm:items-center sm:ml-6">
               <!-- Settings Dropdown -->
               <div class="ml-3 relative">
-                <Dropdown align="right" width="48">
+                <BreezeDropdown align="right" width="48">
                   <template #trigger>
                     <span class="inline-flex rounded-md">
                       <button
@@ -103,7 +103,7 @@ const showingNavigationDropdown = ref(false);
                       Log Out
                     </BreezeDropdownLink>
                   </template>
-                </Dropdown>
+                </BreezeDropdown>
               </div>
             </div>
 
