@@ -5,7 +5,7 @@
         <div class="mx-2 p-2 bg-white rounded-lg">
           <h2 class="font-semibold text-2xl text-black">
             <Link :href="route('frontend.communities.show', community.slug)">
-              r/{{ community.name }}
+              {{ community.name }}
             </Link>
           </h2>
         </div>
