@@ -12,49 +12,111 @@ const showingNavigationDropdown = ref(false);
 
 <template>
   <div>
+
+    <!-- Alerts -->
     <div v-if="$page.props.flash.message" class="bg-green-400">
-      <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between flex-wrap">
-          <div class="w-0 flex-1 flex items-center">
+      
             <p class="ml-3 font-medium text-white truncate">
               <span class="md:hidden"> {{ $page.props.flash.message }} </span>
               <span class="hidden md:inline">
                 {{ $page.props.flash.message }}
               </span>
             </p>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="min-h-screen bg-gray-100">
-      <nav class="bg-white border-b border-gray-100">
+
+
+      
+
+
+        <!-- navigation top-->
+        <div class="nav-header bg-dark shadow-xs border-0">
+            <div class="nav-top">
+                <a href=""><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Pb-Cle.org</span> </a>
+                <a href="" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
+                <!--<a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>-->
+                <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
+                <button class="nav-menu me-0 ms-2"></button>
+            </div>
+            
+            <form action="#" class="float-left header-search">
+                <div class="form-group mb-0 icon-input">
+                    <i class="feather-search font-sm text-grey-400"></i>
+                    <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 bg-black">
+                </div>
+            </form>
+            
+            <BreezeResponsiveNavLink
+              :href="route('communities.index')"
+              :active="route().current('communities.index')"
+            >
+              Communities
+            </BreezeResponsiveNavLink>
+
+            <a href="/communities" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a>
+            <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-400 "></i></a>
+            <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
+
+            <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
+            <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
+                
+                <h4 class="fw-700 font-xss mb-4">Notification</h4>
+                <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
+                    <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
+                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Hendrix Stamp <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 3 min</span></h5>
+                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">There are many variations of pass..</h6>
+                </div>
+                <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
+                    <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
+                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Goria Coast <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 2 min</span></h5>
+                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+                </div>
+
+                <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
+                    <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
+                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Surfiya Zakir <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 1 min</span></h5>
+                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+                </div>
+                <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5">
+                    <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
+                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Victor Exrixon <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 30 sec</span></h5>
+                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+                </div>
+            </div>
+            <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a>
+
+
+            <nav class="bg-white border-b border-gray-100">
         <!-- Primary Navigation Menu -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between h-16">
-            <div class="flex">
+       
               <!-- Logo -->
-              <div class="shrink-0 flex items-center">
+              
                 <Link :href="route('communities.index')">
                   <BreezeApplicationLogo class="block h-9 w-auto" />
                 </Link>
-              </div>
-
-              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+         
+           
                 <BreezeNavLink
                   :href="route('communities.index')"
                   :active="route().current('communities.index')"
                 >
-                  Commuities
+                  Communities
                 </BreezeNavLink>
-              </div>
-            </div>
+   
+                <BreezeNavLink
+                  :href="route('communities.index')"
+                  :active="route().current('communities.index')"
+                >
+                  Events
+                </BreezeNavLink>
+    
 
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+      
               <!-- Settings Dropdown -->
-              <div class="ml-3 relative">
                 <BreezeDropdown align="right" width="48">
                   <template #trigger>
-                    <span class="inline-flex rounded-md">
+        
                       <button
                         type="button"
                         class="
@@ -91,7 +153,6 @@ const showingNavigationDropdown = ref(false);
                           />
                         </svg>
                       </button>
-                    </span>
                   </template>
 
                   <template #content>
@@ -104,11 +165,8 @@ const showingNavigationDropdown = ref(false);
                     </BreezeDropdownLink>
                   </template>
                 </BreezeDropdown>
-              </div>
-            </div>
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
               <button
                 @click="showingNavigationDropdown = !showingNavigationDropdown"
                 class="
@@ -153,9 +211,8 @@ const showingNavigationDropdown = ref(false);
                   />
                 </svg>
               </button>
-            </div>
-          </div>
-        </div>
+   
+  
 
         <!-- Responsive Navigation Menu -->
         <div
@@ -165,27 +222,27 @@ const showingNavigationDropdown = ref(false);
           }"
           class="sm:hidden"
         >
-          <div class="pt-2 pb-3 space-y-1">
+       
             <BreezeResponsiveNavLink
               :href="route('communities.index')"
               :active="route().current('communities.index')"
             >
               Communities
             </BreezeResponsiveNavLink>
-          </div>
+    
 
           <!-- Responsive Settings Options -->
-          <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
+      
+   
               <div class="font-medium text-base text-gray-800">
                 {{ $page.props.auth.user.name }}
               </div>
               <div class="font-medium text-sm text-gray-500">
                 {{ $page.props.auth.user.email }}
               </div>
-            </div>
+      
 
-            <div class="mt-3 space-y-1">
+      
               <BreezeResponsiveNavLink
                 :href="route('logout')"
                 method="post"
@@ -193,22 +250,131 @@ const showingNavigationDropdown = ref(false);
               >
                 Log Out
               </BreezeResponsiveNavLink>
-            </div>
-          </div>
+   
+          
         </div>
       </nav>
 
+
+            <div class="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
+                <i class="feather-settings d-inline-block font-xl text-current"></i>
+                <div class="dropdown-menu-settings switchcolor-wrap">
+                    <h4 class="fw-700 font-sm mb-4">Settings</h4>
+                    <h6 class="font-xssss text-grey-500 fw-700 mb-3 d-block">Choose Color Theme</h6>
+                    <ul>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="red" checked=""><i class="ti-check"></i>
+                                <span class="circle-color bg-red" style="background-color: #ff3b30;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="green"><i class="ti-check"></i>
+                                <span class="circle-color bg-green" style="background-color: #4cd964;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="blue" checked=""><i class="ti-check"></i>
+                                <span class="circle-color bg-blue" style="background-color: #132977;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="pink"><i class="ti-check"></i>
+                                <span class="circle-color bg-pink" style="background-color: #ff2d55;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="yellow"><i class="ti-check"></i>
+                                <span class="circle-color bg-yellow" style="background-color: #ffcc00;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="orange"><i class="ti-check"></i>
+                                <span class="circle-color bg-orange" style="background-color: #ff9500;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="gray"><i class="ti-check"></i>
+                                <span class="circle-color bg-gray" style="background-color: #8e8e93;"></span>
+                            </label>
+                        </li>
+
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="brown"><i class="ti-check"></i>
+                                <span class="circle-color bg-brown" style="background-color: #D2691E;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="darkgreen"><i class="ti-check"></i>
+                                <span class="circle-color bg-darkgreen" style="background-color: #228B22;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="deeppink"><i class="ti-check"></i>
+                                <span class="circle-color bg-deeppink" style="background-color: #FFC0CB;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="cadetblue"><i class="ti-check"></i>
+                                <span class="circle-color bg-cadetblue" style="background-color: #5f9ea0;"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-radio item-content">
+                                <input type="radio" name="color-radio" value="darkorchid"><i class="ti-check"></i>
+                                <span class="circle-color bg-darkorchid" style="background-color: #9932cc;"></span>
+                            </label>
+                        </li>
+                    </ul>
+                    
+                    <div class="card bg-transparent-card border-0 d-block mt-3">
+                        <h4 class="d-inline font-xssss mont-font fw-700">Header Background</h4>
+                        <div class="d-inline float-right mt-1">
+                            <label class="toggle toggle-menu-color"><input type="checkbox"><span class="toggle-icon"></span></label>
+                        </div>
+                    </div>
+                    <div class="card bg-transparent-card border-0 d-block mt-3">
+                        <h4 class="d-inline font-xssss mont-font fw-700">Menu Position</h4>
+                        <div class="d-inline float-right mt-1">
+                            <label class="toggle toggle-menu"><input type="checkbox"><span class="toggle-icon"></span></label>
+                        </div>
+                    </div>
+                    <div class="card bg-transparent-card border-0 d-block mt-3">
+                        <h4 class="d-inline font-xssss mont-font fw-700">Dark Mode</h4>
+                        <div class="d-inline float-right mt-1">
+                            <label class="toggle toggle-dark"><input type="checkbox"><span class="toggle-icon"></span></label>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+      
+
       <!-- Page Heading -->
       <header class="bg-white shadow" v-if="$slots.header">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+ 
           <slot name="header" />
-        </div>
+      
       </header>
 
       <!-- Page Content -->
       <main>
         <slot />
       </main>
-    </div>
+      
   </div>
 </template>
