@@ -19,6 +19,10 @@ Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('fro
 Route::get('/r/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
 Route::post('/r/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
 
+Route::get('/events', [EventController::class, 'show']);
+
+Route::get('/users', [UserController::class, 'show']);
+
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('/communities', CommunityController::class);
     Route::resource('/communities.posts', CommunityPostController::class);
@@ -27,6 +31,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
 });
 
-
+// 404
+Route::get('logout', function () {
+    return abort(404);
+});
 
 require __DIR__ . '/auth.php';

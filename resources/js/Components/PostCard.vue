@@ -4,7 +4,7 @@
       mt-4
       max-w-4xl
       flex
-      bg-white
+      bg-dark
       rounded-lg
       border border-gray-200
       shadow-md

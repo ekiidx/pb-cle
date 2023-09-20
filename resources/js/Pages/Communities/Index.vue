@@ -1,16 +1,13 @@
 <template>
-  <Head title="The Boards" />
+  <Head title="Communities" />
 
   <BreezeAuthenticatedLayout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        The Boards
+        Communities
       </h2>
     </template>
       
-           
-  
-   
           
               <div
                 class="
@@ -67,6 +64,9 @@
                         </th>
                       </tr>
                     </thead>
+
+
+                    
                     <tbody class="divide-y divide-gray-200 bg-white">
                       <tr
                         v-for="community in communities.data"
@@ -118,19 +118,7 @@
                             sm:pr-6
                           "
                         >
-                          <Link
-                            :href="route('communities.edit', community.slug)"
-                            class="text-indigo-600 hover:text-indigo-900 mr-3"
-                            >Edit</Link
-                          >
-                          <Link
-                            :href="route('communities.destroy', community.slug)"
-                            class="text-red-600 hover:text-red-900"
-                            method="delete"
-                            as="button"
-                            type="button"
-                            >Delete</Link
-                          >
+                         
                         </td>
                       </tr>
                     </tbody>

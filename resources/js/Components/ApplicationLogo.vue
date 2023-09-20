@@ -1,3 +1,2 @@
 <template>
-    Pb-Cle
 </template>

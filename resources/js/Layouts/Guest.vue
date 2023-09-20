@@ -14,11 +14,15 @@ const showingNavigationDropdown = ref(false);
   <div>
 
 
+    
+    <div class="main-wrapper">
+      <div style="height: 5rem;"></div>
+
         <!-- navigation top-->
         <div class="nav-header bg-dark shadow-xs border-0">
             <div class="nav-top">
-                <a href=""><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Pb-Cle.org</span> </a>
-                <a href="" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
+                <a href="/"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Pb-Cle.org</span> </a>
+                <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
                 <!--<a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>-->
                 <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
                 <button class="nav-menu me-0 ms-2"></button>
@@ -152,76 +156,7 @@ const showingNavigationDropdown = ref(false);
                 </Link>
               </template>
 
-            <!-- Hamburger -->
-              <button
-                @click="showingNavigationDropdown = !showingNavigationDropdown"
-                class="
-                  inline-flex
-                  items-center
-                  justify-center
-                  p-2
-                  rounded-md
-                  text-gray-400
-                  hover:text-gray-500 hover:bg-gray-100
-                  focus:outline-none focus:bg-gray-100 focus:text-gray-500
-                  transition
-                  duration-150
-                  ease-in-out
-                "
-              >
-                <svg
-                  class="h-6 w-6"
-                  stroke="currentColor"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    :class="{
-                      hidden: showingNavigationDropdown,
-                      'inline-flex': !showingNavigationDropdown,
-                    }"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                  <path
-                    :class="{
-                      hidden: !showingNavigationDropdown,
-                      'inline-flex': showingNavigationDropdown,
-                    }"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-     
-
-        <!-- Responsive Navigation Menu -->
-        <div
-          :class="{
-            block: showingNavigationDropdown,
-            hidden: !showingNavigationDropdown,
-          }"
-          class="sm:hidden"
-        >
-         
-            <BreezeResponsiveNavLink
-              :href="route('communities.index')"
-              :active="route().current('communities.index')"
-            >
-              Communities
-            </BreezeResponsiveNavLink>
-            <BreezeResponsiveNavLink
-              :href="route('communities.index')"
-              :active="route().current('communities.index')"
-            >
-              Events
-            </BreezeResponsiveNavLink>
-       
-        </div>
+          
       </nav>
 
 
@@ -340,22 +275,22 @@ const showingNavigationDropdown = ref(false);
 
 
 
-
+  <!-- Page Heading -->
+  <header class="bg-white shadow" v-if="$slots.header">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <slot name="header" />
+        </div>
+      </header>
 
 
       
 
-      <!-- Page Heading -->
-      <header class="bg-white shadow" v-if="$slots.header">
-     
-          <slot name="header" />
-    
-      </header>
+
 
       <!-- Page Content -->
       <main class="max-w-7xl mx-auto mt-6 px-4 sm:px-6 lg:px-8">
         <slot />
       </main>
     </div>
-
+  </div>
 </template>
