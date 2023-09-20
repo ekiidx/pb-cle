@@ -88,7 +88,7 @@ const showingNavigationDropdown = ref(false);
             <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a>
 
 
-            <nav class="bg-white border-b border-gray-100">
+            <nav class="bg-dark border-b border-gray-100">
         <!-- Primary Navigation Menu -->
        
               <!-- Logo -->

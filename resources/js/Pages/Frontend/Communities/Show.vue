@@ -33,7 +33,8 @@
               font-semibold
               text-lg
               p-6
-              bg-indigo-700
+              bg-dark
+              border
               rounded-t-lg
               text-white
             "

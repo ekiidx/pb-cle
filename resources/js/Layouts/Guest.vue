@@ -73,7 +73,7 @@ const showingNavigationDropdown = ref(false);
 
 
 
-            <nav class="bg-white border-b border-gray-100">     
+            <nav class="bg-dark border-b border-gray-100">     
               <!-- Logo -->
                 <Link href="/">
                   <BreezeApplicationLogo class="block h-9 w-auto" />

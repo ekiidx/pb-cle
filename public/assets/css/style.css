@@ -126,6 +126,12 @@ a {
 .text-darkorchid {
   color: #9932cc !important;
 }
+.bg-electricgreen {
+  background-color: #10d876 !important;
+}
+.text-electricgreen {
+  color: #10d876 !important;
+}
 .theme-dark {
   background-color: #1a2236;
 }
