@@ -1,3 +1,12 @@
+<script setup>
+import { Link } from "@inertiajs/inertia-vue3";
+
+defineProps({
+  community: Object,
+  posts: Object,
+});
+</script>
+
 <template>
   <div class="w-full bg-dark shadow-md border rounded-lg">
     <h2 class="font-semibold bg-darkorchid text-lg p-6 text-white rounded-lg">
@@ -30,12 +39,3 @@
     </ul>
   </div>
 </template>
-
-<script setup>
-import { Link } from "@inertiajs/inertia-vue3";
-
-defineProps({
-  community: Object,
-  posts: Object,
-});
-</script>

@@ -3,8 +3,6 @@ import { ref } from "vue";
 import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
 import BreezeDropdown from "@/Components/Dropdown.vue";
 import BreezeDropdownLink from "@/Components/DropdownLink.vue";
-import BreezeNavLink from "@/Components/NavLink.vue";
-import BreezeResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 const showingNavigationDropdown = ref(false);
@@ -18,18 +16,18 @@ const showingNavigationDropdown = ref(false);
       <!-- navigation top-->
       <div class="nav-header bg-dark shadow-xs border-0">
         <div class="nav-top">
-            <a href="/"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Pb-Cle.org</span> </a>
-            <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
-            <!--<a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>-->
-            <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
-            <button class="nav-menu me-0 ms-2"></button>
+          <a href="/"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Pb-Cle.org</span></a>
+          <!--<a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
+          <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
+          <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>-->
+          <button class="nav-menu me-0 ms-2"></button>
         </div>
         
         <form action="#" class="float-left header-search">
-            <div class="form-group mb-0 icon-input">
-                <i class="feather-search font-sm text-grey-400"></i>
-                <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 bg-black">
-            </div>
+          <div class="form-group mb-0 icon-input">
+            <i class="feather-search font-sm text-grey-400"></i>
+            <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 bg-black">
+          </div>
         </form>
         
         <a href="/communities" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a>
@@ -42,28 +40,28 @@ const showingNavigationDropdown = ref(false);
         
         <!-- <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
             
-            <h4 class="fw-700 font-xss mb-4">Notification</h4>
-            <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
-                <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
-                <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Hendrix Stamp <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 3 min</span></h5>
-                <h6 class="text-grey-500 fw-500 font-xssss lh-4">There are many variations of pass..</h6>
-            </div>
-            <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
-                <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
-                <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Goria Coast <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 2 min</span></h5>
-                <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
-            </div>
+          <h4 class="fw-700 font-xss mb-4">Notification</h4>
+          <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
+            <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
+            <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Hendrix Stamp <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 3 min</span></h5>
+            <h6 class="text-grey-500 fw-500 font-xssss lh-4">There are many variations of pass..</h6>
+          </div>
+          <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
+            <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
+            <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Goria Coast <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 2 min</span></h5>
+            <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+          </div>
 
-            <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
-                <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
-                <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Surfiya Zakir <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 1 min</span></h5>
-                <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
-            </div>
-            <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5">
-                <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
-                <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Victor Exrixon <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 30 sec</span></h5>
-                <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
-            </div>
+          <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5 mb-3">
+            <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
+            <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Surfiya Zakir <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 1 min</span></h5>
+            <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+          </div>
+          <div class="card bg-transparent-card w-100 bg-dark border-0 ps-5">
+            <img src="https://via.placeholder.com/50x50.png" alt="user" class="w40 position-absolute left-0">
+            <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Victor Exrixon <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 30 sec</span></h5>
+            <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
+          </div>
         </div> -->
         <!-- <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
 
@@ -120,9 +118,11 @@ const showingNavigationDropdown = ref(false);
                 <BreezeDropdownLink :href="route('communities.index')">
                   Communities
                 </BreezeDropdownLink>
+
                 <BreezeDropdownLink :href="route('communities.index')">
                   Events
                 </BreezeDropdownLink>
+
                 <BreezeDropdownLink
                   :href="route('logout')"
                   method="post"
@@ -159,75 +159,75 @@ const showingNavigationDropdown = ref(false);
             <ul>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="red" checked=""><i class="ti-check"></i>
-                    <span class="circle-color bg-red" style="background-color: #ff3b30;"></span>
+                  <input type="radio" name="color-radio" value="red" checked=""><i class="ti-check"></i>
+                  <span class="circle-color bg-red" style="background-color: #ff3b30;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="green"><i class="ti-check"></i>
-                    <span class="circle-color bg-green" style="background-color: #4cd964;"></span>
+                  <input type="radio" name="color-radio" value="green"><i class="ti-check"></i>
+                  <span class="circle-color bg-green" style="background-color: #4cd964;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="blue" checked=""><i class="ti-check"></i>
-                    <span class="circle-color bg-blue" style="background-color: #132977;"></span>
+                  <input type="radio" name="color-radio" value="blue" checked=""><i class="ti-check"></i>
+                  <span class="circle-color bg-blue" style="background-color: #132977;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="pink"><i class="ti-check"></i>
-                    <span class="circle-color bg-pink" style="background-color: #ff2d55;"></span>
+                  <input type="radio" name="color-radio" value="pink"><i class="ti-check"></i>
+                  <span class="circle-color bg-pink" style="background-color: #ff2d55;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="yellow"><i class="ti-check"></i>
-                    <span class="circle-color bg-yellow" style="background-color: #ffcc00;"></span>
+                  <input type="radio" name="color-radio" value="yellow"><i class="ti-check"></i>
+                  <span class="circle-color bg-yellow" style="background-color: #ffcc00;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="orange"><i class="ti-check"></i>
-                    <span class="circle-color bg-orange" style="background-color: #ff9500;"></span>
+                  <input type="radio" name="color-radio" value="orange"><i class="ti-check"></i>
+                  <span class="circle-color bg-orange" style="background-color: #ff9500;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="gray"><i class="ti-check"></i>
-                    <span class="circle-color bg-gray" style="background-color: #8e8e93;"></span>
+                  <input type="radio" name="color-radio" value="gray"><i class="ti-check"></i>
+                  <span class="circle-color bg-gray" style="background-color: #8e8e93;"></span>
                 </label>
               </li>
 
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="brown"><i class="ti-check"></i>
-                    <span class="circle-color bg-brown" style="background-color: #D2691E;"></span>
+                  <input type="radio" name="color-radio" value="brown"><i class="ti-check"></i>
+                  <span class="circle-color bg-brown" style="background-color: #D2691E;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="darkgreen"><i class="ti-check"></i>
-                    <span class="circle-color bg-darkgreen" style="background-color: #228B22;"></span>
+                  <input type="radio" name="color-radio" value="darkgreen"><i class="ti-check"></i>
+                  <span class="circle-color bg-darkgreen" style="background-color: #228B22;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="deeppink"><i class="ti-check"></i>
-                    <span class="circle-color bg-deeppink" style="background-color: #FFC0CB;"></span>
+                  <input type="radio" name="color-radio" value="deeppink"><i class="ti-check"></i>
+                  <span class="circle-color bg-deeppink" style="background-color: #FFC0CB;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="cadetblue"><i class="ti-check"></i>
-                    <span class="circle-color bg-cadetblue" style="background-color: #5f9ea0;"></span>
+                  <input type="radio" name="color-radio" value="cadetblue"><i class="ti-check"></i>
+                  <span class="circle-color bg-cadetblue" style="background-color: #5f9ea0;"></span>
                 </label>
               </li>
               <li>
                 <label class="item-radio item-content">
-                    <input type="radio" name="color-radio" value="darkorchid"><i class="ti-check"></i>
-                    <span class="circle-color bg-darkorchid" style="background-color: #9932cc;"></span>
+                  <input type="radio" name="color-radio" value="darkorchid"><i class="ti-check"></i>
+                  <span class="circle-color bg-darkorchid" style="background-color: #9932cc;"></span>
                 </label>
               </li>
             </ul>
@@ -287,22 +287,23 @@ const showingNavigationDropdown = ref(false);
           
         <div class="row feed-body">
           <div class="col-12">
-            <div class="row">
+
+            <!-- Page Heading -->
+            <header class="bg-dark border text-white rounded-lg mb-3 shadow" v-if="$slots.header">
+              <div class="">
+                <slot name="header" />
+              </div>
+            </header>
+
+           
+
             <!-- Page Content -->
-      
-              <slot />
+            <slot />
     
-            </div>
+          
           </div>
         </div>
       </div>
-
-      <!-- Page Heading -->
-      <header class="bg-dark border shadow" v-if="$slots.header">
-        <div class="">
-          <slot name="header" />
-        </div>
-      </header>
 
     </div>
   </div>

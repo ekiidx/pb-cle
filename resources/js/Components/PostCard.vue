@@ -1,3 +1,12 @@
+<script setup>
+import { Link } from "@inertiajs/inertia-vue3";
+import PostVote from "./PostVote.vue";
+defineProps({
+  post: Object,
+  community: String,
+});
+</script>
+
 <template>
   <div
     class="
@@ -7,14 +16,13 @@
       rounded-lg
       border border-gray-200
       shadow-md
-      dark:bg-gray-800 dark:border-gray-700
     "
   >
-    <div class="mr-3">
+    <div class="">
       <PostVote :post="post" />
     </div>
     <div>
-      <div class="flex m-2 p-2 text-sm">
+      <div class="flex p-3 text-sm">
         <Link
           :href="route('frontend.communities.show', community)"
           class="font-semibold mr-3 hover:text-indigo-700"
@@ -22,28 +30,27 @@
         >
         <div class="flex">
           Posted by
-          <span class="font-semibold mx-1">{{ post.username }}</span>
+          <span class="font-semibold mx-1 text-darkorchid">{{ post.username }}</span>
           {{ post.created_at }}
         </div>
       </div>
       <Link
         :href="route('frontend.communities.posts.show', [community, post.slug])"
       >
-        <h5
+        <h2
           class="
-            mb-2
+            pl-3 pr-3 mb-2
             text-2xl
             font-bold
             tracking-tight
-            text-gray-900
-            dark:text-white
-            hover:text-indigo-700
+            text-white
+            hover:text-darkorchid
           "
         >
           {{ post.title }}
-        </h5>
+        </h2>
       </Link>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300">
         {{ post.description }}
       </p>
       <div class="flex m-2 p-2">
@@ -86,12 +93,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { Link } from "@inertiajs/inertia-vue3";
-import PostVote from "./PostVote.vue";
-defineProps({
-  post: Object,
-  community: String,
-});
-</script>

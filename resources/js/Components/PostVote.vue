@@ -1,3 +1,13 @@
+<script setup>
+import { Link } from "@inertiajs/inertia-vue3";
+import UpVoteLink from "./UpVoteLink.vue";
+import DownVoteLink from "./DownVoteLink.vue";
+
+defineProps({
+  post: Object,
+});
+</script>
+
 <template>
   <div
     class="flex flex-col h-full w-12 p-2 bg-gray-200 text-center rounded-l-lg"
@@ -25,16 +35,3 @@
     />
   </div>
 </template>
-
-<script setup>
-import { Link } from "@inertiajs/inertia-vue3";
-import UpVoteLink from "./UpVoteLink.vue";
-import DownVoteLink from "./DownVoteLink.vue";
-
-defineProps({
-  post: Object,
-});
-</script>
-
-<style>
-</style>

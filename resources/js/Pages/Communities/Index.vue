@@ -1,3 +1,13 @@
+<script setup>
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
+import { Head, Link } from "@inertiajs/inertia-vue3";
+import Pagination from "../../Components/Pagination.vue";
+
+defineProps({
+  communities: Object,
+});
+</script>
+
 <template>
   <Head title="Communities" />
 
@@ -131,14 +141,3 @@
   
   </BreezeAuthenticatedLayout>
 </template>
-
-<script setup>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import { Head, Link } from "@inertiajs/inertia-vue3";
-import Pagination from "../../Components/Pagination.vue";
-
-defineProps({
-  communities: Object,
-});
-</script>
-
