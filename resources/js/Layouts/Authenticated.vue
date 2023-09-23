@@ -24,8 +24,6 @@ const showingNavigationDropdown = ref(false);
             </p>
     </div>
 
-
-
     <div class="main-wrapper">
       <div style="height: 5rem;"></div>
 
@@ -316,6 +314,7 @@ const showingNavigationDropdown = ref(false);
                 </div>
             </div>
         </div>
+
 
           <!-- Page Heading -->
       <header class="bg-white shadow" v-if="$slots.header">

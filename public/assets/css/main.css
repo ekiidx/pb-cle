@@ -34,3 +34,13 @@ input[type="file"] {
     border-color: initial !important;
     border-image: initial !important;
 }
+
+.main-column {
+    padding-top: 85px;
+}
+
+@media only screen and (min-width: 992px) {
+    .main-column {
+        padding-top: 115px;
+    }
+}

@@ -1,8 +1,7 @@
 <template>
   <div
     class="
-      mt-4
-      max-w-4xl
+      mb-3
       flex
       bg-dark
       rounded-lg

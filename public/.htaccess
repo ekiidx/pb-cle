@@ -19,3 +19,7 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^pb-cle.org [NC]
+RewriteRule ^(.*)$ https://www.pb-cle.org/$1 [L,R=301,NC]

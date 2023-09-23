@@ -4,6 +4,7 @@
 use App\Http\Controllers\Backend\CommunityController;
 use App\Http\Controllers\Backend\CommunityPostController;
 use App\Http\Controllers\Backend\PostVoteController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
 use App\Http\Controllers\Frontend\PostCommentController;
 use App\Http\Controllers\Frontend\PostController;
@@ -21,7 +22,7 @@ Route::post('/r/{community_slug}/posts/{post:slug}/comments', [PostCommentContro
 
 Route::get('/events', [EventController::class, 'show']);
 
-Route::get('/users', [UserController::class, 'show']);
+
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('/communities', CommunityController::class);
@@ -29,6 +30,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::post('/posts/{post:slug}/upVote', [PostVoteController::class, 'upVote'])->name('posts.upVote');
     Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
+
+    Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{slug}', [UserController::class, 'show']);
 });
 
 // 404
