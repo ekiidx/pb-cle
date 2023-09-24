@@ -12,29 +12,26 @@ defineProps({
   <Head title="Communities" />
 
   <BreezeAuthenticatedLayout>
-    <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+
+    <!-- Header -->
+    <div class="bg-dark border rounded-lg mb-3 p-3">
+      <h2 class="font-semibold text-xl mb-2 text-white">
         Communities
       </h2>
-    </template>
-      
-          
-              <div
-                class="
-                  inline-block
-                  min-w-full
-                  py-2
-                  align-middle
-                  md:px-6
-                  lg:px-8
-                "
-              >
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+
+  
+
                 <div
                   class="
                     overflow-hidden
                     shadow
                     ring-1 ring-black ring-opacity-5
                     md:rounded-lg
+                    border
                   "
                 >
                   <table class="min-w-full divide-y divide-gray-300">
@@ -74,10 +71,7 @@ defineProps({
                         </th>
                       </tr>
                     </thead>
-
-
-                    
-                    <tbody class="divide-y divide-gray-200 bg-white">
+                    <tbody class="divide-y divide-gray-200 bg-dark">
                       <tr
                         v-for="community in communities.data"
                         :key="community.id"
@@ -128,16 +122,36 @@ defineProps({
                             sm:pr-6
                           "
                         >
-                         
+                          <!-- <Link
+                            :href="route('communities.edit', community.slug)"
+                            class="text-indigo-600 hover:text-indigo-900 mr-3"
+                            >Edit</Link
+                          >
+                          <Link
+                            :href="route('communities.destroy', community.slug)"
+                            class="text-red-600 hover:text-red-900"
+                            method="delete"
+                            as="button"
+                            type="button"
+                            >Delete</Link
+                          > -->
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                  <div class="m-2 p-2">
+    
+                </div>
+
+
+                <div class="m-2 p-2">
                     <Pagination :links="communities.links" />
                   </div>
-                </div>
+
               </div>
-  
+            </div>
+     
+   
+
+
   </BreezeAuthenticatedLayout>
 </template>

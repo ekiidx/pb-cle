@@ -31,7 +31,7 @@
           hover:bg-white
           focus:text-indigo-500 focus:border-indigo-500
         "
-        :class="{ 'bg-indigo-300': link.active }"
+        :class="{ 'bg-darkorchid': link.active }"
       ></Link>
     </template>
   </div>

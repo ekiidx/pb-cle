@@ -16,7 +16,7 @@ const showingNavigationDropdown = ref(false);
       <!-- navigation top-->
       <div class="nav-header bg-dark shadow-xs border-0">
         <div class="nav-top">
-          <a href="/"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Pb-Cle.org</span></a>
+          <a href="/"><i class="feather-zap text-darkorchid display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Pb-Cle.org</span></a>
           <!--<a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
           <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
           <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>-->
@@ -30,7 +30,7 @@ const showingNavigationDropdown = ref(false);
           </div>
         </form>
         
-        <a href="/communities" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a>
+        <!-- <a href="/communities" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a> -->
         <!-- <a href="" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-400 "></i></a>
         <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a>
         <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a>
@@ -65,7 +65,7 @@ const showingNavigationDropdown = ref(false);
         </div> -->
         <!-- <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
 
-        <nav class="bg-dark border-b border-gray-100">     
+        <nav class="bg-dark">     
           <!-- Logo -->
           <Link href="/">
             <BreezeApplicationLogo class="block h-9 w-auto" />
@@ -114,15 +114,18 @@ const showingNavigationDropdown = ref(false);
                 </button>
               </template>
 
+              <!-- Communities -->
               <template #content>
                 <BreezeDropdownLink :href="route('communities.index')">
                   Communities
                 </BreezeDropdownLink>
 
-                <BreezeDropdownLink :href="route('communities.index')">
+                <!-- Events -->
+                <!-- <BreezeDropdownLink :href="route('communities.index')">
                   Events
-                </BreezeDropdownLink>
+                </BreezeDropdownLink> -->
 
+                <!-- Logout -->
                 <BreezeDropdownLink
                   :href="route('logout')"
                   method="post"
