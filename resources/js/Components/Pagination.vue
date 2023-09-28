@@ -1,3 +1,11 @@
+<script setup>
+import { Link } from "@inertiajs/vue3";
+
+defineProps({
+  links: [],
+});
+</script>
+
 <template>
   <div class="flex">
     <template v-for="(link, key) in links" :key="key">
@@ -31,16 +39,8 @@
           hover:bg-white
           focus:text-indigo-500 focus:border-indigo-500
         "
-        :class="{ 'bg-darkorchid': link.active }"
+        :class="{ 'bg-indigo-300': link.active }"
       ></Link>
     </template>
   </div>
 </template>
-
-<script setup>
-import { Link } from "@inertiajs/inertia-vue3";
-
-defineProps({
-  links: [],
-});
-</script>

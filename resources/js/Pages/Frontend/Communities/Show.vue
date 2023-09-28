@@ -1,6 +1,6 @@
 <script setup>
-import GuestLayout from "@/Layouts/Guest.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import Guest from "@/Layouts/Guest.vue";
+import { Link } from "@inertiajs/vue3";
 import PostCard from "@/Components/PostCard.vue";
 import Pagination from "@/Components/Pagination.vue";
 import CommunityList from "@/Components/CommunityList.vue";
@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <guest-layout>
+  <Guest>
 
     <!-- Header -->
     <template #header>
@@ -22,7 +22,7 @@ defineProps({
           r/{{ community.name }}
         </h2>
         <Link
-          v-if="$page.props.auth.auth_check"
+          v-if="$page.props.auth.user.username"
           :href="route('communities.posts.create', community.slug)"
           class="px-3 py-2 rounded bg-darkorchid hover:bg-electricgreen text-white"
           >Create Post</Link
@@ -31,23 +31,23 @@ defineProps({
     </template>
 
     <div class="row">
-    <!-- Main Column -->
-    <div class="col-lg-8">
-      <PostCard
-        v-for="post in posts.data"
-        :post="post"
-        :community="community.slug"
-        :key="post.id"
-      />
+      <!-- Main Column -->
+      <div class="col-lg-8">
+        <PostCard
+          v-for="post in posts.data"
+          :post="post"
+          :community="community.slug"
+          :key="post.id"
+        />
 
-      <!-- Pagination -->
-      <div class="mt-4 p-2">
-        <Pagination :links="posts.meta.links" />
+        <!-- Pagination -->
+        <div class="mt-4 p-2">
+          <Pagination :links="posts.meta.links" />
+        </div>
       </div>
-    </div>
 
-    <!-- Side Column -->
-    <div class="col-lg-4">
+      <!-- Side Column -->
+      <div class="col-lg-4">
         <div>
           <h2
             class="
@@ -67,8 +67,8 @@ defineProps({
         <CommunityList class="mt-4" :communities="communities.data">
           <template #title>Latest Communities</template>
         </CommunityList>
+      </div>
     </div>
-</div>
-
-  </guest-layout>
+    
+  </Guest>
 </template>

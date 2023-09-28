@@ -1,6 +1,6 @@
 <script setup>
-import GuestLayout from "@/Layouts/Guest.vue";
-import { Link, useForm } from "@inertiajs/inertia-vue3";
+import Guest from "@/Layouts/Guest.vue";
+import { Link, useForm } from "@inertiajs/vue3";
 import PostVote from "@/Components/PostVote.vue";
 import PostList from "@/Components/PostList.vue";
 
@@ -30,32 +30,30 @@ const submit = () => {
 </script>
 
 <template>
-  <guest-layout>
- 
-    <!-- Header -->
+  <Guest>
+
+    <!--- Header -->
     <div class="bg-dark border rounded-lg mb-3 p-3">
       <h2 class="font-semibold text-xl mb-2 text-white">r/
-        <Link :href="route('frontend.communities.show', community.slug)"
-        class="text-white"
-        >
+        <Link :href="route('frontend.communities.show', community.slug)">
           {{ community.name }}
         </Link>
       </h2>
     </div>
+   
+        <div class="row">
 
-    <div class="row">
+          <!-- Main Column -->
+          <div class="col-lg-8">
 
-    <!-- Main Column-->
-      <div class="col-lg-8">
+            <!-- Post Card -->
+            <div class="flex mb-3 bg-dark border rounded-lg text-sm">
 
-        <!-- Post Card -->
-        <div class="flex mb-3 bg-dark border rounded-lg text-sm">
-
-          <!-- Vote -->
+            <!-- Vote -->
           <div>
             <PostVote :post="post.data" />
           </div>
-          
+
           <!-- Main Section -->
           <div style="padding-right: 48px !important" class="w-full">
             <div class="flex flex-col sm:flex-row justify-between py-3 px-3">
@@ -67,7 +65,11 @@ const submit = () => {
                 {{ post.data.created_at }}
               </div>
 
-              <!-- <div v-if="$page.props.auth.auth_check">
+
+
+
+              <!-- <a href="#">{{ post.data.name }}</a>
+              <div v-if="$page.props.auth.user.username">
                 <Link
                   v-if="can_update"
                   :href="
@@ -78,8 +80,8 @@ const submit = () => {
                   "
                   class="
                     font-semibold
-                    bg-electricgreen
-                    hover:bg-darkorchid
+                    bg-blue-500
+                    hover:bg-blue-700
                     rounded-md
                     text-white
                     px-4
@@ -98,8 +100,8 @@ const submit = () => {
                   "
                   class="
                     font-semibold
-                    bg-darkorchid
-                    hover:bg-electricgreen
+                    bg-red-500
+                    hover:bg-red-700
                     rounded-md
                     text-white
                     px-4
@@ -111,17 +113,18 @@ const submit = () => {
                   >Delete</Link
                 >
               </div> -->
-            </div> 
+            </div>
+         
 
               <!-- Title -->
-              <h1 class=" px-3 font-semibold text-3xl text-gray-300">
+              <h1 class="font-semibold text-3xl text-black">
                 {{ post.data.title }}
               </h1>
 
-              <!-- Description -->
+              <!-- Title -->
               <p class="text-gray-300 px-3 pt-2">{{ post.data.description }}</p>
-
-              <!-- Link -->
+              
+              <!-- Linik -->
               <div class="px-3 py-2 mb-3">
               <a
                 :href="post.data.url"
@@ -129,9 +132,9 @@ const submit = () => {
                 style="word-wrap:break-word;"
                 >{{ post.data.url }}</a
               >
-              </div>
-      
-              <hr>
+            </div >
+
+            <hr />
             <!-- Comments -->
             <div class="px-3 pt-4 mb-5">
               <ul role="list" class="">
@@ -152,9 +155,10 @@ const submit = () => {
                 </li>
               </ul>
             </div>
-        
+       
+
             <!-- Textarea -->
-            <div v-if="$page.props.auth.auth_check">
+            <div v-if="$page.props.auth.user.username">
               <form class="max-w-md" @submit.prevent="submit">
                 <div class="px-3 mb-3">
                   <label
@@ -172,7 +176,7 @@ const submit = () => {
                   <textarea
                     v-model="form.content"
                     id="comment"
-                    rows="5"
+                    rows="4"
                     class="
                       block
                       p-2.5
@@ -198,7 +202,7 @@ const submit = () => {
                       px-4
                       py-2
                       bg-darkorchid
-                      hover:electricgreen
+                      hover:text-electricgreen
                       text-white
                       rounded-md
                     "
@@ -210,17 +214,16 @@ const submit = () => {
             </div>
           </div>
         </div>
+        </div>
+ 
+        <div class="col-lg-4">
+   
+        <PostList :posts="posts.data" :community="community">
+          <template #title>Popular Posts</template>
+        </PostList>
+
       </div>
-
-  <div class="col-lg-4">
-
-
-      <PostList :posts="posts.data" :community="community">
-        <template #title>Popular Posts</template>
-      </PostList>
-
     </div>
-</div>
 
-  </guest-layout>
+  </Guest>
 </template>

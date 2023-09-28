@@ -1,16 +1,29 @@
 <script setup>
 import { ref } from "vue";
-import BreezeApplicationLogo from "@/Components/ApplicationLogo.vue";
-import BreezeDropdown from "@/Components/Dropdown.vue";
-import BreezeDropdownLink from "@/Components/DropdownLink.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import Dropdown from "@/Components/Dropdown.vue";
+import DropdownLink from "@/Components/DropdownLink.vue";
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import { Link, router } from "@inertiajs/vue3";
 
 const showingNavigationDropdown = ref(false);
+
+const switchToTeam = (team) => {
+    router.put(route('current-team.update'), {
+        team_id: team.id,
+    }, {
+        preserveState: false,
+    });
+};
+
+const logout = () => {
+    router.post(route('logout'));
+};
 </script>
 
 <template>
   <div>
-    
+
     <div class="main-wrapper">
 
       <!-- navigation top-->
@@ -22,15 +35,17 @@ const showingNavigationDropdown = ref(false);
           <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>-->
           <button class="nav-menu me-0 ms-2"></button>
         </div>
-        
+
         <form action="#" class="float-left header-search">
           <div class="form-group mb-0 icon-input">
             <i class="feather-search font-sm text-grey-400"></i>
             <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 bg-black">
           </div>
         </form>
-        
-        <!-- <a href="/communities" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a> -->
+
+
+
+        <a href="/communities" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a>
         <!-- <a href="" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-400 "></i></a>
         <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a>
         <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a>
@@ -65,96 +80,103 @@ const showingNavigationDropdown = ref(false);
         </div> -->
         <!-- <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
 
-        <nav class="bg-dark">     
-          <!-- Logo -->
-          <Link href="/">
-            <BreezeApplicationLogo class="block h-9 w-auto" />
-          </Link>
 
-          <!-- Settings Dropdown -->
-          <div class="ml-3 relative" v-if="$page.props.auth.auth_check">
-            <BreezeDropdown align="right" width="48">
-              <template #trigger>
-      
-                <button
-                  type="button"
-                  class="
-                    inline-flex
-                    items-center
-                    px-3
-                    py-2
-                    border border-transparent
-                    text-sm
-                    leading-4
-                    font-medium
-                    rounded-md
-                    text-gray-500
-                    bg-white
-                    hover:text-gray-700
-                    focus:outline-none
-                    transition
-                    ease-in-out
-                    duration-150
-                  "
+
+
+
+  
+      <nav class="bg-dark">
+
+              <!-- Logo -->
+              <Link href="/">
+                <ApplicationLogo class="block h-9 w-auto" />
+              </Link>
+       
+              <!-- Settings Dropdown -->
+              <div class="ml-3 relative" v-if="$page.props.auth.user">
+                <Dropdown align="right" width="48">
+                  <template #trigger>
+
+                    <span class="inline-flex rounded-md">
+                      <button
+                        type="button"
+                        class="
+                          inline-flex
+                          items-center
+                          px-3
+                          py-2
+                          border border-transparent
+                          text-sm
+                          leading-4
+                          font-medium
+                          rounded-md
+                          text-gray-500
+                          bg-white
+                          hover:text-gray-700
+                          focus:outline-none
+                          transition
+                          ease-in-out
+                          duration-150
+                        "
+                      >
+                        {{ $page.props.auth.user.username }}
+
+                        <svg
+                          class="ml-2 -mr-0.5 h-4 w-4"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </span>
+                  </template>
+
+                  <template #content>
+                    <!-- Main Wall -->
+                    <DropdownLink :href="route('welcome')">
+                      Home
+                    </DropdownLink>
+
+                    <!-- Communities -->
+                    <DropdownLink :href="route('communities.index')">
+                      Communities
+                    </DropdownLink>
+
+                    <!-- Log Out -->
+                    <form @submit.prevent="logout">
+                      <DropdownLink as="button">
+                        Log Out
+                      </DropdownLink>
+                    </form>
+                  </template>
+                </Dropdown>
+              </div>
+
+              <template v-else>
+                <Link
+                  :href="route('login')"
+                  class="text-sm text-gray-700 underline"
                 >
-                  {{ $page.props.auth.user.name }}
+                  Log in
+                </Link>
 
-                  <svg
-                    class="ml-2 -mr-0.5 h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </template>
-
-              <!-- Communities -->
-              <template #content>
-                <BreezeDropdownLink :href="route('communities.index')">
-                  Communities
-                </BreezeDropdownLink>
-
-                <!-- Events -->
-                <!-- <BreezeDropdownLink :href="route('communities.index')">
-                  Events
-                </BreezeDropdownLink> -->
-
-                <!-- Logout -->
-                <BreezeDropdownLink
-                  :href="route('logout')"
-                  method="post"
-                  as="button"
+                <Link
+                  :href="route('register')"
+                  class="ml-4 text-sm text-gray-700 underline"
                 >
-                  Log Out
-                </BreezeDropdownLink>
+                  Register
+                </Link>
               </template>
-            </BreezeDropdown>
-          </div>
+            </nav>
 
-          <template v-else>
-            <Link
-              :href="route('login')"
-              class="text-sm text-gray-700 underline"
-            >
-              Log in
-            </Link>
 
-            <Link
-              :href="route('register')"
-              class="ml-4 text-sm text-gray-700 underline"
-            >
-              Register
-            </Link>
-          </template>
-        </nav>
-
-        <div class="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
+            <div class="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
           <i class="feather-settings d-inline-block font-xl text-current"></i>
           <div class="dropdown-menu-settings switchcolor-wrap">
             <h4 class="fw-700 font-sm mb-4">Settings</h4>
@@ -257,54 +279,52 @@ const showingNavigationDropdown = ref(false);
         </div>
       </div>
 
-      <!-- main content -->
-      <div class="main-column loaded container">
-          
-        <!-- loader wrapper -->
-        <!-- <div class="preloader-wrap p-3">
-          <div class="box shimmer">
-            <div class="lines">
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-            </div>
-          </div>
-          <div class="box shimmer mb-3">
-            <div class="lines">
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-            </div>
-          </div>
-          <div class="box shimmer">
-            <div class="lines">
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-              <div class="line s_shimmer"></div>
-            </div>
-          </div>
-        </div> -->
-          
-        <div class="row feed-body">
-          <div class="col-12">
 
-            <!-- Page Heading -->
-            <header class="bg-dark border text-white rounded-lg mb-3 shadow" v-if="$slots.header">
-              <div class="">
-                <slot name="header" />
+
+
+   <!-- main content -->
+   <div class="main-column loaded container">
+          
+          <!-- loader wrapper -->
+          <!-- <div class="preloader-wrap p-3">
+            <div class="box shimmer">
+              <div class="lines">
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
               </div>
-            </header>
+            </div>
+            <div class="box shimmer mb-3">
+              <div class="lines">
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
+              </div>
+            </div>
+            <div class="box shimmer">
+              <div class="lines">
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
+                <div class="line s_shimmer"></div>
+              </div>
+            </div>
+          </div> -->
+            
+          <div class="row feed-body">
+            <div class="col-12">
 
-           
+              <!-- Page Heading -->
+              <header class="bg-dark border text-white rounded-lg mb-3 shadow" v-if="$slots.header">
+                <slot name="header" />
+              </header>
 
-            <!-- Page Content -->
-            <slot />
-    
-          
-          </div>
+              <!-- Page Content -->
+              <slot />
+
+          </div>      
         </div>
       </div>
 
