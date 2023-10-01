@@ -24,18 +24,20 @@ const submit = () => {
 </script>
 
 <template>
-  <Head title="Create Community" />
+  <Head title="Create Post" />
 
   <AppLayout title="Dashboard">
-    <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Create Post for {{ community.name }}
+
+    <!-- Header -->
+    <div class="bg-dark border rounded-lg mb-3 p-3">
+      <h2 class="font-semibold text-xl mb-2 text-white leading-tight">
+        Create Post for r/{{ community.name }}
       </h2>
-    </template>
+    </div>
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="max-w-md mx-auto bg-white m-2 p-6">
+        <div class="max-w-md mx-auto bg-dark border rounded-lg m-2 p-6">
           <form @submit.prevent="submit">
             <div>
               <Label for="title" value="Title" />
@@ -64,13 +66,14 @@ const submit = () => {
 
             <div class="mt-4">
               <Label for="description" value="Description" />
-              <Input
+              <textarea
                 id="description"
                 type="text"
+                rows="5"
                 class="mt-1 block w-full"
                 v-model="form.description"
                 autocomplete="description"
-              />
+              ></textarea>
               <InputError :message="errors.description" />
             </div>
 

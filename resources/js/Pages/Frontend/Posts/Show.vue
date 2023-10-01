@@ -31,26 +31,26 @@ const submit = () => {
 
 <template>
   <Guest>
-    <Head title="" />
+    <Head title="Post" />
 
     <!--- Header -->
     <div class="bg-dark border rounded-lg mb-3 p-3">
-      <h2 class="font-semibold text-xl mb-2 text-electricgreen">r/
+      <h2 class="font-semibold text-xl mb-2 text-white">r/
         <Link :href="route('frontend.communities.show', community.slug)">
           {{ community.name }}
         </Link>
       </h2>
     </div>
    
-        <div class="row">
+    <div class="row">
 
-          <!-- Main Column -->
-          <div class="col-lg-8">
+      <!-- Main Column -->
+      <div class="col-lg-8">
 
-            <!-- Post Card -->
-            <div class="flex mb-3 bg-dark border rounded-lg text-sm">
+        <!-- Post Card -->
+        <div class="flex mb-3 bg-dark border rounded-lg text-sm">
 
-            <!-- Vote -->
+          <!-- Vote -->
           <div>
             <PostVote :post="post.data" />
           </div>
@@ -66,13 +66,9 @@ const submit = () => {
                 {{ post.data.created_at }}
               </div>
 
-
-
-
-              <a href="#">{{ post.data.name }}</a>
-              <!-- <div v-if="$page.props.auth.user.username">
+              <!-- <div v-if="$page.props.auth.username">
                 <Link
-               
+                  v-if="can_update"
                   :href="
                     route('communities.posts.edit', [
                       community.slug,
@@ -115,21 +111,21 @@ const submit = () => {
                 >
               </div> -->
             </div>
-         
+          
 
               <!-- Title -->
-              <h1 class="font-semibold text-3xl text-white">
+              <h1 class="px-3 font-semibold text-3xl text-gray-300">
                 {{ post.data.title }}
               </h1>
 
               <!-- Title -->
-              <p class="text-white px-3 pt-2">{{ post.data.description }}</p>
+              <p class="text-gray-300 px-3 pt-2">{{ post.data.description }}</p>
               
               <!-- Linik -->
               <div class="px-3 py-2 mb-3">
               <a
                 :href="post.data.url"
-                class="font-semibold text-electricgreen text-sm hover:text-darkorchid"
+                class="font-semibold text-electricgreen text-sm"
                 style="word-wrap:break-word;"
                 >{{ post.data.url }}</a
               >
@@ -156,8 +152,7 @@ const submit = () => {
                 </li>
               </ul>
             </div>
-       
-
+        
             <!-- Textarea -->
             <div v-if="$page.props.auth.user.username">
               <form class="max-w-md" @submit.prevent="submit">
@@ -170,14 +165,13 @@ const submit = () => {
                       text-sm
                       font-medium
                       text-gray-900
-                      dark:text-gray-400
                     "
                     >Your comment</label
                   >
                   <textarea
                     v-model="form.content"
                     id="comment"
-                    rows="4"
+                    rows="5"
                     class="
                       block
                       p-2.5
@@ -203,7 +197,6 @@ const submit = () => {
                       px-4
                       py-2
                       bg-darkorchid
-                      hover:text-electricgreen
                       text-white
                       rounded-md
                     "
@@ -215,9 +208,9 @@ const submit = () => {
             </div>
           </div>
         </div>
-        </div>
+      </div>
  
-        <div class="col-lg-4">
+      <div class="col-lg-4">
    
         <PostList :posts="posts.data" :community="community">
           <template #title>Popular Posts</template>

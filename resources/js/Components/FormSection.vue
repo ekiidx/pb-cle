@@ -8,7 +8,7 @@ const hasActions = computed(() => !! useSlots().actions);
 </script>
 
 <template>
-    <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:grid md:grid-cols-3 md:gap-6 dark">
         <SectionTitle>
             <template #title>
                 <slot name="title" />
@@ -29,7 +29,7 @@ const hasActions = computed(() => !! useSlots().actions);
                     </div>
                 </div>
 
-                <div v-if="hasActions" class="flex items-center text-white justify-end px-4 py-3 bg-dark text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+                <div v-if="hasActions" class="flex items-center justify-end px-4 py-3 bg-dark text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
                     <slot name="actions" />
                 </div>
             </form>

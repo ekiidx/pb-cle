@@ -22,7 +22,6 @@ defineProps({
             :href="route('frontend.communities.show', community.slug)"
             class="
               text-slate-800
-              dark:text-slate-400
               font-semibold
               truncate
               text-sm

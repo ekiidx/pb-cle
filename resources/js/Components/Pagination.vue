@@ -32,14 +32,14 @@ defineProps({
           mr-1
           px-4
           py-3
-          text-gray-900 text-sm
+          text-white text-sm
           leading-4
           border
           rounded
           hover:bg-white
           focus:text-indigo-500 focus:border-indigo-500
         "
-        :class="{ 'bg-indigo-300': link.active }"
+        :class="{ 'bg-darkorchid': link.active }"
       ></Link>
     </template>
   </div>

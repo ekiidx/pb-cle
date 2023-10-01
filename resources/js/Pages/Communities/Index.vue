@@ -70,7 +70,7 @@ defineProps({
                   </th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-200 bg-white">
+              <tbody class="divide-y divide-gray-200 bg-dark">
                 <tr
                   v-for="community in communities.data"
                   :key="community.id"
