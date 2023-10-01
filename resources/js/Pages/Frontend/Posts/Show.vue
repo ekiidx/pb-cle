@@ -1,6 +1,6 @@
 <script setup>
 import Guest from "@/Layouts/Guest.vue";
-import { Link, useForm } from "@inertiajs/vue3";
+import { Link, useForm, Head } from "@inertiajs/vue3";
 import PostVote from "@/Components/PostVote.vue";
 import PostList from "@/Components/PostList.vue";
 
@@ -31,10 +31,11 @@ const submit = () => {
 
 <template>
   <Guest>
+    <Head title="" />
 
     <!--- Header -->
     <div class="bg-dark border rounded-lg mb-3 p-3">
-      <h2 class="font-semibold text-xl mb-2 text-white">r/
+      <h2 class="font-semibold text-xl mb-2 text-electricgreen">r/
         <Link :href="route('frontend.communities.show', community.slug)">
           {{ community.name }}
         </Link>
@@ -68,10 +69,10 @@ const submit = () => {
 
 
 
-              <!-- <a href="#">{{ post.data.name }}</a>
-              <div v-if="$page.props.auth.user.username">
+              <a href="#">{{ post.data.name }}</a>
+              <!-- <div v-if="$page.props.auth.user.username">
                 <Link
-                  v-if="can_update"
+               
                   :href="
                     route('communities.posts.edit', [
                       community.slug,
@@ -117,12 +118,12 @@ const submit = () => {
          
 
               <!-- Title -->
-              <h1 class="font-semibold text-3xl text-black">
+              <h1 class="font-semibold text-3xl text-white">
                 {{ post.data.title }}
               </h1>
 
               <!-- Title -->
-              <p class="text-gray-300 px-3 pt-2">{{ post.data.description }}</p>
+              <p class="text-white px-3 pt-2">{{ post.data.description }}</p>
               
               <!-- Linik -->
               <div class="px-3 py-2 mb-3">

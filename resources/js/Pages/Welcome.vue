@@ -1,8 +1,8 @@
 <script setup>
 import Guest from '@/Layouts/Guest.vue';
 import PostCard from "@/Components/PostCard.vue";
-import Pagination from "@/Components/Pagination.vue";
 import CommunityList from "@/Components/CommunityList.vue";
+import { Head } from '@inertiajs/vue3';
 
 defineProps({
     communities: Object,
@@ -12,6 +12,7 @@ defineProps({
 
 <template>
     <Guest>
+      <Head title="Home" />
 
       <div class="row">
         <div class="col-lg-8">

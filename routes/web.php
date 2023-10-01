@@ -23,9 +23,8 @@ use Inertia\Inertia;
 |
 */
 
+// Home
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
-
-
 
 // About
 Route::inertia('/about', 'About');
@@ -41,6 +40,7 @@ Route::middleware([
 });
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
+    
     // Communities
     Route::resource('/communities', CommunityController::class);
     Route::resource('/communities.posts', CommunityPostController::class);

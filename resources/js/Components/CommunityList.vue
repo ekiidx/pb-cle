@@ -26,7 +26,6 @@ defineProps({
               font-semibold
               truncate
               text-sm
-              hover:text-indigo-700
             "
           >
             {{ community.name }}
