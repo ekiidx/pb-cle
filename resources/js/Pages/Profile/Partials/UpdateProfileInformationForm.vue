@@ -100,30 +100,32 @@ const clearPhotoFileInput = () => {
                 <InputLabel for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
-                <div v-show="! photoPreview" class="mt-2">
-                    <img :src="user.profile_photo_url" :alt="user.username" class="rounded-full h-20 w-20 object-cover">
+                <div v-show="! photoPreview" class="pt-2">
+                    <img :src="user.profile_photo_url" :alt="user.username" class="rounded-full h-20 w-20 object-cover mb-4">
                 </div>
 
                 <!-- New Profile Photo Preview -->
-                <div v-show="photoPreview" class="mt-2">
+                <div v-show="photoPreview" class="pt-2">
                     <span
-                        class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
+                        class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center mb-4"
                         :style="'background-image: url(\'' + photoPreview + '\');'"
                     />
                 </div>
 
-                <SecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
-                    Select A New Photo
-                </SecondaryButton>
+                <div class="mb-4">
+                    <SecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
+                        Select A New Photo
+                    </SecondaryButton>
 
-                <SecondaryButton
-                    v-if="user.profile_photo_path"
-                    type="button"
-                    class="mt-2"
-                    @click.prevent="deletePhoto"
-                >
-                    Remove Photo
-                </SecondaryButton>
+                    <SecondaryButton
+                        v-if="user.profile_photo_path"
+                        type="button"
+                        class="mt-2"
+                        @click.prevent="deletePhoto"
+                    >
+                        Remove Photo
+                    </SecondaryButton>
+                </div>
 
                 <InputError :message="form.errors.photo" class="mt-2" />
             </div>
@@ -178,13 +180,14 @@ const clearPhotoFileInput = () => {
         </template>
 
         <template #actions>
-            <ActionMessage :on="form.recentlySuccessful" class="mr-3">
-                Saved.
-            </ActionMessage>
 
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
             </PrimaryButton>
+
+            <ActionMessage :on="form.recentlySuccessful" class="ml-3">
+                Saved.
+            </ActionMessage>
         </template>
     </FormSection>
 </template>

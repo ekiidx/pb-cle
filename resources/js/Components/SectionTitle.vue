@@ -1,11 +1,11 @@
 <template>
-    <div class="md:col-span-1 flex justify-between bg-dark shadow-md border rounded-lg">
+    <div class="bg-dark rounded-lg">
         <div class="">
-            <h2 class="text-lg font-semibold p-6 bg-darkorchid rounded-lg text-white">
+            <h2 class="text-lg font-semibold px-4 pt-4 text-white">
                 <slot name="title" />
             </h2>
 
-            <p class="mt-1 py-3 sm:py-4 text-sm text-gray-400">
+            <p class="pt-2 pb-5 px-4 text-sm text-gray-500">
                 <slot name="description" />
             </p>
         </div>

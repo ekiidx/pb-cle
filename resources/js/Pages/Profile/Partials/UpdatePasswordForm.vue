@@ -49,38 +49,38 @@ const updatePassword = () => {
 
         <template #form>
             <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="current_password" value="Current Password" />
+                <InputLabel class="mb-2" for="current_password" value="Current Password" />
                 <TextInput
                     id="current_password"
                     ref="currentPasswordInput"
                     v-model="form.current_password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mb-3 block w-full"
                     autocomplete="current-password"
                 />
                 <InputError :message="form.errors.current_password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="password" value="New Password" />
+                <InputLabel class="mb-2" for="password" value="New Password" />
                 <TextInput
                     id="password"
                     ref="passwordInput"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mb-3 block w-full"
                     autocomplete="new-password"
                 />
                 <InputError :message="form.errors.password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                <InputLabel class="mb-2" for="password_confirmation" value="Confirm Password" />
                 <TextInput
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full"
                     autocomplete="new-password"
                 />
                 <InputError :message="form.errors.password_confirmation" class="mt-2" />
@@ -88,13 +88,14 @@ const updatePassword = () => {
         </template>
 
         <template #actions>
-            <ActionMessage :on="form.recentlySuccessful" class="mr-3">
-                Saved.
-            </ActionMessage>
 
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
             </PrimaryButton>
+
+            <ActionMessage :on="form.recentlySuccessful" class="ml-3 text-darkorchid">
+                Saved.
+            </ActionMessage>
         </template>
     </FormSection>
 </template>
