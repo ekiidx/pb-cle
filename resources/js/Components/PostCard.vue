@@ -23,7 +23,9 @@ defineProps({
       <PostVote :post="post" />
     </div>
     <div>
-      <div class="flex p-3 text-sm">
+
+      <!-- Flex -->
+      <div class="post-flex p-3 text-sm">
         <Link
           :href="route('frontend.communities.show', community)"
           class="font-semibold mr-3 hover:text-indigo-700"
@@ -41,20 +43,22 @@ defineProps({
         <h2
           class="
             pl-3 pr-3 mb-2
-            text-2xl
             font-bold
             tracking-tight
             text-white
-            hover:text-darkorchid
+            whitespace-break-spaces
+            post-title
           "
         >
           {{ post.title }}
         </h2>
       </Link>
-      <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300">
+      <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300 post-description">
         {{ post.description }}
       </p>
-      <div class="flex m-2 p-2">
+
+      <!-- Flex -->
+      <div class="post-flex m-2 p-2">
         <p class="mr-4 p-2">Comments({{ post.comments_count }})</p>
         <Link
           :href="

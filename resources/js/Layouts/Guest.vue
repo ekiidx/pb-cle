@@ -37,7 +37,7 @@ const logout = () => {
           <!--<a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
           <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
           <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>-->
-          <button class="nav-menu me-0 ms-2"></button>
+          <!-- <button class="nav-menu me-0 ms-2"></button> -->
         </div>
 
         <form action="#" class="float-left header-search">
