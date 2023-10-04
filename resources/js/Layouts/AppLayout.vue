@@ -100,12 +100,12 @@ const logout = () => {
                         </div> -->
 
                         <!-- Settings Dropdown -->
-                        <div class="ml-3 relative">
+                        <div class="relative">
                             <Dropdown align="right" width="48">
                                 <template #trigger>
 
                                     <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                        <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.username">
+                                        <img class="profile-img rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.username">
                                     </button>
 
                                     <span v-else class="inline-flex rounded-md">

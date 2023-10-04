@@ -1,3 +1,7 @@
+html, body {
+    font-size: 16px !important;
+}
+
 .min-h-10 {
     min-height: 10rem;
 }
@@ -44,6 +48,15 @@ input[type="file"] {
     line-height: 1.75rem;
 }
 
+.profile-img {
+    width: 3rem;
+    height: auto;
+}
+
+.nav-top {
+    justify-content: flex-start !important;
+}
+
 @media only screen and (min-width: 652px) {
     .post-description {
         padding-right: 2.5rem !important;
@@ -54,6 +67,7 @@ input[type="file"] {
     .post-flex {
         display: flex;
     }
+
 }
 
 @media only screen and (min-width: 992px) {
@@ -78,6 +92,15 @@ input[type="file"] {
         padding-right: 3rem !important;
     }
 
+}
+
+input, textarea {
+    font-size: 1rem !important;
+}
+@media (min-width: 768px) {
+    input, textarea {
+        font-size: inherit !important;
+    }
 }
 
 

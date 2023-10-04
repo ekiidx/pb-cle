@@ -6,6 +6,37 @@
 
         <title inertia>{{ config('app.name', 'Pb-Cle') }}</title>
 
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8d3ec5">
+        <meta name="msapplication-TileColor" content="#1f212a">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Open Graph -->
+        <meta property="og:url" content="https://pb-cle.org">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Pb-Cle">
+        <meta property="og:title" content="Pb-Cle">
+        <meta property="og:description" content="Welcome to the new Pb-Cle.org electronic dance music site where you'll be able to post your music and photos and look up local events. More to come soon.">
+        <meta property="og:image" content="https://pb-cle.org/site-thumbnail.png">
+
+        <!-- Twitter Meta -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content="pb-cle.org">
+        <meta property="twitter:url" content="https://pb-cle.org">
+        <meta name ="twitter:title" content="Pb-Cle">
+        <meta name="twitter:description" content="Welcome to the new Pb-Cle.org electronic dance music site where you'll be able to post your music and photos and look up local events. More to come soon.">
+        <meta name="twitter:image" content="https://pb-cle.org/site-thumbnail.png">
+        <meta data-rh="true" name="twitter:alt" content="Pb-Cle Preview">
+        <meta data-rh="true" name="twitter:image:width" content="">
+        <meta data-rh="true" name="twitter:image:height" content="">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:creator" content="">
+        <meta name="twitter:creator:id" content="">
+
         <!-- Fonts -->
 
         <!-- Bootstrap -->

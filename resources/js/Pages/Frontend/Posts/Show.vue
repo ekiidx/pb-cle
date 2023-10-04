@@ -157,17 +157,6 @@ const submit = () => {
             <div v-if="$page.props.auth.user.username">
               <form class="max-w-md" @submit.prevent="submit">
                 <div class="px-3 mb-3">
-                  <label
-                    for="comment"
-                    class="
-                      block
-                      mb-2
-                      text-sm
-                      font-medium
-                      text-gray-900
-                    "
-                    >Your comment</label
-                  >
                   <textarea
                     v-model="form.content"
                     id="comment"
@@ -176,7 +165,7 @@ const submit = () => {
                       block
                       p-2.5
                       w-full
-                      text-sm text-gray-900
+                      text-gray-900
                       bg-gray-50
                       rounded-lg
                       border border-gray-300
