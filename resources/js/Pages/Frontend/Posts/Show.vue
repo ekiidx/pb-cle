@@ -77,14 +77,13 @@ const submit = () => {
               </h1>
 
               <!-- Title -->
-              <p class="text-gray-300 px-3 pt-2 whitespace-pre-wrap">{{ post.data.description }}</p>
+              <p class="text-gray-300 px-3 pt-2 whitespace-pre-wrap break-words">{{ post.data.description }}</p>
               
               <!-- Linik -->
               <div class="px-3 py-2 mb-3">
               <a
                 :href="post.data.url"
-                class="font-semibold text-electricgreen text-sm"
-                style="word-wrap:break-word;"
+                class="font-semibold text-electricgreen text-sm break-words"
                 >{{ post.data.url }}</a
               >
             </div >
@@ -104,7 +103,7 @@ const submit = () => {
                       comment.username
                     }}</span>
                   </div>
-                  <div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap">
+                  <div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
                     {{ comment.content }}
                   </div>
                 </li>

@@ -22,7 +22,7 @@ defineProps({
     <div class="">
       <PostVote :post="post" />
     </div>
-    <div>
+    <div class="w-full" style="padding-right: 48px !important;">
 
       <!-- Flex -->
       <div class="post-flex p-3 text-sm">
@@ -53,7 +53,7 @@ defineProps({
           {{ post.title }}
         </h2>
       </Link>
-      <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300 post-description whitespace-pre-wrap">
+      <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300 post-description break-words whitespace-pre-wrap">
         {{ post.description }}
       </p>
 
