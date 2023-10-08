@@ -77,7 +77,7 @@ const submit = () => {
               </h1>
 
               <!-- Title -->
-              <p class="text-gray-300 px-3 pt-2">{{ post.data.description }}</p>
+              <p class="text-gray-300 px-3 pt-2 whitespace-pre-wrap">{{ post.data.description }}</p>
               
               <!-- Linik -->
               <div class="px-3 py-2 mb-3">
