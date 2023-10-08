@@ -104,7 +104,7 @@ const submit = () => {
                       comment.username
                     }}</span>
                   </div>
-                  <div class="text-gray-300 pt-2 pb-3">
+                  <div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap">
                     {{ comment.content }}
                   </div>
                 </li>
@@ -115,6 +115,8 @@ const submit = () => {
             <div v-if="$page.props.auth.user.username">
               <form class="max-w-md" @submit.prevent="submit">
                 <div class="px-3 mb-3">
+
+
                   <textarea
                     v-model="form.content"
                     id="comment"

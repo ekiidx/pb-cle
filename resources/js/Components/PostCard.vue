@@ -53,7 +53,7 @@ defineProps({
           {{ post.title }}
         </h2>
       </Link>
-      <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300 post-description">
+      <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300 post-description whitespace-pre-wrap">
         {{ post.description }}
       </p>
 
