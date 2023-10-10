@@ -31,7 +31,10 @@ const submit = () => {
 
 <template>
   <Guest>
-    <Head title="Post" />
+ 
+    <Head>
+      <title>{{ community.name }} -  {{ post.data.title }}</title>
+    </Head>
 
     <!--- Header -->
     <div class="bg-dark border rounded-lg mb-3 p-3">

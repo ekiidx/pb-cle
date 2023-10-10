@@ -1,6 +1,6 @@
 <script setup>
 import Guest from "@/Layouts/Guest.vue";
-import { Link } from "@inertiajs/vue3";
+import { Link, Head } from "@inertiajs/vue3";
 import PostCard from "@/Components/PostCard.vue";
 import Pagination from "@/Components/Pagination.vue";
 import CommunityList from "@/Components/CommunityList.vue";
@@ -14,6 +14,10 @@ defineProps({
 
 <template>
   <Guest>
+
+    <Head>
+      <title>{{ community.name }}</title>
+    </Head>
 
     <!-- Header -->
     <template #header>
