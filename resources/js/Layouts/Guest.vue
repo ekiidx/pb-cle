@@ -161,14 +161,14 @@ const logout = () => {
           <template v-else>
             <Link
               :href="route('login')"
-              class="text-sm text-gray-700 underline"
+              class="text-sm text-gray-700 login-btn"
             >
               Log in
             </Link>
 
             <Link
               :href="route('register')"
-              class="ml-4 text-sm text-gray-700 underline"
+              class="ml-4 text-sm text-gray-700 bg-darkorchid register-btn w-100 text-center text-white fw-500"
             >
               Register
             </Link>
