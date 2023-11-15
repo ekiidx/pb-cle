@@ -33,7 +33,7 @@ const submit = () => {
   <Guest>
  
     <Head>
-      <title>{{ community.name }} -  {{ post.data.title }}</title>
+      <title>{{ community.name }} - {{ post.data.title }}</title>
     </Head>
 
     <!--- Header -->
@@ -69,6 +69,50 @@ const submit = () => {
                 {{ post.data.created_at }}
               </div>
 
+              <div v-if="$page.props.auth.user">
+                <Link
+                  v-if="can_update"
+                  :href="
+                    route('communities.posts.edit', [
+                      community.slug,
+                      post.data.slug,
+                    ])
+                  "
+                  class="
+                    font-semibold
+                    bg-blue-500
+                    hover:bg-blue-700
+                    rounded-md
+                    text-white
+                    px-4
+                    py-2
+                    mr-2
+                  "
+                  >Edit</Link
+                >
+                <Link
+                  v-if="can_delete"
+                  :href="
+                    route('communities.posts.destroy', [
+                      community.slug,
+                      post.data.slug,
+                    ])
+                  "
+                  class="
+                    font-semibold
+                    bg-red-500
+                    hover:bg-red-700
+                    rounded-md
+                    text-white
+                    px-4
+                    py-2
+                  "
+                  method="delete"
+                  as="button"
+                  type="button"
+                  >Delete</Link
+                >
+              </div>
 
               <!-- Edit and Delete -->
             </div>
@@ -82,7 +126,7 @@ const submit = () => {
               <!-- Title -->
               <p class="text-gray-300 px-3 pt-2 whitespace-pre-wrap break-words">{{ post.data.description }}</p>
               
-              <!-- Linik -->
+              <!-- Link -->
               <div class="px-3 py-2 mb-3">
               <a
                 :href="post.data.url"
