@@ -1,3 +1,11 @@
+<script setup>
+import { Link } from "@inertiajs/vue3";
+
+defineProps({
+  slug: String,
+});
+</script>
+
 <template>
   <Link
     :href="route('posts.upVote', slug)"
@@ -22,11 +30,3 @@
     </svg>
   </Link>
 </template>
-
-<script setup>
-import { Link } from "@inertiajs/vue3";
-
-defineProps({
-  slug: String,
-});
-</script>

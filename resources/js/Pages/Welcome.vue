@@ -24,7 +24,7 @@ defineProps({
           />
         </div>
         <div class="col-lg-4">
-          <CommunityList :communities="communities.data">
+        <CommunityList :communities="communities.data">
             <template #title>Top communities</template></CommunityList
           >
         </div>

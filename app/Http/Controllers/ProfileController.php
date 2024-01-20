@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CommunityPostResource;
+use App\Http\Resources\CommunityResource;
+use App\Models\Community;
 use Illuminate\Http\Request;
-use app\Models\User;
+use App\Models\User;
+use App\Models\Post;
 use Inertia\Inertia;
 
 class ProfileController extends Controller
@@ -29,11 +33,21 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $username)
+    public function show(string $id)
     {
-        $user = User::where('username', $username)->firstOrFail();
+        $user = User::where('id', $id)->firstOrFail();
+        // $user_id = $user->id;
 
-        return Inertia::render('Profiles/Show', compact('user'));
+        // $posts = Post::where('user_id', $id)->withCount('comments')->with('postVotes')->orderBy('votes', 'desc')->take(12)->get();
+
+        $posts = CommunityPostResource::collection(Post::with(['user', 'community', 'postVotes' => function ($query) {
+            $query->where('user_id', auth()->id());
+        }])->where('user_id', $id)->withCount('comments')->orderBy('votes', 'desc')->take(12)->get());
+
+        // $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
+
+        return Inertia::render('Profiles/Show', compact('user', 'posts'));
+        
     }
 
     /**

@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/r/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
 
     // Profile
-    Route::get('/ravers/{username}', [ProfileController::class, 'show'])->name('profiles.show');
+    Route::get('/ravers/{id}', [ProfileController::class, 'show'])->name('profiles.show');
 });
 
 // 404
