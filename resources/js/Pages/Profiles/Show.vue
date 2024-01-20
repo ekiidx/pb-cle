@@ -1,4 +1,4 @@
-`<script setup>
+<script setup>
 import Guest from '@/Layouts/Guest.vue';
 import PostCardProfile from "@/Components/PostCardProfile.vue";
 import { Head } from '@inertiajs/vue3';
