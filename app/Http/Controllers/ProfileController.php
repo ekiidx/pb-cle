@@ -8,6 +8,7 @@ use App\Models\Community;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Event;
 use Inertia\Inertia;
 
 class ProfileController extends Controller
@@ -46,7 +47,9 @@ class ProfileController extends Controller
 
         // $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
-        return Inertia::render('Profiles/Show', compact('user', 'posts'));
+        $events = Event::where('user_id', $id)->take(4)->get();
+
+        return Inertia::render('Profiles/Show', compact('user', 'posts', 'events'));
         
     }
 

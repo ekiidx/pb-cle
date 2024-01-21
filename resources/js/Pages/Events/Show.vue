@@ -15,6 +15,7 @@ const props = defineProps({
         </Head>
 
       <h1 style="color:#ffffff;">{{ $page.props.event.name }}</h1>
+      <p>Hosted by {{ event.user_id }}</p>
       <p>{{ event.content }}</p>
       <img class="" :src="$page.props.event.flyer_front">
       <img class="" :src="$page.props.event.flyer_back">

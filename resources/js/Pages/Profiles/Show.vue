@@ -1,11 +1,13 @@
 <script setup>
 import Guest from '@/Layouts/Guest.vue';
 import PostCardProfile from "@/Components/PostCardProfile.vue";
+import EventCardProfile from "@/Components/EventCardProfile.vue";
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({
   user: Object,
   posts: Object,
+  events: Object,
 });
 </script>
 
@@ -31,6 +33,11 @@ const props = defineProps({
           />
 
       <h2 style="color: #ffffff;">Latest Events</h2>
+      <EventCardProfile
+            v-for="event in events"
+            :event="event"
+            :key="event.id"
+          />
 
     </Guest>
 </template>
