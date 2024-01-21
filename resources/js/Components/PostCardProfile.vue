@@ -47,9 +47,9 @@ defineProps({
           {{ post.title }}
         </h2>
   
-      <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300 post-description break-words whitespace-pre-wrap">
+      <!-- <p class="pl-3 pr-3 mb-3 font-normal text-sm text-gray-300 post-description break-words whitespace-pre-wrap">
         {{ post.description }}
-      </p>
+      </p> -->
 
       <!-- Flex -->
       <div class="post-flex m-2 p-2">

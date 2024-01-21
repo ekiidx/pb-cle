@@ -22,12 +22,15 @@ const props = defineProps({
 
       <!-- {{ $page.props.posts }} -->
       
+      <h2 style="color: #ffffff;">Latest Posts</h2>
       <PostCardProfile
             v-for="post in posts.data"
             :post="post"
             :community="post.community_slug"
             :key="post.id"
           />
+
+      <h2 style="color: #ffffff;">Latest Events</h2>
 
     </Guest>
 </template>

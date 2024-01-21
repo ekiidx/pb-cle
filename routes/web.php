@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\PostCommentController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EventController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -53,10 +54,14 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
     Route::get('/r/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
     Route::post('/r/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
-
-    // Profile
-    Route::get('/ravers/{id}', [ProfileController::class, 'show'])->name('profiles.show');
 });
+
+// Profile
+Route::get('/ravers/{id}', [ProfileController::class, 'show'])->name('profiles.show');
+
+// Events
+Route::get('events', [EventController::class, 'index']);
+Route::get('events/{id}', [EventController::class, 'show']);
 
 // 404
 Route::get('/logout', function () {
