@@ -82,7 +82,7 @@ const logout = () => {
         </div> -->
         <!-- <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
   
-        <nav class="bg-dark">
+        <nav class="">
 
           <!-- Logo -->
           <!-- <Link href="/">
@@ -211,8 +211,7 @@ const logout = () => {
 
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-              <div class="flex items-center px-4">
-              </div>
+              <div class="flex items-center px-4"></div>
               <div class="mt-3 space-y-1">
 
                 <!-- Home -->

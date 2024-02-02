@@ -2,9 +2,9 @@
 import { Head, useForm } from '@inertiajs/vue3';
 import Guest from "@/Layouts/Guest.vue";
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
+// import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
+// import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
@@ -32,18 +32,16 @@ const submit = () => {
         <Head title="Reset Password" />
 
         <AuthenticationCard>
-            <template #logo>
-                <AuthenticationCardLogo />
-            </template>
 
             <form @submit.prevent="submit">
-                <div>
-                    <InputLabel for="email" value="Email" />
+
+                <div class="block">
+                    <!-- <InputLabel for="email" value="Email" /> -->
                     <TextInput
                         id="email"
                         v-model="form.email"
                         type="email"
-                        class="mt-1 block w-full"
+                        class="block mt-1 w-full"
                         required
                         autofocus
                         autocomplete="username"
@@ -52,12 +50,12 @@ const submit = () => {
                 </div>
 
                 <div class="mt-4">
-                    <InputLabel for="password" value="Password" />
+                    <!-- <InputLabel for="password" value="Password" /> -->
                     <TextInput
                         id="password"
                         v-model="form.password"
                         type="password"
-                        class="mt-1 block w-full"
+                        class="block mt-1 w-full"
                         required
                         autocomplete="new-password"
                     />
@@ -65,12 +63,12 @@ const submit = () => {
                 </div>
 
                 <div class="mt-4">
-                    <InputLabel for="password_confirmation" value="Confirm Password" />
+                    <!-- <InputLabel for="password_confirmation" value="Confirm Password" /> -->
                     <TextInput
                         id="password_confirmation"
                         v-model="form.password_confirmation"
                         type="password"
-                        class="mt-1 block w-full"
+                        class="block mt-1 w-full"
                         required
                         autocomplete="new-password"
                     />
