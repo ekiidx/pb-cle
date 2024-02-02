@@ -79,7 +79,6 @@ const submit = () => {
 
                         <form @submit.prevent="submit">
                     
-                            <!-- 1 -->
                             <!-- <InputLabel for="email" value="Email" /> -->
                             <div class="form-group icon-input mb-3">
                                 <i class="font-sm ti-email text-grey-500 pe-0"></i>
@@ -88,6 +87,7 @@ const submit = () => {
                                     v-model="form.email"
                                     type="email"
                                     class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600"
+                                    placeholder="Your Email Address"
                                     required
                                     autofocus
                                     autocomplete="username"
@@ -95,7 +95,6 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.email" />
                             </div>
 
-                            <!-- 2 -->
                             <!-- <InputLabel for="password" value="Password" /> -->
                             <div class="form-group icon-input mb-1">
                                 <i class="font-sm ti-lock text-grey-500 pe-0"></i>
@@ -104,13 +103,13 @@ const submit = () => {
                                     v-model="form.password"
                                     type="password"
                                     class="style2-input ps-5 form-control text-grey-900 font-xss ls-3"
+                                    placeholder="Password"
                                     required
                                     autocomplete="current-password"
                                 />
                                 <InputError class="mt-2" :message="form.errors.password" />
                             </div>
                 
-                            <!-- 3 -->
                             <div class="form-check text-left mb-3">
                                 <label class="form-check-label font-xsss text-grey-500">
                                     <Checkbox v-model:checked="form.remember" name="remember" />
@@ -122,16 +121,15 @@ const submit = () => {
                                 </Link>
                             </div>
 
-                            <!-- 4 -->
                             <div class="col-sm-12 p-0 text-left">
                                 <div class="form-group mb-1">
 
-                                    <PrimaryButton class="" :class="{ 'inline-flex items-center border-transparent bg-darkorchid fw-500 text-white font-xsss p-3 ms-auto w100 text-center lh-20 rounded-xl': form.processing }" :disabled="form.processing">
+                                    <PrimaryButton class="" :class="{ '': form.processing }" :disabled="form.processing">
                                         Log in
                                     </PrimaryButton>
                                 </div>
 
-                                <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Dont have account <a href="{{ route('register') }}" class="fw-700 ms-1">Register</a></h6>
+                                <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Dont have account <a href="/register" class="fw-700 ms-1">Register</a></h6>
                             </div>
                         </form>
                     </div>
