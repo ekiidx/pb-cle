@@ -389,7 +389,7 @@ const logout = () => {
       </div>
 
       <!-- main content -->
-      <div class="main-column loaded container">
+      <!-- <div class="main-column loaded container"> -->
           
         <!-- loader wrapper -->
         <!-- <div class="preloader-wrap p-3">
@@ -419,8 +419,8 @@ const logout = () => {
           </div>
         </div> -->
           
-        <div class="row feed-body">
-          <div class="col-12">
+        <!-- <div class="row feed-body">
+          <div class="col-12"> -->
 
             <!-- Page Heading -->
             <header class="bg-dark border text-white rounded-lg mb-3 shadow" v-if="$slots.header">
@@ -431,8 +431,8 @@ const logout = () => {
             <slot />
 
           </div>      
-        </div>
+        <!-- </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
