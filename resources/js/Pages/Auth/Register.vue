@@ -24,7 +24,11 @@ const submit = () => {
 };
 </script>
 
-<style>
+<template>
+    <Guest>
+        <Head title="Register" />
+
+        <style>
     .nav-header {
         background-color: transparent !important;
     }
@@ -48,14 +52,10 @@ const submit = () => {
     }
 </style>
 
-<template>
-    <Guest>
-        <Head title="Register" />
-
         <AuthenticationCard>
             <div class="row">
 
-                <div class="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat bg-black" style="background-image: url('assets/img/2.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat bg-black" style="background-image: url('assets/img/1.jpg'); background-size: cover; background-position: center;"></div>
 
                 <div class="col-xl-7 vh-100 align-items-center d-flex bg-black overflow-hidden">
                     <div class="card bg-black shadow-none border-0 ms-auto me-auto login-card">

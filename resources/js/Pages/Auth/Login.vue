@@ -30,32 +30,9 @@ const submit = () => {
 };
 </script>
 
-<style>
-    .nav-header {
-        background-color: transparent !important;
-    }
-    .header-search {
-        display: none;
-    }
-    .menu-icon i {
-        display: none;
-    }
-    @media only screen and (min-width: 992px) {
-        .main-wrapper {
-            padding-left: 0rem;
-            padding-right: 0rem;
-        }
-    }
-    @media only screen and (min-width: 1440px) {
-        .main-wrapper {
-            padding-left: 0rem;
-            padding-right: 0rem;
-        }
-    }
-</style>
-
 <template>
     <Guest>
+
         <Head title="Log in" />
 
         <AuthenticationCard>

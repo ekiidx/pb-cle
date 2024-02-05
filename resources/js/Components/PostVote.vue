@@ -10,7 +10,7 @@ defineProps({
 
 <template>
   <div
-    class="flex flex-col h-full p-2 bg-gray-200 text-center rounded-l-lg"
+    class="vote-box flex flex-col h-full bg-gray-200 text-center rounded-l-lg"
   >
     <UpVoteLink
       :slug="post.slug"

@@ -1,6 +1,15 @@
 html, body {
     font-size: 16px !important;
 }
+.main-container {
+    margin-top: 85px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.vote-box {
+    padding: 0.1rem;
+    width: 2.35rem;
+}
 .register-btn {
     padding: 0.9rem 1.5rem;
     border-radius: 1.5rem;
@@ -81,14 +90,15 @@ input[type="file"] {
     .post-description {
         padding-right: 3rem !important;
     }
-    .main-wrapper {
+    .main-container {
+        margin-top: 113px;
         padding-left: 8rem;
         padding-right: 8rem;
     }
 
 }
 @media only screen and (min-width: 1440px) {
-    .main-wrapper {
+    .main-container {
         padding-left: 17rem;
         padding-right: 17rem;
     }
