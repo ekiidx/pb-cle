@@ -25,38 +25,48 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 
         <AuthenticationCard>
 
-            <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
-            </div>
+            <div class="row">
 
-            <div v-if="verificationLinkSent" class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-                A new verification link has been sent to the email address you provided in your profile settings.
-            </div>
+                <div class="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat bg-black" style="background-image: url('/assets/img/3.jpg'); background-size: cover; background-position: center;"></div>
 
-            <form @submit.prevent="submit">
-                <div class="mt-4 flex items-center justify-between">
-                    <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Resend Verification Email
-                    </PrimaryButton>
+                <div class="col-xl-7 vh-100 align-items-center d-flex bg-black overflow-hidden">
 
-                    <div>
-                        <Link
-                            :href="route('profile.show')"
-                            class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                        >
-                            Edit Profile</Link>
+                    <div class="card bg-black shadow-none border-0 ms-auto me-auto login-card">
+                        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                            Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
+                        </div>
 
-                        <Link
-                            :href="route('logout')"
-                            method="post"
-                            as="button"
-                            class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 ml-2"
-                        >
-                            Log Out
-                        </Link>
+                        <div v-if="verificationLinkSent" class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+                            A new verification link has been sent to the email address you provided in your profile settings.
+                        </div>
+
+                        <form @submit.prevent="submit">
+                            <div class="mt-4 flex items-center justify-between">
+                                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                    Resend Verification Email
+                                </PrimaryButton>
+
+                                <div>
+                                    <Link
+                                        :href="route('profile.show')"
+                                        class=""
+                                    >
+                                        Edit Profile</Link>
+
+                                    <Link
+                                        :href="route('logout')"
+                                        method="post"
+                                        as="button"
+                                        class=""
+                                    >
+                                        Log Out
+                                    </Link>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
         </AuthenticationCard>
     </Guest>
 </template>
