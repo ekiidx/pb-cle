@@ -10,19 +10,19 @@ defineProps({
 
 <template>
   <div
-    class="vote-box flex flex-col h-full bg-gray-200 text-center rounded-l-lg"
+    class="vote-box flex flex-col h-full text-center rounded-l-lg"
   >
     <UpVoteLink
       :slug="post.slug"
       :class="{
-        'text-darkorchid': post.postVotes[0] && post.postVotes[0].vote == 1,
+        'text-electricgreen': post.postVotes[0] && post.postVotes[0].vote == 1,
       }"
     />
     <div
       class="p-2 my-2 font-bold"
       :class="{
-        'text-darkorchid': post.postVotes[0] && post.postVotes[0].vote == 1,
-        'text-electricgreen': post.postVotes[0] && post.postVotes[0].vote == -1,
+        'text-electricgreen': post.postVotes[0] && post.postVotes[0].vote == 1,
+        'text-darkorchid': post.postVotes[0] && post.postVotes[0].vote == -1,
       }"
     >
       {{ post.votes }}
@@ -30,7 +30,7 @@ defineProps({
     <DownVoteLink
       :slug="post.slug"
       :class="{
-        'text-electricgreen': post.postVotes[0] && post.postVotes[0].vote == -1,
+        'text-darkorchid': post.postVotes[0] && post.postVotes[0].vote == -1,
       }"
     />
   </div>

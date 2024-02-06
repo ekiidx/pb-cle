@@ -18,7 +18,7 @@ defineProps({
         <Head title="Home" />
 
         <div class="main-container">
-            <div class="row">
+            <div class="row g-3">
                 <div class="col-lg-8">
                     <PostCard
                         v-for="post in posts.data"

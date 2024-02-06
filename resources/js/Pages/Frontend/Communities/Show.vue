@@ -21,7 +21,7 @@ defineProps({
 
       <div class="flex justify-between p-3">
         <h2 class="font-semibold text-xl text-white leading-tight">
-          r/{{ community.name }}
+          /{{ community.name }}
         </h2>
         <Link
           v-if="$page.props.auth.user.username"

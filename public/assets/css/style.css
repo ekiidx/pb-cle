@@ -7944,7 +7944,7 @@ textarea.form-control-lg {
 }
 
 .border {
-  border: 1px solid #E1E1F0 !important;
+  border: 1px solid #595959 !important;
 }
 
 .border-0 {
@@ -12530,10 +12530,10 @@ strong,
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 86px;
+  height: 69px;
   padding: 0 15px;
   background: #ffffff;
-  border-bottom: 2px #eee solid;
+  /* border-bottom: 1px #6c6c6c solid; */
   -webkit-transition: left 0.25s;
   -o-transition: left 0.25s;
   transition: left 0.25s;

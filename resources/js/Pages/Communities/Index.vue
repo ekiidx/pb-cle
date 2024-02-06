@@ -17,7 +17,7 @@ defineProps({
         <!-- Header -->
         <!-- <div class="bg-dark border rounded-lg mb-3 p-3"> -->
             <h2 class="font-semibold text-xl mb-4 text-white leading-tight">
-              Communities
+              /Communities
             </h2>
         <!-- </div> -->
 
