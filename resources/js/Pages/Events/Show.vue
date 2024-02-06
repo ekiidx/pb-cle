@@ -33,13 +33,13 @@ const props = defineProps({
 							<div class="post-flex p-3 text-sm">
 								<div class="flex">
 									Posted by
-									<!-- <span class="font-semibold mx-1 text-darkorchid">{{ post.username }}</span> -->
-									{{ event.created_at }}
+									<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
+									{{ event.created_at_diff }}
 								</div>
 							</div>
 
 							<h1 style="color:#ffffff;">{{ $page.props.event.name }}</h1>
-							<p>Hosted by {{ event.user_id }}</p>
+							<p>Hosted by {{ event.user.username }}</p>
 							<p>{{ event.content }}</p>
 							<img class="" :src="'/storage/'+event.flyer_front">
 							<img class="" :src="'/storage/'+event.flyer_back">

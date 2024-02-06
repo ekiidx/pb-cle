@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -32,5 +33,12 @@ class Event extends Model
     public function getRouteKeyName()
     {
       return 'slug';
+    }
+
+    protected $appends = ['created_at_diff'];
+
+    public function getCreatedAtDiffAttribute(): string 
+    { 
+      return $this->created_at->diffForHumans(); 
     }
 }
