@@ -82,7 +82,8 @@ const logout = () => {
         </div> -->
         <!-- <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
   
-        <nav class="">
+        <nav class="main-nav">
+          <div style="display: flex; justify-content: end;">
 
           <!-- Logo -->
           <!-- <Link href="/">
@@ -161,14 +162,14 @@ const logout = () => {
           <template v-else>
             <Link
               :href="route('login')"
-              class="text-sm text-gray-700 login-btn"
+              class="text-sm text-gray-700 fw-600 login-btn"
             >
               Log in
             </Link>
 
             <Link
               :href="route('register')"
-              class="ml-4 text-sm text-gray-700 bg-darkorchid register-btn w-100 text-center text-white fw-500"
+              class="ml-2 md:ml-3 lg:ml-3 text-sm text-gray-700 bg-darkorchid register-btn text-center text-white fw-600"
             >
               Register
             </Link>
@@ -281,6 +282,7 @@ const logout = () => {
                 </template> -->
               </div>
             </div>
+          </div>
           </div>
         </nav>
 

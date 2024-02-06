@@ -12530,7 +12530,7 @@ strong,
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 96px;
+  height: 86px;
   padding: 0 15px;
   background: #ffffff;
   border-bottom: 2px #eee solid;
@@ -12540,7 +12540,7 @@ strong,
 }
 @media (max-width: 991.98px) {
   .nav-header {
-    padding: 9px 15px 9px 15px;
+    padding: 11px 15px 11px 15px;
     height: auto;
     position: fixed;
     top: env(safe-area-inset-top);
