@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -19,6 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -67,5 +69,18 @@ class User extends Authenticatable implements MustVerifyEmail
     public function events()
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function sluggable(): array
+    {
+      return [
+        'slug' => [
+          'source' => 'username'
+        ]
+      ];
+    }
+
+    public function getRouteKeyName() {
+        return 'slug';
     }
 }

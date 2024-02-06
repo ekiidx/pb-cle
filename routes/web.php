@@ -51,17 +51,17 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/posts/{post:slug}/upVote', [PostVoteController::class, 'upVote'])->name('posts.upVote');
     Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
 
-    Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
-    Route::get('/r/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
-    Route::post('/r/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
+    Route::get('/posts/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
+    Route::get('/posts/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
+    Route::post('/posts/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
 });
 
 // Profile
-Route::get('/ravers/{id}', [ProfileController::class, 'show'])->name('profiles.show');
+Route::get('/ravers/{user:slug}', [ProfileController::class, 'show'])->name('profiles.show');
 
 // Events
 Route::get('events', [EventController::class, 'index']);
-Route::get('events/{id}', [EventController::class, 'show']);
+Route::get('events/{event:slug}', [EventController::class, 'show'])->name('events.show');
 
 // 404
 Route::get('/logout', function () {
