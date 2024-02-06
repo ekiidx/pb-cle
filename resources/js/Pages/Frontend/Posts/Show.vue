@@ -46,7 +46,7 @@ const submit = () => {
         </h2>
       <!-- </div>
      -->
-      <div class="row">
+      <div class="row g-3">
 
         <!-- Main Column -->
         <div class="col-lg-8">

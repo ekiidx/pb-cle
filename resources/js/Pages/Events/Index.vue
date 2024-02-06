@@ -13,7 +13,7 @@ const props = defineProps({
       <Head title="Events" />
 
       <div class="main-container">
-        <div class="row">
+        <div class="row g-3">
           <div class="col-lg-8">
               <h1 style="color:#ffffff;">Events</h1>
               <EventCardIndex

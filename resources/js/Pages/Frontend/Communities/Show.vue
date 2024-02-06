@@ -31,7 +31,7 @@ defineProps({
         >
       </div>
 
-      <div class="row">
+      <div class="row g-3">
         <!-- Main Column -->
         <div class="col-lg-8">
           <PostCard
@@ -49,21 +49,20 @@ defineProps({
 
         <!-- Side Column -->
         <div class="col-lg-4">
-          <div>
+          <div class="border rounded-lg">
             <h2
               class="
                 font-semibold
                 text-lg
                 p-6
-                bg-dark
-                border
-                rounded-t-lg
+                bg-darkorchid
+                rounded-lg
                 text-white
               "
             >
               About {{ community.name }}
             </h2>
-            <p class="bg-white p-4 rounded-b-lg">{{ community.description }}</p>
+            <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">{{ community.description }}</p>
           </div>
           <CommunityList class="mt-4" :communities="communities.data">
             <template #title>Latest Communities</template>
