@@ -48,10 +48,10 @@ const logout = () => {
         </form> -->
 
         <a href="/communities" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg bg-darkorchid btn-round-lg theme-dark-bg text-current "></i></a>
-        <!-- <a href="" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-400 "></i></a>
-        <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a>
-        <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a>
-        <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
+        <a href="/events" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-400 "></i></a>
+        <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
+        <!-- <a href="/ravers" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
+        <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
 
         <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><!--<span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i>--></a>
         

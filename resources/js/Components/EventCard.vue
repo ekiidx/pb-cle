@@ -9,6 +9,6 @@ defineProps({
 <template>
 
   <!-- {{ event.data }} -->
-  <h2 style="color: #ffffff;">{{ event.name }}</h2>
+   <a :href="'../events/'+ event.slug">{{ event.name }}</a>
   <p>{{ event.content }}</p>
 </template>

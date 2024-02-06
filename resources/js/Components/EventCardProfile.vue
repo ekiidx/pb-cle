@@ -8,6 +8,6 @@ defineProps({
 <template>
   <!-- {{ event.data }} -->
 
-  <a :href="'../events/'+ event.id">{{ event.name }}</a>
+  <a :href="'../events/'+ event.slug">{{ event.name }}</a>
   <p>{{ event.content }}</p>
 </template>

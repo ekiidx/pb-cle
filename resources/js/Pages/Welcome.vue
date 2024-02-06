@@ -2,7 +2,7 @@
 import Guest from '@/Layouts/Guest.vue';
 import PostCard from "@/Components/PostCard.vue";
 import CommunityList from "@/Components/CommunityList.vue";
-import EventList from "@/Components/EventList.vue";
+import EventSidebar from "@/Components/EventSidebar.vue";
 // import EventCard from "@/Components/EventCard.vue";
 import { Head } from '@inertiajs/vue3';
 
@@ -30,12 +30,12 @@ defineProps({
 
                 <div class="col-lg-4">
                     <CommunityList :communities="communities.data">
-                        <template #title>Top communities</template>
+                        <template #title>Top Communities</template>
                     </CommunityList>
 
-                    <EventList :events="events">
-                    <template #title>Events</template>
-                    </EventList>
+                    <EventSidebar :events="events">
+                    <template #title>Hot Events</template>
+                    </EventSidebar>
                 </div>
             </div>
         </div>

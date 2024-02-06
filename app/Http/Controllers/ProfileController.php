@@ -34,20 +34,20 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        $user = User::where('id', $id)->firstOrFail();
-        // $user_id = $user->id;
+        // $user = User::where('slug', $user)->firstOrFail();
+        $user_id = $user->id;
 
         // $posts = Post::where('user_id', $id)->withCount('comments')->with('postVotes')->orderBy('votes', 'desc')->take(12)->get();
 
         $posts = CommunityPostResource::collection(Post::with(['user', 'community', 'postVotes' => function ($query) {
             $query->where('user_id', auth()->id());
-        }])->where('user_id', $id)->withCount('comments')->orderBy('votes', 'desc')->take(4)->get());
+        }])->where('user_id', $user_id)->withCount('comments')->orderBy('votes', 'desc')->take(4)->get());
 
         // $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
-        $events = Event::where('user_id', $id)->take(4)->get();
+        $events = Event::where('user_id', $user_id)->take(4)->get();
 
         return Inertia::render('Profiles/Show', compact('user', 'posts', 'events'));
         

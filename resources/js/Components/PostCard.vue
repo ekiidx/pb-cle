@@ -33,7 +33,8 @@ defineProps({
         >
         <div class="flex">
           Posted by
-          <span class="font-semibold mx-1 text-darkorchid">{{ post.username }}</span>
+          <a :href="'/ravers/'+post.user_slug">
+          <span class="font-semibold mx-1 text-darkorchid">{{ post.username }}</span></a>
           {{ post.created_at }}
         </div>
       </div>
