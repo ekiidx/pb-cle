@@ -29,7 +29,7 @@ defineProps({
         <Link
           :href="route('frontend.communities.show', community)"
           class="font-semibold mr-3 hover:text-indigo-700"
-          >r/{{ community }}</Link
+          >/{{ community }}</Link
         >
         <div class="flex">
           Posted by

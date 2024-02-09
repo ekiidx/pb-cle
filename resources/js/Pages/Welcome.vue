@@ -19,6 +19,7 @@ defineProps({
 
         <div class="main-container">
             <div class="row g-3">
+                
                 <div class="col-lg-8">
                     <PostCard
                         v-for="post in posts.data"
@@ -29,6 +30,21 @@ defineProps({
                 </div>
 
                 <div class="col-lg-4">
+                    <div
+						class="
+						mb-3
+						flex
+						bg-dark
+						rounded-lg
+						border border-gray-200
+						shadow-md
+						"
+					>
+
+					    <h2 class="p-3 text-white">Welcome to Pb-cle.org</h2>
+					</div>
+
+
                     <CommunityList :communities="communities.data">
                         <template #title>Top Communities</template>
                     </CommunityList>

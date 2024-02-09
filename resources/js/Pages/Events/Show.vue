@@ -30,25 +30,46 @@ const props = defineProps({
 					>
 						<div class="w-full" style="padding-right: 48px !important;">
 							<!-- Flex -->
-							<div class="post-flex p-3 text-sm">
-								<div class="flex">
-									Posted by
-									<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
-									{{ event.created_at_diff }}
+							<div class="px-3 py-3">
+								<div class="post-flex mb-4 text-sm">
+									<div class="flex">
+										Hosted by
+										<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
+										{{ event.weekday_format }} {{ event.event_date }}
+									</div>
+								</div>
+
+							
+								<h1 class="font-semibold text-3xl text-gray-300 mb-4">{{ event.name }}</h1>
+								<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
+							
+								<div class="mb-4">
+									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.flyer_front" class="" :src="'/storage/'+event.flyer_front">
+									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.flyer_back" class="" :src="'/storage/'+event.flyer_back">
+								</div>
+
+								<div class="mb-2">
+									<p class="text-gray-300">{{ event.content }}</p>
 								</div>
 							</div>
-
-							<h1 style="color:#ffffff;">{{ $page.props.event.name }}</h1>
-							<p>Hosted by {{ event.user.username }}</p>
-							<p>{{ event.content }}</p>
-							<img class="" :src="'/storage/'+event.flyer_front">
-							<img class="" :src="'/storage/'+event.flyer_back">
-                  
 						</div>
 					</div>
 				</div>
 
             	<div class="col-lg-4">
+					<div
+						class="
+						mb-3
+						flex
+						bg-dark
+						rounded-lg
+						border border-gray-200
+						shadow-md
+						"
+					>
+
+					<h2 class="p-3 text-white">Tickets</h2>
+					</div>
 
             	</div>
 

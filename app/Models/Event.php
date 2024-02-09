@@ -35,10 +35,26 @@ class Event extends Model
       return 'slug';
     }
 
-    protected $appends = ['created_at_diff'];
+    protected $appends = ['created_at_diff', 'event_date', 'weekday_format'];
 
     public function getCreatedAtDiffAttribute(): string 
     { 
       return $this->created_at->diffForHumans(); 
     }
+
+    public function getEventDateAttribute(): string 
+    { 
+      return $this->created_at->format('M d Y'); 
+    }
+
+    public function getWeekdayFormatAttribute(): string
+    { 
+      $weekday_num = $this->created_at->format('w');
+      $days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      $weekday_format = $days[$weekday_num];
+
+      return $weekday_format;
+
+    }
+
 }

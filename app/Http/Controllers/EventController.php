@@ -37,9 +37,10 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($slug)
+    public function show(string $slug)
     {
         $event = Event::with('User')->where('slug', $slug)->firstOrFail();
+
         return Inertia::render('Events/Show', compact('event'));
     }
 

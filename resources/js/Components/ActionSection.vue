@@ -14,7 +14,7 @@ import SectionTitle from './SectionTitle.vue';
         </SectionTitle>
 
         <div class="">
-            <div class="bg-dark text-gray-400 text-sm">
+            <div class="bg-dark rounded-lg text-gray-400 text-sm">
                 <slot name="content" />
             </div>
         </div>

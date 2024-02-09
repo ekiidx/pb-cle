@@ -47,9 +47,9 @@ const logout = () => {
           </div>
         </form> -->
 
-        <a href="/" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-md btn-round-md text-grey-200 bg-electricgreen"></i></a>
-        <a href="/communities" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-globe font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-400 "></i></a>
-        <a href="/events" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-400 "></i></a>
+        <a href="/" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-home font-md btn-round-md text-grey-200 bg-electricgreen"></i></a>
+        <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-globe font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-400 "></i></a>
+        <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-400 "></i></a>
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="/ravers" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
@@ -108,7 +108,7 @@ const logout = () => {
               <template #trigger>
 
                 <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                  <img class="profile-img rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.username">
+                  <img class="profile-img border rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.username">
                 </button>
 
                 <span v-else class="inline-flex rounded-md">

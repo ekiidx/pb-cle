@@ -8,7 +8,7 @@ use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityContro
 use App\Http\Controllers\Frontend\PostCommentController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\WelcomeController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RaverController;
 use App\Http\Controllers\EventController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -56,8 +56,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/posts/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
 });
 
-// Profile
-Route::get('/ravers/{user:slug}', [ProfileController::class, 'show'])->name('profiles.show');
+// Ravers
+Route::get('/ravers/{user:slug}', [RaverController::class, 'show'])->name('ravers.show');
 
 // Events
 Route::get('events', [EventController::class, 'index']);

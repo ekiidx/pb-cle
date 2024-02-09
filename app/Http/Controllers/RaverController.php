@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CommunityPostResource;
 use App\Http\Resources\CommunityResource;
-use App\Models\Community;
 use Illuminate\Http\Request;
+use App\Models\Community;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Event;
 use Inertia\Inertia;
 
-class ProfileController extends Controller
+class RaverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
         $users = User::all();
 
-        return Inertia::render('Profiles/Index', compact('users'));
+        return Inertia::render('Ravers/Index', compact('users'));
     }
 
     /**
@@ -34,12 +34,12 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($slug)
     {
-        // $user = User::where('slug', $user)->firstOrFail();
+        $user = User::where('slug', $slug)->firstOrFail();
         $user_id = $user->id;
 
-        // $posts = Post::where('user_id', $id)->withCount('comments')->with('postVotes')->orderBy('votes', 'desc')->take(12)->get();
+        // $posts = Post::where('user_id', $user_id)->withCount('comments')->with('postVotes')->orderBy('votes', 'desc')->take(12)->get();
 
         $posts = CommunityPostResource::collection(Post::with(['user', 'community', 'postVotes' => function ($query) {
             $query->where('user_id', auth()->id());
@@ -47,10 +47,9 @@ class ProfileController extends Controller
 
         // $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
-        $events = Event::where('user_id', $user_id)->take(4)->get();
+        $events = Event::with('user')->where('user_id', $user_id)->latest()->get();
 
-        return Inertia::render('Profiles/Show', compact('user', 'posts', 'events'));
-        
+        return Inertia::render('Ravers/Show', compact('user', 'posts', 'events'));
     }
 
     /**
