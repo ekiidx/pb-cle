@@ -31,7 +31,7 @@ defineProps({
           class="font-semibold mr-3 hover:text-indigo-700"
           >/{{ community }}</Link
         >
-        <div class="flex">
+        <div class="">
           Posted by
           <a :href="'/ravers/'+post.user_slug">
           <span class="font-semibold mx-1 text-darkorchid">{{ post.username }}</span></a>
