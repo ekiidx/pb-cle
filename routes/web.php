@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 Route::get('/ravers/{user:slug}', [RaverController::class, 'show'])->name('ravers.show');
 
 // Events
-Route::get('events', [EventController::class, 'index']);
+Route::get('events', [EventController::class, 'index'])->name('events.index');
 Route::get('events/{event:slug}', [EventController::class, 'show'])->name('events.show');
 
 // 404

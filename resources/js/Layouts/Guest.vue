@@ -139,6 +139,11 @@ const logout = () => {
                   Communities
                 </DropdownLink>
 
+                <!-- Events -->
+                <DropdownLink :href="route('events.index')">
+                  Events
+                </DropdownLink>
+
                 <!-- Settings -->
                 <DropdownLink :href="route('profile.show')">
                   Settings
