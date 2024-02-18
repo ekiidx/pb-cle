@@ -33,7 +33,7 @@ const logout = () => {
       <!-- navigation top-->
       <div class="nav-header bg-dark shadow-xs">
         <div class="nav-top">
-          <a href="/"><i class="feather-zap text-electricgreen display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 font-xl logo-text text-darkorchid mb-0 pb-cle-logofont">Pb-Cle.org</span></a>
+          <a href="/"><i class="feather-zap text-electricgreen display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 font-lg logo-text text-darkorchid mb-0 pb-cle-logofont">Pb-Cle.org</span></a>
           <!--<a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
           <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
           <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>-->
@@ -47,14 +47,14 @@ const logout = () => {
           </div>
         </form> -->
 
-        <a href="/" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-home font-md btn-round-md text-grey-200 bg-electricgreen"></i></a>
-        <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-globe font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-400 "></i></a>
-        <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-400 "></i></a>
+        <a href="/" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-home font-sm btn-round-sm text-grey-200 bg-electricgreen"></i></a>
+        <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+        <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="/ravers" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
 
-        <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><!--<span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i>--></a>
+        <!--<a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false">--><!--<span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i>--><!--</a>-->
         
         <!-- <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
             

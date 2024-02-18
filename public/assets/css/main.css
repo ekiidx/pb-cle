@@ -10,8 +10,11 @@ html, body {
 nav.main-nav {
     width: 100%;
 }
+.main-title-text a {
+    color: #ffffff !important;
+}
 .main-container {
-    margin-top: 74px;
+    margin-top: 78px;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -106,7 +109,7 @@ input[type="file"] {
         padding-right: 3rem !important;
     }
     .main-container {
-        margin-top: 82px;
+        /* margin-top: 82px; */
         padding-left: 12rem;
         padding-right: 10rem;
     }
@@ -116,9 +119,9 @@ input[type="file"] {
     .login-btn {
         padding: 0.9rem 1.85rem;
     }
-    nav.main-nav {
+    /* nav.main-nav {
         width: auto;
-    }
+    } */
 
 }
 @media only screen and (min-width: 1440px) {

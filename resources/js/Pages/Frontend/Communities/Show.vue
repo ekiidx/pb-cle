@@ -34,8 +34,8 @@ defineProps({
 						p-3
 						"
 					>
-						<h2 class="font-semibold text-xl text-white leading-tight">
-							<span class="text-electricgreen">/</span><Link :href="route('frontend.communities.show', community.slug)">
+						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
+							/<Link :href="route('frontend.communities.show', community.slug)">
 								{{ community.name }}
 							</Link>
 						</h2>

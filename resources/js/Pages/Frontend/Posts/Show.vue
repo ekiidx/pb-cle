@@ -54,7 +54,7 @@ const submit = () => {
 						p-3
 						"
 					>
-						<h2 class="font-semibold text-xl text-white leading-tight"><span class="text-electricgreen">/</span>
+						<h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">/</span>
 							<Link :href="route('frontend.communities.show', community.slug)">
 								{{ community.name }}
 							</Link>
