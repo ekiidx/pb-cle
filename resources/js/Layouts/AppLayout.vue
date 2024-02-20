@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { Link, router } from '@inertiajs/vue3';
-import Banner from '@/Components/Banner.vue';
+// import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 
@@ -322,8 +322,8 @@ const logout = () => {
 
     <!-- <div class="row feed-body">
         <div class="col-12"> -->
-    
-    <Banner />
+<!--     
+    <Banner /> -->
 
 
     <!-- Page Heading -->

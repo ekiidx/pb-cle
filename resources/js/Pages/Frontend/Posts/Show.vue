@@ -5,11 +5,12 @@ import PostVote from "@/Components/PostVote.vue";
 import PostList from "@/Components/PostList.vue";
 
 const props = defineProps({
-  community: Object,
-  post: Object,
-  posts: Object,
-  can_delete: Boolean,
-  can_update: Boolean,
+	user: String,
+	community: Object,
+	post: Object,
+	posts: Object,
+	can_delete: Boolean,
+	can_update: Boolean,
 });
 
 const form = useForm({
@@ -74,9 +75,10 @@ const submit = () => {
 							<div class="flex flex-col sm:flex-row justify-between py-3 px-3">
 								<div>
 									Posted by
-									<span class="mx-1 text-darkorchid">
+									<a :href="'/ravers/'+post.data.user_slug">
+									<span class="font-semibold mx-1 text-darkorchid">
 										{{ post.data.username }}
-									</span>
+									</span></a>
 									
 									{{ post.data.created_at }}
 								</div>
@@ -158,9 +160,10 @@ const submit = () => {
 									>
 										<div class="text-sm">
 											Commented by
+											<a :href="'/ravers/'+comment.user_slug">
 											<span class="font-semibold ml-1 text-darkorchid">{{
 												comment.username
-											}}</span>
+											}}</span></a>
 										</div>
 										<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
 											{{ comment.content }}
