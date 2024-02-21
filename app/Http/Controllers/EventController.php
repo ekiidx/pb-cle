@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+// use App\Http\Resources\EventResource;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use Inertia\Inertia;

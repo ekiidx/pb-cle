@@ -33,14 +33,14 @@ const props = defineProps({
 							<div class="px-3 py-3">
 								<div class="post-flex mb-4 text-sm">
 									<div class="flex">
-										Hosted by
+										Posted by
 										<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
-										{{ event.weekday_format }} {{ event.event_date }}
+										{{ event.created_at_diff }}
 									</div>
 								</div>
 
 							
-								<h1 class="font-semibold text-3xl text-gray-300 mb-4">{{ event.name }}</h1>
+								<h1 class="font-semibold text-2xl text-white mb-4">{{ event.name }}</h1>
 								<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
 							
 								<div class="mb-4">
@@ -60,19 +60,22 @@ const props = defineProps({
 					<div
 						class="
 						mb-3
-						flex
 						bg-dark
 						rounded-lg
 						border border-gray-200
 						shadow-md
 						"
 					>
-
-					<h2 class="p-3 text-white">Tickets</h2>
+						<div class="flex items-center">
+						<h2 class="p-3 text-white">Date</h2>
+						<p class="p-3 text-white font-bold">{{ event.weekday_format }} {{ event.party_date }}</p>
+						<!-- <h2 class="px-3 text-white">Time</h2> -->
+						</div>
+				
+						<h2 class="p-3 text-white">Tickets</h2>
+						
 					</div>
-
             	</div>
-
             	<!-- {{ $page.props.event }} -->
           	</div>
      

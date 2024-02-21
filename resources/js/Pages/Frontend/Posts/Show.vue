@@ -132,7 +132,7 @@ const submit = () => {
 							</div>
 							
 							<!-- Title -->
-							<h1 class="px-3 font-semibold text-3xl text-gray-300">
+							<h1 class="pl-4 pr-3 mb-2 font-bold tracking-tight text-white whitespace-break-spaces post-title">
 								{{ post.data.title }}
 							</h1>
 

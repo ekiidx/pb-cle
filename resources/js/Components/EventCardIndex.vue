@@ -23,7 +23,7 @@ defineProps({
             <!-- Flex -->
             <div class="post-flex p-3 text-sm">
                 <div class="flex">
-                    Hosted by
+                    Posted by
                     <a :href="'/ravers/'+event.user.slug"> 
                     <span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
                     {{ event.created_at_diff }}
@@ -52,7 +52,7 @@ defineProps({
                         </h2>
                     </a>
             
-                    <p class="pl-4 pr-3 mb-3 font-normal text-sm text-gray-300 post-description break-words whitespace-pre-wrap">{{ event.content }}</p>
+                    <p class="pl-4 pr-3 mb-3 font-normal text-sm text-gray-300 post-description break-words whitespace-pre-wrap">{{ event.weekday_format }} {{ event.party_date }}</p>
 
                 </div>
             </div>

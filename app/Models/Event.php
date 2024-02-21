@@ -11,6 +11,16 @@ class Event extends Model
 {
     use HasFactory, Sluggable;
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+
+    protected $casts = [
+      'event_date' => 'datetime'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -35,16 +45,16 @@ class Event extends Model
       return 'slug';
     }
 
-    protected $appends = ['created_at_diff', 'event_date', 'weekday_format'];
+    protected $appends = ['created_at_diff', 'party_date', 'weekday_format'];
 
     public function getCreatedAtDiffAttribute(): string 
     { 
       return $this->created_at->diffForHumans(); 
     }
 
-    public function getEventDateAttribute(): string 
+    public function getPartyDateAttribute(): string
     { 
-      return $this->created_at->format('M d Y'); 
+      return $this->event_date->format('M d Y'); 
     }
 
     public function getWeekdayFormatAttribute(): string
