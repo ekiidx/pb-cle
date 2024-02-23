@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommunityStoreRequest;
-use App\Models\Comment;
+use App\Http\Resources\CommunityResource;
 use App\Models\Community;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -19,12 +19,15 @@ class CommunityController extends Controller
     public function index()
     {
             // $communities = Community::where('user_id', auth()->id())->paginate(5)->through(fn ($community) => [
-            $communities = Community::latest()->paginate(20)->through(fn ($community) => [
+            $communities_index = Community::latest()->paginate(20)->through(fn ($community) => [
             'id' => $community->id,
             'name' => $community->name,
             'slug' => $community->slug,
         ]);
-        return Inertia::render('Communities/Index', compact('communities'));
+
+        $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
+
+        return Inertia::render('Communities/Index', compact('communities_index', 'communities'));
     }
 
     /**

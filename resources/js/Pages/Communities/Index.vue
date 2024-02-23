@@ -1,9 +1,11 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
+import CommunityList from "@/Components/CommunityList.vue";
 import Pagination from "@/Components/Pagination.vue";
 
 defineProps({
+  communities_index: Object,
   communities: Object,
 });
 </script>
@@ -82,7 +84,7 @@ defineProps({
 							
 							<tbody class="divide-y divide-gray-500 bg-dark">
 								<tr
-								v-for="community in communities.data"
+								v-for="community in communities_index.data"
 								:key="community.id"
 								>
 								<td
@@ -151,8 +153,31 @@ defineProps({
 					</div>
 
 					<div class="m-2 p-2">
-						<Pagination :links="communities.links" />
+						<Pagination :links="communities_index.links" />
 					</div>
+				</div>
+
+                <div class="col-lg-4">
+					<div class="border rounded-lg">
+						<h2
+						class="
+							font-semibold
+							text-lg
+							p-6
+							bg-darkorchid
+							rounded-lg
+							text-white
+							p-3
+						"
+						>
+							About Communities
+						</h2>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">The many different threads of pb-cle.org</p>
+					</div>
+
+					<CommunityList class="mt-4" :communities="communities.data">
+                        <template #title>Top Communities</template>
+                    </CommunityList>
 				</div>
 			</div>
 		</div>
