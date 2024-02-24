@@ -158,7 +158,7 @@ defineProps({
 				</div>
 
                 <div class="col-lg-4">
-					<div class="border rounded-lg">
+					<div class="border rounded-lg mb-3">
 						<h2
 						class="
 							font-semibold
@@ -172,10 +172,10 @@ defineProps({
 						>
 							About Communities
 						</h2>
-						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">The many different threads of pb-cle.org</p>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">The many different threads of pb-cle.org. <span class="text-darkorchid font-bold">The communities are locked to the current topics but can be unlocked.</span></p>
 					</div>
 
-					<CommunityList class="mt-4" :communities="communities.data">
+					<CommunityList :communities="communities.data">
                         <template #title>Top Communities</template>
                     </CommunityList>
 				</div>

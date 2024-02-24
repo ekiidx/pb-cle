@@ -61,7 +61,7 @@ defineProps({
 
 				<!-- Side Column -->
 				<div class="col-lg-4">
-					<div class="border rounded-lg">
+					<div class="border rounded-lg mb-3">
 						<h2
 						class="
 							font-semibold
@@ -78,7 +78,7 @@ defineProps({
 						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">{{ community.description }}</p>
 					</div>
 
-					<CommunityList class="mt-4" :communities="communities.data">
+					<CommunityList :communities="communities.data">
 						<template #title>Latest Communities</template>
 					</CommunityList>
 				</div>
