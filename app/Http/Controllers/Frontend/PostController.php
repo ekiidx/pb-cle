@@ -25,9 +25,10 @@ class PostController extends Controller
 
         $posts = PostResource::collection($community->posts()->orderBy('votes', 'desc')->take(6)->get());
 
-        // $can_update = Auth::check() ? Auth::user()->can('update', $community_post) : false;
-        // $can_delete = Auth::check() ? Auth::user()->can('delete', $community_post) : false;
+        //Only owner of post, owner of community, or admin can edit & delete
+        $can_update = Auth::check() ? Auth::user()->can('update', $community_post) : false;
+        $can_delete = Auth::check() ? Auth::user()->can('delete', $community_post) : false;
 
-        return Inertia::render('Frontend/Posts/Show', compact('community', 'post', 'posts'));
+        return Inertia::render('Frontend/Posts/Show', compact('community', 'post', 'posts', 'can_update', 'can_delete'));
     }
 }

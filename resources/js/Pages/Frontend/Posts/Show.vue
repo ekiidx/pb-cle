@@ -72,8 +72,8 @@ const submit = () => {
 
 						<!-- Main Section -->
 						<div style="padding-right: 48px !important" class="w-full">
-							<div class="flex flex-col sm:flex-row justify-between py-3 px-3">
-								<div>
+							<div class="flex flex-col sm:flex-row py-3 px-3">
+								<div class="mr-2">
 									Posted by
 									<a :href="'/ravers/'+post.data.user_slug">
 									<span class="font-semibold mx-1 text-darkorchid">
@@ -83,9 +83,8 @@ const submit = () => {
 									{{ post.data.created_at }}
 								</div>
 
-								<div v-if="$page.props.auth.user">
-									<Link
-										v-if="can_update"
+								<div v-if="$page.props.auth.auth_check">
+									<Link v-if="can_update"
 										:href="
 										route('communities.posts.edit', [
 											community.slug,
@@ -94,18 +93,12 @@ const submit = () => {
 										"
 										class="
 										font-semibold
-										bg-blue-500
-										hover:bg-blue-700
-										rounded-md
-										text-white
-										px-4
-										py-2
+										text-electricgreen
 										mr-2
 										"
 										>Edit</Link
 									>
-									<Link
-										v-if="can_delete"
+									<Link v-if="can_delete"
 										:href="
 										route('communities.posts.destroy', [
 											community.slug,
@@ -114,16 +107,12 @@ const submit = () => {
 										"
 										class="
 										font-semibold
-										bg-red-500
-										hover:bg-red-700
-										rounded-md
-										text-white
-										px-4
-										py-2
+										text-darkorchid
 										"
 										method="delete"
 										as="button"
 										type="button"
+										onclick="return confirm('Are you sure you wish to delete this post?')"
 										>Delete</Link
 									>
 								</div>

@@ -39,12 +39,12 @@ defineProps({
 								{{ community.name }}
 							</Link>
 						</h2>
-						<Link
+						<!-- <Link
 							v-if="$page.props.auth.user.username"
 							:href="route('communities.posts.create', community.slug)"
 							class="px-3 py-2 rounded bg-darkorchid hover:bg-electricgreen text-white"
 							>Create Post</Link
-						>
+						> -->
 					</div>
 					<PostCard
 						v-for="post in posts.data"
