@@ -208,6 +208,23 @@ const submit = () => {
 				</div>
 			
 				<div class="col-lg-4">
+					<div class="border rounded-lg mb-3">
+						<h2
+						class="
+							font-semibold
+							text-lg
+							p-6
+							bg-darkorchid
+							rounded-lg
+							text-white
+							p-3
+						"
+						>
+							About {{ community.name }}
+						</h2>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">{{ community.description }}</p>
+					</div>
+					
 					<PostList :posts="posts.data" :community="community">
 						<template #title>Popular Posts</template>
 					</PostList>
