@@ -31,8 +31,8 @@ const submit = () => {
 </script>
 
 <template>
-  	<Guest>
-   		<div class="main-container">
+  <Guest>
+   	<div class="main-container">
  
 			<Head>
 				<title>{{ community.name }} - {{ post.data.title }}</title>
@@ -205,7 +205,6 @@ const submit = () => {
 							</div>
 						</div>
 					</div>
-			
 				</div>
 			
 				<div class="col-lg-4">
@@ -214,6 +213,6 @@ const submit = () => {
 					</PostList>
 				</div>
 			</div>
-    	</div>
-  	</Guest>
+    </div>
+  </Guest>
 </template>
