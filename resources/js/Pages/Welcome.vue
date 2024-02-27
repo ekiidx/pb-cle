@@ -40,7 +40,7 @@ defineProps({
 						shadow-md
 						"
 					>
-						<h2 class="p-3 text-white">Welcome to <span class="text-darkorchid font-bold">Pb-cle.org</span></h2>
+						<h2 class="p-3 text-white">Welcome to <span class="text-darkorchid font-bold hi-cursor">Pb-cle.org</span></h2>
 					</div>
 
 					<CommunityList :communities="communities.data">
