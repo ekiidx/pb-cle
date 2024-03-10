@@ -28,11 +28,11 @@ defineProps({
       <div class="post-flex p-3 text-sm">
         <Link
           :href="route('frontend.communities.show', community)"
-          class="font-semibold mr-3 hover:text-indigo-700"
+          class="font-semibold mr-1 hover:text-indigo-700"
           >/{{ community }}</Link
         >
-        <div class="">
-          Posted by
+        <div class="post-header">
+          <!-- Posted by -->
           <a :href="'/ravers/'+post.user_slug">
           <span class="font-semibold mx-1 text-darkorchid">{{ post.username }}</span></a>
           {{ post.created_at }}
