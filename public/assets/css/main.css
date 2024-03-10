@@ -139,12 +139,12 @@ input[type="file"] {
     .hot-events-box {
         margin-bottom: 0.75rem;
     }
-    .register-btn {
+    /* .register-btn {
         padding: 0.9rem 1.5rem;
-    }
-    .login-btn {
+    } */
+    /* .login-btn {
         padding: 0.9rem 1.85rem;
-    }
+    } */
     .welcome-box {
         margin-bottom: 0.75rem;
     }

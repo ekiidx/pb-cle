@@ -175,7 +175,7 @@ const logout = () => {
 
             <Link
               :href="route('register')"
-              class="ml-2 md:ml-3 lg:ml-3 text-sm text-gray-700 bg-darkorchid register-btn text-center text-white fw-600"
+              class="ml-2 text-sm text-gray-700 bg-darkorchid register-btn text-center text-white fw-600"
             >
               Register
             </Link>
