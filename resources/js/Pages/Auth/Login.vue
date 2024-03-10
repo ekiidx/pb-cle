@@ -63,7 +63,7 @@ const submit = () => {
                                     id="email"
                                     v-model="form.email"
                                     type="email"
-                                    class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600"
+                                    class="style2-input ps-5 form-control text-grey-900 fw-600"
                                     placeholder="Your Email Address"
                                     required
                                     autofocus
@@ -79,7 +79,7 @@ const submit = () => {
                                     id="password"
                                     v-model="form.password"
                                     type="password"
-                                    class="style2-input ps-5 form-control text-grey-900 font-xss ls-3"
+                                    class="style2-input ps-5 form-control text-grey-900 ls-3"
                                     placeholder="Password"
                                     required
                                     autocomplete="current-password"

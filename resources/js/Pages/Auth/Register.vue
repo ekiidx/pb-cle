@@ -49,7 +49,7 @@ const submit = () => {
                                             id="username"
                                             v-model="form.username"
                                             type="text"
-                                            class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600"
+                                            class="style2-input ps-5 form-control text-grey-900 fw-600"
                                             placeholder="Userame"
                                             required
                                             autofocus
@@ -65,7 +65,7 @@ const submit = () => {
                                             id="email"
                                             v-model="form.email"
                                             type="email"
-                                            class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600"
+                                            class="style2-input ps-5 form-control text-grey-900 fw-600"
                                             placeholder="Your Email Address"
                                             required
                                             autocomplete="username"
@@ -80,7 +80,7 @@ const submit = () => {
                                             id="password"
                                             v-model="form.password"
                                             type="password"
-                                            class="style2-input ps-5 form-control text-grey-900 font-xss ls-3"
+                                            class="style2-input ps-5 form-control text-grey-900 ls-3"
                                             placeholder="Password"
                                             required
                                             autocomplete="new-password"
@@ -95,7 +95,7 @@ const submit = () => {
                                             id="password_confirmation"
                                             v-model="form.password_confirmation"
                                             type="password"
-                                            class="style2-input ps-5 form-control text-grey-900 font-xss ls-3"
+                                            class="style2-input ps-5 form-control text-grey-900 ls-3"
                                             placeholder="Confirm Password"
                                             required
                                             autocomplete="new-password"
