@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-dark shadow-md border mb-3 rounded-lg">
+  <div class="bg-dark shadow-md border top-communities-box rounded-lg">
     <h2 class="font-semibold text-lg p-6 bg-darkorchid text-white rounded-lg">
       <slot name="title" />
     </h2>

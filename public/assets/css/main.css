@@ -22,7 +22,7 @@ nav.main-nav {
     color: #ffffff !important;
 }
 .main-container {
-    margin-top: 78px;
+    margin-top: 71px;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -91,6 +91,22 @@ input[type="file"] {
 .nav-top {
     justify-content: flex-start !important;
 }
+.post-card {
+    margin-bottom: 0.5rem;
+}
+.welcome-box {
+    margin-bottom: 0.5rem;
+}
+.top-communnities-box {
+    margin-bottom: 0.5rem;
+}
+.hot-events-box {
+    margin-bottom: 0.5rem;
+}
+.gutter {
+    --bs-gutter-y: 0.25rem;
+    --bs-gutter-x: 0.25rem;
+}
 @media only screen and (min-width: 652px) {
     .post-description {
         padding-right: 2.5rem !important;
@@ -107,7 +123,6 @@ input[type="file"] {
         width: 3rem;
         height: 3rem;
     }
-
 }
 @media only screen and (min-width: 992px) {
     .main-column {
@@ -117,9 +132,12 @@ input[type="file"] {
         padding-right: 3rem !important;
     }
     .main-container {
-        /* margin-top: 82px; */
+        margin-top: 75px;
         padding-left: 12rem;
         padding-right: 10rem;
+    }
+    .hot-events-box {
+        margin-bottom: 0.75rem;
     }
     .register-btn {
         padding: 0.9rem 1.5rem;
@@ -127,10 +145,22 @@ input[type="file"] {
     .login-btn {
         padding: 0.9rem 1.85rem;
     }
+    .welcome-box {
+        margin-bottom: 0.75rem;
+    }
+    .top-communities-box {
+        margin-bottom: 0.75rem;
+    }
     /* nav.main-nav {
         width: auto;
     } */
-
+    .post-card {
+        margin-bottom: 0.75rem;
+    }
+    .gutter {
+        --bs-gutter-y: 0.75rem;
+        --bs-gutter-x: 0.75rem;
+    }
 }
 @media only screen and (min-width: 1440px) {
     .main-container {
@@ -140,7 +170,6 @@ input[type="file"] {
     .post-description {
         padding-right: 3rem !important;
     }
-
 }
 input, textarea {
     font-size: 1rem !important;
@@ -150,5 +179,3 @@ input, textarea {
         font-size: inherit !important;
     }
 }
-
-

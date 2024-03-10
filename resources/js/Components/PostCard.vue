@@ -11,7 +11,7 @@ defineProps({
 <template>
   <div
     class="
-      mb-3
+      post-card
       flex
       bg-dark
       rounded-lg
