@@ -32,6 +32,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                 <div class="col-xl-7 vh-100 align-items-center d-flex bg-black overflow-hidden">
 
                     <div class="card bg-black shadow-none border-0 ms-auto me-auto login-card">
+
                         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
                             Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
                         </div>
@@ -43,13 +44,13 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                         <form @submit.prevent="submit">
                             <div class="mt-4 flex items-center justify-between">
                                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                    Resend Verification Email
+                                    Resend Email
                                 </PrimaryButton>
 
                                 <div>
                                     <Link
                                         :href="route('profile.show')"
-                                        class=""
+                                        class="mr-3"
                                     >
                                         Edit Profile</Link>
 
