@@ -49,7 +49,7 @@ const props = defineProps({
 								</div>
 
 								<div class="mb-2">
-									<p class="text-gray-300">{{ event.content }}</p>
+									<p class="text-gray-300 break-words whitespace-pre-wrap">{{ event.content }}</p>
 								</div>
 							</div>
 						</div>
