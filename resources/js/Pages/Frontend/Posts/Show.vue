@@ -46,7 +46,7 @@ const submit = () => {
 					<!--- Header -->
 					<div
 						class="
-						mb-3
+						header-post-box
 						flex
 						bg-dark
 						rounded-lg
@@ -73,8 +73,8 @@ const submit = () => {
 						<!-- Main Section -->
 						<div style="padding-right: 48px !important" class="w-full">
 							<div class="flex flex-col sm:flex-row py-3 px-3">
-								<div class="mr-2">
-									Posted by
+								<div class="mr-3">
+									<!-- Posted by -->
 									<a :href="'/ravers/'+post.data.user_slug">
 									<span class="font-semibold mx-1 text-darkorchid">
 										{{ post.data.username }}
