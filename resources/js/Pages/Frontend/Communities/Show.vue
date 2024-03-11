@@ -24,7 +24,7 @@ defineProps({
 				<div class="col-lg-8">
 					<div
 						class="
-						mb-3
+						header-post-box
 						flex
 						bg-dark
 						rounded-lg

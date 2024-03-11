@@ -97,11 +97,23 @@ input[type="file"] {
 .welcome-box {
     margin-bottom: 0.5rem;
 }
-.top-communnities-box {
+.header-post-box {
     margin-bottom: 0.5rem;
+}
+.top-communities-box {
+    margin-bottom: 0.5rem;
+}
+.top-communities-box h2 {
+    padding: 1.25rem;
 }
 .hot-events-box {
     margin-bottom: 0.5rem;
+}
+.hot-events-box h2 {
+    padding: 1.25rem;
+}
+.popular-posts-box h2 {
+    padding: 1.25rem;
 }
 .gutter {
     --bs-gutter-y: 0.25rem;
@@ -149,6 +161,9 @@ input[type="file"] {
         margin-bottom: 0.75rem;
     }
     .top-communities-box {
+        margin-bottom: 0.75rem;
+    }
+    .header-post-box {
         margin-bottom: 0.75rem;
     }
     /* nav.main-nav {

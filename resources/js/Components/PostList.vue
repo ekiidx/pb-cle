@@ -8,8 +8,8 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-dark shadow-md border rounded-lg">
-    <h2 class="font-semibold text-lg p-6 bg-darkorchid text-white rounded-lg">
+  <div class="bg-dark shadow-md border rounded-lg popular-posts-box">
+    <h2 class="font-semibold text-lg bg-darkorchid text-white rounded-lg">
       <slot name="title" />
     </h2>
     <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-4">
