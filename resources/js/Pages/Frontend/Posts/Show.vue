@@ -76,7 +76,7 @@ const submit = () => {
 								<div class="mr-3">
 									<!-- Posted by -->
 									<a :href="'/ravers/'+post.data.user_slug">
-									<span class="font-semibold mx-1 text-darkorchid">
+									<span class="font-semibold mr-1 text-darkorchid">
 										{{ post.data.username }}
 									</span></a>
 									
@@ -148,9 +148,9 @@ const submit = () => {
 										class="flex flex-col"
 									>
 										<div class="text-sm">
-											Commented by
+											<!-- Commented by -->
 											<a :href="'/ravers/'+comment.user_slug">
-											<span class="font-semibold ml-1 text-darkorchid">{{
+											<span class="font-semibold text-darkorchid">{{
 												comment.username
 											}}</span></a>
 										</div>

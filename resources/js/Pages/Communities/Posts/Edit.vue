@@ -82,7 +82,7 @@ const submit = () => {
 								</div>
 
 								<div class="mt-4">
-									<Label for="url" value="Link" />
+									<Label for="url" value="Post Link" />
 									<Input
 										id="url"
 										type="url"
@@ -94,14 +94,15 @@ const submit = () => {
 								</div>
 
 								<div class="mt-4">
-									<Label for="description" value="Description" />
-									<Input
+									<Label for="description" value="Content" />
+									<textarea
 										id="description"
 										type="text"
+										rows="5"
 										class="mt-1 block w-full"
 										v-model="form.description"
 										autocomplete="description"
-									/>
+									></textarea>
 									<InputError :message="errors.description" />
 								</div>
 
