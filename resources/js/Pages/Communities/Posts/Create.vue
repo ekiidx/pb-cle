@@ -80,7 +80,7 @@ const submit = () => {
                 </div>
 
                 <div class="mt-4">
-                  <Label for="url" value="Link" />
+                  <Label for="url" value="Post Link" />
                   <Input
                     id="url"
                     type="url"
@@ -92,7 +92,7 @@ const submit = () => {
                 </div>
 
                 <div class="mt-4">
-                  <Label for="description" value="Description" />
+                  <Label for="description" value="Content" />
                   <textarea
                     id="description"
                     type="text"
