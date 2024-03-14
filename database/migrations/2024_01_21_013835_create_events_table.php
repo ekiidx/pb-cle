@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('flyer_back')->nullable();
             $table->string('link');
             $table->dateTime('event_date')->nullable();
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
