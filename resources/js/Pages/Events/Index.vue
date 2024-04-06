@@ -2,7 +2,7 @@
 import Guest from "@/Layouts/Guest.vue";
 import EventCardIndex from "@/Components/EventCardIndex.vue";
 import EventSidebar from "@/Components/EventSidebar.vue";
-import { Head } from "@inertiajs/vue3";
+import { Link, Head } from "@inertiajs/vue3";
 
 const props = defineProps({
   events: Object,
@@ -31,8 +31,9 @@ const props = defineProps({
 						<h2 class="font-semibold text-xl text-white leading-tight">
 							/Events
 						</h2>
-						
-						<!-- <Link
+						<a href="/events/create">Create Event</a>	
+<!-- 						
+						<Link
 							v-if="$page.props.auth.user.username"
 							:href="route('communities.posts.create', community.slug)"
 							class="px-3 py-2 rounded bg-darkorchid hover:bg-electricgreen text-white"

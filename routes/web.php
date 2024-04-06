@@ -54,6 +54,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/posts/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
     Route::get('/posts/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
     Route::post('/posts/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
+
+    Route::get('/events/create', [EventController::class, 'create']);
+    Route::post('/events/create', [EventController::class, 'store'])->name('events.store');
+
 });
 
 // Ravers

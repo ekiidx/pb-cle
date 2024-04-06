@@ -1,6 +1,6 @@
 <script setup>
 import Guest from "@/Layouts/Guest.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 
 const props = defineProps({
   event: Object,
@@ -44,8 +44,8 @@ const props = defineProps({
 								<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
 							
 								<div class="mb-4">
-									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.flyer_front" class="" :src="'/storage/'+event.flyer_front">
-									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.flyer_back" class="" :src="'/storage/'+event.flyer_back">
+									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.flyer_front_upload" class="" :src="'/storage/flyers/'+event.flyer_front_upload">
+									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.flyer_back_upload" class="" :src="'/storage/flyers/'+event.flyer_back_upload">
 								</div>
 
 								<div class="mb-2">
@@ -66,14 +66,17 @@ const props = defineProps({
 						shadow-md
 						"
 					>
-						<div class="flex items-center">
-						<h2 class="p-3 text-white">Date</h2>
-						<p class="p-3 text-white font-bold">{{ event.weekday_format }} {{ event.party_date }}</p>
-						<!-- <h2 class="px-3 text-white">Time</h2> -->
-						</div>
-				
-						<h2 class="p-3 text-white">Tickets</h2>
-						
+						<table class="event-info-table">
+							<tr>
+								<td class="px-3 pt-3 pb-2"><p class="text-white font-bold">Date</p></td>
+								<td class="px-3 pt-3 pb-2"><p class="text-white">{{ event.weekday_format }} {{ event.party_date }}</p></td>
+							</tr>
+								
+							<tr>
+								<td class="px-3 pb-3"><p class="text-white font-bold">Tickets</p></td>
+								<td class="px-3 pb-3"><p class="text-white"><a :href="event.link">Click Here</a></p></td>
+							</tr>
+						</table>
 					</div>
             	</div>
             	<!-- {{ $page.props.event }} -->

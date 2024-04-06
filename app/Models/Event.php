@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Carbon\Carbon;
 
 class Event extends Model
@@ -16,6 +17,8 @@ class Event extends Model
      *
      * @var array
      */
+
+    protected $guarded = [];
 
     protected $casts = [
       'event_date' => 'datetime'
@@ -35,8 +38,10 @@ class Event extends Model
     {
       return [
         'slug' => [
-          'source' => 'title'
-        ]
+          'source' => 'name',
+          'separator' => '-',
+          'unique' => true,
+        ],
       ];
     }
   
@@ -56,6 +61,11 @@ class Event extends Model
     { 
       return $this->event_date->format('M d Y'); 
     }
+
+    // public function getPartyTimeAttribute(): string
+    // { 
+    //   return $this->event_time->format('h:mmA'); 
+    // }
 
     public function getWeekdayFormatAttribute(): string
     { 

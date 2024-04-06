@@ -122,6 +122,10 @@ input[type="file"] {
 .card.login-card {
     padding: 1.25rem;
 }
+.event-info-table td {
+    text-align: left;
+    vertical-align: top;
+}
 @media only screen and (min-width: 652px) {
     .post-description {
         padding-right: 2.5rem !important;

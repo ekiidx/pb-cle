@@ -16,10 +16,12 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('flyer_front')->nullable();
-            $table->string('flyer_back')->nullable();
+            $table->string('flyer_front_upload')->nullable();
+            $table->string('flyer_back_upload')->nullable();
             $table->string('link');
-            $table->dateTime('event_date')->nullable();
+            $table->date('event_date')->nullable();
+            $table->integer('time_start_hours')->nullable();
+            $table->integer('time_start_minutes')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
         });
