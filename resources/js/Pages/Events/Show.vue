@@ -60,6 +60,7 @@ const props = defineProps({
 					<div
 						class="
 						mb-3
+						pb-2
 						bg-dark
 						rounded-lg
 						border border-gray-200
@@ -72,9 +73,14 @@ const props = defineProps({
 								<td class="px-3 pt-3 pb-2"><p class="text-white">{{ event.weekday_format }} {{ event.party_date }}</p></td>
 							</tr>
 								
-							<tr>
-								<td class="px-3 pb-3"><p class="text-white font-bold">Tickets</p></td>
-								<td class="px-3 pb-3"><p class="text-white"><a :href="event.link">Click Here</a></p></td>
+							<tr v-if="event.link_event">
+								<td class="px-3 pb-2"><p class="text-white font-bold">Link</p></td>
+								<td class="px-3 pb-2"><p class="text-white"><a :href="event.link_event">Click Here</a></p></td>
+							</tr>
+
+							<tr v-if="event.link_tickets">
+								<td class="px-3 pb-2"><p class="text-white font-bold">Tickets</p></td>
+								<td class="px-3 pb-2"><p class="text-white"><a :href="event.link_tickets">Click Here</a></p></td>
 							</tr>
 						</table>
 					</div>

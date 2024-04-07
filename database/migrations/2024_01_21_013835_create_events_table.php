@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('flyer_front_upload')->nullable();
             $table->string('flyer_back_upload')->nullable();
-            $table->string('link');
+            $table->string('link_event')->nullable();
+            $table->string('link_tickets')->nullable();
             $table->date('event_date')->nullable();
             $table->integer('time_start_hours')->nullable();
             $table->integer('time_start_minutes')->nullable();

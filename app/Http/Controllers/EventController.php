@@ -43,23 +43,24 @@ class EventController extends Controller
             'flyer_back_upload' => 'max:2048',
         ]);
 
-        /**
-         * Use if there's an array for the date / time input (vue3 datepicker)
-         */
+        // Use if there's an array for the date / time input (vue3 datepicker)
         $start_time = $request->event_time;
 
         // Store the file in storage\app\public folder
         $flyer_front_file = $request->file('flyer_front_upload');
         $flyer_back_file = $request->file('flyer_back_upload');
+
         $flyer_front_file_name = $flyer_front_file->getClientOriginalName();
         $flyer_back_file_name = $flyer_back_file->getClientOriginalName();
+        
         $flyer_front_file_path = $flyer_front_file->storeAs('flyers', $flyer_front_file_name, 'public');
         $flyer_back_file_path = $flyer_back_file->storeAs('flyers', $flyer_back_file_name, 'public');
         
         $event = Event::create([
             'user_id' => auth()->id(),
             'name' => $request->name,
-            'link' => $request->link,
+            'link_event' => $request->link_event,
+            'link_tickets' => $request->link_tickets,
             'content' => $request->content,
             'event_date' => $request->event_date,
             'time_start_hours' => $start_time['hours'],

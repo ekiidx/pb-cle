@@ -16,7 +16,8 @@ const props = defineProps({
 const form = useForm({
     name: "",
     content: "",
-    link: "",
+    link_tickets: "",
+    link_event: "",
     event_date: "",
     event_time: "",
     flyer_front_upload: "",
@@ -110,15 +111,27 @@ const submit = () => {
                 </div>
 
                 <div class="mt-4">
-                  <Label for="link" value="Link" />
+                  <Label for="link_event" value="Event Link" />
                   <Input
                     id="link"
                     type="url"
                     class="mt-1 block w-full bg-dark text-white"
-                    v-model="form.link"
-                    autocomplete="link"
+                    v-model="form.link_event"
+                    autocomplete="link_event"
                   />
-                  <InputError :message="errors.link" />
+                  <InputError :message="errors.link_event" />
+                </div>
+
+                <div class="mt-4">
+                  <Label for="link_tickets" value="Tickets Link" />
+                  <Input
+                    id="link"
+                    type="url"
+                    class="mt-1 block w-full bg-dark text-white"
+                    v-model="form.link_tickets"
+                    autocomplete="link_tickets"
+                  />
+                  <InputError :message="errors.link_tickets" />
                 </div>
 
                 <div class="mt-4">
