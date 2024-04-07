@@ -17,6 +17,28 @@ const props = defineProps({
         <div class="main-container">
           	<div class="row g-3">
             	<div class="col-lg-8">
+					<div
+						class="
+						header-post-box
+						flex
+						bg-dark
+						rounded-lg
+						border border-gray-200
+						shadow-md
+						justify-between
+						p-3
+						"
+					>
+						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
+							/<Link :href="route('events.index')">Events</Link>
+						</h2>
+						<!-- <Link
+							v-if="$page.props.auth.user.username"
+							:href="route('events.create')"
+							class="px-3 py-2 rounded bg-darkorchid hover:bg-electricgreen text-white"
+							>Create Event</Link
+						> -->
+					</div>
 
 					<div
 						class="

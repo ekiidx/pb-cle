@@ -21,7 +21,7 @@ class WelcomeController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
-        $events = Event::all();
+        $events = Event::orderBy('created_at', 'desc')->take(6)->get();
 
         return Inertia::render('Welcome', compact('posts', 'communities', 'events'));
     }

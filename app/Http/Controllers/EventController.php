@@ -17,8 +17,9 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::with('user')->get();
+        $events_sidebar = Event::orderBy('created_at', 'desc')->take(6)->get();
 
-        return Inertia::render('Events/Index', compact('events'));
+        return Inertia::render('Events/Index', compact('events', 'events_sidebar'));
     }
 
     /**
@@ -52,7 +53,7 @@ class EventController extends Controller
 
         $flyer_front_file_name = $flyer_front_file->getClientOriginalName();
         $flyer_back_file_name = $flyer_back_file->getClientOriginalName();
-        
+
         $flyer_front_file_path = $flyer_front_file->storeAs('flyers', $flyer_front_file_name, 'public');
         $flyer_back_file_path = $flyer_back_file->storeAs('flyers', $flyer_back_file_name, 'public');
         

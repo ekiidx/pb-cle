@@ -6,6 +6,7 @@ import { Link, Head } from "@inertiajs/vue3";
 
 const props = defineProps({
   events: Object,
+  events_sidebar: Object,
 });
 </script>
 
@@ -18,7 +19,7 @@ const props = defineProps({
 				<div class="col-lg-8">
 					<div
 						class="
-						mb-3
+						header-post-box
 						flex
 						bg-dark
 						rounded-lg
@@ -30,16 +31,12 @@ const props = defineProps({
 			
 						<h2 class="font-semibold text-xl text-white leading-tight">
 							/Events
-						</h2>
-						<a href="/events/create">Create Event</a>	
-<!-- 						
+						</h2>					
 						<Link
-							v-if="$page.props.auth.user.username"
-							:href="route('communities.posts.create', community.slug)"
+							:href="route('events.create')"
 							class="px-3 py-2 rounded bg-darkorchid hover:bg-electricgreen text-white"
-							>Create Post</Link
-						> -->
-
+							>Create Event</Link
+						>
 					</div>
 
 					<EventCardIndex
@@ -67,7 +64,7 @@ const props = defineProps({
 						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">Rad <span class="text-electricgreen font-bold">local events</span> are posted here.</p>
 					</div>
 
-					<EventSidebar :events="events">
+					<EventSidebar :events="events_sidebar">
                     	<template #title>Hot Events</template>
                     </EventSidebar>
 				</div>
