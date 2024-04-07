@@ -55,8 +55,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/posts/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
     Route::post('/posts/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
 
-    Route::get('/events/create', [EventController::class, 'create']);
+    Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
     Route::post('/events/create', [EventController::class, 'store'])->name('events.store');
+    Route::post('/events/{event:slug}/edit', [EventController::class, 'edit'])->name('events.edit');
 
 });
 

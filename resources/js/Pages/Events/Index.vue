@@ -8,7 +8,6 @@ import { Link, Head } from "@inertiajs/vue3";
 const props = defineProps({
   events: Object,
   events_sidebar: Object,
-  events_test: Object
 });
 </script>
 
@@ -45,6 +44,7 @@ const props = defineProps({
 					<EventCardIndex
 						v-for="event in events.data"
 						:event="event"
+						:key="event.id"
 					/>
 
 					<!-- Pagination -->
