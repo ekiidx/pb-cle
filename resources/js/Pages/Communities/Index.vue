@@ -20,7 +20,7 @@ defineProps({
 					<!-- Header -->
 					<div
 						class="
-						mb-3
+						header-post-box
 						flex
 						bg-dark
 						rounded-lg
@@ -152,7 +152,7 @@ defineProps({
 						</table>
 					</div>
 
-					<div class="m-2 p-2">
+					<div class="mt-3 mb-3">
 						<Pagination :links="communities_index.links" />
 					</div>
 				</div>

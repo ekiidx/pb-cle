@@ -48,7 +48,7 @@ const props = defineProps({
 					/>
 
 					<!-- Pagination -->
-					<div class="mt-2 mb-3">
+					<div class="mt-3 mb-3">
 						<Pagination :links="events.links" />
 					</div>
 				</div>

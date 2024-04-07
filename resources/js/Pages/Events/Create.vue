@@ -49,7 +49,7 @@ const submit = () => {
             <!--- Header -->
             <div
                 class="
-                mb-3
+                header-post-box
                 flex
                 bg-dark
                 rounded-lg

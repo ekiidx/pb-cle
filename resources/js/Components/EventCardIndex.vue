@@ -32,7 +32,7 @@ defineProps({
 
             <div class="d-flex">
                 <a :href="'/events/'+ event.slug">
-                    <img v-if="event.flyer_front" class="rounded-sm pl-4 pb-3" style="max-width: 7rem; height: auto;" :src="'/storage/'+event.flyer_front">
+                    <img v-if="event.flyer_front_upload" class="rounded-sm pl-4 pb-3" style="max-width: 7rem; max-height: 5rem; height: auto;" :src="'/storage/flyers/'+event.flyer_front_upload">
                 </a>
                 
                 <div>

@@ -54,7 +54,7 @@ defineProps({
 					/>
 
 					<!-- Pagination -->
-					<div class="mt-2 mb-3">
+					<div class="mt-3 mb-3">
 						<Pagination :links="posts.meta.links" />
 					</div>
 				</div>
