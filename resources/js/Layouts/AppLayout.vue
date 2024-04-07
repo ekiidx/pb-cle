@@ -47,11 +47,10 @@ const logout = () => {
                     <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 bg-black">
                     </div>
                 </form> -->
-       
 
                 <a href="/" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-home font-sm bg-electricgreen btn-round-sm text-grey-200"></i></a>
                 <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
-                <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-ms bg-darkorchid btn-round-sm theme-dark-bg text-grey-500 "></i></a>
+                <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
                 <!-- <a href="/ravers/" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-500 "></i></a> -->
                 <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
 
