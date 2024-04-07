@@ -2,11 +2,13 @@
 import Guest from "@/Layouts/Guest.vue";
 import EventCardIndex from "@/Components/EventCardIndex.vue";
 import EventSidebar from "@/Components/EventSidebar.vue";
+import Pagination from "@/Components/Pagination.vue";
 import { Link, Head } from "@inertiajs/vue3";
 
 const props = defineProps({
   events: Object,
   events_sidebar: Object,
+  events_test: Object
 });
 </script>
 
@@ -21,6 +23,7 @@ const props = defineProps({
 						class="
 						header-post-box
 						flex
+						justify-between
 						bg-dark
 						rounded-lg
 						border border-gray-200
@@ -40,10 +43,14 @@ const props = defineProps({
 					</div>
 
 					<EventCardIndex
-						v-for="event in events"
+						v-for="event in events.data"
 						:event="event"
-						:key="event.id"
 					/>
+
+					<!-- Pagination -->
+					<div class="mt-2 mb-3">
+						<Pagination :links="events.links" />
+					</div>
 				</div>
 
 				<div class="col-lg-4">

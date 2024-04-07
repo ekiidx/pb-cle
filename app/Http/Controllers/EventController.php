@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 // use App\Http\Resources\EventResource;
 use Illuminate\Http\Request;
 use App\Models\Event;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -16,7 +15,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::with('user')->get();
+        $events = Event::with('user')->orderBy('created_at', 'desc')->paginate(20);
+        // $events_test = Event::query()->with('user')->paginate(10);
+        // $events = Event::with('user')->orderby('id', 'asc')->paginate(3);
         $events_sidebar = Event::orderBy('created_at', 'desc')->take(6)->get();
 
         return Inertia::render('Events/Index', compact('events', 'events_sidebar'));
