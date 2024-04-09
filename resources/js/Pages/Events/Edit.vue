@@ -5,32 +5,35 @@ import Input from "@/Components/Input.vue";
 import InputError from "@/Components/InputError.vue";
 import Label from "@/Components/Label.vue";
 // import InputLabel from '@/Components/InputLabel.vue';
-import { Head, useForm, } from "@inertiajs/vue3";
+import { Head, useForm } from "@inertiajs/vue3";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
 const props = defineProps({
+  event: Object,
   errors: Object,
 });
 
 const form = useForm({
-    name: "",
-    content: "",
-    link_tickets: "",
-    link_event: "",
-    event_date: "",
-    event_time: "",
-    flyer_front_upload: "",
-    flyer_back_upload: ""
+    name: props.event?.name,
+    content: props.event?.content,
+    link_tickets: props.event?.link_tickets,
+    link_event: props.event?.link_event,
+    event_date: props.event?.event_date,
+    event_time: props.event?.event_time,
+    flyer_front_upload: props.event?.flyer_front_upload,
+    flyer_back_upload: props.event?.flyer_back_upload,
 });
 
 const submit = () => {
-  form.post(route("events.store"));
+  form.post(
+    route("events.update", [props.event.slug])
+    );
 };
 </script>
 
 <template>
-  <Head title="Create Event" />
+  <Head title="Edit Event" />
 
   <AppLayout title="Dashboard">
 
@@ -58,7 +61,7 @@ const submit = () => {
                 p-3
                 "
             >
-            <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">Create Event</span>
+            <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">Edit Event</span>
 							<!-- <Link :href="route('frontend.communities.show', community.slug)">
 								{{ community.name }}
 							</Link> -->
@@ -89,7 +92,7 @@ const submit = () => {
                     <Label for="event_date" value="Date" />
                     <VueDatePicker 
                         uid="event_date"
-                        v-model="form.event_date" 
+                        v-model="form.event_date"
                         placeholder="Select Date" 
                         no-today
                         auto-apply
@@ -103,10 +106,10 @@ const submit = () => {
                     <Label for="event_time" value="Time" />
                     <VueDatePicker
                         uid="event_time"
-                        v-model="form.event_time" 
-                        placeholder="Select Time"
-                        model-type="hh:mm a"
+                        v-model="form.event_time"
+                        placeholder="Select Time" 
                         time-picker
+                        model-type="hh:mm a"
                         dark
                         required
                         :is-24="false" />
@@ -151,12 +154,18 @@ const submit = () => {
 
                 <div class="mt-4">
                   <Label for="flyer_front_upload" value="Flyer Front" />
+                    <img 
+                      v-if="event.flyer_front_upload" 
+                      class="rounded-sm pl-4 pb-3" 
+                      style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                      :src="'/storage/flyers/'+event.flyer_front_upload">
                     <input style="display:block" name="flyer_front_upload" type="file" @input="form.flyer_front_upload = $event.target.files[0]" />
                     <InputError :message="errors.flyer_front_upload" />
                 </div>
 
                 <div class="mt-4">
                   <Label for="flyer_back_upload" value="Flyer Back" />
+                    <img v-if="event.flyer_back_upload" class="rounded-sm pl-4 pb-3" style="max-width: 7rem; max-height: 5rem; height: auto;" :src="'/storage/flyers/'+event.flyer_back_upload">
                     <input style="display:block" name="flyer_back_upload" type="file" @input="form.flyer_back_upload = $event.target.files[0]" />
                     <InputError :message="errors.flyer_back_upload" />
                 </div>
@@ -190,7 +199,7 @@ const submit = () => {
             >
               About
             </h2>
-              <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">Create an event.</p>
+              <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">Edit event.</p>
           </div>
 				</div>
       </div>

@@ -3,7 +3,9 @@ import Guest from "@/Layouts/Guest.vue";
 import { Head, Link } from "@inertiajs/vue3";
 
 const props = defineProps({
-  event: Object,
+ 	event: Object,
+  	can_delete: Boolean,
+	can_update: Boolean,
 });
 </script>
 
@@ -58,7 +60,41 @@ const props = defineProps({
 										Posted by
 										<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
 										{{ event.created_at_diff }}
+
+										<div style="margin-left: 0.75rem">
+											<Link v-if="can_update"
+												:href="
+												route('events.edit', [
+													event.slug,
+												])
+												"
+												class="
+												font-semibold
+												text-electricgreen
+												mr-2
+												"
+												>Edit</Link
+											>
+											<Link v-if="can_delete"
+												:href="
+												route('events.destroy', [
+													event.slug,
+												])
+												"
+												class="
+												font-semibold
+												text-darkorchid
+												"
+												method="delete"
+												as="button"
+												type="button"
+												onclick="return confirm('Are you sure you wish to delete this event?')"
+												>Delete</Link
+											>
+										</div>
 									</div>
+
+	
 								</div>
 
 							
