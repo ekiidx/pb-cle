@@ -69,7 +69,7 @@ class Event extends Model
 
     public function getWeekdayFormatAttribute(): string
     { 
-      $weekday_num = $this->created_at->format('w');
+      $weekday_num = $this->event_date->format('w');
       $days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
       $weekday_format = $days[$weekday_num];
 
