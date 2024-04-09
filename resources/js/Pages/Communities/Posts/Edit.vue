@@ -73,7 +73,7 @@ const submit = () => {
 									<Input
 										id="title"
 										type="text"
-										class="mt-1 block w-full"
+										class="mt-1 block w-full bg-dark text-white"
 										v-model="form.title"
 										autofocus
 										autocomplete="title"
@@ -86,7 +86,7 @@ const submit = () => {
 									<Input
 										id="url"
 										type="url"
-										class="mt-1 block w-full"
+										class="mt-1 block w-full bg-dark text-white"
 										v-model="form.url"
 										autocomplete="url"
 									/>
@@ -99,7 +99,7 @@ const submit = () => {
 										id="description"
 										type="text"
 										rows="5"
-										class="mt-1 block w-full"
+										class="mt-1 block w-full bg-dark text-white"
 										v-model="form.description"
 										autocomplete="description"
 									></textarea>
