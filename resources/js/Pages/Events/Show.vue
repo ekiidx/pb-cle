@@ -56,47 +56,42 @@ const props = defineProps({
 							<!-- Flex -->
 							<div class="px-3 py-3">
 								<div class="post-flex mb-4 text-sm">
-									<div class="flex">
-										Posted by
-										<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
-										{{ event.created_at_diff }}
+									Posted by
+									<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
+									<span class="mr-3">{{ event.created_at_diff }}</span>
 
-										<div style="margin-left: 0.75rem">
-											<Link v-if="can_update"
-												:href="
-												route('events.edit', [
-													event.slug,
-												])
-												"
-												class="
-												font-semibold
-												text-electricgreen
-												mr-2
-												"
-												>Edit</Link
-											>
-											<Link v-if="can_delete"
-												:href="
-												route('events.destroy', [
-													event.slug,
-												])
-												"
-												class="
-												font-semibold
-												text-darkorchid
-												"
-												method="delete"
-												as="button"
-												type="button"
-												onclick="return confirm('Are you sure you wish to delete this event?')"
-												>Delete</Link
-											>
-										</div>
-									</div>
-
-	
+									
+										<Link v-if="can_update"
+											:href="
+											route('events.edit', [
+												event.slug,
+											])
+											"
+											class="
+											font-semibold
+											text-electricgreen
+											mr-2
+											"
+											>Edit</Link
+										>
+										<Link v-if="can_delete"
+											:href="
+											route('events.destroy', [
+												event.slug,
+											])
+											"
+											class="
+											font-semibold
+											text-darkorchid
+											"
+											method="delete"
+											as="button"
+											type="button"
+											onclick="return confirm('Are you sure you wish to delete this event?')"
+											>Delete</Link
+										>
+									
 								</div>
-
 							
 								<h1 class="font-semibold text-2xl text-white mb-4">{{ event.name }}</h1>
 								<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
