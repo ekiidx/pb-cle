@@ -6,6 +6,7 @@ const props = defineProps({
  	event: Object,
   	can_delete: Boolean,
 	can_update: Boolean,
+	new: Boolean,
 });
 </script>
 
@@ -59,6 +60,9 @@ const props = defineProps({
 									Posted by
 									<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
 									<span class="mr-3">{{ event.created_at_diff }}</span>
+
+									<p class="mr-3" v-if="props.new" style="color:yellow">NEW</p>
+									{{ props.carbon_now }}
 
 									
 										<Link v-if="can_update"

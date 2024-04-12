@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Inertia\Inertia;
 
 class EventController extends Controller
@@ -94,6 +95,13 @@ class EventController extends Controller
     {
         $event = Event::with('User')->where('slug', $slug)->firstOrFail();
 
+        // check if event post was published in the last 24 hours and if so then display "new" marker
+        if($event->created_at < Carbon::now()->subDays(1)->toDateTimeString()) {
+            $new = false;
+        }else {
+            $new = true;
+        }
+
         //Only owner of post, owner of event, or admin can edit & delete
         $id = Auth::id();
 
@@ -105,7 +113,7 @@ class EventController extends Controller
             $can_delete = true;
         }
 
-        return Inertia::render('Events/Show', compact('event', 'can_update', 'can_delete'));
+        return Inertia::render('Events/Show', compact('event', 'can_update', 'can_delete', 'new'));
     }
 
     /**
