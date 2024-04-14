@@ -37,7 +37,8 @@ class CommunityController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Communities/Create');
+        // return Inertia::render('Communities/Create');
+        return to_route('communities.index');
     }
 
     /**
