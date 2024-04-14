@@ -29,7 +29,7 @@ use Inertia\Inertia;
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 
 // About
-Route::inertia('/about', 'About');
+// Route::inertia('/about', 'About');
 
 Route::middleware([
     'auth:sanctum',
