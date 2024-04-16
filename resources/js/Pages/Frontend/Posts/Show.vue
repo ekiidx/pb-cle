@@ -5,7 +5,6 @@ import PostVote from "@/Components/PostVote.vue";
 import PostList from "@/Components/PostList.vue";
 
 const props = defineProps({
-	user: String,
 	community: Object,
 	post: Object,
 	posts: Object,
