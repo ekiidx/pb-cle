@@ -120,12 +120,14 @@ const submit = () => {
 									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.data.flyer_back_upload" class="" :src="'/storage/flyers/'+event.data.flyer_back_upload">
 								</div>
 
-								<div class="mb-2">
+								<div class="mb-4">
 									<p class="text-gray-300 break-words whitespace-pre-wrap">{{ event.data.content }}</p>
 								</div>
 
+								<hr />
+
 								<!-- Comments -->
-								<div class="px-3 pt-4 mb-5">
+								<div class="pt-4 mb-5">
 									<ul role="list" class="">
 										<li
 											v-for="event_comment in event.data.event_comments"
@@ -147,33 +149,18 @@ const submit = () => {
 								</div>
 							
 								<!-- Textarea -->
-								<!-- <div v-if="$page.props.auth.user.username"> -->
+								<div v-if="$page.props.auth.user.username">
 									<form class="max-w-md" @submit.prevent="submit">
-										<div class="px-3 mb-3">
+										<div class="mb-3">
 											<textarea
 											v-model="form.content"
 											id="comment"
 											rows="5"
-											class="
-												block
-												p-2.5
-												w-full
-												text-gray-900
-												bg-gray-50
-												rounded-lg
-												border border-gray-300
-												focus:ring-blue-500 focus:border-blue-500
-												dark:bg-gray-700
-												dark:border-gray-600
-												dark:placeholder-gray-400
-												dark:text-white
-												dark:focus:ring-blue-500
-												dark:focus:border-blue-500
-											"
+											class="mt-1 block w-full bg-dark text-white"
 											placeholder="Your comment..."
 											></textarea>
 										</div>
-										<div class="px-3 mb-3">
+										<div class="mb-2">
 											<button
 											class="
 												px-4
@@ -187,7 +174,7 @@ const submit = () => {
 											</button>
 										</div>
 									</form>
-								<!-- </div> -->
+								</div>
 
 							</div>
 						</div>
@@ -206,19 +193,19 @@ const submit = () => {
 						"
 					>
 						<table class="event-info-table">
-							<tr>
+							<tr v-if="event.data.party_date">
 								<td class="px-3 pt-3 pb-2"><p class="text-white font-bold">Date</p></td>
-								<td class="px-3 pt-3 pb-2"><p class="text-white">{{ event.weekday_format }} {{ event.party_date }}</p></td>
+								<td class="px-3 pt-3 pb-2"><p class="text-white">{{ event.data.weekday_format }} {{ event.data.party_date }}</p></td>
 							</tr>
 								
-							<tr v-if="event.link_event">
+							<tr v-if="event.data.link_event">
 								<td class="px-3 pb-2"><p class="text-white font-bold">Link</p></td>
-								<td class="px-3 pb-2"><p class="text-white"><a :href="event.link_event">Click Here</a></p></td>
+								<td class="px-3 pb-2"><p class="text-white"><a :href="event.data.link_event">Click Here</a></p></td>
 							</tr>
 
-							<tr v-if="event.link_tickets">
+							<tr v-if="event.data.link_tickets">
 								<td class="px-3 pb-2"><p class="text-white font-bold">Tickets</p></td>
-								<td class="px-3 pb-2"><p class="text-white"><a :href="event.link_tickets">Click Here</a></p></td>
+								<td class="px-3 pb-2"><p class="text-white"><a :href="event.data.link_tickets">Click Here</a></p></td>
 							</tr>
 						</table>
 					</div>

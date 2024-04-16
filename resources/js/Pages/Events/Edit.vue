@@ -139,7 +139,7 @@ const submit = () => {
                   <InputError :message="errors.link_tickets" />
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-4 mb-4">
                   <Label for="content" value="Info" />
                   <textarea
                     id="content"
@@ -152,27 +152,27 @@ const submit = () => {
                   <InputError :message="errors.content" />
                 </div>
 
-                <div class="mt-4">
-                  <Label for="flyer_front_upload" value="Flyer Front" />
+                <div class="mb-2">
+                  <Label class="mb-1" for="flyer_front_upload" value="Flyer Front" />
                     <img 
                       v-if="event.flyer_front_upload" 
-                      class="rounded-sm pl-4 pb-3" 
+                      class="rounded-sm pb-3" 
                       style="max-width: 7rem; max-height: 5rem; height: auto;" 
                       :src="'/storage/flyers/'+event.flyer_front_upload">
                     <input style="display:block" name="flyer_front_upload" type="file" @input="form.flyer_front_upload = $event.target.files[0]" />
                     <InputError :message="errors.flyer_front_upload" />
                 </div>
 
-                <div class="mt-4">
-                  <Label for="flyer_back_upload" value="Flyer Back" />
-                    <img v-if="event.flyer_back_upload" class="rounded-sm pl-4 pb-3" style="max-width: 7rem; max-height: 5rem; height: auto;" :src="'/storage/flyers/'+event.flyer_back_upload">
+                <div style="margin-bottom: 2rem;">
+                  <Label class="mb-1" for="flyer_back_upload" value="Flyer Back" />
+                    <img v-if="event.flyer_back_upload" class="rounded-sm pb-3" style="max-width: 7rem; max-height: 5rem; height: auto;" :src="'/storage/flyers/'+event.flyer_back_upload">
                     <input style="display:block" name="flyer_back_upload" type="file" @input="form.flyer_back_upload = $event.target.files[0]" />
                     <InputError :message="errors.flyer_back_upload" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center mt-4 mb-2">
                   <Button
-                    class="ml-4"
+                    class=""
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                   >

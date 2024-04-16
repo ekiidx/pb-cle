@@ -32,6 +32,8 @@ class EventShowResource extends JsonResource
             'time_end_hours' => $this->time_end_hours,
             'time_end_minutes' => $this->time_end_minutes,
             'content' => $this->content,
+            'party_date' => $this->party_date,
+            'weekday_format' => $this->weekday_format,
             'event_comments' => EventCommentResource::collection($this->whenLoaded('eventComments')),
             'created_at' => $this->created_at->diffForHumans(),
         ];
