@@ -149,7 +149,7 @@ const submit = () => {
 								</div>
 							
 								<!-- Textarea -->
-								<div v-if="$page.props.auth.user.username">
+								<div v-if="$page.props.auth.user">
 									<form class="max-w-md" @submit.prevent="submit">
 										<div class="mb-3">
 											<textarea
