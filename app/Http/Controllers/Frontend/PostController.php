@@ -23,6 +23,7 @@ class PostController extends Controller
 
         $post = new PostShowResource($community_post);
 
+        // Sidebar posts
         $posts = PostResource::collection($community->posts()->orderBy('votes', 'desc')->take(6)->get());
 
         //Only owner of post, owner of community, or admin can edit & delete

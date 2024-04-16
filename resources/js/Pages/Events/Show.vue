@@ -1,20 +1,35 @@
 <script setup>
 import Guest from "@/Layouts/Guest.vue";
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, useForm, Link } from "@inertiajs/vue3";
 
 const props = defineProps({
  	event: Object,
   	can_delete: Boolean,
 	can_update: Boolean,
-	new: Boolean,
+	new: Boolean
 });
+
+const form = useForm({
+  content: "",
+});
+
+const submit = () => {
+  form.post(
+    route("events.comments", [
+      props.event.data.slug,
+    ]),
+    {
+      onSuccess: () => form.reset("content"),
+    }
+  );
+};
 </script>
 
 
 <template>
     <Guest>
         <Head>
-            <title>{{ $page.props.event.name }}</title>
+            <title>{{ event.data.name }}</title>
         </Head>
 
         <div class="main-container">
@@ -58,8 +73,8 @@ const props = defineProps({
 							<div class="px-3 py-3">
 								<div class="post-flex mb-4 text-sm">
 									Posted by
-									<a :href="'/ravers/'+event.user.slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
-									<span class="mr-3">{{ event.created_at_diff }}</span>
+									<a :href="'/ravers/'+event.data.user_slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.data.username }}</span></a>
+									<span class="mr-3">{{ event.data.created_at }}</span>
 
 									<p class="mr-3" v-if="props.new" style="color:yellow">NEW</p>
 									{{ props.carbon_now }}
@@ -68,7 +83,7 @@ const props = defineProps({
 										<Link v-if="can_update"
 											:href="
 											route('events.edit', [
-												event.slug,
+												event.data.slug,
 											])
 											"
 											class="
@@ -81,7 +96,7 @@ const props = defineProps({
 										<Link v-if="can_delete"
 											:href="
 											route('events.destroy', [
-												event.slug,
+												event.data.slug,
 											])
 											"
 											class="
@@ -97,17 +112,83 @@ const props = defineProps({
 									
 								</div>
 							
-								<h1 class="font-semibold text-2xl text-white mb-4">{{ event.name }}</h1>
+								<h1 class="font-semibold text-2xl text-white mb-4">{{ event.data.name }}</h1>
 								<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
 							
 								<div class="mb-4">
-									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.flyer_front_upload" class="" :src="'/storage/flyers/'+event.flyer_front_upload">
-									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.flyer_back_upload" class="" :src="'/storage/flyers/'+event.flyer_back_upload">
+									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.data.flyer_front_upload" class="" :src="'/storage/flyers/'+event.data.flyer_front_upload">
+									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.data.flyer_back_upload" class="" :src="'/storage/flyers/'+event.data.flyer_back_upload">
 								</div>
 
 								<div class="mb-2">
-									<p class="text-gray-300 break-words whitespace-pre-wrap">{{ event.content }}</p>
+									<p class="text-gray-300 break-words whitespace-pre-wrap">{{ event.data.content }}</p>
 								</div>
+
+								<!-- Comments -->
+								<div class="px-3 pt-4 mb-5">
+									<ul role="list" class="">
+										<li
+											v-for="event_comment in event.data.event_comments"
+									
+											class="flex flex-col"
+										>
+											<div class="text-sm">
+												<!-- Commented by -->
+												<a :href="'/ravers/'+event_comment.username">
+												<span class="font-semibold text-darkorchid">{{
+													event_comment.user_slug
+												}}</span></a>
+											</div>
+											<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
+												{{ event_comment.content }}
+											</div>
+										</li>
+									</ul>
+								</div>
+							
+								<!-- Textarea -->
+								<!-- <div v-if="$page.props.auth.user.username"> -->
+									<form class="max-w-md" @submit.prevent="submit">
+										<div class="px-3 mb-3">
+											<textarea
+											v-model="form.content"
+											id="comment"
+											rows="5"
+											class="
+												block
+												p-2.5
+												w-full
+												text-gray-900
+												bg-gray-50
+												rounded-lg
+												border border-gray-300
+												focus:ring-blue-500 focus:border-blue-500
+												dark:bg-gray-700
+												dark:border-gray-600
+												dark:placeholder-gray-400
+												dark:text-white
+												dark:focus:ring-blue-500
+												dark:focus:border-blue-500
+											"
+											placeholder="Your comment..."
+											></textarea>
+										</div>
+										<div class="px-3 mb-3">
+											<button
+											class="
+												px-4
+												py-2
+												bg-darkorchid
+												text-white
+												rounded-md
+											"
+											>
+											Comment
+											</button>
+										</div>
+									</form>
+								<!-- </div> -->
+
 							</div>
 						</div>
 					</div>

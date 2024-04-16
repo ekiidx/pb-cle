@@ -29,9 +29,9 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function comments()
+    public function eventComments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(EventComment::class);
     }
 
     public function sluggable(): array

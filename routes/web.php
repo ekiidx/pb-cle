@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\RaverController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventCommentController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -60,6 +61,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/events/{event:slug}/edit', [EventController::class, 'edit'])->name('events.edit');
     Route::post('/events/{event:slug}/update', [EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{event:slug}/destroy', [EventController::class, 'destroy'])->name('events.destroy');
+    Route::post('/events/{event:slug}/comments', [EventCommentController::class, 'store'])->name('events.comments');
 
 });
 

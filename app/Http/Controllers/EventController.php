@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Http\Resources\EventResource;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Http\Resources\EventShowResource;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -20,7 +21,7 @@ class EventController extends Controller
         $events = Event::with('user')->orderBy('created_at', 'desc')->paginate(20);
         // $events_test = Event::query()->with('user')->paginate(10);
         // $events = Event::with('user')->orderby('id', 'asc')->paginate(3);
-        $events_sidebar = Event::orderBy('created_at', 'desc')->take(6)->get();
+        $events_sidebar = Event::with('user')->orderBy('created_at', 'desc')->take(6)->get();
 
         return Inertia::render('Events/Index', compact('events', 'events_sidebar'));
     }
@@ -91,9 +92,10 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $slug)
+    public function show(String $slug)
     {
-        $event = Event::with('User')->where('slug', $slug)->firstOrFail();
+        $event_query = Event::with('user', 'eventComments')->where('slug', $slug)->firstOrFail();
+        $event = new EventShowResource($event_query);
 
         // check if event post was published in the last 24 hours and if so then display "new" marker
         if($event->created_at < Carbon::now()->subDays(1)->toDateTimeString()) {
@@ -113,7 +115,7 @@ class EventController extends Controller
             $can_delete = true;
         }
 
-        return Inertia::render('Events/Show', compact('event', 'can_update', 'can_delete', 'new'));
+        return Inertia::render('Events/Show', compact('event', 'new', 'can_update', 'can_delete'));
     }
 
     /**
