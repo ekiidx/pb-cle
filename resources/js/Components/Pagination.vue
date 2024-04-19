@@ -36,7 +36,6 @@ defineProps({
           leading-4
           border
           rounded
-          hover:bg-white
           focus:text-indigo-500 focus:border-indigo-500
         "
         :class="{ 'bg-darkorchid': link.active }"
