@@ -32,15 +32,15 @@ Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 // About
 // Route::inertia('/about', 'About');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return Inertia::render('Dashboard');
+//     })->name('dashboard');
+// });
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     
