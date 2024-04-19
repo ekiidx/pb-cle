@@ -127,7 +127,7 @@ const submit = () => {
 								<hr />
 
 								<!-- Comments -->
-								<div class="pt-4 mb-5">
+								<div class="pt-4">
 									<ul role="list" class="">
 										<li
 											v-for="event_comment in event.data.event_comments"
@@ -163,13 +163,7 @@ const submit = () => {
 										</div>
 										<div class="mb-2">
 											<button
-											class="
-												px-4
-												py-2
-												bg-darkorchid
-												text-white
-												rounded-md
-											"
+											class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
 											>
 											Comment
 											</button>

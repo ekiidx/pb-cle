@@ -36,7 +36,7 @@ const props = defineProps({
 						</h2>					
 						<Link
 							:href="route('events.create')"
-							class="px-3 py-2 rounded bg-darkorchid hover:bg-electricgreen text-white"
+							class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
 							>Create Event</Link
 						>
 					</div>

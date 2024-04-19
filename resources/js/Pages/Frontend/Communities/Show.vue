@@ -8,7 +8,7 @@ import CommunityList from "@/Components/CommunityList.vue";
 defineProps({
   	community: Object,
   	posts: Object,
-  	communities: Object,
+  	communities: Object
 });
 </script>
 
@@ -42,7 +42,7 @@ defineProps({
 						<Link
 							v-if="$page.props.auth.user.username"
 							:href="route('communities.posts.create', community.slug)"
-							class="px-3 py-2 rounded bg-darkorchid hover:bg-electricgreen text-white"
+							class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
 							>Create Post</Link
 						>
 					</div>

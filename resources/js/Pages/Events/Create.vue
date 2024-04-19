@@ -163,7 +163,7 @@ const submit = () => {
 
                 <div class="flex items-center justify-end mt-4">
                   <Button
-                    class="ml-4"
+                    class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                   >

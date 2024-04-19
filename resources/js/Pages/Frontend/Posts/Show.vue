@@ -9,7 +9,7 @@ const props = defineProps({
 	post: Object,
 	posts: Object,
 	can_delete: Boolean,
-	can_update: Boolean,
+	can_update: Boolean
 });
 
 const form = useForm({
@@ -175,11 +175,16 @@ const submit = () => {
 									<div class="px-3 mb-3">
 										<button
 										class="
-											px-4
-											py-2
+											comment-btn
+											items-center
+											border-transparent
 											bg-darkorchid
+											fw-600
 											text-white
-											rounded-md
+											font-xsss
+											text-center
+											lh-20
+											rounded-xl
 										"
 										>
 										Comment
