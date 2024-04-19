@@ -140,6 +140,7 @@ const submit = () => {
 												<span class="font-semibold text-darkorchid">{{
 													event_comment.user_slug
 												}}</span></a>
+												{{ event_comment.created_at }}
 											</div>
 											<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
 												{{ event_comment.content }}
