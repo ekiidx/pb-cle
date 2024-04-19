@@ -65,25 +65,12 @@ defineProps({
           :href="
             route('frontend.communities.posts.show', [community, post.slug])
           "
-          class="
-            inline-flex
-            items-center
-            py-2
-            px-3
-            text-sm
-            font-medium
-            text-center text-white
-            bg-darkorchid
-            rounded-lg
-            hover:bg-electricgreen
-            focus:ring-4 focus:outline-none focus:ring-blue-300
-            dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
-          "
+          class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
         >
           Read more
           <svg
             aria-hidden="true"
-            class="ml-2 -mr-1 w-4 h-4"
+            class="d-inline ml-1 -mr-1 w-4 h-4"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
