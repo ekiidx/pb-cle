@@ -84,7 +84,7 @@ const logout = () => {
         <!-- <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
   
         <nav class="main-nav">
-          <div style="display: flex; justify-content: end;">
+          <div style="display: flex; justify-content: flex-end;">
 
           <!-- Logo -->
           <!-- <Link href="/">
