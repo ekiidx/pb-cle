@@ -22,10 +22,10 @@ defineProps({
 							
 				<div class="col-lg-8">
 					<PostCard
-							v-for="post in posts.data"
-							:post="post"
-							:community="post.community_slug"
-							:key="post.id"
+						v-for="post in posts.data"
+						:post="post"
+						:community="post.community_slug"
+						:key="post.id"
 					/>
 				</div>
 
@@ -33,18 +33,20 @@ defineProps({
 					<div
 						class="
 						welcome-box
-						flex
 						bg-dark
 						rounded-lg
 						border border-gray-200
 						shadow-md
+						p-3
 						"
 					>
-						<h2 class="p-3 text-white">Welcome to <span class="text-darkorchid font-bold hi-cursor">Pb-cle.org</span></h2>
+						<i style="margin-right: 0.6rem" class="feather-zap font-sm text-electricgreen d-inline"></i>
+						<h2 class="text-white mb-3 d-inline-block">Welcome to <span class="text-darkorchid font-bold hi-cursor">Pb-cle.org</span></h2>
+						<p class="font-normal text-sm text-grey-300"><a class="fw-500" href="http://jadedraver.com/index.php?cur=0&rl=1">Pb-cle</a> has historically been known as a local Pittsburgh - Cleveland electronic dance music scene. Feel free to post, crate events, and upload flyers in and around the pb-cle area.</p>
 					</div>
 
 					<CommunityList :communities="communities.data">
-							<template #title>Top Communities</template>
+						<template #title>Top Communities</template>
 					</CommunityList>
 
 					<EventSidebar :events="events">
