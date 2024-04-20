@@ -58,7 +58,7 @@ const submit = () => {
                 p-3
                 "
             >
-            <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">Create Event</span>
+            <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">/Events</span>
 							<!-- <Link :href="route('frontend.communities.show', community.slug)">
 								{{ community.name }}
 							</Link> -->
@@ -176,21 +176,21 @@ const submit = () => {
         </div>
 
         <div class="col-lg-4">
-          <div class="border rounded-lg mb-3">
-            <h2
-            class="
-              font-semibold
-              text-lg
-              p-6
-              bg-darkorchid
-              rounded-lg
-              text-white
-              p-3
-            "
-            >
-              About
-            </h2>
-              <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">Create an event.</p>
+          <div class="border rounded-lg mb-3 bg-dark">
+            <div class="bg-darkorchid rounded-lg p-3">
+							<img class="d-inline" style="max-height: 1.3rem; max-width: 1.45rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
+							<h2
+							class="
+								font-semibold
+								text-lg
+								text-white
+								d-inline
+							"
+							>
+                Create Event
+              </h2>
+            </div>
+            <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">Use this screen to create an event.</p>
           </div>
 				</div>
       </div>
