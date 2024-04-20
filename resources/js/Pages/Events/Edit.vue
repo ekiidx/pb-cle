@@ -187,7 +187,7 @@ const submit = () => {
         <div class="col-lg-4">
           <div class="border rounded-lg mb-3">
             <div class="bg-darkorchid rounded-lg p-3">
-              <img class="d-inline" style="max-height: 1.2rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/edit.svg">
+              <img class="d-inline" style="max-height: 1.2rem; max-width: 1.45rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/edit.svg">
               <h2
               class="
                 font-semibold

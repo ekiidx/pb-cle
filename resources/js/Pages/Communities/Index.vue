@@ -160,7 +160,7 @@ defineProps({
                 <div class="col-lg-4">
 					<div class="border rounded-lg mb-3 bg-dark">
 						<div class="bg-darkorchid rounded-lg p-3">
-							<img class="d-inline" style="max-height: 1.3rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
+							<img class="d-inline" style="max-height: 1.3rem; max-width: 1.45rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
 							<h2
 							class="
 								font-semibold
