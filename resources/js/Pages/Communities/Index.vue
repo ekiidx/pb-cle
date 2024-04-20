@@ -152,7 +152,7 @@ defineProps({
 						</table>
 					</div>
 
-					<div class="mt-3 mb-3">
+					<div class="mt-3 pagination-container">
 						<Pagination :links="communities_index.links" />
 					</div>
 				</div>

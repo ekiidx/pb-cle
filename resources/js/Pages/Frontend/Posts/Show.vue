@@ -62,7 +62,7 @@ const submit = () => {
 					</div>
 					
 					<!-- Post Card -->
-					<div class="flex mb-3 bg-dark border rounded-lg text-sm">
+					<div class="post-main-container flex bg-dark border rounded-lg text-sm">
 
 						<!-- Vote -->
 						<div>
