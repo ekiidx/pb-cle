@@ -60,7 +60,7 @@ const submit = () => {
 
 					<div
 						class="
-						mb-3
+						event-main-container
 						flex
 						bg-dark
 						rounded-lg
@@ -76,7 +76,7 @@ const submit = () => {
 									<a :href="'/ravers/'+event.data.user_slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.data.username }}</span></a>
 									<span class="mr-3">{{ event.data.created_at }}</span>
 
-									<p class="mr-3" v-if="props.new" style="color:yellow">NEW</p>
+									<p class="mr-3" v-if="props.new" style="color:yellow; font-weight: 600; font-szie: .82rem;">NEW</p>
 									{{ props.carbon_now }}
 
 									

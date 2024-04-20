@@ -9,6 +9,7 @@ use App\Models\Event;
 use App\Models\Community;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Inertia\Inertia;
 
 class WelcomeController extends Controller
@@ -22,6 +23,15 @@ class WelcomeController extends Controller
         $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
         $events = Event::orderBy('created_at', 'desc')->take(6)->get();
+
+        foreach($events as $event) {
+            // check if event post was published in the last 24 hours and if so then display "new" marker
+            if($event->created_at < Carbon::now()->subDays(1)->toDateTimeString()) {
+                $event->new = false;
+            }else {
+                $event->new = true;
+            }
+        }
 
         return Inertia::render('Welcome', compact('posts', 'communities', 'events'));
     }

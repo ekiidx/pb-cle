@@ -9,7 +9,7 @@ import { Head } from '@inertiajs/vue3';
 defineProps({
     communities: Object,
     posts: Object,
-    events: Object,
+    events: Object
 });
 </script>
 

@@ -106,7 +106,7 @@ const submit = () => {
 									<InputError :message="errors.description" />
 								</div>
 
-								<div class="flex items-center justify-end mt-4">
+								<div class="flex items-center mt-4">
 									<Button
 										class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
 										:class="{ 'opacity-25': form.processing }"
@@ -122,19 +122,19 @@ const submit = () => {
 
 				<div class="col-lg-4">
 					<div class="border rounded-lg mb-3">
-						<h2
-						class="
-							font-semibold
-							text-lg
-							p-6
-							bg-darkorchid
-							rounded-lg
-							text-white
-							p-3
-						"
-						>
-							Edit {{ community.name }} Post
-						</h2>
+						<div class="bg-darkorchid rounded-lg p-3">
+							<img class="d-inline" style="max-height: 1.2rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/edit.svg">
+							<h2
+							class="
+								font-semibold
+								text-lg
+								text-white
+								d-inline
+							"
+							>
+								Edit {{ community.name }} Post
+							</h2>
+						</div>
 						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">You can edit your post.</p>
 					</div>
 				</div>

@@ -3,14 +3,18 @@ import { Link } from "@inertiajs/vue3";
 
 defineProps({
   events: Object,
+  new: Boolean
 });
 </script>
 
 <template>
-  <div class="bg-dark shadow-md border rounded-lg hot-events-box">
-    <h2 class="font-semibold text-lg bg-darkorchid text-white rounded-lg">
-      <slot name="title" />
-    </h2>
+  <div class="border rounded-lg mb-3 bg-dark">
+    <div class="bg-darkorchid rounded-lg p-3">
+      <img class="d-inline" style="max-height: 1.45rem; margin-right: 0.65rem; padding-bottom: 0.35rem" src="/assets/img/fire.svg">
+      <h2 class="font-semibold text-lg text-white d-inline">
+        <slot name="title" />
+      </h2>
+    </div>
     <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-4">
       <li
         v-for="event in events"
@@ -29,6 +33,7 @@ defineProps({
           >
             {{ event.name }}
           </Link>
+          <p v-if="event.new" style="color:yellow; margin-left: 0.5rem; font-weight: 600; font-size: .82rem;">NEW</p>
           <!-- <div>Posts({{ community.posts_count }})</div> -->
         </div>
       </li>

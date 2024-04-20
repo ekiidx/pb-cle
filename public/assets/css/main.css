@@ -115,17 +115,8 @@ input[type="file"] {
 .top-communities-box {
     margin-bottom: 0.5rem;
 }
-.top-communities-box h2 {
-    padding: 1.25rem;
-}
 .hot-events-box {
     margin-bottom: 0.5rem;
-}
-.hot-events-box h2 {
-    padding: 1.25rem;
-}
-.popular-posts-box h2 {
-    padding: 1.25rem;
 }
 .gutter {
     --bs-gutter-y: 0.25rem;
@@ -133,6 +124,9 @@ input[type="file"] {
 }
 .card.login-card {
     padding: 1.25rem;
+}
+.event-main-container {
+    margin-bottom: 0rem;
 }
 .event-info-table td {
     text-align: left;
@@ -153,6 +147,9 @@ input[type="file"] {
     .profile-img {
         width: 3rem;
         height: 3rem;
+    }
+    .event-main-container {
+        margin-bottom: 1rem;
     }
 }
 @media only screen and (min-width: 992px) {

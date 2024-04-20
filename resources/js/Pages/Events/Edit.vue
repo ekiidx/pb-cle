@@ -61,7 +61,7 @@ const submit = () => {
                 p-3
                 "
             >
-            <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">Edit Event</span>
+            <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">/Events</span>
 							<!-- <Link :href="route('frontend.communities.show', community.slug)">
 								{{ community.name }}
 							</Link> -->
@@ -170,7 +170,7 @@ const submit = () => {
                     <InputError :message="errors.flyer_back_upload" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4 mb-2">
+                <div class="flex items-center mt-4 mb-2">
                   <Button
                     class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
                     :class="{ 'opacity-25': form.processing }"
@@ -186,22 +186,22 @@ const submit = () => {
 
         <div class="col-lg-4">
           <div class="border rounded-lg mb-3">
-            <h2
-            class="
-              font-semibold
-              text-lg
-              p-6
-              bg-darkorchid
-              rounded-lg
-              text-white
-              p-3
-            "
-            >
-              About
-            </h2>
-              <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">Edit event.</p>
+            <div class="bg-darkorchid rounded-lg p-3">
+              <img class="d-inline" style="max-height: 1.2rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/edit.svg">
+              <h2
+              class="
+                font-semibold
+                text-lg
+                text-white
+                d-inline
+              "
+              >
+                Edit Event
+              </h2>
+            </div>
+            <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">You can use this screen to edit your event.</p>
           </div>
-				</div>
+		    </div>
       </div>
     </div>
   </AppLayout>
