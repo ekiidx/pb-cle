@@ -196,11 +196,12 @@ class EventController extends Controller
                 $flyer_front_filename = $flyer_front_file->getClientOriginalName();
                 $flyer_front_extension = $flyer_front_file->getClientOriginalExtension();
                 $flyer_front_no_extension = explode('.' . $flyer_front_extension, $flyer_front_filename);
-                $flyer_front_slug = SlugService::createSlug(Event::class, 'flyer_front_upload', $flyer_front_no_extension[0], ['unique' => true]);
-
+                $flyer_front_slug = SlugService::createSlug(Event::class, 'flyer_front_slug', $flyer_front_no_extension[0], ['unique' => true]);
+    
                 $flyer_front_slug_new = $flyer_front_slug . '.' . $flyer_front_extension;
                 
                 $flyer_front_file->storeAs('flyers', $flyer_front_slug_new, 'public');
+                $event->flyer_front_slug = $flyer_front_slug;
                 $event->flyer_front_upload = $flyer_front_slug_new;
                 $event->save();
             }
@@ -210,11 +211,12 @@ class EventController extends Controller
                 $flyer_back_filename = $flyer_back_file->getClientOriginalName();
                 $flyer_back_extension = $flyer_back_file->getClientOriginalExtension();
                 $flyer_back_no_extension = explode('.' . $flyer_back_extension, $flyer_back_filename);
-                $flyer_back_slug = SlugService::createSlug(Event::class, 'flyer_back_upload', $flyer_back_no_extension[0], ['unique' => true]);
+                $flyer_back_slug = SlugService::createSlug(Event::class, 'flyer_back_slug', $flyer_back_no_extension[0], ['unique' => true]);
     
                 $flyer_back_slug_new = $flyer_back_slug . '.' . $flyer_back_extension;
                 
                 $flyer_back_file->storeAs('flyers', $flyer_back_slug_new, 'public');
+                $event->flyer_back_slug = $flyer_back_slug;
                 $event->flyer_back_upload = $flyer_back_slug_new;
                 $event->save();
             }
