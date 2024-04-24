@@ -21,6 +21,9 @@ html, body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.nav-header {
+    height: 61px;
+}
 .nav-top span.pb-cle-logofont {
     display: none !important;
 }
@@ -137,6 +140,17 @@ input[type="file"] {
 }
 .pagination-container {
     margin-bottom: 0;
+}
+.read-more-box {
+    padding-top: 0.5rem;
+    padding-right: 0;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+}
+.read-more-box p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
 }
 @media only screen and (min-width: 652px) {
     .post-description {

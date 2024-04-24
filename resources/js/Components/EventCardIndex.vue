@@ -1,5 +1,5 @@
 <script setup>
-import { Link } from "@inertiajs/vue3";
+// import { Link } from "@inertiajs/vue3";
 
 defineProps({
   event: Object
@@ -14,7 +14,6 @@ defineProps({
         bg-dark
         rounded-lg
         border border-gray-200
-        shadow-md
         "
     >
 

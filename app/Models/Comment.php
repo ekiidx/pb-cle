@@ -24,4 +24,11 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $appends = ['created_at_diff'];
+
+    public function getCreatedAtDiffAttribute(): string 
+    { 
+      return $this->created_at->diffForHumans(); 
+    }
 }

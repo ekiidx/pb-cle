@@ -16,7 +16,6 @@ defineProps({
       bg-dark
       rounded-lg
       border border-gray-200
-      shadow-md
     "
   >
     <div class="">
@@ -57,15 +56,18 @@ defineProps({
       <p class="pl-4 pr-3 mb-3 font-normal text-sm text-gray-300 post-description break-words whitespace-pre-wrap">
         {{ post.description }}
       </p>
+      <a v-if="post.post_image" :href="'/posts/'+community+'/posts/'+post.slug">
+        <img class="rounded-sm pl-4 pb-3" style="max-width: 100%; height: auto;" :src="'/storage/post-images/'+post.post_image">
+      </a>
 
       <!-- Flex -->
-      <div class="post-flex m-2 p-2">
-        <p class="mr-4 p-2">Comments({{ post.comments_count }})</p>
+      <div class="post-flex read-more-box">
+        <p class="mr-4">Comments({{ post.comments_count }})</p>
         <Link
           :href="
             route('frontend.communities.posts.show', [community, post.slug])
           "
-          class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
+          class="comment-btn d-inline-block items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
         >
           Read more
           <svg
