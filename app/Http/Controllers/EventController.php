@@ -51,8 +51,8 @@ class EventController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|unique:events|max:255',
-            'flyer_front_upload' => 'max:2048',
-            'flyer_back_upload' => 'max:2048',
+            'flyer_front' => 'max:2048',
+            'flyer_back' => 'max:2048',
         ]);
 
         // Use if there's an array for the date / time input (vue3 datepicker)
@@ -175,8 +175,8 @@ class EventController extends Controller
         } else {
             $validated = $request->validate([
                 'name' => 'required|max:255',
-                'flyer_front_upload' => 'max:2048',
-                'flyer_back_upload' => 'max:2048',
+                'flyer_front' => 'max:2048',
+                'flyer_back' => 'max:2048',
             ]);
     
             $start_time = $request->event_time;
@@ -203,7 +203,6 @@ class EventController extends Controller
                 $flyer_front_file->storeAs('flyers', $flyer_front_slug_new, 'public');
                 $event->flyer_front_slug = $flyer_front_slug;
                 $event->flyer_front_upload = $flyer_front_slug_new;
-                $event->save();
             }
     
             if ($request->hasfile('flyer_back')) {
@@ -218,7 +217,6 @@ class EventController extends Controller
                 $flyer_back_file->storeAs('flyers', $flyer_back_slug_new, 'public');
                 $event->flyer_back_slug = $flyer_back_slug;
                 $event->flyer_back_upload = $flyer_back_slug_new;
-                $event->save();
             }
     
             $event->update();

@@ -20,9 +20,9 @@ const form = useForm({
   _method: 'put'
 });
 
-// function imagePreview() {
-//   frame.src=URL.createObjectURL(event.target.files[0])
-// }
+function imagePreview() {
+  frame.src=URL.createObjectURL(event.target.files[0])
+}
 
 const submit = () => {
   form.post(
@@ -119,7 +119,7 @@ const submit = () => {
 								</div>
 
 								<div id="preview">
-									<img v-if="props.img_url" :src="props.img_url" />
+									<!-- <img v-if="props.img_url" :src="props.img_url" /> -->
 									<img id="frame" src="" style="width: 7rem; height: auto;"/>
 								</div>
 

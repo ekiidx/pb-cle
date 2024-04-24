@@ -24,6 +24,14 @@ const form = useForm({
     flyer_back: ""
 });
 
+function flyerFrontPreview() {
+  flyerFrontFrame.src=URL.createObjectURL(event.target.files[0])
+}
+
+function flyerBackPreview() {
+  flyerBackFrame.src=URL.createObjectURL(event.target.files[0])
+}
+
 const submit = () => {
   form.post(route("events.store"));
 };
@@ -151,14 +159,22 @@ const submit = () => {
 
                 <div class="mt-4">
                   <Label for="flyer_front" value="Flyer Front" />
-                    <input style="display:block" name="flyer_front" type="file" @input="form.flyer_front = $event.target.files[0]" />
-                    <InputError :message="errors.flyer_front" />
+                    <img 
+                      style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                      id="flyerFrontFrame"
+                      src="">
+                      <InputError :message="errors.flyer_front" />
+                    <input style="display:block" name="flyer_front" type="file" @input="form.flyer_front = $event.target.files[0]" @change="flyerFrontPreview()" />
                 </div>
 
                 <div class="mt-4">
                   <Label for="flyer_back" value="Flyer Back" />
-                    <input style="display:block" name="flyer_back" type="file" @input="form.flyer_back = $event.target.files[0]" />
-                    <InputError :message="errors.flyer_back" />
+                    <img 
+                      style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                      id="flyerBackFrame"
+                      src="">
+                      <InputError :message="errors.flyer_back" />
+                    <input style="display:block" name="flyer_back" type="file" @input="form.flyer_back = $event.target.files[0]" @change="flyerBackPreview()" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">

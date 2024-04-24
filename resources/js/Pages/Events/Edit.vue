@@ -21,9 +21,17 @@ const form = useForm({
     link_event: props.event?.link_event,
     event_date: props.event?.event_date,
     event_time: props.event?.event_time,
-    flyer_front_upload: props.event?.flyer_front_upload,
-    flyer_back_upload: props.event?.flyer_back_upload,
+    flyer_front: props.event?.flyer_front,
+    flyer_back: props.event?.flyer_back,
 });
+
+function flyerFrontPreview() {
+  flyerFrontFrame.src=URL.createObjectURL(event.target.files[0])
+}
+
+function flyerBackPreview() {
+  flyerBackFrame.src=URL.createObjectURL(event.target.files[0])
+}
 
 const submit = () => {
   form.post(
@@ -155,19 +163,25 @@ const submit = () => {
                 <div class="mb-2">
                   <Label class="mb-1" for="flyer_front_upload" value="Flyer Front" />
                     <img 
-                      v-if="event.flyer_front_upload" 
+                      v-if="props.event.flyer_front_upload" 
                       class="rounded-sm pb-3" 
                       style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                      id="flyerFrontFrame"
                       :src="'/storage/flyers/'+event.flyer_front_upload">
-                    <input style="display:block" name="flyer_front_upload" type="file" @input="form.flyer_front_upload = $event.target.files[0]" />
-                    <InputError :message="errors.flyer_front_upload" />
+                      <InputError :message="errors.flyer_front" />
+                    <input style="display:block" name="flyer_front" type="file" @input="form.flyer_front = $event.target.files[0]" @change="flyerFrontPreview()" />
                 </div>
 
                 <div style="margin-bottom: 2rem;">
-                  <Label class="mb-1" for="flyer_back_upload" value="Flyer Back" />
-                    <img v-if="event.flyer_back_upload" class="rounded-sm pb-3" style="max-width: 7rem; max-height: 5rem; height: auto;" :src="'/storage/flyers/'+event.flyer_back_upload">
-                    <input style="display:block" name="flyer_back_upload" type="file" @input="form.flyer_back_upload = $event.target.files[0]" />
-                    <InputError :message="errors.flyer_back_upload" />
+                  <Label class="mb-1" for="flyer_back" value="Flyer Back" />
+                    <img 
+                      v-if="props.event.flyer_back_upload" 
+                      class="rounded-sm pb-3" 
+                      style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                      id="flyerBackFrame"
+                      :src="'/storage/flyers/'+event.flyer_back_upload">
+                      <InputError :message="errors.flyer_back" />
+                    <input style="display:block" name="flyer_back" type="file" @input="form.flyer_back = $event.target.files[0]" @change="flyerBackPreview()" />
                 </div>
 
                 <div class="flex items-center mt-4 mb-2">
