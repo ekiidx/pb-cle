@@ -8,6 +8,7 @@ use App\Models\Event;
 use App\Http\Resources\EventShowResource;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Carbon\Carbon;
 use Inertia\Inertia;
 
@@ -48,9 +49,6 @@ class EventController extends Controller
      */
     public function store(Request $request, Event $event)
     {
-        // Event::create($request->validated() + ['user_id' => auth()->id()]);
-        // return to_route('events.index')->with('message', 'Event created successfully.')
-
         $validated = $request->validate([
             'name' => 'required|unique:events|max:255',
             'flyer_front_upload' => 'max:2048',
@@ -73,27 +71,42 @@ class EventController extends Controller
         ]);
 
         // Store the file in storage\app\public folder if file exists in the request
-        if ($request->hasfile('flyer_front_upload')) {
-            $flyer_front_file = $request->file('flyer_front_upload');
-            $flyer_front_file_name = $flyer_front_file->getClientOriginalName();
-            $flyer_front_file_path = $flyer_front_file->storeAs('flyers', $flyer_front_file_name, 'public');
+        if ($request->hasfile('flyer_front')) {
+            $flyer_front_file = $request->file('flyer_front');
+            $flyer_front_filename = $flyer_front_file->getClientOriginalName();
+            $flyer_front_extension = $flyer_front_file->getClientOriginalExtension();
+            $flyer_front_no_extension = explode('.' . $flyer_front_extension, $flyer_front_filename);
+            $flyer_front_slug = SlugService::createSlug(Event::class, 'flyer_front_slug', $flyer_front_no_extension[0], ['unique' => true]);
 
-            $event->flyer_front_upload = $flyer_front_file_name;
+            $flyer_front_slug_new = $flyer_front_slug . '.' . $flyer_front_extension;
+            
+            $flyer_front_file->storeAs('flyers', $flyer_front_slug_new, 'public');
+            $event->flyer_front_slug = $flyer_front_slug;
+            $event->flyer_front_upload = $flyer_front_slug_new;
             $event->save();
         }
 
-        if ($request->hasfile('flyer_back_upload')) {
-            $flyer_back_file = $request->file('flyer_back_upload');
-            $flyer_back_file_name = $flyer_back_file->getClientOriginalName();
-            $flyer_back_file_path = $flyer_back_file->storeAs('flyers', $flyer_back_file_name, 'public');
+        if ($request->hasfile('flyer_back')) {
+            $flyer_back_file = $request->file('flyer_back');
+            $flyer_back_filename = $flyer_back_file->getClientOriginalName();
+            $flyer_back_extension = $flyer_back_file->getClientOriginalExtension();
+            $flyer_back_no_extension = explode('.' . $flyer_back_extension, $flyer_back_filename);
+            $flyer_back_slug = SlugService::createSlug(Event::class, 'flyer_back_slug', $flyer_back_no_extension[0], ['unique' => true]);
 
-            $event->flyer_back_upload = $flyer_back_file_name;
+            $flyer_back_slug_new = $flyer_back_slug . '.' . $flyer_back_extension;
+            
+            $flyer_back_file->storeAs('flyers', $flyer_back_slug_new, 'public');
+            $event->flyer_back_slug = $flyer_back_slug;
+            $event->flyer_back_upload = $flyer_back_slug_new;
             $event->save();
         }
 
         // Redirect back to the index page with a success message
         // return redirect()->route('uploads.index')
         //     ->with('success', "File `{$uploadedFile->original_name}` uploaded successfully.");
+
+        // Event::create($request->validated() + ['user_id' => auth()->id()]);
+        // return to_route('events.index')->with('message', 'Event created successfully.')
     
         return Redirect::route('events.show', $event->slug);
     }
@@ -178,21 +191,31 @@ class EventController extends Controller
             $event->event_time = $request->event_time;
     
             // Store the file in storage\app\public folder if file exists in the request
-            if ($request->hasfile('flyer_front_upload')) {
-                $flyer_front_file = $request->file('flyer_front_upload');
-                $flyer_front_file_name = $flyer_front_file->getClientOriginalName();
-                $flyer_front_file_path = $flyer_front_file->storeAs('flyers', $flyer_front_file_name, 'public');
-    
-                $event->flyer_front_upload = $flyer_front_file_name;
+            if ($request->hasfile('flyer_front')) {
+                $flyer_front_file = $request->file('flyer_front');
+                $flyer_front_filename = $flyer_front_file->getClientOriginalName();
+                $flyer_front_extension = $flyer_front_file->getClientOriginalExtension();
+                $flyer_front_no_extension = explode('.' . $flyer_front_extension, $flyer_front_filename);
+                $flyer_front_slug = SlugService::createSlug(Event::class, 'flyer_front_upload', $flyer_front_no_extension[0], ['unique' => true]);
+
+                $flyer_front_slug_new = $flyer_front_slug . '.' . $flyer_front_extension;
+                
+                $flyer_front_file->storeAs('flyers', $flyer_front_slug_new, 'public');
+                $event->flyer_front_upload = $flyer_front_slug_new;
                 $event->save();
             }
     
-            if ($request->hasfile('flyer_back_upload')) {
-                $flyer_back_file = $request->file('flyer_back_upload');
-                $flyer_back_file_name = $flyer_back_file->getClientOriginalName();
-                $flyer_back_file_path = $flyer_back_file->storeAs('flyers', $flyer_back_file_name, 'public');
+            if ($request->hasfile('flyer_back')) {
+                $flyer_back_file = $request->file('flyer_back');
+                $flyer_back_filename = $flyer_back_file->getClientOriginalName();
+                $flyer_back_extension = $flyer_back_file->getClientOriginalExtension();
+                $flyer_back_no_extension = explode('.' . $flyer_back_extension, $flyer_back_filename);
+                $flyer_back_slug = SlugService::createSlug(Event::class, 'flyer_back_upload', $flyer_back_no_extension[0], ['unique' => true]);
     
-                $event->flyer_back_upload = $flyer_back_file_name;
+                $flyer_back_slug_new = $flyer_back_slug . '.' . $flyer_back_extension;
+                
+                $flyer_back_file->storeAs('flyers', $flyer_back_slug_new, 'public');
+                $event->flyer_back_upload = $flyer_back_slug_new;
                 $event->save();
             }
     
