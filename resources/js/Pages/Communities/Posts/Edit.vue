@@ -16,10 +16,16 @@ const form = useForm({
   title: props.post?.title,
   description: props.post?.description,
   url: props.post?.url,
+  post_image: props.post?.post_image,
+  _method: 'put'
 });
 
+// function imagePreview() {
+//   frame.src=URL.createObjectURL(event.target.files[0])
+// }
+
 const submit = () => {
-  form.put(
+  form.post(
     route("communities.posts.update", [props.community.slug, props.post.slug])
   );
 };
@@ -104,6 +110,17 @@ const submit = () => {
 										autocomplete="description"
 									></textarea>
 									<InputError :message="errors.description" />
+								</div>
+
+								<div class="mt-4">
+									<Label for="post_image" value="Add Image" />
+										<input style="display:block" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()"/>
+										<InputError :message="errors.post_image" />
+								</div>
+
+								<div id="preview">
+									<img v-if="props.img_url" :src="props.img_url" />
+									<img id="frame" src="" style="width: 7rem; height: auto;"/>
 								</div>
 
 								<div class="flex items-center mt-4">

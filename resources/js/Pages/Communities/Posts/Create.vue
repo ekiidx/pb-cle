@@ -9,15 +9,20 @@ import { Head, useForm, Link } from "@inertiajs/vue3";
 
 const props = defineProps({
   community: Object,
-  errors: Object,
+  errors: Object
 });
 
 const form = useForm({
   title: "",
   description: "",
   url: "",
+  post_image: "",
 });
 
+// function imagePreview() {
+//   frame.src=URL.createObjectURL(event.target.files[0])
+// }
+  
 const submit = () => {
   form.post(route("communities.posts.store", props.community.slug));
 };
@@ -64,7 +69,6 @@ const submit = () => {
 
             <!-- Main Section -->
             <div style="padding-right: 48px !important" class="w-full py-3 px-3">
-
               <form @submit.prevent="submit">
                 <div>
                   <Label for="title" value="Title" />
@@ -103,6 +107,18 @@ const submit = () => {
                   ></textarea>
                   <InputError :message="errors.description" />
                 </div>
+
+                <div class="mt-4">
+                  <Label for="post_image" value="Add Image" />
+                    <input style="display:block" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()"/>
+                    <InputError :message="errors.post_image" />
+                </div>
+
+                <div id="preview">
+                  <img v-if="props.img_url" :src="props.img_url" />
+                  <img id="frame" src="" style="width: 7rem; height: auto;"/>
+                </div>
+
 
                 <div class="flex items-center justify-end mt-4">
                   <Button

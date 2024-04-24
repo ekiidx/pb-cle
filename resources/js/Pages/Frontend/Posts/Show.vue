@@ -134,7 +134,11 @@ const submit = () => {
 									class="font-semibold text-electricgreen text-sm break-words"
 									>{{ post.data.url }}</a
 								>
-							</div >
+							</div>
+
+							<a :href="'/storage/post-images/'+ post.data.post_image">
+                    			<img v-if="post.data.post_image" class="rounded-sm pl-4 pb-3" style="max-width: 100%; height: auto;" :src="'/storage/post-images/'+post.data.post_image">
+                			</a>
 
 							<hr />
 
@@ -149,9 +153,10 @@ const submit = () => {
 										<div class="text-sm">
 											<!-- Commented by -->
 											<a :href="'/ravers/'+comment.user_slug">
-											<span class="font-semibold text-darkorchid">{{
+											<span class="font-semibold text-darkorchid mr-1">{{
 												comment.username
 											}}</span></a>
+											{{ comment.created_at }}
 										</div>
 										<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
 											{{ comment.content }}

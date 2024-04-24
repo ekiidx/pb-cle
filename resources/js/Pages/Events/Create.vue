@@ -20,8 +20,8 @@ const form = useForm({
     link_event: "",
     event_date: "",
     event_time: "",
-    flyer_front_upload: "",
-    flyer_back_upload: ""
+    flyer_front: "",
+    flyer_back: ""
 });
 
 const submit = () => {
@@ -150,15 +150,15 @@ const submit = () => {
                 </div>
 
                 <div class="mt-4">
-                  <Label for="flyer_front_upload" value="Flyer Front" />
-                    <input style="display:block" name="flyer_front_upload" type="file" @input="form.flyer_front_upload = $event.target.files[0]" />
-                    <InputError :message="errors.flyer_front_upload" />
+                  <Label for="flyer_front" value="Flyer Front" />
+                    <input style="display:block" name="flyer_front" type="file" @input="form.flyer_front = $event.target.files[0]" />
+                    <InputError :message="errors.flyer_front" />
                 </div>
 
                 <div class="mt-4">
-                  <Label for="flyer_back_upload" value="Flyer Back" />
-                    <input style="display:block" name="flyer_back_upload" type="file" @input="form.flyer_back_upload = $event.target.files[0]" />
-                    <InputError :message="errors.flyer_back_upload" />
+                  <Label for="flyer_back" value="Flyer Back" />
+                    <input style="display:block" name="flyer_back" type="file" @input="form.flyer_back = $event.target.files[0]" />
+                    <InputError :message="errors.flyer_back" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
