@@ -114,13 +114,14 @@ const submit = () => {
 
 								<div class="mt-4">
 									<Label for="post_image" value="Add Image" />
-										<input style="display:block" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()"/>
+									<img
+										v-if="props.post.post_image" 
+										id="frame"
+										:src="'/storage/post-images/'+post.post_image"
+										style="max-width: 7rem; max-height: 5rem; height: auto;">
 										<InputError :message="errors.post_image" />
-								</div>
-
-								<div id="preview">
-									<!-- <img v-if="props.img_url" :src="props.img_url" /> -->
-									<img id="frame" src="" style="width: 7rem; height: auto;"/>
+										<input style="display:block" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()"/>
+										
 								</div>
 
 								<div class="flex items-center mt-4">

@@ -19,9 +19,9 @@ const form = useForm({
   post_image: "",
 });
 
-// function imagePreview() {
-//   frame.src=URL.createObjectURL(event.target.files[0])
-// }
+function imagePreview() {
+  frame.src=URL.createObjectURL(event.target.files[0])
+}
   
 const submit = () => {
   form.post(route("communities.posts.store", props.community.slug));
@@ -110,13 +110,13 @@ const submit = () => {
 
                 <div class="mt-4">
                   <Label for="post_image" value="Add Image" />
-                    <input style="display:block" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()"/>
+                    <img id="frame" src="" style="max-width: 7rem; max-height: 5rem; height: auto;">
                     <InputError :message="errors.post_image" />
+                    <input style="display:block" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()"/>
                 </div>
 
                 <div id="preview">
-                  <img v-if="props.img_url" :src="props.img_url" />
-                  <img id="frame" src="" style="width: 7rem; height: auto;"/>
+                 
                 </div>
 
 
