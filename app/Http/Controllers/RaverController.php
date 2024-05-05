@@ -38,6 +38,23 @@ class RaverController extends Controller
     {
         $user = User::where('slug', $slug)->firstOrFail();
         $user_id = $user->id;
+        $post_count = $user->posts()->count();
+        $event_count = $user->events()->count();
+        $follower_count = $user->followers()->count();
+        $following_count = $user->following()->count();
+        $follower = auth()->user();
+
+        
+        if ($follower->id === $user->id){
+            $follow_check = false;
+            $unfollow_check = false;
+        }else if(!$follower->following->contains($user->id)) {
+            $follow_check = true;
+            $unfollow_check = false;
+        }else{
+            $follow_check = false;
+            $unfollow_check = true;
+        }
 
         // $posts = Post::where('user_id', $user_id)->withCount('comments')->with('postVotes')->orderBy('votes', 'desc')->take(12)->get();
 
@@ -49,7 +66,7 @@ class RaverController extends Controller
 
         $events = Event::with('user')->where('user_id', $user_id)->latest()->get();
 
-        return Inertia::render('Ravers/Show', compact('user', 'posts', 'events'));
+        return Inertia::render('Ravers/Show', compact('user', 'posts', 'events', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check'));
     }
 
     /**

@@ -9,6 +9,7 @@ defineProps({
     title: String,
     canLogin: Boolean,
     canRegister: Boolean,
+    user: Object
 });
 
 const showingNavigationDropdown = ref(false);
@@ -51,6 +52,7 @@ const logout = () => {
                 <a href="/" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-home font-sm bg-electricgreen btn-round-sm text-grey-200"></i></a>
                 <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
                 <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+                <a :href="route('ravers.show', $page.props.auth.user)" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
                 <!-- <a href="/ravers/" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-500 "></i></a> -->
                 <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
 
@@ -137,6 +139,11 @@ const logout = () => {
                             <!-- Events -->
                             <DropdownLink :href="route('events.index')">
                                 Events
+                            </DropdownLink>
+
+                            <!-- Profile -->
+                            <DropdownLink :href="route('ravers.show', $page.props.auth.user)">
+                                Profile
                             </DropdownLink>
             
                             <!-- Settings -->

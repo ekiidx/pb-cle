@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityContro
 use App\Http\Controllers\Frontend\PostCommentController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\WelcomeController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\RaverController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventCommentController;
@@ -52,16 +53,22 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/posts/{post:slug}/upVote', [PostVoteController::class, 'upVote'])->name('posts.upVote');
     Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
 
+    // Posts
     Route::get('/posts/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
     Route::get('/posts/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
     Route::post('/posts/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
 
+    // Events
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
     Route::post('/events/create', [EventController::class, 'store'])->name('events.store');
     Route::get('/events/{event:slug}/edit', [EventController::class, 'edit'])->name('events.edit');
     Route::post('/events/{event:slug}/update', [EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{event:slug}/destroy', [EventController::class, 'destroy'])->name('events.destroy');
     Route::post('/events/{event:slug}/comments', [EventCommentController::class, 'store'])->name('events.comments');
+
+    // Follow
+    Route::post('/ravers/{user:slug}/follow', [FollowController::class, 'follow'])->name('ravers.follow');
+    Route::post('/ravers/{user:slug}/unfollow', [FollowController::class, 'unfollow'])->name('ravers.unfollow');
 
 });
 

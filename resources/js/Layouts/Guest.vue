@@ -50,6 +50,7 @@ const logout = () => {
         <a href="/" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-home font-sm btn-round-sm text-grey-200 bg-electricgreen"></i></a>
         <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
         <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+        <a v-if="$page.props.auth.user" :href="route('ravers.show', $page.props.auth.user)" href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="/ravers" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
@@ -142,6 +143,11 @@ const logout = () => {
                 <!-- Events -->
                 <DropdownLink :href="route('events.index')">
                   Events
+                </DropdownLink>
+
+                <!-- Profile -->
+                <DropdownLink :href="route('ravers.show', $page.props.auth.user)">
+                  Profile
                 </DropdownLink>
 
                 <!-- Settings -->

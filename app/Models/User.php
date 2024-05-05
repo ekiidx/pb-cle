@@ -83,4 +83,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getRouteKeyName() {
         return 'slug';
     }
+
+    public function following() {
+        return $this->belongsToMany(User::class, 'follower_user', 'follower_id', 'user_id')->withTimestamps();
+    }
+
+    public function followers() {
+        return $this->belongsToMany(User::class, 'follower_user', 'user_id', 'follower_id')->withTimestamps();
+    }
 }
