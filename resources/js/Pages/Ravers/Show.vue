@@ -68,7 +68,7 @@ const props = defineProps({
                         flex-col
 						"
 					>
-                        <img style="max-width: 4.5rem; max-height: 4.5rem" class="rounded-full object-cover mb-2" :src="$page.props.user.profile_photo_url">
+                        <img style="width: 4.5rem; height: 4.5rem" class="rounded-full object-cover mb-2" :src="$page.props.user.profile_photo_url">
                         <h1 style="font-size: 1.25rem; font-weight: 600;" class="text-bold text-white mb-3">{{ user.username }}</h1>
 
                         <Link
