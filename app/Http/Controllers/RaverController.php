@@ -44,18 +44,21 @@ class RaverController extends Controller
         $following_count = $user->following()->count();
         $follower = auth()->user();
 
-        
-        if ($follower->id === $user->id){
+        if($follower == null) {
             $follow_check = false;
-            $unfollow_check = false;
-        }else if(!$follower->following->contains($user->id)) {
-            $follow_check = true;
             $unfollow_check = false;
         }else{
-            $follow_check = false;
-            $unfollow_check = true;
+            if ($follower->id === $user->id){
+                $follow_check = false;
+                $unfollow_check = false;
+            }else if(!$follower->following->contains($user->id)) {
+                $follow_check = true;
+                $unfollow_check = false;
+            }else{
+                $follow_check = false;
+                $unfollow_check = true;
+            }
         }
-
         // $posts = Post::where('user_id', $user_id)->withCount('comments')->with('postVotes')->orderBy('votes', 'desc')->take(12)->get();
 
         $posts = CommunityPostResource::collection(Post::with(['user', 'community', 'postVotes' => function ($query) {
