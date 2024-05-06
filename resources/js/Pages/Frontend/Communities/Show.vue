@@ -18,7 +18,7 @@ defineProps({
 			<title>{{ community.name }}</title>
 		</Head>
 
-		<div class="main-container">
+		<div class="main-container communities-show">
 			<div class="row g-3">
 				<!-- Main Column -->
 				<div class="col-lg-8">

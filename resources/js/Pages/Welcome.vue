@@ -17,7 +17,7 @@ defineProps({
   <Guest>
 		<Head title="Home" />
 
-		<div class="main-container">
+		<div class="main-container home-page">
 			<div class="row gutter">
 							
 				<div class="col-lg-8 order-2 order-lg-1">

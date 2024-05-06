@@ -152,6 +152,9 @@ input[type="file"] {
     align-items: center;
     margin-bottom: 0.5rem;
 }
+.home-page .post-description, .communities-show .post-description {
+    display: none;
+}
 @media only screen and (min-width: 652px) {
     .post-description {
         padding-right: 2.5rem !important;
@@ -173,6 +176,9 @@ input[type="file"] {
     }
     .post-main-container {
         margin-bottom: 1rem;
+    }
+    .home-page .post-description, .communities-show .post-description {
+        display: block;
     }
 }
 @media only screen and (min-width: 992px) {
