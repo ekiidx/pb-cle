@@ -10,7 +10,7 @@ defineProps({
 <template>
   <div class="border rounded-lg mb-2 bg-dark">
     <div class="bg-darkorchid rounded-lg p-3">
-      <img class="d-inline" style="max-height: 1.45rem; max-width: 1.45rem; margin-right: 0.65rem; padding-bottom: 0.35rem" src="/assets/img/fire.svg">
+      <img class="d-inline" style="max-height: 1.25rem; max-width: 1.4rem; margin-right: 0.65rem; padding-bottom: 0.35rem" src="/assets/img/fire.svg">
       <h2 class="font-semibold text-lg text-white d-inline">
         <slot name="title" />
       </h2>

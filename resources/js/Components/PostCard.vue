@@ -24,25 +24,25 @@ defineProps({
     <div class="w-full" style="padding-right: 48px !important;">
 
       <!-- Flex -->
-      <div class="post-flex p-3 text-sm">
+      <div class="post-flex post-header text-sm">
         <Link
           :href="route('frontend.communities.show', community)"
           class="font-semibold mr-1 hover:text-indigo-700"
           >/{{ community }}</Link
         >
-        <div class="post-header">
+ 
           <!-- Posted by -->
-          <a :href="'/ravers/'+post.user_slug">
-          <span class="font-semibold mx-1 text-darkorchid">{{ post.username }}</span></a>
-          {{ post.created_at }}
-        </div>
+          <a class="post-username" :href="'/ravers/'+post.user_slug">
+          <span class="font-semibold text-darkorchid">{{ post.username }}</span></a>
+          <span>{{ post.created_at }}</span>
+     
       </div>
       <Link
         :href="route('frontend.communities.posts.show', [community, post.slug])"
       >
         <h2
           class="
-            pl-4 pr-3 mb-2
+            pl-4 pr-3
             font-bold
             tracking-tight
             text-white

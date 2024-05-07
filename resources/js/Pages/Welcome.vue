@@ -37,7 +37,6 @@ defineProps({
 						rounded-lg
 						border border-gray-200
 						shadow-md
-						p-3
 						"
 					>
 						<i style="margin-right: 0.6rem" class="feather-zap font-sm text-electricgreen d-inline"></i>

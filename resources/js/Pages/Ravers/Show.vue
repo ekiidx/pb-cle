@@ -55,7 +55,7 @@ const props = defineProps({
 					/> -->
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-lg-4 raver-profile-row">
                     <div
 						class="
 						mb-3

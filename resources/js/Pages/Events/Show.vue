@@ -50,6 +50,11 @@ const submit = () => {
 						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
 							/<Link :href="route('events.index')">Events</Link>
 						</h2>
+						<Link
+							:href="route('events.create')"
+							class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
+							>Create Event</Link
+						>
 						<!-- <Link
 							v-if="$page.props.auth.user.username"
 							:href="route('events.create')"
