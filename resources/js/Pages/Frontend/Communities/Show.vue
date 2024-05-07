@@ -20,8 +20,11 @@ defineProps({
 
 		<div class="main-container communities-show">
 			<div class="row g-3">
+
 				<!-- Main Column -->
 				<div class="col-lg-8">
+
+					<!-- Header -->
 					<div
 						class="
 						header-post-box
@@ -40,7 +43,6 @@ defineProps({
 							</Link>
 						</h2>
 						<Link
-							v-if="$page.props.auth.user.username"
 							:href="route('communities.posts.create', community.slug)"
 							class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
 							>Create Post</Link

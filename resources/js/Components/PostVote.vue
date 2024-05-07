@@ -19,7 +19,7 @@ defineProps({
       }"
     />
     <div
-      class="p-2 my-2 font-bold"
+      class="my-2 font-bold"
       :class="{
         'text-electricgreen': post.postVotes[0] && post.postVotes[0].vote == 1,
         'text-darkorchid': post.postVotes[0] && post.postVotes[0].vote == -1,

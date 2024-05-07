@@ -170,6 +170,19 @@ input[type="file"] {
     display: inline-block;
     margin-bottom: 0.5rem;
 }
+.read-more-text {
+    display: none;
+}
+.read-more-box svg {
+    width: 1rem;
+    height: 1rem;
+}
+.read-more-box .comment-btn {
+    padding-top: 0.4rem;
+    padding-left: 0.9rem;
+    padding-bottom: 0.5rem;
+    padding-right: 0.9rem;
+}
 .home-page .post-description, .communities-show .post-description {
     display: none;
 }
@@ -208,6 +221,21 @@ input[type="file"] {
     .nav-top span.pb-cle-logofont {
         display: inline-block !important;
         margin-right: 1rem;
+    }
+    .read-more-text {
+        display: inline-block;
+    }
+    .read-more-box svg {
+        width: 1rem;
+        height: 1rem;
+        margin-left: 0.25rem;
+        margin-right: -0.25rem;
+    }
+    .read-more-box .comment-btn {
+        padding-top: 0.7rem;
+        padding-left: 1.4rem;
+        padding-bottom: 0.7rem;
+        padding-right: 1.4rem;
     }
 }
 @media only screen and (min-width: 768px) {

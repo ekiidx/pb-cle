@@ -51,6 +51,7 @@ const submit = () => {
 						rounded-lg
 						border border-gray-200
 						shadow-md
+						justify-between
 						p-3
 						"
 					>
@@ -59,6 +60,11 @@ const submit = () => {
 								{{ community.name }}
 							</Link>
 						</h2>
+						<Link
+							:href="route('communities.posts.create', community.slug)"
+							class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
+							>Create Post</Link
+						>
 					</div>
 					
 					<!-- Post Card -->

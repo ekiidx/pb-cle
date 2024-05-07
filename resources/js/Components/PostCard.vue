@@ -69,10 +69,10 @@ defineProps({
           "
           class="comment-btn d-inline-block items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
         >
-          Read more
+         <span class="read-more-text">Read more</span>
           <svg
             aria-hidden="true"
-            class="d-inline ml-1 -mr-1 w-4 h-4"
+            class="d-inline"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
