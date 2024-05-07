@@ -4,6 +4,7 @@ html, body {
 [type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
     background: #1a1a1b !important;
     background-color: #1a1a1b !important;
+    color: #ffffff !important;
 }
 .comment-btn {
     padding-top: 0.7rem;
@@ -43,8 +44,8 @@ nav.main-nav {
 }
 .main-container {
     margin-top: 71px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 .vote-box {
     padding: 0.1rem;
