@@ -50,7 +50,7 @@ class Event extends Model
       return 'slug';
     }
 
-    protected $appends = ['created_at_diff', 'party_date', 'weekday_format'];
+    protected $appends = ['created_at_diff', 'party_date', 'weekday_format', 'month_date_format', 'day_date_format'];
 
     public function getCreatedAtDiffAttribute(): string 
     { 
@@ -66,6 +66,20 @@ class Event extends Model
     // { 
     //   return $this->event_time->format('h:mmA'); 
     // }
+
+    public function getDayDateFormatAttribute(): string
+    {
+      $day_date_format = $this->event_date->format('d');
+
+      return $day_date_format;
+    }
+
+    public function getMonthDateFormatAttribute(): string
+    {
+      $month_date_format = $this->event_date->format('M');
+
+      return $month_date_format;
+    }
 
     public function getWeekdayFormatAttribute(): string
     { 
