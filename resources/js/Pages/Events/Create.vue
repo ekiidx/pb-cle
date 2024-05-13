@@ -5,7 +5,7 @@ import Input from "@/Components/Input.vue";
 import InputError from "@/Components/InputError.vue";
 import Label from "@/Components/Label.vue";
 // import InputLabel from '@/Components/InputLabel.vue';
-import { Head, useForm, } from "@inertiajs/vue3";
+import { Head, useForm } from "@inertiajs/vue3";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
@@ -35,6 +35,9 @@ function flyerBackPreview() {
 const submit = () => {
   form.post(route("events.store"));
 };
+
+const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+console.log(tz);
 </script>
 
 <template>
@@ -104,7 +107,9 @@ const submit = () => {
                         required
                         dark
                         :enable-time-picker="false"
-                        :min-date="new Date()" />
+                        :min-date="new Date()"
+                    />
+                  <InputError :message="errors.event_date" />
                 </div>
 
                 <div class="mt-4">
@@ -118,6 +123,7 @@ const submit = () => {
                         dark
                         required
                         :is-24="false" />
+                  <InputError :message="errors.event_time" />
                 </div>
 
                 <div class="mt-4">

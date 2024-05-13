@@ -53,6 +53,7 @@ class EventController extends Controller
             'name' => 'required|unique:events|max:255',
             'flyer_front' => 'max:2048',
             'flyer_back' => 'max:2048',
+            'event_date' => 'required',
         ]);
 
         // Use if there's an array for the date / time input (vue3 datepicker)
@@ -107,6 +108,8 @@ class EventController extends Controller
 
         // Event::create($request->validated() + ['user_id' => auth()->id()]);
         // return to_route('events.index')->with('message', 'Event created successfully.')
+
+        // dd($event->event_date);
     
         return Redirect::route('events.show', $event->slug);
     }
@@ -177,6 +180,7 @@ class EventController extends Controller
                 'name' => 'required|max:255',
                 'flyer_front' => 'max:2048',
                 'flyer_back' => 'max:2048',
+                'event_date' => 'required',
             ]);
     
             $start_time = $request->event_time;
@@ -185,9 +189,11 @@ class EventController extends Controller
             $event->link_event = $request->link_event;
             $event->link_tickets = $request->link_tickets;
             $event->content = $request->content;
-            $event->event_date = $request->event_date;
+            // $event->event_date = $request->event_date;
             // $event->time_start_hours = $start_time['hours'];
             // $event->time_start_minutes = $start_time['minutes'];
+            $new = $request->event_date;
+            $event->event_date = $new;
             $event->event_time = $request->event_time;
     
             // Store the file in storage\app\public folder if file exists in the request

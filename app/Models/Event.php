@@ -59,7 +59,8 @@ class Event extends Model
 
     public function getPartyDateAttribute(): string
     { 
-      return $this->event_date->format('M d Y'); 
+      
+      return $this->event_date->format('M d Y');
     }
 
     // public function getPartyTimeAttribute(): string

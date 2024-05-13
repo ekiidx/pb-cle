@@ -14,6 +14,10 @@ const props = defineProps({
   errors: Object,
 });
 
+const startTime = [
+  { hours: 12, minutes: '0' },
+];
+
 const form = useForm({
     name: props.event?.name,
     content: props.event?.content,
@@ -38,6 +42,10 @@ const submit = () => {
     route("events.update", [props.event.slug])
     );
 };
+
+
+const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+console.log(tz);
 </script>
 
 <template>
@@ -101,13 +109,11 @@ const submit = () => {
                     <VueDatePicker 
                         uid="event_date"
                         v-model="form.event_date"
-                        placeholder="Select Date" 
-                        no-today
-                        auto-apply
-                        required
-                        dark
-                        :enable-time-picker="false"
-                        :min-date="new Date()" />
+                        placeholder="Select Date"
+                        :enable-time-picker="false" 
+                        :start-time="startTime"
+                    />
+                    <InputError :message="errors.event_date" />
                 </div>
 
                 <div class="mt-4">
@@ -121,12 +127,13 @@ const submit = () => {
                         dark
                         required
                         :is-24="false" />
+                  <InputError :message="errors.event_time" />
                 </div>
 
                 <div class="mt-4">
                   <Label for="link_event" value="Event Link" />
                   <Input
-                    id="link"
+                    id="link_event"
                     type="url"
                     class="mt-1 block w-full bg-dark text-white"
                     v-model="form.link_event"
@@ -138,7 +145,7 @@ const submit = () => {
                 <div class="mt-4">
                   <Label for="link_tickets" value="Tickets Link" />
                   <Input
-                    id="link"
+                    id="link_tickets"
                     type="url"
                     class="mt-1 block w-full bg-dark text-white"
                     v-model="form.link_tickets"
