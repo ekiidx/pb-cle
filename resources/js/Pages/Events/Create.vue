@@ -13,6 +13,10 @@ const props = defineProps({
   errors: Object,
 });
 
+const startTime = [
+  { hours: 12, minutes: '0' },
+];
+
 const form = useForm({
     name: "",
     content: "",
@@ -35,9 +39,6 @@ function flyerBackPreview() {
 const submit = () => {
   form.post(route("events.store"));
 };
-
-const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-console.log(tz);
 </script>
 
 <template>
@@ -102,12 +103,11 @@ console.log(tz);
                         uid="event_date"
                         v-model="form.event_date" 
                         placeholder="Select Date" 
-                        no-today
                         auto-apply
                         required
                         dark
                         :enable-time-picker="false"
-                        :min-date="new Date()"
+                        :start-time="startTime"
                     />
                   <InputError :message="errors.event_date" />
                 </div>
@@ -116,10 +116,10 @@ console.log(tz);
                     <Label for="event_time" value="Time" />
                     <VueDatePicker
                         uid="event_time"
-                        v-model="form.event_time" 
-                        placeholder="Select Time"
-                        model-type="hh:mm a"
+                        v-model="form.event_time"
+                        placeholder="Select Time" 
                         time-picker
+                        model-type="hh:mm a"
                         dark
                         required
                         :is-24="false" />

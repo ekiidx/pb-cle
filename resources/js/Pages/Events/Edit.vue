@@ -42,10 +42,6 @@ const submit = () => {
     route("events.update", [props.event.slug])
     );
 };
-
-
-const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-console.log(tz);
 </script>
 
 <template>
@@ -108,9 +104,12 @@ console.log(tz);
                     <Label for="event_date" value="Date" />
                     <VueDatePicker 
                         uid="event_date"
-                        v-model="form.event_date"
-                        placeholder="Select Date"
-                        :enable-time-picker="false" 
+                        v-model="form.event_date" 
+                        placeholder="Select Date" 
+                        auto-apply
+                        required
+                        dark
+                        :enable-time-picker="false"
                         :start-time="startTime"
                     />
                     <InputError :message="errors.event_date" />
