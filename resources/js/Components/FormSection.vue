@@ -8,7 +8,7 @@ const hasActions = computed(() => !! useSlots().actions);
 </script>
 
 <template>
-    <div class="dark border rounded-lg mb-3">
+    <div class="dark border rounded-lg post-card">
         <SectionTitle>
             <template #title>
                 <slot name="title" />

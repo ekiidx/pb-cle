@@ -16,18 +16,10 @@ defineProps({
 <template>
     <AppLayout title="Settings">
 
-         <!-- Header -->
-         <!-- <div class="bg-dark border rounded-lg mb-3 p-3">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                Settings
-            </h2>
-        </div> -->
-
         <div class="main-container">
             <div class="row g-3">
                 
                 <div class="col-lg-8">
-        
          
                     <div v-if="$page.props.jetstream.canUpdateProfileInformation">
                         <UpdateProfileInformationForm :user="$page.props.auth.user" />
@@ -35,17 +27,15 @@ defineProps({
                     </div>
 
                     <div v-if="$page.props.jetstream.canUpdatePassword">
-                        <UpdatePasswordForm class="mt-10 sm:mt-0" />
+                        <UpdatePasswordForm />
                     </div>
 
                     <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
                         <TwoFactorAuthenticationForm
-                            :requires-confirmation="confirmsTwoFactorAuthentication"
-                            class="mt-10 sm:mt-0"
-                        />
+                            :requires-confirmation="confirmsTwoFactorAuthentication" />
                     </div>
 
-                    <LogoutOtherBrowserSessionsForm :sessions="sessions" class="" />
+                    <LogoutOtherBrowserSessionsForm :sessions="sessions" />
 
                     <!-- <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
                         <DeleteUserForm class="mt-10 sm:mt-0" />

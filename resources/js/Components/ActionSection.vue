@@ -3,7 +3,7 @@ import SectionTitle from './SectionTitle.vue';
 </script>
 
 <template>
-    <div class="border rounded-lg mb-3">
+    <div class="border rounded-lg post-card">
         <SectionTitle>
             <template #title>
                 <slot name="title" />
