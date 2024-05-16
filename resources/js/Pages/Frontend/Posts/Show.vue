@@ -121,8 +121,6 @@ const submit = () => {
 										>Delete</Link
 									>
 								</div>
-
-							<!-- Edit and Delete -->
 							</div>
 							
 							<!-- Title -->

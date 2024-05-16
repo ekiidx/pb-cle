@@ -1,60 +1,42 @@
 <script setup>
 import Guest from '@/Layouts/Guest.vue';
-import PostCard from "@/Components/PostCard.vue";
-import Pagination from "@/Components/Pagination.vue";
+import RaverCardIndex from "@/Components/RaverCardIndex.vue";
 import { Head, Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     user: Object,
     posts: Object,
+    events: Object,
     post_count: Number,
     event_count: Number,
     follower_count: Number,
     following_count: Number,
     follow_check: Boolean,
-    unfollow_check: Boolean
+    unfollow_check: Boolean,
+    following: Object
 });
 </script>
 
 <template>
     <Guest>
         <Head>
-            <title>{{ $page.props.user.username }}</title>
+            <title>{{ props.user.username }} - Following</title>
         </Head>
 
         <div class="main-container">
             <div class="row g-3">
                 
 				<div class="col-lg-8">
-                    <!-- <div
-						class="
-						mb-3
-						flex
-						bg-dark
-						rounded-lg
-						border border-gray-200
-						shadow-md
-                        p-3
-						"
-					>
 
-                        <h2 style="color: #ffffff;">Latest Posts</h2>
-                    </div> -->
-                    <PostCard
-                        v-for="post in posts.data"
-                        :post="post"
-                        :community="post.community_slug"
-                        :key="post.id"
-                    />
-                    <!-- Pagination -->
-					<div  
-                        v-if="posts.length > 0"
-                        class="mt-3 pagination-container">
-						<Pagination :links="posts.meta.links" />
-					</div>
-				</div>
+                    <RaverCardIndex
+						v-for="followee in following"
+						:raver="followee"
+						:key="followee.id"
+					/>
 
-				<div class="col-lg-4 raver-profile-row">
+                </div>
+
+                <div class="col-lg-4 raver-profile-row">
                     <div
 						class="
 						mb-3

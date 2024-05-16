@@ -16,7 +16,7 @@ const props = defineProps({
 
       <div class="row">
         <div class="col-lg-8">
-      <h1>hello</h1>
+      <h1>Hey! You shouldn't be here.</h1>
         </div>
         <div class="col-lg-4">
         

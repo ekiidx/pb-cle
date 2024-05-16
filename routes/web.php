@@ -74,6 +74,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 // Ravers
 Route::get('/ravers/{user:slug}', [RaverController::class, 'show'])->name('ravers.show');
+Route::get('/ravers/{user:slug}/followers', [RaverController::class, 'followers'])->name('ravers.followers');
+Route::get('/ravers/{user:slug}/following', [RaverController::class, 'following'])->name('ravers.following');
+Route::get('/ravers/{user:slug}/events', [RaverController::class, 'events'])->name('ravers.events');
+// Route::get('/ravers/{user:slug}/posts', [RaverController::class, 'posts']->name('ravers.posts'));
 
 // Events
 Route::get('events', [EventController::class, 'index'])->name('events.index');
