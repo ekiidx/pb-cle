@@ -2,7 +2,7 @@
 import { Link } from "@inertiajs/vue3";
 
 defineProps({
-  event: Object
+  raver: Object
 });
 </script>
 
@@ -15,47 +15,25 @@ defineProps({
         rounded-lg
         border border-gray-200
         shadow-md
+        p-2
         "
     >
 
-        <div class="w-full" style="padding-right: 48px !important;">
+        <div class="w-full flex" style="padding-right: 48px !important;">
+            <Link
+                :href="route('ravers.show', raver)"
+            >
+                <img style="width: 3.5rem; height: 3.5rem" class="rounded-full object-cover mb-2 mr-3" :src="raver.profile_photo_url">
+            </Link>
+            <Link
+                :href="route('ravers.show', raver)"
+                class="flex align-items-center"
+            >
+                <h1 style="font-size: 1.25rem; font-weight: 600;" class="text-bold text-white mb-3">{{ raver.username }}</h1>
+            </Link>
 
-            <!-- Flex -->
-            <div class="post-flex p-3 text-sm">
-                <div class="flex">
-                    Posted by
-                    <a :href="'/ravers/'+event.user.slug"> 
-                    <span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
-                    <!-- {{ event.created_at_diff }} -->
-                </div>
-            </div>
-
-            <div class="d-flex">
-                <a :href="'/events/'+ event.slug">
-                    <img v-if="event.flyer_front" class="rounded-sm pl-4 pb-3" style="max-width: 7rem; height: auto;" :src="'/storage/'+event.flyer_front">
-                </a>
-                
-                <div>
-                    <!-- {{ event.data }} -->
-                    <a :href="'/events/'+ event.slug">
-                        <h2
-                            class="
-                                pl-4 pr-3 mb-2
-                                font-bold
-                                tracking-tight
-                                text-white
-                                whitespace-break-spaces
-                                post-title
-                            "
-                        >
-                            {{ event.name }}
-                        </h2>
-                    </a>
             
-                    <p class="pl-4 pr-3 mb-3 font-normal text-sm text-gray-300 post-description break-words whitespace-pre-wrap">{{ event.content }}</p>
 
-                </div>
-            </div>
         </div>
     </div>
 </template>
