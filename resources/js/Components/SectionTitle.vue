@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-dark rounded-lg">
+    <div class="bg-dark rounded-t-lg">
         <div class="">
             <h2 class="text-lg font-semibold px-4 pt-4 text-white">
                 <slot name="title" />
