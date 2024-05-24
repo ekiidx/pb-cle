@@ -23,10 +23,10 @@ const props = defineProps({
             <title>{{ props.user.username }} - Following</title>
         </Head>
 
-        <div class="main-container">
-            <div class="row g-3">
+        <div class="main-container profile-show">
+            <div class="row g-lg-3">
                 
-				<div class="col-lg-8">
+				<div class="col-lg-8 order-2 order-lg-1">
 
                     <RaverCardIndex
 						v-for="followee in following"
@@ -36,10 +36,9 @@ const props = defineProps({
 
                 </div>
 
-                <div class="col-lg-4 raver-profile-row">
+                <div class="col-lg-4 raver-profile-row order-1 order-lg-2">
                     <div
 						class="
-						mb-3
 						flex
 						bg-dark
 						rounded-lg
