@@ -58,6 +58,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/posts/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
     Route::post('/posts/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
 
+    // Ravers
+    Route::get('/ravers/{user:slug}/edit', [RaverController::class, 'edit'])->name('ravers.edit');
+    Route::post('/ravers/{user:slug}/update', [RaverController::class, 'update'])->name('ravers.update');
+
     // Events
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
     Route::post('/events/create', [EventController::class, 'store'])->name('events.store');
@@ -80,8 +84,8 @@ Route::get('/ravers/{user:slug}/events', [RaverController::class, 'events'])->na
 // Route::get('/ravers/{user:slug}/posts', [RaverController::class, 'posts']->name('ravers.posts'));
 
 // Events
-Route::get('events', [EventController::class, 'index'])->name('events.index');
-Route::get('events/{event:slug}', [EventController::class, 'show'])->name('events.show');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
 
 // 404
 Route::get('/logout', function () {

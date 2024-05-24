@@ -56,9 +56,6 @@ class EventController extends Controller
             'event_date' => 'required',
         ]);
 
-        // Use if there's an array for the date / time input (vue3 datepicker)
-        $start_time = $request->event_time;
-
         $event = Event::create([
             'user_id' => auth()->id(),
             'name' => $request->name,
@@ -156,9 +153,14 @@ class EventController extends Controller
             return Redirect::route('events.index');
 
         } else {
+            // $new_date = $event->event_date->format('m-d-Y');
+            // $new_date = Carbon::parse($event->event_date)->format('Y/m/d');
 
+            // dd($new_date);
+
+            // $new_date = '2024-05-25';
             return Inertia::render('Events/Edit', compact('event'));
-            
+
         }
     }
 
@@ -167,8 +169,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-
-        //Only owner of post, owner of event, or admin can edit & delete
+        //Only owner of event can update
         $id = Auth::id();
 
         if($id !== $event->user_id) {
@@ -184,7 +185,6 @@ class EventController extends Controller
             ]);
     
             $start_time = $request->event_time;
-    
             $event->name = $request->name;
             $event->link_event = $request->link_event;
             $event->link_tickets = $request->link_tickets;
@@ -192,9 +192,9 @@ class EventController extends Controller
             // $event->event_date = $request->event_date;
             // $event->time_start_hours = $start_time['hours'];
             // $event->time_start_minutes = $start_time['minutes'];
-            $new = $request->event_date;
-            $event->event_date = $new;
-            $event->event_time = $request->event_time;
+            
+            $event->event_date = $request->event_date;
+            $time = $event->event_time = $request->event_time;
     
             // Store the file in storage\app\public folder if file exists in the request
             if ($request->hasfile('flyer_front')) {
@@ -224,7 +224,7 @@ class EventController extends Controller
                 $event->flyer_back_slug = $flyer_back_slug;
                 $event->flyer_back_upload = $flyer_back_slug_new;
             }
-    
+
             $event->update();
         }
 
@@ -236,7 +236,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //Only owner of post, owner of event, or admin can edit & delete
+        //Only owner of event can delete
         $id = Auth::id();
 
         if($id !== $event->user_id) {

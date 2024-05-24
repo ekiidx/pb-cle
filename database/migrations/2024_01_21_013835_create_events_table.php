@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('flyer_back_slug')->nullable();
             $table->string('link_event')->nullable();
             $table->string('link_tickets')->nullable();
-            $table->datetime('event_date')->nullable();
-            $rable->date('event_time')->nullable();
+            $table->date('event_date')->nullable();
+            $table->string('event_time')->nullable();
             $table->integer('time_start_hours')->nullable();
             $table->integer('time_start_minutes')->nullable();
             $table->text('content')->nullable();

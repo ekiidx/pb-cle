@@ -21,7 +21,7 @@ class Event extends Model
     protected $guarded = [];
 
     protected $casts = [
-      'event_date' => 'datetime',
+      'event_date' => 'date:Y-m-d',
     ];
 
     public function user()
@@ -57,38 +57,49 @@ class Event extends Model
       return $this->created_at->diffForHumans(); 
     }
 
+    // public function getDatepickerDateAttribute
+
     public function getPartyDateAttribute(): string
     { 
       
-      return $this->event_date->format('M d Y');
+      $event_date = $this->event_date;
+      // $new_date = Carbon::parse($event_date)->format('M d Y);
+      $new_date = $event_date->format('M d Y');
+
+      return $new_date;
+      // return $event_date;
+ 
     }
 
-    // public function getPartyTimeAttribute(): string
-    // { 
-    //   return $this->event_time->format('h:mmA'); 
-    // }
+    public function getPartyTimeAttribute(): string
+    { 
+      return $this->event_time->format('h:mmA'); 
+    }
 
     public function getDayDateFormatAttribute(): string
     {
-      $day_date_format = $this->event_date->format('d');
+      $event_date = $this->event_date;
+      $day_date_format = $event_date->format('d');
 
       return $day_date_format;
     }
 
     public function getMonthDateFormatAttribute(): string
     {
-      $month_date_format = $this->event_date->format('M');
+      $event_date = $this->event_date;
+ 
+      $month_date_format = $event_date->format('M');
 
       return $month_date_format;
     }
 
     public function getWeekdayFormatAttribute(): string
     { 
-      $weekday_num = $this->event_date->format('w');
-      $days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-      $weekday_format = $days[$weekday_num];
+      $event_date = $this->event_date;
 
-      return $weekday_format;
+     $new_date = $event_date->format('D');
+
+      return $new_date;
 
     }
 

@@ -5,6 +5,7 @@ import Input from "@/Components/Input.vue";
 import InputError from "@/Components/InputError.vue";
 import Label from "@/Components/Label.vue";
 // import InputLabel from '@/Components/InputLabel.vue';
+import { ref } from 'vue';
 import { Head, useForm } from "@inertiajs/vue3";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
@@ -12,10 +13,7 @@ import '@vuepic/vue-datepicker/dist/main.css';
 const props = defineProps({
   errors: Object,
 });
-
-const startTime = [
-  { hours: 12, minutes: '0' },
-];
+const startTime = ref({ hours: 20, minutes: 0 });
 
 const form = useForm({
     name: "",
@@ -99,15 +97,20 @@ const submit = () => {
 
                 <div class="mt-4">
                     <Label for="event_date" value="Date" />
-                    <VueDatePicker 
+                    <!-- <VueDatePicker 
                         uid="event_date"
                         v-model="form.event_date" 
-                        placeholder="Select Date" 
+                        placeholder="Select Date"
                         auto-apply
                         required
                         dark
+                        timezone="UTC"
                         :enable-time-picker="false"
-                        :start-time="startTime"
+                    /> -->
+                    <input 
+                      type="date"
+                      style="width: 100% !important;"
+                      v-model="form.event_date"
                     />
                   <InputError :message="errors.event_date" />
                 </div>
@@ -120,9 +123,16 @@ const submit = () => {
                         placeholder="Select Time" 
                         time-picker
                         model-type="hh:mm a"
+                        :start-time="startTime"
                         dark
                         required
                         :is-24="false" />
+                    <!-- <input 
+                        type="time"
+                        style="width: 100% !important;"
+                        placeholder="8:00 PM"
+                        v-model="form.event_time"
+                    /> -->
                   <InputError :message="errors.event_time" />
                 </div>
 

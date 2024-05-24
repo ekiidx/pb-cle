@@ -14,10 +14,6 @@ const props = defineProps({
   errors: Object,
 });
 
-const startTime = [
-  { hours: 12, minutes: '0' },
-];
-
 const form = useForm({
     name: props.event?.name,
     content: props.event?.content,
@@ -102,15 +98,20 @@ const submit = () => {
 
                 <div class="mt-4">
                     <Label for="event_date" value="Date" />
-                    <VueDatePicker 
+                    <!-- <VueDatePicker 
                         uid="event_date"
                         v-model="form.event_date" 
                         placeholder="Select Date" 
                         auto-apply
                         required
                         dark
+                        :timezone="America/New_york"
                         :enable-time-picker="false"
-                        :start-time="startTime"
+                    /> -->
+                    <input 
+                      type="date"
+                      style="width: 100% !important;"
+                      v-model="form.event_date"
                     />
                     <InputError :message="errors.event_date" />
                 </div>
