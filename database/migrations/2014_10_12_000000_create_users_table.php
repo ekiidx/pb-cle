@@ -21,6 +21,16 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('slug')->unique();
+            $table->string('link_one')->nullable();
+            $table->string('link_two')->nullable();
+            $table->string('link_three')->nullable();
+            $table->string('link_four')->nullable();
+            $table->string('link_five')->nullable();
+            $table->string('link_six')->nullable();
+            $table->string('link_seven')->nullable();
+            $table->string('link_eight')->nullable();
+            $table->string('link_nine')->nullable();
+            $table->string('link_ten')->nullable();
             $table->timestamps();
         });
     }

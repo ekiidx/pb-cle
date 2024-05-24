@@ -1,8 +1,13 @@
 html, body {
     font-size: 16px !important;
 }
-[type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
+input, [type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
     background: #1a1a1b !important;
+    background-color: #1a1a1b !important;
+    color: #ffffff !important;
+    color-scheme: dark;
+}
+input[type="date"]::-webkit-calendar-indicator {
     background-color: #1a1a1b !important;
     color: #ffffff !important;
 }
@@ -133,7 +138,7 @@ input[type="file"] {
     margin-bottom: 0.5rem;
 }
 .raver-profile-row {
-    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
 }
 .gutter {
     --bs-gutter-y: 0.25rem;
@@ -184,7 +189,7 @@ input[type="file"] {
     padding-bottom: 0.5rem;
     padding-right: 0.9rem;
 }
-.home-page .post-description, .communities-show .post-description {
+.home-page .post-description, .communities-show .post-description, .profile-show .post-description {
     display: none;
 }
 .dp__theme_dark {

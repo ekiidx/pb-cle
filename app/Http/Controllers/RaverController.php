@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Resources\CommunityPostResource;
 use App\Http\Resources\CommunityResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Community;
 use App\Models\User;
 use App\Models\Post;
@@ -59,6 +61,15 @@ class RaverController extends Controller
                 $unfollow_check = true;
             }
         }
+
+        //Only owner of post, owner of event, or admin can edit & delete
+        $id = Auth::id();
+
+        if($user_id !== $id) {
+            $can_update = false;
+        }else {
+            $can_update = true;
+        }
         // $posts = Post::where('user_id', $user_id)->withCount('comments')->with('postVotes')->orderBy('votes', 'desc')->take(12)->get();
 
         $posts = CommunityPostResource::collection(Post::with(['user', 'community', 'postVotes' => function ($query) {
@@ -69,24 +80,55 @@ class RaverController extends Controller
 
         // $events = Event::with('user')->where('user_id', $user_id)->latest()->get();
 
-        return Inertia::render('Ravers/Show', compact('user', 'posts', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check'));
+        return Inertia::render('Ravers/Show', compact('user', 'posts', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check', 'can_update'));
     }
 
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit(string $id)
-    // {
-    //     //
-    // }
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(User $user)
+    {
+        //Only owner of post, owner of event, or admin can edit & delete
+        $id = Auth::id();
 
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    // }
+        if($id !== $user->id) {
+
+            return Redirect::route('ravers.show', $user);
+
+        } else {
+
+            return Inertia::render('Ravers/Edit', compact('user'));
+
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, User $user)
+    {
+         //Only owner of user can update
+         $id = Auth::id();
+
+         if($id !== $user->id) {
+ 
+            return Redirect::route('ravers.show', $user);
+ 
+         } else {
+            $user->link_one = $request->link_one;
+            $user->link_two = $request->link_two;
+            $user->link_three = $request->link_three;
+            $user->link_four = $request->link_four;
+            $user->link_five = $request->link_five;
+            $user->link_six = $request->link_six;
+            $user->link_seven = $request->link_seven;
+            $user->link_eight = $request->link_eight;
+
+            $user->update();
+         }
+
+         return Redirect::route('ravers.show', $user);
+    }
 
     // /**
     //  * Remove the specified resource from storage.
