@@ -32,7 +32,7 @@ const submit = () => {
 
 <template>
     <Guest>
-
+        
         <Head title="Log in" />
 
         <AuthenticationCard>

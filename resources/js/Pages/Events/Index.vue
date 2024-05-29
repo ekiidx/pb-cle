@@ -16,17 +16,17 @@ const props = defineProps({
       	<Head title="Events" />
 
 		<div class="main-container">
-			<div class="row g-3">
+			<div class="row gutter">
 				<div class="col-lg-8">
 					<div
 						class="
 						header-post-box
 						flex
+						items-center
 						justify-between
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						shadow-md
 						p-3
 						"
 					>
@@ -48,27 +48,28 @@ const props = defineProps({
 					/>
 
 					<!-- Pagination -->
-					<div class="mt-3 pagination-container">
+					<div class="pagination-container">
 						<Pagination :links="events.links" />
 					</div>
 				</div>
 
+				<!-- Sidebar -->
 				<div class="col-lg-4">
-					<div class="border rounded-lg mb-3">
+					<div class="about-box border rounded-lg">
 						<div class="bg-darkorchid rounded-lg p-3">
-							<img class="d-inline" style="max-height: 1.3rem; max-width: 1.45rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
+							<img class="d-inline" style="max-height: 1.1rem; max-width: 1.25rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
 							<h2
 							class="
 								font-semibold
 								text-lg
 								text-white
 								d-inline
-							"
+								"
 							>
 								About Communities
 							</h2>
 						</div>
-						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">Rad <span class="text-electricgreen font-bold">local events</span> are posted here.</p>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">Rad <span class="text-electricgreen font-bold">local events</span> are posted here.</p>
 					</div>
 
 					<EventSidebar :events="events_sidebar">

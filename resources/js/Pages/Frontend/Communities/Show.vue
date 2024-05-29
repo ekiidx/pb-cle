@@ -19,7 +19,7 @@ defineProps({
 		</Head>
 
 		<div class="main-container communities-show">
-			<div class="row g-3">
+			<div class="row gutter">
 
 				<!-- Main Column -->
 				<div class="col-lg-8">
@@ -29,6 +29,7 @@ defineProps({
 						class="
 						header-post-box
 						flex
+						items-center
 						bg-dark
 						rounded-lg
 						border border-gray-200
@@ -56,16 +57,16 @@ defineProps({
 					/>
 
 					<!-- Pagination -->
-					<div class="mt-3 pagination-container">
+					<div class="pagination-container">
 						<Pagination :links="posts.meta.links" />
 					</div>
 				</div>
 
 				<!-- Side Column -->
 				<div class="col-lg-4">
-					<div class="border rounded-lg mb-3 bg-dark">
+					<div class="about-box border rounded-lg bg-dark">
 						<div class="bg-darkorchid rounded-lg p-3">
-							<img class="d-inline" style="max-height: 1.3rem; max-width: 1.45rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
+							<img class="d-inline" style="max-height: 1.1rem; max-width: 1.25rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
 							<h2
 							class="
 								font-semibold
@@ -77,7 +78,7 @@ defineProps({
 								About {{ community.name }}
 							</h2>
 						</div>
-						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">{{ community.description }}</p>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">{{ community.description }}</p>
 					</div>
 
 					<CommunityList :communities="communities.data">

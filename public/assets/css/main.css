@@ -107,9 +107,11 @@ input[type="file"] {
     padding-top: 85px;
 }
 .post-title {
-    font-size: 1.4rem;
-    line-height: 1.75rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    line-height: 1.45rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 2.65rem;
 }
 .profile-img {
     width: 2.3rem;
@@ -123,7 +125,7 @@ input[type="file"] {
     margin-bottom: 0.5rem;
 }
 .post-main-container {
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
 }
 .welcome-box {
     margin-bottom: 0.5rem;
@@ -132,7 +134,16 @@ input[type="file"] {
 .header-post-box {
     margin-bottom: 0.5rem;
 }
+.popular-posts-box {
+    margin-bottom: 0.5rem;
+}
 .top-communities-box {
+    margin-bottom: 0.5rem;
+}
+.about-box {
+    margin-bottom: 0.5rem;
+}
+.communities-table-box {
     margin-bottom: 0.5rem;
 }
 .hot-events-box {
@@ -159,7 +170,7 @@ input[type="file"] {
     margin-right: .25rem;
 }
 .event-main-container {
-    margin-bottom: 0rem;
+    margin-bottom: 0.5rem;
 }
 .event-info-table td {
     text-align: left;
@@ -222,9 +233,9 @@ input[type="file"] {
     --dp-range-between-border-color: var(--dp-hover-color, #fff);
 }
 @media only screen and (min-width: 652px) {
-    .post-description {
+    /* .post-description {
         padding-right: 2.5rem !important;
-    }
+    } */
     .nav-top span.pb-cle-logofont {
         display: inline-block !important;
         margin-right: 1rem;
@@ -255,13 +266,47 @@ input[type="file"] {
         height: 3rem;
     }
     .event-main-container {
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
     }
-    .post-main-container {
-        margin-bottom: 1rem;
+
+    .hot-events-box {
+        margin-bottom: 0.75rem;
+    }
+    /* .register-btn {
+        padding: 0.9rem 1.5rem;
+    } */
+    /* .login-btn {
+        padding: 0.9rem 1.85rem;
+    } */
+    .welcome-box {
+        margin-bottom: 0.75rem;
+    }
+    .top-communities-box {
+        margin-bottom: 0.75rem;
+    }
+    .popular-posts-box {
+        margin-bottom: 0.75rem;
+    }
+    .about-box {
+        margin-bottom: 0.75rem;
+    }
+    .communities-table-box {
+        margin-bottom: 0.75rem;
+    }
+    .header-post-box {
+        margin-bottom: 0.75rem;
+    }
+    /* nav.main-nav {
+        width: auto;
+    } */
+    .post-card {
+        margin-bottom: 0.75rem;
     }
     .home-page .post-description, .communities-show .post-description {
         display: block;
+        padding-right: 2.65rem;
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
     }
     .read-more-box p {
         /* display: flex;
@@ -281,30 +326,6 @@ input[type="file"] {
         padding-left: 12rem;
         padding-right: 10rem;
     }
-    .hot-events-box {
-        margin-bottom: 0.75rem;
-    }
-    /* .register-btn {
-        padding: 0.9rem 1.5rem;
-    } */
-    /* .login-btn {
-        padding: 0.9rem 1.85rem;
-    } */
-    .welcome-box {
-        margin-bottom: 0.75rem;
-    }
-    .top-communities-box {
-        margin-bottom: 0.75rem;
-    }
-    .header-post-box {
-        margin-bottom: 0.75rem;
-    }
-    /* nav.main-nav {
-        width: auto;
-    } */
-    .post-card {
-        margin-bottom: 0.75rem;
-    }
     .gutter {
         --bs-gutter-y: 0.75rem;
         --bs-gutter-x: 0.75rem;
@@ -315,15 +336,20 @@ input[type="file"] {
     .raver-profile-row {
         margin-top: var(--bs-gutter-y);
     }
+    .post-title {
+        font-size: 1.4rem;
+        line-height: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
 }
 @media only screen and (min-width: 1440px) {
     .main-container {
         padding-left: 17rem;
         padding-right: 17rem;
     }
-    .post-description {
+    /* .post-description {
         padding-right: 3rem !important;
-    }
+    } */
     .post-header {
         margin-bottom: 1rem;
     }

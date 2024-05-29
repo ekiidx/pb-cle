@@ -7,18 +7,18 @@ defineProps({
 </script>
 
 <template>
-  <div class="shadow-md border top-communities-box bg-dark rounded-lg">
+  <div class="top-communities-box border bg-dark rounded-lg">
     <div class="bg-darkorchid rounded-lg p-3">
       <img class="d-inline" style="max-height: 1.2rem; max-width: 1.4rem; margin-right: 0.65rem; padding-bottom: 0.23rem" src="/assets/img/top.svg">
       <h2 class="font-semibold text-lg text-white d-inline">
         <slot name="title" />
       </h2>
     </div>
-    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-4">
+    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-3">
       <li
         v-for="community in communities"
         :key="community.id"
-        class="py-3 sm:py-4"
+        class="py-3"
       >
         <div class="flex items-center space-x-4">
           <Link

@@ -144,7 +144,7 @@ const props = defineProps({
 
                         </div>
 
-                        <div v-if="user.link_four || user.link_five || user.link_six || user.link_seven || user.link_eight" class="mb-3">
+                        <div v-if="user.link_four || user.link_five || user.link_six || user.link_seven || user.link_eight">
                             <h2 class="text-white fw-600 text-sm">Socials</h2>
                             <a v-if="user.link_four" :href="user.link_four" class="text-sm d-block">{{ user.link_four }}</a>
                             <a v-if="user.link_five" :href="user.link_five" class="text-sm d-block">{{ user.link_five }}</a>

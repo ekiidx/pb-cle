@@ -8,18 +8,18 @@ defineProps({
 </script>
 
 <template>
-  <div class="border rounded-lg popular-posts-box mb-3 bg-dark">
+  <div class="popular-posts-box border rounded-lg bg-dark">
     <div class="bg-darkorchid rounded-lg p-3">
-      <img class="d-inline" style="max-height: 1.45rem; max-width: 1.45rem; margin-right: 0.65rem; padding-bottom: 0.35rem" src="/assets/img/fire.svg">
+      <img class="d-inline" style="max-height: 1.3rem; max-width: 1.3rem; margin-right: 0.65rem; padding-bottom: 0.35rem" src="/assets/img/fire.svg">
       <h2 class="font-semibold text-lg text-white d-inline">
         <slot name="title" />
       </h2>
     </div>
-    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-4">
+    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-3">
       <li 
         v-for="post in posts" 
         :key="post.id" 
-        class="py-3 sm:py-4"
+        class="py-2 sm:py-3"
       >
         <div class="flex items-center space-x-4">
           <Link

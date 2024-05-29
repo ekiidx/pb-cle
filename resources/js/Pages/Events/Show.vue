@@ -33,12 +33,15 @@ const submit = () => {
         </Head>
 
         <div class="main-container">
-          	<div class="row g-3">
+          	<div class="row gutter">
+				<!-- Main Column -->
             	<div class="col-lg-8">
+					<!--- Header -->
 					<div
 						class="
 						header-post-box
 						flex
+						items-center
 						bg-dark
 						rounded-lg
 						border border-gray-200
@@ -48,7 +51,8 @@ const submit = () => {
 						"
 					>
 						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
-							/<Link :href="route('events.index')">Events</Link>
+							/
+							<Link :href="route('events.index')">Events</Link>
 						</h2>
 						<Link
 							:href="route('events.create')"
@@ -63,6 +67,7 @@ const submit = () => {
 						> -->
 					</div>
 
+					<!-- Event Card -->
 					<div
 						class="
 						event-main-container
@@ -70,126 +75,152 @@ const submit = () => {
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						shadow-md
 						"
 					>
-						<div class="w-full" style="padding-right: 48px !important;">
-							<!-- Flex -->
-							<div class="px-3 py-3">
-								<div class="post-flex mb-4 text-sm">
-									Posted by
-									<a :href="'/ravers/'+event.data.user_slug"><span class="font-semibold mx-1 text-darkorchid">{{ event.data.username }}</span></a>
-									<span class="mr-3">{{ event.data.created_at }}</span>
+						<!-- Main Section -->
+						<div class="w-full">
+							<div class="post-header flex flex-wrap">
+								<!-- Posted by -->
+								<a :href="'/ravers/'+event.data.user_slug">
+								<span class="font-semibold mr-1 text-darkorchid">
+									{{ event.data.username }}
+								</span></a>
+								<span class="mr-2">
+									{{ event.data.created_at }}
+								</span>
 
-									<p class="mr-3" v-if="props.new" style="color:yellow; font-weight: 600; font-size: .82rem;">NEW</p>
-									{{ props.carbon_now }}
+								<!-- NEW -->
+								<span class="mr-2" v-if="props.new" style="color:yellow; font-weight: 600; font-size: .85rem; margin-top: 0.2rem; position: relative;">
+									NEW
+								</span>
 
-									
-										<Link v-if="can_update"
-											:href="
-											route('events.edit', [
-												event.data.slug,
-											])
-											"
-											class="
-											font-semibold
-											text-electricgreen
-											mr-2
-											"
-											>Edit</Link
-										>
-										<Link v-if="can_delete"
-											:href="
-											route('events.destroy', [
-												event.data.slug,
-											])
-											"
-											class="
-											font-semibold
-											text-darkorchid
-											"
-											method="delete"
-											as="button"
-											type="button"
-											onclick="return confirm('Are you sure you wish to delete this event?')"
-											>Delete</Link
-										>
-									
+								<div v-if="$page.props.auth.auth_check">
+									<Link v-if="can_update"
+										:href="
+										route('events.edit', [
+											event.data.slug,
+										])
+										"
+										class="
+										font-semibold
+										text-electricgreen
+										mr-2
+										"
+										>Edit</Link
+									>
 								</div>
+								<div v-if="$page.props.auth.auth_check">
+									<Link v-if="can_delete"
+										:href="
+										route('events.destroy', [
+											event.data.slug,
+										])
+										"
+										class="
+										font-semibold
+										text-darkorchid
+										"
+										method="delete"
+										as="button"
+										type="button"
+										onclick="return confirm('Are you sure you wish to delete this event?')"
+										>Delete</Link
+									>
+								</div>
+							</div>
+
+							<!-- Title -->
+							<h1 class="pl-4 pr-4 mb-4 font-bold tracking-tight text-white whitespace-break-spaces post-title">
+								{{ event.data.name }}
+							</h1>
+							<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
+
 							
-								<h1 class="font-semibold text-2xl text-white mb-4">{{ event.data.name }}</h1>
-								<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
+							<!-- Flyer -->
+							<div class="mb-4">
+								<img style="max-width: 100%; height: auto;" v-if="event.data.flyer_front_upload" class="" :src="'/storage/flyers/'+event.data.flyer_front_upload">
+								<img style="max-width: 100%; height: auto;" v-if="event.data.flyer_back_upload" class="" :src="'/storage/flyers/'+event.data.flyer_back_upload">
+							</div>
+
 							
-								<div class="mb-4">
-									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.data.flyer_front_upload" class="" :src="'/storage/flyers/'+event.data.flyer_front_upload">
-									<img style="width: 100%; max-width: 40rem; height: auto;" v-if="event.data.flyer_back_upload" class="" :src="'/storage/flyers/'+event.data.flyer_back_upload">
-								</div>
+							<!-- Content -->
+							<div class="pl-4 pr-3 mb-4">
+								<p class="text-gray-300 break-words whitespace-pre-wrap">
+									{{ event.data.content }}
+								</p>
+							</div>
 
-								<div class="mb-4">
-									<p class="text-gray-300 break-words whitespace-pre-wrap">{{ event.data.content }}</p>
-								</div>
-
+							<!-- Divider -->
+							<!-- <div class="px-3" v-if="event.data.event_comments != 0">
 								<hr />
+							</div> -->
 
-								<!-- Comments -->
-								<div class="pt-4">
-									<ul role="list" class="">
-										<li
-											v-for="event_comment in event.data.event_comments"
-									
-											class="flex flex-col"
-										>
-											<div class="text-sm">
-												<!-- Commented by -->
-												<a :href="'/ravers/'+event_comment.username">
-												<span class="font-semibold text-darkorchid">{{
-													event_comment.user_slug
-												}}</span></a>
-												{{ event_comment.created_at }}
-											</div>
-											<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
-												{{ event_comment.content }}
-											</div>
-										</li>
-									</ul>
-								</div>
-							
-								<!-- Textarea -->
-								<div v-if="$page.props.auth.user">
-									<form class="max-w-md" @submit.prevent="submit">
-										<div class="mb-3">
-											<textarea
-											v-model="form.content"
-											id="comment"
-											rows="5"
-											class="mt-1 block w-full bg-dark text-white"
-											placeholder="Your comment..."
-											></textarea>
+							<!-- Comments -->
+							<div class="px-3 mb-3">
+								<ul role="list">
+									<li
+										v-for="event_comment in event.data.event_comments"
+										class="flex flex-col"
+									>
+										<div class="text-sm">
+											<!-- Commented by -->
+											<a :href="'/ravers/'+event_comment.username">
+											<span class="font-semibold text-darkorchid mr-1">{{
+												event_comment.user_slug
+											}}</span></a>
+											{{ event_comment.created_at }}
 										</div>
-										<div class="mb-2">
-											<button
-											class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
-											>
+										<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
+											{{ event_comment.content }}
+										</div>
+									</li>
+								</ul>
+							</div>
+						
+							<!-- Textarea -->
+							<div v-if="$page.props.auth.user">
+								<form @submit.prevent="submit">
+									<div class="px-3 mb-4">
+										<textarea
+										v-model="form.content"
+										id="comment"
+										rows="5"
+										class="mt-1 block w-full bg-dark text-white"
+										placeholder="Your comment..."
+										></textarea>
+									</div>
+									<div class="pl-4 pr-4 mb-3">
+										<button
+										class="
+											comment-btn
+											items-center
+											border-transparent
+											bg-darkorchid
+											fw-600
+											text-white
+											font-xsss
+											text-center
+											lh-20
+											rounded-xl
+										">
 											Comment
-											</button>
-										</div>
-									</form>
-								</div>
-
+										</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 
+				<!-- Sidebar -->
             	<div class="col-lg-4">
 					<div
 						class="
-						mb-3
+						about-box
 						pb-2
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						shadow-md
 						"
 					>
 						<table class="event-info-table">
@@ -210,9 +241,7 @@ const submit = () => {
 						</table>
 					</div>
             	</div>
-            	<!-- {{ $page.props.event }} -->
           	</div>
-     
         </div>
   	</Guest>
 </template>

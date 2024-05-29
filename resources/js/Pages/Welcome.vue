@@ -36,7 +36,6 @@ defineProps({
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						shadow-md
 						"
 					>
 						<i style="margin-right: 0.6rem" class="feather-zap font-sm text-electricgreen d-inline"></i>

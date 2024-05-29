@@ -30,32 +30,30 @@ const submit = () => {
 </script>
 
 <template>
-  <Guest>
-   	<div class="main-container">
- 
-			<Head>
-				<title>{{ community.name }} - {{ post.data.title }}</title>
-			</Head>
+  	<Guest>
+		<Head>
+			<title>{{ community.name }} - {{ post.data.title }}</title>
+		</Head>
 
-			<div class="row g-3">
-
+   		<div class="main-container">
+			<div class="row gutter">
 				<!-- Main Column -->
 				<div class="col-lg-8">
-
 					<!--- Header -->
 					<div
 						class="
 						header-post-box
 						flex
+						items-center
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						shadow-md
 						justify-between
 						p-3
 						"
 					>
-						<h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">/</span>
+						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
+							<span class="text-white">/</span>
 							<Link :href="route('frontend.communities.show', community.slug)">
 								{{ community.name }}
 							</Link>
@@ -68,7 +66,16 @@ const submit = () => {
 					</div>
 					
 					<!-- Post Card -->
-					<div class="post-main-container flex bg-dark border rounded-lg text-sm">
+					<div 
+						class="
+						post-main-container
+						flex
+						bg-dark
+						border
+						rounded-lg
+						text-sm
+						"
+					>
 
 						<!-- Vote -->
 						<div>
@@ -76,18 +83,19 @@ const submit = () => {
 						</div>
 
 						<!-- Main Section -->
-						<div style="padding-right: 48px !important" class="w-full">
-							<div class="flex flex-col sm:flex-row py-3 px-3">
-								<div class="mr-3">
-									<!-- Posted by -->
-									<a :href="'/ravers/'+post.data.user_slug">
-									<span class="font-semibold mr-1 text-darkorchid">
-										{{ post.data.username }}
-									</span></a>
-									
-									{{ post.data.created_at }}
-								</div>
+						<div class="w-full">
 
+							<!-- Header -->
+							<div class="flex flex-wrap post-header text-sm">
+								<!-- Posted by -->
+								<a :href="'/ravers/'+post.data.user_slug">
+								<span class="font-semibold mr-1 text-darkorchid">
+									{{ post.data.username }}
+								</span></a>
+								<span class="mr-2">
+									{{ post.data.created_at }}
+								</span>
+									
 								<div v-if="$page.props.auth.auth_check">
 									<Link v-if="can_update"
 										:href="
@@ -103,6 +111,8 @@ const submit = () => {
 										"
 										>Edit</Link
 									>
+								</div>
+								<div v-if="$page.props.auth.auth_check">
 									<Link v-if="can_delete"
 										:href="
 										route('communities.posts.destroy', [
@@ -122,56 +132,65 @@ const submit = () => {
 									>
 								</div>
 							</div>
-							
-							<!-- Title -->
-							<h1 class="pl-4 pr-3 mb-2 font-bold tracking-tight text-white whitespace-break-spaces post-title">
-								{{ post.data.title }}
-							</h1>
 
-							<!-- Title -->
-							<p class="text-gray-300 px-3 pt-2 whitespace-pre-wrap break-words">{{ post.data.description }}</p>
-							
-							<!-- Link -->
-							<div class="px-3 py-2 mb-3">
-								<a
-									:href="post.data.url"
-									class="font-semibold text-electricgreen text-sm break-words"
-									>{{ post.data.url }}</a
-								>
-							</div>
+							<!-- <div style="padding-right: 48px !important;"> -->
+								<!-- Title -->
+								<h1 class="pl-4 pr-4 mb-2 font-bold tracking-tight text-white post-title" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
+									{{ post.data.title }}
+								</h1>
 
-							<a :href="'/storage/post-images/'+ post.data.post_image">
-                    			<img v-if="post.data.post_image" class="rounded-sm pl-4 pb-3" style="max-width: 100%; height: auto;" :src="'/storage/post-images/'+post.data.post_image">
+								<!-- Description -->
+								<p class="text-gray-300 px-3 pt-2" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">{{ post.data.description }}</p>
+								
+								<!-- Link -->
+								<div class="px-3 py-2 mb-3">
+									<a
+										:href="post.data.url"
+										class="font-semibold text-electricgreen text-sm break-words"
+										style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;"
+										>{{ post.data.url }}</a
+									>
+								</div>
+							<!-- </div> -->
+
+							<!-- Image -->
+							<a v-if="post.data.post_image" :href="'/storage/post-images/'+ post.data.post_image">
+                    			<img v-if="post.data.post_image" class="mb-3" style="max-width: 100%; height: auto;" :src="'/storage/post-images/'+post.data.post_image">
                 			</a>
 
-							<hr />
+							<!-- Divider -->
+							<!-- <div style="padding-right: 48px !important;"> -->
+								<!-- <div class="px-3" v-if="post.data.comments != 0">
+									<hr />
+								</div> -->
+								
+								<!-- Comments -->
+								<div v-if="post.data.comments != 0" class="px-3 mb-3">
+									<ul role="list">
+										<li
+											v-for="(comment, index) in post.data.comments"
+											:key="index"
+											class="flex flex-col"
+										>
+											<div class="text-sm">
+												<!-- Commented by -->
+												<a :href="'/ravers/'+comment.user_slug">
+												<span class="font-semibold text-darkorchid mr-1">{{
+													comment.username
+												}}</span></a>
+												{{ comment.created_at }}
+											</div>
+											<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
+												{{ comment.content }}
+											</div>
+										</li>
+									</ul>
+								</div>
+							<!-- </div> -->
 
-							<!-- Comments -->
-							<div class="px-3 pt-4 mb-5">
-								<ul role="list" class="">
-									<li
-										v-for="(comment, index) in post.data.comments"
-										:key="index"
-										class="flex flex-col"
-									>
-										<div class="text-sm">
-											<!-- Commented by -->
-											<a :href="'/ravers/'+comment.user_slug">
-											<span class="font-semibold text-darkorchid mr-1">{{
-												comment.username
-											}}</span></a>
-											{{ comment.created_at }}
-										</div>
-										<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
-											{{ comment.content }}
-										</div>
-									</li>
-								</ul>
-							</div>
-						
 							<!-- Textarea -->
 							<div v-if="$page.props.auth.user.username">
-								<form class="max-w-md" @submit.prevent="submit">
+								<form @submit.prevent="submit">
 									<div class="px-3 mb-3">
 										<textarea
 										v-model="form.content"
@@ -194,9 +213,8 @@ const submit = () => {
 											text-center
 											lh-20
 											rounded-xl
-										"
-										>
-										Comment
+										">
+											Comment
 										</button>
 									</div>
 								</form>
@@ -205,22 +223,30 @@ const submit = () => {
 					</div>
 				</div>
 			
+				<!-- Sidebar -->
 				<div class="col-lg-4">
-					<div class="border rounded-lg mb-3 bg-dark">
+					<div 
+						class="
+						about-box
+						border
+						rounded-lg
+						bg-dark
+						"
+					>
 						<div class="bg-darkorchid rounded-lg p-3">
-							<img class="d-inline" style="max-height: 1.3rem; max-width: 1.45rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
+							<img class="d-inline" style="max-height: 1.1rem; max-width: 1.25rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
 							<h2
 							class="
 								font-semibold
 								text-lg
 								text-white
 								d-inline
-							"
+								"
 							>
 								About {{ community.name }}
 							</h2>
 						</div>
-						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">{{ community.description }}</p>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">{{ community.description }}</p>
 					</div>
 					
 					<PostList :posts="posts.data" :community="community">

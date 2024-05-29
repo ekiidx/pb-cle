@@ -18,13 +18,13 @@ defineProps({
       border border-gray-200
     "
   >
-    <div class="">
+    <div>
       <PostVote :post="post" />
     </div>
-    <div class="w-full" style="padding-right: 48px !important;">
 
-      <!-- Flex -->
-      <div class="post-flex post-header text-sm">
+    <div class="w-full">
+      <!-- Header -->
+      <div class="post-header text-sm">
         <Link
           :href="route('frontend.communities.show', community)"
           class="font-semibold mr-1 hover:text-indigo-700"
@@ -42,22 +42,21 @@ defineProps({
       >
         <h2
           class="
-            pl-4 pr-3
+            post-title
             font-bold
             tracking-tight
             text-white
-            whitespace-break-spaces
-            post-title
           "
+          style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;"
         >
           {{ post.title }}
         </h2>
       </Link>
-      <p class="pl-4 pr-3 mb-3 font-normal text-sm text-gray-300 post-description break-words whitespace-pre-wrap">
+      <p class="post-description font-normal text-sm text-gray-300 " style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
         {{ post.description }}
       </p>
-      <a v-if="post.post_image" :href="'/posts/'+community+'/posts/'+post.slug">
-        <img class="rounded-sm pl-4 pb-3" style="max-width: 100%; height: auto;" :src="'/storage/post-images/'+post.post_image">
+      <a v-if="post.post_image" :href="'/posts/'+community+'/posts/'+post.slug" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
+        <img class="mb-3" style="width: 100%; height: auto;" :src="'/storage/post-images/'+post.post_image">
       </a>
 
       <!-- Flex -->
@@ -83,7 +82,7 @@ defineProps({
               clip-rule="evenodd"
             ></path>
           </svg>
-        </Link>
+        </Link> 
       </div>
     </div>
   </div>

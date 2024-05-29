@@ -15,7 +15,7 @@ defineProps({
         <slot name="title" />
       </h2>
     </div>
-    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-4">
+    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-3">
       <li
         v-for="event in events"
         :key="event.id"

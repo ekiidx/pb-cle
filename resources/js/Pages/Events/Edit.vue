@@ -46,7 +46,7 @@ const submit = () => {
   <AppLayout title="Dashboard">
 
     <div class="main-container">
-      <div class="row g-3">
+      <div class="row gutter">
 
 		<!-- Main Column -->
 		<div class="col-lg-8">
@@ -77,10 +77,10 @@ const submit = () => {
 					</div>
 
           <!-- Post Card -->
-          <div class="flex mb-3 bg-dark border rounded-lg text-sm">
+          <div class="post-card bg-dark border rounded-lg text-sm">
 
             <!-- Main Section -->
-            <div style="padding-right: 48px !important" class="w-full py-3 px-3">
+            <div class="w-full py-3 px-3">
 
               <form @submit.prevent="submit">
                 <div>
@@ -167,31 +167,34 @@ const submit = () => {
                   <InputError :message="errors.content" />
                 </div>
 
+                <!-- Flyer Upload -->
+                <div class="mb-4">
+                  <div class="mb-2">
+                    <Label class="mb-1" for="flyer_front" value="Flyer Front" />
+                      <img 
+                        v-if="props.event.flyer_front_upload" 
+                        class="rounded-sm pb-3" 
+                        style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                        id="flyerFrontFrame"
+                        :src="'/storage/flyers/'+event.flyer_front_upload">
+                        <InputError :message="errors.flyer_front" />
+                      <input style="display:block" name="flyer_front" type="file" @input="form.flyer_front = $event.target.files[0]" @change="flyerFrontPreview()" />
+                  </div>
+
+                  <div style="margin-bottom: 2rem;">
+                    <Label class="mb-1" for="flyer_back" value="Flyer Back" />
+                      <img 
+                        v-if="props.event.flyer_back_upload" 
+                        class="rounded-sm pb-3" 
+                        style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                        id="flyerBackFrame"
+                        :src="'/storage/flyers/'+event.flyer_back_upload">
+                        <InputError :message="errors.flyer_back" />
+                      <input style="display:block" name="flyer_back" type="file" @input="form.flyer_back = $event.target.files[0]" @change="flyerBackPreview()" />
+                  </div>
+                </div>
+
                 <div class="mb-2">
-                  <Label class="mb-1" for="flyer_front_upload" value="Flyer Front" />
-                    <img 
-                      v-if="props.event.flyer_front_upload" 
-                      class="rounded-sm pb-3" 
-                      style="max-width: 7rem; max-height: 5rem; height: auto;" 
-                      id="flyerFrontFrame"
-                      :src="'/storage/flyers/'+event.flyer_front_upload">
-                      <InputError :message="errors.flyer_front" />
-                    <input style="display:block" name="flyer_front" type="file" @input="form.flyer_front = $event.target.files[0]" @change="flyerFrontPreview()" />
-                </div>
-
-                <div style="margin-bottom: 2rem;">
-                  <Label class="mb-1" for="flyer_back" value="Flyer Back" />
-                    <img 
-                      v-if="props.event.flyer_back_upload" 
-                      class="rounded-sm pb-3" 
-                      style="max-width: 7rem; max-height: 5rem; height: auto;" 
-                      id="flyerBackFrame"
-                      :src="'/storage/flyers/'+event.flyer_back_upload">
-                      <InputError :message="errors.flyer_back" />
-                    <input style="display:block" name="flyer_back" type="file" @input="form.flyer_back = $event.target.files[0]" @change="flyerBackPreview()" />
-                </div>
-
-                <div class="flex items-center mt-4 mb-2">
                   <Button
                     class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
                     :class="{ 'opacity-25': form.processing }"
@@ -200,6 +203,7 @@ const submit = () => {
                     Submit
                   </Button>
                 </div>
+                
               </form>
             </div>
           </div>
@@ -208,19 +212,19 @@ const submit = () => {
         <div class="col-lg-4">
           <div class="border rounded-lg mb-3">
             <div class="bg-darkorchid rounded-lg p-3">
-              <img class="d-inline" style="max-height: 1.2rem; max-width: 1.45rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/edit.svg">
+              <img class="d-inline" style="max-height: 1.1rem; max-width: 1.25rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/edit.svg">
               <h2
               class="
                 font-semibold
                 text-lg
                 text-white
                 d-inline
-              "
+                "
               >
                 Edit Event
               </h2>
             </div>
-            <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">You can use this screen to edit your event.</p>
+            <p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">You can use this screen to edit your event.</p>
           </div>
 		    </div>
       </div>

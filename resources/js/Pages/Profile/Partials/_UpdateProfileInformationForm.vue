@@ -1,11 +1,8 @@
 <script setup>
-import { ref, computed, } from 'vue';
+import { ref } from 'vue';
 import { Link, router, useForm } from '@inertiajs/vue3';
 import ActionMessage from '@/Components/ActionMessage.vue';
-import Button from "@/Components/Button.vue";
-import Input from "@/Components/Input.vue";
-import Label from "@/Components/Label.vue";
-import FormSectionProfile from '@/Components/FormSectionProfile.vue';
+import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -14,17 +11,13 @@ import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
     user: Object,
-    model: Object,
-    errors: Object
 });
 
 const form = useForm({
     _method: 'PUT',
+    username: props.user.username,
+    email: props.user.email,
     photo: null,
-    website_url: "",
-    website_url_2: "",
-    website_url_3: "",
-    website_url_4: ""
 });
 
 const verificationLinkSent = ref(null);
@@ -80,50 +73,18 @@ const clearPhotoFileInput = () => {
         photoInput.value.value = null;
     }
 };
-
-
-
-// <!-- Repeater -->
-// const getInitialItems = () => []
-// const items = ref(getInitialItems())
-// let id = items.value.length + 1
-
-// function insert() {
-//   const i = items.value.length
-//   items.value.splice(i, 0, id++)
-// }
-
-// function reset() {
-//   items.value = getInitialItems()
-//   id = items.value.length + 1
-// }
-
-// function remove(item) {
-//   const i = items.value.indexOf(item)
-//   if (i > -1) {
-//     items.value.splice(i, 1)
-//   }
-// }
-
 </script>
 
 <template>
+    <FormSection @submitted="updateProfileInformation">
+        
+        <template #title>
+            Profile Information
+        </template>
 
-<!-- Repeator-->
-  <!-- <div>
-    <div class="flex justify-between">
-      <button @click="insert">Insert</button>
-      <button @click="reset">Reset</button>
-    </div>
-    <TransitionGroup tag="ul" name="fade" class="container">
-      <li v-for="item in items" class="item" :key="item">
-        {{ item }}
-        <button @click="remove(item)">x</button>
-      </li>
-    </TransitionGroup>
-  </div> -->
-
-    <FormSectionProfile @submitted="updateProfileInformation">
+        <template #description>
+            Update your account's profile information and email address.
+        </template>
 
         <template #form>
             <!-- Profile Photo -->
@@ -183,77 +144,40 @@ const clearPhotoFileInput = () => {
                 <InputError :message="form.errors.name" class="mt-2" />
             </div> -->
 
+            <!-- Email -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="email" value="Email" />
+                <TextInput
+                    id="email"
+                    v-model="form.email"
+                    type="email"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="username"
+                />
+                <InputError :message="form.errors.email" class="mt-2" />
 
+                <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
+                    <p class="text-sm mt-2 text-white">
+                        Your email address is unverified.
 
+                        <Link
+                            :href="route('verification.send')"
+                            method="post"
+                            as="button"
+                            class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                            @click.prevent="sendEmailVerification"
+                        >
+                            Click here to re-send the verification email.
+                        </Link>
+                    </p>
 
-            <div>
-            <Label for="website_url" value="Website Url" />
-            <Input
-              id="website_url"
-              type="text"
-              class="mt-1 block w-full bg-dark text-white"
-              v-model="form.website_url"
-              autofocus
-              autocomplete=""
-            />
-            <InputError :message="errors.website_url" />
-          </div>
-
-          <div>
-          <Label for="website_url_2" value="Website Url" />
-            <Input
-              id="website_url_2"
-              type="text"
-              class="mt-1 block w-full bg-dark text-white"
-              v-model="form.website_url_2"
-              autofocus
-              autocomplete=""
-            />
-            <InputError :message="errors.website_url_2" />
-          </div>
-
-          <div>
-          <Label for="website_url_3" value="Website Url" />
-            <Input
-              id="website_url_3"
-              type="text"
-              class="mt-1 block w-full bg-dark text-white"
-              v-model="form.website_url_3"
-              autofocus
-              autocomplete=""
-            />
-            <InputError :message="errors.website_url_3" />
-          </div>
-
-          <div>
-          <Label for="website_url_4" value="Website Url" />
-            <Input
-              id="website_url_4"
-              type="text"
-              class="mt-1 block w-full bg-dark text-white"
-              v-model="form.website_url_4"
-              autofocus
-              autocomplete=""
-            />
-            <InputError :message="errors.website_url_4" />
-          </div>
-
-          <div>
-            <select v-model="selectSocials">
-              <option disabled value="">Please select one</option>
-              <option>Instagram</option>
-              <option>Facebook</option>
-              <option>X</option>
-              <option>Soundcloud</option>
-              <option>Bandcamp</option>
-            </select>
-          </div>
+                    <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                        A new verification link has been sent to your email address.
+                    </div>
+                </div>
+            </div>
         </template>
-
-
-
-
-        
 
         <template #actions>
 
@@ -265,5 +189,5 @@ const clearPhotoFileInput = () => {
                 Saved.
             </ActionMessage>
         </template>
-    </FormSectionProfile>
+    </FormSection>
 </template>

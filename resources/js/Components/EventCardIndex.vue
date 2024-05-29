@@ -17,19 +17,19 @@ defineProps({
         "
     >
 
-        <div class="w-full" style="padding-right: 48px !important;">
+        <div class="w-full">
 
             <!-- Flex -->
-            <div class="post-flex p-3 text-sm">
+            <div class="post-header text-sm">
                 Posted by
                 <a :href="'/ravers/'+event.user.slug"> 
                 <span class="font-semibold mx-1 text-darkorchid">{{ event.user.username }}</span></a>
                 {{ event.created_at_diff }}
             </div>
 
-            <div class="d-flex">
+            <div class="flex">
                 <a :href="'/events/'+ event.slug">
-                    <img v-if="event.flyer_front_upload" class="rounded-sm pl-4 pb-3" style="max-width: 7rem; max-height: 5rem; height: auto;" :src="'/storage/flyers/'+event.flyer_front_upload">
+                    <img v-if="event.flyer_front_upload" class="rounded-sm pl-4 pt-1 pb-3" style="max-width: 7rem; max-height: 5rem; min-width: 7rem; height: auto;" :src="'/storage/flyers/'+event.flyer_front_upload">
                 </a>
                 
                 <div>
@@ -37,12 +37,12 @@ defineProps({
                     <a :href="'/events/'+ event.slug">
                         <h2
                             class="
-                                pl-4 pr-3 mb-2
+                                post-title
+                                pl-4 pr-4
                                 font-bold
                                 tracking-tight
                                 text-white
                                 whitespace-break-spaces
-                                post-title
                             "
                         >
                             {{ event.name }}

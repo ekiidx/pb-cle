@@ -59,7 +59,7 @@ const submit = () => {
   <AppLayout title="Dashboard">
 
     <div class="main-container">
-      <div class="row g-3">
+      <div class="row gutter">
 
         <!-- Main Column -->
         <div class="col-lg-8">
@@ -179,7 +179,7 @@ const submit = () => {
                 </div>
 
                 <div class="mb-3">
-                  <Label for="link_six" value="X" />
+                  <Label for="link_six" value="X.com" />
                   <Input
                     id="link_six"
                     type="url"
@@ -214,7 +214,7 @@ const submit = () => {
                   <InputError :message="errors.link_eight" />
                 </div>
 
-                <div class="flex items-center mt-4 mb-2">
+                <div class="flex items-center mt-5 mb-2">
                   <Button
                     class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
                     :class="{ 'opacity-25': form.processing }"
@@ -227,6 +227,26 @@ const submit = () => {
             </div>
           </div>
         </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="border rounded-lg mb-3">
+            <div class="bg-darkorchid rounded-lg p-3">
+              <img class="d-inline" style="max-height: 1.1rem; max-width: 1.25rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/edit.svg">
+              <h2
+              class="
+                font-semibold
+                text-lg
+                text-white
+                d-inline
+                "
+              >
+                Edit Event
+              </h2>
+            </div>
+            <p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">You can use this screen to edit yourself!</p>
+          </div>
+		    </div>
       </div>
     </div>
   </AppLayout>

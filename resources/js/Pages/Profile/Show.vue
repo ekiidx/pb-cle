@@ -5,7 +5,8 @@ import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOther
 // import SectionBorder from '@/Components/SectionBorder.vue';
 import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
-import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
+import UpdateEmailForm from '@/Pages/Profile/Partials/UpdateEmailForm.vue';
+
 
 defineProps({
     confirmsTwoFactorAuthentication: Boolean,
@@ -22,7 +23,7 @@ defineProps({
                 <div class="col-lg-8">
          
                     <div v-if="$page.props.jetstream.canUpdateProfileInformation">
-                        <UpdateProfileInformationForm :user="$page.props.auth.user" />
+                        <UpdateEmailForm :user="$page.props.auth.user" />
                         <!-- <SectionBorder /> -->
                     </div>
 

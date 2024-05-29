@@ -120,7 +120,7 @@ const submit = () => {
                 </div>
 
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center mt-4 mb-2">
                   <Button
                     class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
                     :class="{ 'opacity-25': form.processing }"
