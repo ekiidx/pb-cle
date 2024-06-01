@@ -44,6 +44,7 @@ class RaverController extends Controller
         $event_count = $user->events()->count();
         $follower_count = $user->followers()->count();
         $following_count = $user->following()->count();
+        $plur_points_count = $user->plur_points;
         $follower = auth()->user();
 
         if($follower == null) {
@@ -80,7 +81,7 @@ class RaverController extends Controller
 
         // $events = Event::with('user')->where('user_id', $user_id)->latest()->get();
 
-        return Inertia::render('Ravers/Show', compact('user', 'posts', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check', 'can_update'));
+        return Inertia::render('Ravers/Show', compact('user', 'posts', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check', 'plur_points_count', 'can_update'));
     }
 
     /**

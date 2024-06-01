@@ -90,7 +90,7 @@ const submit = () => {
 								</span>
 
 								<!-- NEW -->
-								<span class="mr-2" v-if="props.new" style="color:yellow; font-weight: 600; font-size: .85rem; margin-top: 0.2rem; position: relative;">
+								<span class="mr-2" v-if="props.new" style="color:yellow; font-weight: 600; font-size: .85rem; margin-top: 0.165rem; position: relative;">
 									NEW
 								</span>
 

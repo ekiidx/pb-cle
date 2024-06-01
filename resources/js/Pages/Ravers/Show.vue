@@ -11,6 +11,7 @@ const props = defineProps({
     event_count: Number,
     follower_count: Number,
     following_count: Number,
+    plur_points_count: Number,
     follow_check: Boolean,
     unfollow_check: Boolean,
     can_update: Boolean
@@ -56,7 +57,11 @@ const props = defineProps({
                     <div class="flex justify-between">
                         <div>
                             <img style="width: 4.5rem; height: 4.5rem" class="rounded-full object-cover mb-2" :src="$page.props.user.profile_photo_url">
-                            <h1 style="font-size: 1.25rem; font-weight: 600;" class="text-bold text-white mb-3">{{ user.username }}</h1>
+                            <h1 style="font-size: 1.25rem; font-weight: 600;" class="text-bold text-white mb-1">{{ user.username }}</h1>
+
+                            <div class="mb-3">
+                                <span class="text-sm fw-600 inline-block">PLUR Points:</span> <span class="text-electricgreen text-sm fw-600 inline-block">{{ props.plur_points_count }}</span>
+                            </div>
                         </div>
                         <div>
                             <Link v-if="can_update"

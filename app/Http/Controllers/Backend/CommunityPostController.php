@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Community;
 use App\Models\Post;
+use App\Models\PlurPoint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,15 @@ class CommunityPostController extends Controller
             $post->post_image = $post_image_slug_new;
             $post->save();
         }
+
+        // PLUR Points
+        $user = auth()->user();
+        PlurPoint::create([
+            'user_id' => $user->id,
+            'action' => 'post',
+            'points' => 5
+        ]);
+        $user->increment('plur_points', 5);
 
         return Redirect::route('frontend.communities.show', $community->slug);
     }

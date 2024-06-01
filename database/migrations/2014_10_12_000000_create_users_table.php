@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('slug')->unique();
+            $table->integer('plur_points')->default(0);
             $table->string('link_one')->nullable();
             $table->string('link_two')->nullable();
             $table->string('link_three')->nullable();

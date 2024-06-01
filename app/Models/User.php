@@ -71,6 +71,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Event::class);
     }
 
+    public function plur_points() 
+    {
+        return $this->hasMany(PlurPoint::class);
+    }
+
     public function sluggable(): array
     {
       return [
@@ -84,11 +89,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return 'slug';
     }
 
-    public function following() {
+    public function following() 
+    {
         return $this->belongsToMany(User::class, 'follower_user', 'follower_id', 'user_id')->withTimestamps();
     }
 
-    public function followers() {
+    public function followers() 
+    {
         return $this->belongsToMany(User::class, 'follower_user', 'user_id', 'follower_id')->withTimestamps();
     }
 }

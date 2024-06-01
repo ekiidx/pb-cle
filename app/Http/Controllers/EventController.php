@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Http\Resources\EventResource;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\PlurPoint;
 use App\Http\Resources\EventShowResource;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -81,6 +82,7 @@ class EventController extends Controller
             $flyer_front_file->storeAs('flyers', $flyer_front_slug_new, 'public');
             $event->flyer_front_slug = $flyer_front_slug;
             $event->flyer_front_upload = $flyer_front_slug_new;
+            // TODO
             $event->save();
         }
 
@@ -96,6 +98,7 @@ class EventController extends Controller
             $flyer_back_file->storeAs('flyers', $flyer_back_slug_new, 'public');
             $event->flyer_back_slug = $flyer_back_slug;
             $event->flyer_back_upload = $flyer_back_slug_new;
+            // TODO
             $event->save();
         }
 
@@ -107,6 +110,15 @@ class EventController extends Controller
         // return to_route('events.index')->with('message', 'Event created successfully.')
 
         // dd($event->event_date);
+
+        // PLUR Points
+        $user = auth()->user();
+        PlurPoint::create([
+            'user_id' => $user->id,
+            'action' => 'event',
+            'points' => 10
+        ]);
+        $user->increment('plur_points', 10);
     
         return Redirect::route('events.show', $event->slug);
     }
