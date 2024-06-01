@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\PostCommentController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\PlurPointController;
 use App\Http\Controllers\RaverController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventCommentController;

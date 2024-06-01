@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CommunityPostResource;
 use App\Http\Resources\CommunityResource;
 use App\Models\Event;
+use App\Models\User;
 use App\Models\Community;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -24,6 +25,8 @@ class WelcomeController extends Controller
 
         $events = Event::orderBy('created_at', 'desc')->take(6)->get();
 
+        $users = User::orderBy('created_at', 'desc')->take(6)->get(['username', 'slug', 'profile_photo_path']);
+
         foreach($events as $event) {
             // check if event post was published in the last 24 hours and if so then display "new" marker
             if($event->created_at < Carbon::now()->subDays(1)->toDateTimeString()) {
@@ -33,6 +36,6 @@ class WelcomeController extends Controller
             }
         }
 
-        return Inertia::render('Welcome', compact('posts', 'communities', 'events'));
+        return Inertia::render('Welcome', compact('posts', 'communities', 'events', 'users'));
     }
 }

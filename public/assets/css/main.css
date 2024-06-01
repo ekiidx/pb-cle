@@ -149,6 +149,9 @@ input[type="file"] {
 .hot-events-box {
     margin-bottom: 0.5rem;
 }
+.new-raver-box {
+    margin-bottom: 0.5rem;
+}
 .raver-profile-row {
     margin-bottom: 0.75rem;
 }
@@ -294,6 +297,9 @@ input[type="file"] {
         margin-bottom: 0.75rem;
     }
     .header-post-box {
+        margin-bottom: 0.75rem;
+    }
+    .new-raver-box {
         margin-bottom: 0.75rem;
     }
     /* nav.main-nav {

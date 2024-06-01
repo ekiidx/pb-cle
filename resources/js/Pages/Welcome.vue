@@ -3,13 +3,14 @@ import Guest from '@/Layouts/Guest.vue';
 import PostCard from "@/Components/PostCard.vue";
 import CommunityList from "@/Components/CommunityList.vue";
 import EventSidebar from "@/Components/EventSidebar.vue";
-// import EventCard from "@/Components/EventCard.vue";
+import NewRaverList from "@/Components/NewRaverList.vue";
 import { Head } from '@inertiajs/vue3';
 
 defineProps({
     communities: Object,
     posts: Object,
-    events: Object
+    events: Object,
+	users: Object
 });
 </script>
 
@@ -50,6 +51,10 @@ defineProps({
 					<EventSidebar :events="events">
 						<template #title>Hot Events</template>
 					</EventSidebar>
+
+					<NewRaverList :users="users">
+						<template #title>New Ravers</template>
+					</NewRaverList>
 				</div>
 			</div>
 		</div>
