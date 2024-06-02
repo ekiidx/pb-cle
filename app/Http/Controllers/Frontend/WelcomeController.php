@@ -23,7 +23,7 @@ class WelcomeController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
-        $events = Event::orderBy('created_at', 'desc')->take(6)->get();
+        $events = Event::orderBy('created_at', 'desc')->take(6)->get(['name', 'slug', 'event_date', 'created_at']);
 
         $users = User::orderBy('created_at', 'desc')->take(6)->get(['username', 'slug', 'profile_photo_path']);
 

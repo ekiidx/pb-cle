@@ -21,7 +21,7 @@ defineProps({
         :key="event.id"
         class="py-2 sm:py-3"
       >
-        <div class="flex items-start space-x-4">
+        <div class="flex items-start items-center space-x-4">
 
         <div style="width: 2.25rem;">
           <Link
@@ -30,8 +30,8 @@ defineProps({
               font-semibold
               truncate
               text-sm
+              text-white
             "
-            style="color:#ffffff !important;"
           >
             <div style="width: 2.25rem; border: 1px #9932cc solid; border-radius: 0.35rem;">
               <div style="background: #9932cc; border-radius: 0.2rem 0.2rem 0rem 0rem;">
@@ -47,8 +47,8 @@ defineProps({
               font-semibold
               truncate
               text-sm
+              text-white
             "
-            style="color:#ffffff !important;"
           >
             {{ event.name }}
           </Link>
