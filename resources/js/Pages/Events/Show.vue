@@ -217,12 +217,24 @@ const submit = () => {
 					<div
 						class="
 						about-box
-						pb-2
-						bg-dark
+						border
 						rounded-lg
-						border border-gray-200
+						bg-dark
 						"
 					>
+						<div class="bg-darkorchid rounded-lg p-3">
+							<img class="d-inline" style="max-height: 1.1rem; max-width: 1.25rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
+							<h2
+							class="
+								font-semibold
+								text-lg
+								text-white
+								d-inline
+								"
+							>
+								Event Info
+							</h2>
+						</div>
 						<table class="event-info-table">
 							<tr v-if="event.data.party_date">
 								<td class="px-3 pt-3 pb-2"><p class="text-white font-bold">Date</p></td>
@@ -239,6 +251,30 @@ const submit = () => {
 								<td class="px-3 pb-2"><p class="text-white"><a :href="event.data.link_tickets">Click Here</a></p></td>
 							</tr>
 						</table>
+					</div>
+
+					<div
+						class="
+						about-box
+						border
+						rounded-lg
+						bg-dark
+						"
+					>
+						<div class="bg-darkorchid rounded-lg p-3">
+							<img class="d-inline" style="max-height: 1.1rem; max-width: 1.25rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
+							<h2
+							class="
+								font-semibold
+								text-lg
+								text-white
+								d-inline
+								"
+							>
+								Genres
+							</h2>
+						</div>
+						
 					</div>
             	</div>
           	</div>

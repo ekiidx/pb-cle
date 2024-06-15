@@ -66,7 +66,7 @@ const props = defineProps({
 								d-inline
 								"
 							>
-								About Communities
+								About Events
 							</h2>
 						</div>
 						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">Rad <span class="text-electricgreen font-bold">local events</span> are posted here.</p>
