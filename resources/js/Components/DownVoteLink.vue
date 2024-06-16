@@ -12,7 +12,7 @@ defineProps({
     method="post"
     as="button"
     type="button"
-    class="text-gray-400 hover:text-red-400 flex justify-center my-2"
+    class="down-vote-arrow flex justify-center my-2"
     preserve-scroll
     ><svg
       xmlns="http://www.w3.org/2000/svg"

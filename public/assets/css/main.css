@@ -32,6 +32,18 @@ input[type="date"]::-webkit-calendar-indicator {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.down-vote-arrow {
+    color: #94a3b8;
+}
+.down-vote-arrow:hover {
+    color: #9932cc;
+}
+.up-vote-arrow {
+    color: #94a3b8;
+}
+.up-vote-arrow:hover {
+    color: #10d876;
+}
 .nav-header {
     height: 61px;
     border-bottom: 1px solid #484452 !important;
