@@ -1,4 +1,6 @@
 html, body {
+    background-color: #121212 !important;
+    background: #121212 !important;
     font-size: 16px !important;
     touch-action: manipulation;
 }
@@ -11,6 +13,15 @@ input, [type='text'], input:where(:not([type])), [type='email'], [type='url'], [
 input[type="date"]::-webkit-calendar-indicator {
     background-color: #1a1a1b !important;
     color: #ffffff !important;
+}
+a {
+    color: #10d876 !important;
+  }
+.bg-dark {
+    /* background-color: #1f212b !important; */
+    /* background-color: #141823 !important; */
+    background-color: #171a27 !important;
+    background-color: #17191e !important;
 }
 .comment-btn {
     padding-top: 0.7rem;
@@ -32,6 +43,11 @@ input[type="date"]::-webkit-calendar-indicator {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.border {
+    /* border: 2px solid #1d242d !important; */
+    /* border: 2px solid #1a2028 !important; */
+    border: 2px solid #252b33 !important;
+  }
 .down-vote-arrow {
     color: #94a3b8;
 }
@@ -46,7 +62,9 @@ input[type="date"]::-webkit-calendar-indicator {
 }
 .nav-header {
     height: 61px;
-    border-bottom: 1px solid #484452 !important;
+    /* border-bottom: 1px solid #484452 !important; */
+    /* border-bottom: 2px solid  #1a2028 !important; */
+    border-bottom: 2px solid #252b33 !important;
 }
 .nav-top span.pb-cle-logofont {
     display: none !important;
@@ -68,8 +86,10 @@ nav.main-nav {
 .vote-box {
     padding: 0.1rem;
     width: 2.35rem;
-    background: #272936;
-    background-color: #272936;
+    /* background: #272936;
+    background-color: #272936; */
+    background: #1d1f2b;
+    background-color: #1d1f2b;
 }
 .register-btn {
     padding: 0.55rem 1rem;

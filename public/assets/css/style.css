@@ -29,15 +29,6 @@
 /* @import "./../vendor/owl-carousel/css/owl.carousel.min.css";
 @import "./../vendor/owl-carousel/css/owl.theme.default.css"; */
 
-html, body {
-  background-color: #1A1A1B !important;
-  background: #1A1A1B !important;
-}
-
-a {
-  color: #10d876 !important;
-}
-
 .preloader {
   position: fixed;
   left: 0px;
@@ -7943,10 +7934,6 @@ textarea.form-control-lg {
   transform: translateY(-50%) !important;
 }
 
-.border {
-  border: 1px solid #484452 !important;
-}
-
 .border-0 {
   border: 0 !important;
 }
@@ -8896,9 +8883,6 @@ textarea.form-control-lg {
   background-color: #f7f7f7 !important;
 }
 
-.bg-dark {
-  background-color: #1f212b !important;
-}
 .bg-black {
   background-color: #1A1A1B !important;
 }
