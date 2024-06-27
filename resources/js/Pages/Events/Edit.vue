@@ -5,15 +5,30 @@ import Input from "@/Components/Input.vue";
 import InputError from "@/Components/InputError.vue";
 import Label from "@/Components/Label.vue";
 // import InputLabel from '@/Components/InputLabel.vue';
+import { ref, computed } from 'vue';
 import { Head, useForm } from "@inertiajs/vue3";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
+import Multiselect from '@vueform/multiselect';
 
 const props = defineProps({
   event: Object,
+  genres: Object,
   errors: Object,
 });
 
+// Genres
+const value = ref(props.genres)
+const comp = computed(() => {
+    return value.value;
+});
+const options = [
+    { label: 'techno', value: '1' },
+    { label: 'house', value: '2' },
+    { label: 'uk hardcore', value: '3' },
+]
+
+// Form
 const form = useForm({
     name: props.event?.name,
     content: props.event?.content,
@@ -21,6 +36,8 @@ const form = useForm({
     link_event: props.event?.link_event,
     event_date: props.event?.event_date,
     event_time: props.event?.event_time,
+    genre_values: comp,
+    genre_value: "hello",
     flyer_front: props.event?.flyer_front,
     flyer_back: props.event?.flyer_back,
 });
@@ -28,7 +45,6 @@ const form = useForm({
 function flyerFrontPreview() {
   flyerFrontFrame.src=URL.createObjectURL(event.target.files[0])
 }
-
 function flyerBackPreview() {
   flyerBackFrame.src=URL.createObjectURL(event.target.files[0])
 }
@@ -167,6 +183,20 @@ const submit = () => {
                   <InputError :message="errors.content" />
                 </div>
 
+                <!-- Genres -->
+                <div class="mt-4 mb-4">
+                  <Label for="genres" value="Genres" />
+                  <Multiselect 
+                    id="genres"
+                    v-model="value" 
+                    mode="tags"
+                    :close-on-select="false"
+                    :searchable="true"
+                    :object="true"
+                    :options="options"
+                ></Multiselect>
+                </div>
+
                 <!-- Flyer Upload -->
                 <div class="mb-4">
                   <div class="mb-2">
@@ -231,3 +261,5 @@ const submit = () => {
     </div>
   </AppLayout>
 </template>
+
+<style src="@vueform/multiselect/themes/default.css"></style>

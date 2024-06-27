@@ -37,13 +37,21 @@
         <meta name="twitter:creator" content="">
         <meta name="twitter:creator:id" content="">
 
+        <!--
+         _   __           ___          _
+        | | / /_ _____   / _ \___ ___ (_)__ ____
+        | |/ / // / -_) / // / -_|_-</ / _ `/ _ \
+        |___/\_,_/\__/ /____/\__/___/_/\_, /_//_/
+                                    /___/
+        -->
+
         <!-- Fonts -->
 
         <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> --}}
 
         <!-- Stylesheets -->
-        <?php $phpVersion = '?v=1.1.1'; ?>
+        <?php $phpVersion = '?v=1.2.0'; ?>
         <link rel="stylesheet" href="{{ asset('/assets/css/themify-icons.css') }}<?php echo $phpVersion; ?>">
         <link rel="stylesheet" href="{{ asset('/assets/css/feather.css') }}<?php echo $phpVersion; ?>">
         <link rel="stylesheet" href="{{ asset('/assets/css/emoji.css') }}<?php echo $phpVersion; ?>">

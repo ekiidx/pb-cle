@@ -292,7 +292,6 @@ const logout = () => {
                 </div>
             </div>
         </nav>
-
     </div>
             
     <!-- main content -->
@@ -330,7 +329,6 @@ const logout = () => {
         <div class="col-12"> -->
 <!--     
     <Banner /> -->
-
 
     <!-- Page Heading -->
     <header v-if="$slots.header" class="bg-dark border shadow">

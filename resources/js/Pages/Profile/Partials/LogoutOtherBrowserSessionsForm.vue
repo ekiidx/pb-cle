@@ -53,12 +53,12 @@ const closeModal = () => {
         </template>
 
         <template #content>
-            <div class="text-sm text-gray-300 px-4">
+            <div class="text-sm text-gray-300 px-3">
                 If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.
             </div>
 
             <!-- Other Browser Sessions -->
-            <div v-if="sessions.length > 0" class="px-4 my-5 space-y-6">
+            <div v-if="sessions.length > 0" class="px-3 my-5 space-y-6">
                 <div v-for="(session, i) in sessions" :key="i" class="flex items-center">
                     <div>
                         <svg v-if="session.agent.is_desktop" class="w-8 h-8 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -76,7 +76,7 @@ const closeModal = () => {
                         </div>
 
                         <div>
-                            <div class="text-xs text-gray-500">
+                            <div class="text-sm text-gray-500">
                                 {{ session.ip_address }},
 
                                 <span v-if="session.is_current_device" class="text-green-500 font-semibold">This device</span>
@@ -87,7 +87,7 @@ const closeModal = () => {
                 </div>
             </div>
 
-            <div class="flex items-center pb-4 mt-5 px-4">
+            <div class="flex items-center pb-4 mt-5 px-3">
                 <PrimaryButton @click="confirmLogout">
                     Log Out Other Browser Sessions
                 </PrimaryButton>

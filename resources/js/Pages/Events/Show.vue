@@ -4,6 +4,7 @@ import { Head, useForm, Link } from "@inertiajs/vue3";
 
 const props = defineProps({
  	event: Object,
+	genres: Object,
   	can_delete: Boolean,
 	can_update: Boolean,
 	new: Boolean
@@ -94,7 +95,7 @@ const submit = () => {
 									NEW
 								</span>
 
-								<div v-if="$page.props.auth.auth_check">
+								<div v-if="$page.props.auth">
 									<Link v-if="can_update"
 										:href="
 										route('events.edit', [
@@ -109,7 +110,7 @@ const submit = () => {
 										>Edit</Link
 									>
 								</div>
-								<div v-if="$page.props.auth.auth_check">
+								<div v-if="$page.props.auth">
 									<Link v-if="can_delete"
 										:href="
 										route('events.destroy', [
@@ -135,14 +136,12 @@ const submit = () => {
 							</h1>
 							<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
 
-							
 							<!-- Flyer -->
 							<div class="mb-4">
 								<img style="max-width: 100%; height: auto;" v-if="event.data.flyer_front_upload" class="" :src="'/storage/flyers/'+event.data.flyer_front_upload">
 								<img style="max-width: 100%; height: auto;" v-if="event.data.flyer_back_upload" class="" :src="'/storage/flyers/'+event.data.flyer_back_upload">
 							</div>
 
-							
 							<!-- Content -->
 							<div class="pl-4 pr-3 mb-4">
 								<p class="text-gray-300 break-words whitespace-pre-wrap">
@@ -214,6 +213,8 @@ const submit = () => {
 
 				<!-- Sidebar -->
             	<div class="col-lg-4">
+
+					<!-- Event Info -->
 					<div
 						class="
 						about-box
@@ -253,7 +254,9 @@ const submit = () => {
 						</table>
 					</div>
 
+					<!-- Genres Box -->
 					<div
+						v-if="props.genres != 0"
 						class="
 						about-box
 						border
@@ -274,7 +277,15 @@ const submit = () => {
 								Genres
 							</h2>
 						</div>
-						
+						<div class="p-3">
+							<span
+								v-for="(genre) in genres"
+								class="text-sm text-electricgreen fw-600 login-btn mr-2 mb-2"
+								style="display: inline-block"
+							>
+								{{ genre.label }}
+							</span>
+						</div>
 					</div>
             	</div>
           	</div>

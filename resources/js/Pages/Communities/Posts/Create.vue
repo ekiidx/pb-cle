@@ -139,8 +139,6 @@ const submit = () => {
             <h2
             class="
               font-semibold
-              text-lg
-              p-6
               bg-darkorchid
               rounded-lg
               text-white

@@ -22,6 +22,7 @@ class Event extends Model
 
     protected $casts = [
       'event_date' => 'date:Y-m-d',
+      'event_genres' => 'array'
     ];
 
     public function user()
@@ -33,6 +34,11 @@ class Event extends Model
     {
         return $this->hasMany(EventComment::class);
     }
+
+    // public function genres()
+    // {
+    //   return $this->belongsToMany(Genre::class);
+    // }
 
     public function sluggable(): array
     {
@@ -102,5 +108,22 @@ class Event extends Model
       return $new_date;
 
     }
+
+    // public function getEventGenresAttribute() {
+    //   $event_genres = $this->genres;
+      
+    //   // if (count($event_genres) == 0) {
+    //   //     return $genre_values = [];
+    //   // }else{
+    //   //     foreach ($event_genres as $event_genre) {
+    //   //         $name = $event_genre->name;
+    //   //         $id = $event_genre->pivot_genre_id;
+
+    //   //         $genre_values[] = 
+    //   //             [ 'label' => $name];
+    //   //     } 
+    //   //   }
+    //     return $event_values;
+    // }
 
 }

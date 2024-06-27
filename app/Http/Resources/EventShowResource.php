@@ -35,6 +35,7 @@ class EventShowResource extends JsonResource
             'party_date' => $this->party_date,
             'weekday_format' => $this->weekday_format,
             'event_comments' => EventCommentResource::collection($this->whenLoaded('eventComments')),
+            // 'event_genres' => EventGenreResource::collection($this->whenLoaded('genres')),
             'created_at' => $this->created_at->diffForHumans(),
         ];
     }

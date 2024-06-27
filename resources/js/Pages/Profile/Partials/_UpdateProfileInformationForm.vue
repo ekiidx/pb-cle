@@ -15,7 +15,7 @@ const props = defineProps({
 
 const form = useForm({
     _method: 'PUT',
-    username: props.user.username,
+    name: props.user.username,
     email: props.user.email,
     photo: null,
 });
@@ -77,7 +77,6 @@ const clearPhotoFileInput = () => {
 
 <template>
     <FormSection @submitted="updateProfileInformation">
-        
         <template #title>
             Profile Information
         </template>
@@ -91,6 +90,7 @@ const clearPhotoFileInput = () => {
             <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
                 <input
+                    id="photo"
                     ref="photoInput"
                     type="file"
                     class="hidden"
@@ -100,38 +100,36 @@ const clearPhotoFileInput = () => {
                 <InputLabel for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
-                <div v-show="! photoPreview" class="pt-2">
-                    <img :src="user.profile_photo_url" :alt="user.username" class="rounded-full h-20 w-20 object-cover mb-4">
+                <div v-show="! photoPreview" class="mt-2">
+                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
-                <div v-show="photoPreview" class="pt-2">
+                <div v-show="photoPreview" class="mt-2">
                     <span
-                        class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center mb-4"
+                        class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
                         :style="'background-image: url(\'' + photoPreview + '\');'"
                     />
                 </div>
 
-                <div class="mb-4">
-                    <SecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
-                        Select A New Photo
-                    </SecondaryButton>
+                <SecondaryButton class="mt-2 me-2" type="button" @click.prevent="selectNewPhoto">
+                    Select A New Photo
+                </SecondaryButton>
 
-                    <SecondaryButton
-                        v-if="user.profile_photo_path"
-                        type="button"
-                        class="mt-2"
-                        @click.prevent="deletePhoto"
-                    >
-                        Remove Photo
-                    </SecondaryButton>
-                </div>
+                <SecondaryButton
+                    v-if="user.profile_photo_path"
+                    type="button"
+                    class="mt-2"
+                    @click.prevent="deletePhoto"
+                >
+                    Remove Photo
+                </SecondaryButton>
 
                 <InputError :message="form.errors.photo" class="mt-2" />
             </div>
 
             <!-- Name -->
-            <!-- <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="name" value="Name" />
                 <TextInput
                     id="name"
@@ -142,7 +140,7 @@ const clearPhotoFileInput = () => {
                     autocomplete="name"
                 />
                 <InputError :message="form.errors.name" class="mt-2" />
-            </div> -->
+            </div>
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
@@ -158,7 +156,7 @@ const clearPhotoFileInput = () => {
                 <InputError :message="form.errors.email" class="mt-2" />
 
                 <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
-                    <p class="text-sm mt-2 text-white">
+                    <p class="text-sm mt-2 dark:text-white">
                         Your email address is unverified.
 
                         <Link
@@ -180,14 +178,13 @@ const clearPhotoFileInput = () => {
         </template>
 
         <template #actions>
+            <ActionMessage :on="form.recentlySuccessful" class="me-3">
+                Saved.
+            </ActionMessage>
 
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
             </PrimaryButton>
-
-            <ActionMessage :on="form.recentlySuccessful" class="ml-3">
-                Saved.
-            </ActionMessage>
         </template>
     </FormSection>
 </template>

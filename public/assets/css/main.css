@@ -20,9 +20,12 @@ a {
 .bg-dark {
     /* background-color: #1f212b !important; */
     /* background-color: #141823 !important; */
-    background-color: #171a27 !important;
+    /* background-color: #171a27 !important; */
     background-color: #17191e !important;
 }
+.bg-black {
+    background-color: #121212 !important;
+  }
 .comment-btn {
     padding-top: 0.7rem;
     padding-right: 1.4rem;
@@ -399,4 +402,69 @@ input, textarea {
     input, textarea {
         font-size: inherit !important;
     }
+}
+@media only screen and (min-width: 768px) {
+    /* Animations */
+    /* @-webkit-keyframes bg-scrolling-reverse {
+    100% { background-position: 100px 100px; }
+    }
+    @-moz-keyframes    bg-scrolling-reverse {
+    100% { background-position: 100px 100px; }
+    }
+    @-o-keyframes      bg-scrolling-reverse {
+    100% { background-position: 100px 100px; }
+    }
+    @keyframes         bg-scrolling-reverse {
+    100% { background-position: 100px 100px; }
+    }
+
+    @-webkit-keyframes bg-scrolling {
+    0% { background-position: 100px 100px; }
+    }
+    @-moz-keyframes    bg-scrolling {
+    0% { background-position: 100px 100px; }
+    }
+    @-o-keyframes      bg-scrolling {
+    0% { background-position: 100px 100px; }
+    }
+    @keyframes         bg-scrolling {
+    0% { background-position: 100px 100px; }
+    } */
+    /* Background animation */
+     /* img size is 50x50 */
+    /* .main-wrapper {
+    background: url(../../assets/img/background-11.gif) repeat 0 0; */
+    
+    /* -webkit-animation: bg-scrolling-reverse 50s infinite; Safari 4+ */
+    /* -moz-animation:    bg-scrolling-reverse 50s infinite; Fx 5+ */
+    /* -o-animation:      bg-scrolling-reverse 50s infinite; Opera 12+ */
+    /* animation:         bg-scrolling-reverse 50s infinite; IE 10+ */
+    /* -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function:    linear;
+    -o-animation-timing-function:      linear;
+    animation-timing-function:         linear;
+    } */
+}
+
+input#genres.multiselect-tags-search:focus {
+    outline: none !important;
+}
+.multiselect-tag {
+    background: #9932cc !important;
+    background-color: #9932cc !important;
+}
+.multiselect {
+    background: #1a1a1b !important;
+    background-color: #1a1a1b !important;
+    color: #ffffff !important;
+}
+.multiselect-dropdown {
+    background: #1a1a1b !important;
+    background-color: #1a1a1b !important;
+    color: #ffffff !important;
+}
+.multiselect-option.is-pointed {
+    background: #1a1a1b !important;
+    background-color: #1a1a1b !important;
+    color: #ffffff !important;
 }

@@ -23,9 +23,10 @@ return new class extends Migration
             $table->string('link_event')->nullable();
             $table->string('link_tickets')->nullable();
             $table->date('event_date')->nullable();
+            $table->json('event_genres')->nullable();
             $table->string('event_time')->nullable();
-            $table->integer('time_start_hours')->nullable();
-            $table->integer('time_start_minutes')->nullable();
+            // $table->integer('time_start_hours')->nullable();
+            // $table->integer('time_start_minutes')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
         });

@@ -1,30 +1,23 @@
 <script setup>
-import { ref, computed, } from 'vue';
+import { ref } from 'vue';
 import { Link, router, useForm } from '@inertiajs/vue3';
 import ActionMessage from '@/Components/ActionMessage.vue';
-import Button from "@/Components/Button.vue";
-import Input from "@/Components/Input.vue";
-import Label from "@/Components/Label.vue";
-import FormSectionProfile from '@/Components/FormSectionProfile.vue';
+import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
+// import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
     user: Object,
-    model: Object,
-    errors: Object
 });
 
 const form = useForm({
     _method: 'PUT',
+    name: props.user.username,
+    email: props.user.email,
     photo: null,
-    website_url: "",
-    website_url_2: "",
-    website_url_3: "",
-    website_url_4: ""
 });
 
 const verificationLinkSent = ref(null);
@@ -80,183 +73,57 @@ const clearPhotoFileInput = () => {
         photoInput.value.value = null;
     }
 };
-
-
-
-// <!-- Repeater -->
-// const getInitialItems = () => []
-// const items = ref(getInitialItems())
-// let id = items.value.length + 1
-
-// function insert() {
-//   const i = items.value.length
-//   items.value.splice(i, 0, id++)
-// }
-
-// function reset() {
-//   items.value = getInitialItems()
-//   id = items.value.length + 1
-// }
-
-// function remove(item) {
-//   const i = items.value.indexOf(item)
-//   if (i > -1) {
-//     items.value.splice(i, 1)
-//   }
-// }
-
 </script>
 
 <template>
+    <FormSection @submitted="updateProfileInformation">
 
-<!-- Repeator-->
-  <!-- <div>
-    <div class="flex justify-between">
-      <button @click="insert">Insert</button>
-      <button @click="reset">Reset</button>
-    </div>
-    <TransitionGroup tag="ul" name="fade" class="container">
-      <li v-for="item in items" class="item" :key="item">
-        {{ item }}
-        <button @click="remove(item)">x</button>
-      </li>
-    </TransitionGroup>
-  </div> -->
-
-    <FormSectionProfile @submitted="updateProfileInformation">
-
-        <template #form>
-            <!-- Profile Photo -->
-            <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
-                <!-- Profile Photo File Input -->
-                <input
-                    ref="photoInput"
-                    type="file"
-                    class="hidden"
-                    @change="updatePhotoPreview"
-                >
-
-                <InputLabel for="photo" value="Photo" />
-
-                <!-- Current Profile Photo -->
-                <div v-show="! photoPreview" class="pt-2">
-                    <img :src="user.profile_photo_url" :alt="user.username" class="rounded-full h-20 w-20 object-cover mb-4">
-                </div>
-
-                <!-- New Profile Photo Preview -->
-                <div v-show="photoPreview" class="pt-2">
-                    <span
-                        class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center mb-4"
-                        :style="'background-image: url(\'' + photoPreview + '\');'"
-                    />
-                </div>
-
-                <div class="mb-4">
-                    <SecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
-                        Select A New Photo
-                    </SecondaryButton>
-
-                    <SecondaryButton
-                        v-if="user.profile_photo_path"
-                        type="button"
-                        class="mt-2"
-                        @click.prevent="deletePhoto"
-                    >
-                        Remove Photo
-                    </SecondaryButton>
-                </div>
-
-                <InputError :message="form.errors.photo" class="mt-2" />
-            </div>
-
-            <!-- Name -->
-            <!-- <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="name" value="Name" />
-                <TextInput
-                    id="name"
-                    v-model="form.name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="name"
-                />
-                <InputError :message="form.errors.name" class="mt-2" />
-            </div> -->
-
-
-
-
-            <div>
-            <Label for="website_url" value="Website Url" />
-            <Input
-              id="website_url"
-              type="text"
-              class="mt-1 block w-full bg-dark text-white"
-              v-model="form.website_url"
-              autofocus
-              autocomplete=""
-            />
-            <InputError :message="errors.website_url" />
-          </div>
-
-          <div>
-          <Label for="website_url_2" value="Website Url" />
-            <Input
-              id="website_url_2"
-              type="text"
-              class="mt-1 block w-full bg-dark text-white"
-              v-model="form.website_url_2"
-              autofocus
-              autocomplete=""
-            />
-            <InputError :message="errors.website_url_2" />
-          </div>
-
-          <div>
-          <Label for="website_url_3" value="Website Url" />
-            <Input
-              id="website_url_3"
-              type="text"
-              class="mt-1 block w-full bg-dark text-white"
-              v-model="form.website_url_3"
-              autofocus
-              autocomplete=""
-            />
-            <InputError :message="errors.website_url_3" />
-          </div>
-
-          <div>
-          <Label for="website_url_4" value="Website Url" />
-            <Input
-              id="website_url_4"
-              type="text"
-              class="mt-1 block w-full bg-dark text-white"
-              v-model="form.website_url_4"
-              autofocus
-              autocomplete=""
-            />
-            <InputError :message="errors.website_url_4" />
-          </div>
-
-          <div>
-            <select v-model="selectSocials">
-              <option disabled value="">Please select one</option>
-              <option>Instagram</option>
-              <option>Facebook</option>
-              <option>X</option>
-              <option>Soundcloud</option>
-              <option>Bandcamp</option>
-            </select>
-          </div>
+        <template #title>
+            Update Email
         </template>
 
+        <template #description>
+            Update your account's email address.
+        </template>
 
+        <template #form>
+            <!-- Email -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="email" value="Email" />
+                <TextInput
+                    id="email"
+                    v-model="form.email"
+                    type="email"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="username"
+                />
+                <InputError :message="form.errors.email" class="mt-2" />
 
+                <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
+                    <p class="text-sm mt-2 text-white">
+                        Your email address is unverified.
 
-        
+                        <Link
+                            :href="route('verification.send')"
+                            method="post"
+                            as="button"
+                            class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                            @click.prevent="sendEmailVerification"
+                        >
+                            Click here to re-send the verification email.
+                        </Link>
+                    </p>
+
+                    <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                        A new verification link has been sent to your email address.
+                    </div>
+                </div>
+            </div>
+        </template>
 
         <template #actions>
-
+            
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
             </PrimaryButton>
@@ -265,5 +132,5 @@ const clearPhotoFileInput = () => {
                 Saved.
             </ActionMessage>
         </template>
-    </FormSectionProfile>
+    </FormSection>
 </template>

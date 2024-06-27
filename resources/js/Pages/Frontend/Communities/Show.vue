@@ -70,7 +70,6 @@ defineProps({
 							<h2
 							class="
 								font-semibold
-								text-lg
 								text-white
 								d-inline
 							"

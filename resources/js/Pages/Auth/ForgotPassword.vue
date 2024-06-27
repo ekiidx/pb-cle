@@ -62,7 +62,7 @@ const submit = () => {
                             <h2 class="text-white fw-700 display1-size display2-md-size mb-3">Forgot your password?</h2>
 
                             <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                                No problem, just let us know your email address and we will email you a password reset link.
+                                No problem, tell us your email address and we will email you a password reset link.
                             </div>
 
                             <div v-if="status" class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">

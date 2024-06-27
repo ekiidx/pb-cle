@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Http\Resources\EventResource;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Genre;
 use App\Models\PlurPoint;
 use App\Http\Resources\EventShowResource;
 use Illuminate\Support\Facades\Redirect;
@@ -42,6 +43,18 @@ class EventController extends Controller
      */
     public function create()
     {
+        // TODO: implement later and use table
+        // TODO: this can be optimazed to only pull the name and id
+        // $genres = Genre::all();
+        // foreach( $genres as $genre ) {
+        //     $name = $genre->name;
+        //     $id = $genre->id;
+
+        //     $genre_options[] = 
+        //         array('label' => $name, 'value' => $id
+        //     );
+        // }
+
         return Inertia::render('Events/Create');
     }
 
@@ -57,6 +70,31 @@ class EventController extends Controller
             'event_date' => 'required',
         ]);
 
+        // TODO: genres options
+        // $genres = $request->genre_values;
+        // // $new_genres = implode(',', $genres);    
+        // $collection = collect([
+        //     $genres
+        // ]);
+        // $collection->implode(', ');
+        // $data = json_encode($request->genre_values);
+        // foreach( $genres as $genre ) {
+        //     $event->genres()->create([
+        //         'event_id' => $event->id,
+        //         'genre_id' => $genre["value"],
+        //         'label' => $genre["label"]
+        //     ]);
+        // }
+        // // $count_length = count($genres);
+        // if ($genres) {
+        //     foreach( $genres as $genre ) {
+        //     $new_genre = [];
+        //     $new_genre["genre_id"] = $genre["value"];
+        //     $new_genre["label"] = $genre["label"];
+        //     $event->genres()->attach($event, $new_genre);
+        //     }
+        // }
+
         $event = Event::create([
             'user_id' => auth()->id(),
             'name' => $request->name,
@@ -67,6 +105,7 @@ class EventController extends Controller
             'event_time' => $request->event_time,
             // 'time_start_hours' => $start_time['hours'],
             // 'time_start_minutes' => $start_time['minutes'],
+            'event_genres' => $request->genre_values
         ]);
 
         // Store the file in storage\app\public folder if file exists in the request
@@ -109,8 +148,6 @@ class EventController extends Controller
         // Event::create($request->validated() + ['user_id' => auth()->id()]);
         // return to_route('events.index')->with('message', 'Event created successfully.')
 
-        // dd($event->event_date);
-
         // PLUR Points
         $user = auth()->user();
         PlurPoint::create([
@@ -128,8 +165,11 @@ class EventController extends Controller
      */
     public function show(String $slug)
     {
+      
         $event_query = Event::with('user', 'eventComments')->where('slug', $slug)->firstOrFail();
         $event = new EventShowResource($event_query);
+
+        $genres = $event->event_genres;
 
         // check if event post was published in the last 24 hours and if so then display "new" marker
         if($event->created_at < Carbon::now()->subDays(1)->toDateTimeString()) {
@@ -149,7 +189,7 @@ class EventController extends Controller
             $can_delete = true;
         }
 
-        return Inertia::render('Events/Show', compact('event', 'new', 'can_update', 'can_delete'));
+        return Inertia::render('Events/Show', compact('event', 'genres', 'new', 'can_update', 'can_delete'));
     }
 
     /**
@@ -165,14 +205,32 @@ class EventController extends Controller
             return Redirect::route('events.index');
 
         } else {
+            $genres = $event->event_genres;
             // $new_date = $event->event_date->format('m-d-Y');
             // $new_date = Carbon::parse($event->event_date)->format('Y/m/d');
-
             // dd($new_date);
-
             // $new_date = '2024-05-25';
-            return Inertia::render('Events/Edit', compact('event'));
 
+        // TODO: This can be optimized like the one above in this file
+        // TODO: implement later and use table
+        // $genres = Genre::all();
+        // foreach( $genres as $genre ) {
+        //     $name = $genre->name;
+        //     $id = $genre->id;
+        //     $genre_options[] = 
+        //         array('label' => $name, 'value' => $id
+        //     );
+        // }
+        // if ($event_genres) {
+        //     foreach ($event_genres as $event_genre) {
+        //         $name = $event_genre->name;
+        //         $id = $event_genre->pivot_genre_id;
+        //         $genre_values[] = 
+        //             array('label' => $name, 'value' => $id);
+        //     } 
+        // }
+
+            return Inertia::render('Events/Edit', compact('event', 'genres'));
         }
     }
 
@@ -196,7 +254,6 @@ class EventController extends Controller
                 'event_date' => 'required',
             ]);
     
-            $start_time = $request->event_time;
             $event->name = $request->name;
             $event->link_event = $request->link_event;
             $event->link_tickets = $request->link_tickets;
@@ -204,10 +261,42 @@ class EventController extends Controller
             // $event->event_date = $request->event_date;
             // $event->time_start_hours = $start_time['hours'];
             // $event->time_start_minutes = $start_time['minutes'];
-            
             $event->event_date = $request->event_date;
-            $time = $event->event_time = $request->event_time;
-    
+            $event->event_time = $request->event_time;
+
+            $event->event_genres = $request->genre_values;
+     
+            // TODO: Genre options
+            // $genres = $request->genre_values;
+            // if ($genres) {
+            //     foreach( $genres as $genre ) {
+            //         // dd($genre["value"]);
+            //         // $id = $genre->value; 
+            //         // dd($id);
+            //         $event->genres()->sync($genres);
+            //     }
+            // }else {
+            //         $genres = [];
+            // }
+            //     $genres = $request->genre_values;
+            //     // dd($genres);
+            //     // if ($genres) {
+            //     foreach ($data->genres as $genre) {
+            //     $event->genres()->sync($genres['id'] => );
+            // }
+            //   for ($row = 0; $row < count($genres); $row++ ) {
+            //   }
+            //    foreach( $genres as $genre ) {
+            //     $event->genres()->sync(
+            //         $genre["id"]
+            //     );
+            //    }
+            // //        
+            //     }
+            //     }else {
+            //         $event->genres()->sync($genres);
+            //     }
+          
             // Store the file in storage\app\public folder if file exists in the request
             if ($request->hasfile('flyer_front')) {
                 $flyer_front_file = $request->file('flyer_front');
@@ -237,7 +326,7 @@ class EventController extends Controller
                 $event->flyer_back_upload = $flyer_back_slug_new;
             }
 
-            $event->update();
+            $event->save();
         }
 
         return Redirect::route('events.show', [$event->slug]);

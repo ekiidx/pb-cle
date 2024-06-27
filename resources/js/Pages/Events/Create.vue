@@ -9,11 +9,21 @@ import { ref } from 'vue';
 import { Head, useForm } from "@inertiajs/vue3";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
+import Multiselect from '@vueform/multiselect';
 
 const props = defineProps({
   errors: Object,
 });
+
+// Event time
 const startTime = ref({ hours: 20, minutes: 0 });
+
+//Genres
+const options = [
+    { label: 'techno', value: '1' },
+    { label: 'house', value: '2' },
+    { label: 'uk hardcore', value: '3' },
+]
 
 const form = useForm({
     name: "",
@@ -22,6 +32,7 @@ const form = useForm({
     link_event: "",
     event_date: "",
     event_time: "",
+    genre_values: [],
     flyer_front: "",
     flyer_back: ""
 });
@@ -160,7 +171,8 @@ const submit = () => {
                   <InputError :message="errors.link_tickets" />
                 </div>
 
-                <div class="mt-4 mb-4">
+                <!-- Info -->
+                <div class="mt-4">
                   <Label for="content" value="Info" />
                   <textarea
                     id="content"
@@ -171,6 +183,21 @@ const submit = () => {
                     autocomplete="content"
                   ></textarea>
                   <InputError :message="errors.content" />
+                </div>
+
+                <!-- Genres -->
+                <div class="mt-4 mb-4">
+                  <Label for="genres" value="Genres" />
+                  <Multiselect 
+                    id="genres"
+                    v-model="form.genre_values" 
+                    mode="tags"
+                    :close-on-select="false"
+                    :searchable="true"
+                    :create-option="false"
+                    :object="true"
+                    :options="options"
+                ></Multiselect>
                 </div>
 
                 <!-- Flyer Upload -->
@@ -232,3 +259,5 @@ const submit = () => {
     </div>
   </AppLayout>
 </template>
+
+<style src="@vueform/multiselect/themes/default.css"></style>
