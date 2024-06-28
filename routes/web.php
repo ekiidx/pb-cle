@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Backend\CommunityController;
-use App\Http\Controllers\Backend\CommunityPostController;
-use App\Http\Controllers\Backend\PostVoteController;
-use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
-use App\Http\Controllers\Frontend\PostCommentController;
-use App\Http\Controllers\Frontend\PostController;
-use App\Http\Controllers\Frontend\WelcomeController;
+use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\CommunityPostController;
+use App\Http\Controllers\PostVoteController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommunityController as FrontendCommunityController;
+use App\Http\Controllers\PostCommentController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PlurPointController;
 use App\Http\Controllers\RaverController;
