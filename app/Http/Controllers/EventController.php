@@ -95,6 +95,12 @@ class EventController extends Controller
         //     }
         // }
 
+        $genres = $request->genre_values;
+        $count = count($genres);
+        if( $count == 0 ) {
+            $genres = NULL;
+        }
+
         $event = Event::create([
             'user_id' => auth()->id(),
             'name' => $request->name,
@@ -105,7 +111,7 @@ class EventController extends Controller
             'event_time' => $request->event_time,
             // 'time_start_hours' => $start_time['hours'],
             // 'time_start_minutes' => $start_time['minutes'],
-            'event_genres' => $request->genre_values
+            'event_genres' => $genres
         ]);
 
         // Store the file in storage\app\public folder if file exists in the request
@@ -264,7 +270,12 @@ class EventController extends Controller
             $event->event_date = $request->event_date;
             $event->event_time = $request->event_time;
 
-            $event->event_genres = $request->genre_values;
+            $genres = $request->genre_values;
+            $count = count($genres);
+            if( $count == 0 ) {
+                $genres = NULL;
+            }
+            $event->event_genres = $genres;
      
             // TODO: Genre options
             // $genres = $request->genre_values;

@@ -256,7 +256,7 @@ const submit = () => {
 
 					<!-- Genres Box -->
 					<div
-						v-if="props.genres != 0"
+						v-if="props.genres"
 						class="
 						about-box
 						border
