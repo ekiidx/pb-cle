@@ -22,7 +22,23 @@ const startTime = ref({ hours: 20, minutes: 0 });
 const options = [
     { label: 'techno', value: '1' },
     { label: 'house', value: '2' },
-    { label: 'uk hardcore', value: '3' },
+    { label: 'drum n bass', value: '3' },
+    { label: 'breaks', value: '4'},
+    { label: 'dubstep', value: '5' },
+    { label: 'trap', value: '6' },
+    { label: '2 step', value: '7' },
+    { label: 'trance', value: '8' },
+    { label: 'hard dance', value: '9' },
+    { label: 'electro house', value: '10' },
+    { label: 'psytrance', value: '11' },
+    { label: 'speedcore', value: '12' },
+    { label: 'gabber', value: '13' },
+    { label: 'hardstyle', value: '14' },
+    { label: 'lofi', value: '15' },
+    { label: 'breakbeat hardcore', value: '16' },
+    { label: 'hardcore', value: '17' },
+    { label: 'happy hardcore', value: '18' },
+    { label: 'uk hardcore', value: '19' },
 ]
 
 const form = useForm({

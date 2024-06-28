@@ -287,7 +287,7 @@ const submit_websites = () => {
                   </div>
 
                   <div class="mb-3">
-                    <Label for="link_two" value="Website" />
+                    <Label for="link_two" value="Website 2" />
                     <Input
                       id="link_two"
                       type="url"
@@ -299,7 +299,7 @@ const submit_websites = () => {
                   </div>
 
                   <div class="mb-3">
-                    <Label for="link_three" value="Website" />
+                    <Label for="link_three" value="Website 3" />
                     <Input
                       id="link_three"
                       type="url"
