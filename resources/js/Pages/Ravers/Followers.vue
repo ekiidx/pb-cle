@@ -59,7 +59,7 @@ const props = defineProps({
                             as="button"
                             type="button"
                             style="width: 6rem"
-                            class="register-btn d-inline-block items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl mb-3"
+                            class="register-btn d-inline-block items-center bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl mb-3"
                             preserve-scroll
                         >Follow</Link>
 
@@ -71,7 +71,7 @@ const props = defineProps({
                             as="button"
                             type="button"
                             style="width: 6rem"
-                            class="register-btn d-inline-block items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl mb-3"
+                            class="login-btn d-inline-block items-center fw-600 text-white font-xsss text-center lh-20 rounded-xl mb-3"
                             preserve-scroll
                         >Unfollow</Link>
 
