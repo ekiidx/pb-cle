@@ -96,7 +96,7 @@ const submit = () => {
 									{{ post.data.created_at }}
 								</span>
 									
-								<div v-if="$page.props.auth.auth_check">
+								<div v-if="$page.props.auth">
 									<Link v-if="can_update"
 										:href="
 										route('communities.posts.edit', [
@@ -112,7 +112,7 @@ const submit = () => {
 										>Edit</Link
 									>
 								</div>
-								<div v-if="$page.props.auth.auth_check">
+								<div v-if="$page.props.auth">
 									<Link v-if="can_delete"
 										:href="
 										route('communities.posts.destroy', [
@@ -155,7 +155,7 @@ const submit = () => {
 
 							<!-- Image -->
 							<a v-if="post.data.post_image" :href="'/storage/post-images/'+ post.data.post_image">
-                    			<img v-if="post.data.post_image" class="mb-3" style="max-width: 100%; height: auto;" :src="'/storage/post-images/'+post.data.post_image">
+                    			<img v-if="post.data.post_image" class="mb-3" style="width: 100%; height: auto;" :src="'/storage/post-images/'+post.data.post_image">
                 			</a>
 
 							<!-- Divider -->
