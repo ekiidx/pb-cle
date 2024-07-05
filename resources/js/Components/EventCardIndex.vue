@@ -29,7 +29,7 @@ defineProps({
 
             <div class="flex">
                 <a :href="'/events/'+ event.slug">
-                    <img v-if="event.flyer_front_upload" class="rounded-sm pl-4 pt-1 pb-3" style="max-width: 7rem; max-height: 5rem; min-width: 7rem; height: auto;" :src="'/storage/flyers/'+event.flyer_front_upload">
+                    <img v-if="event.flyer_front_upload" class="rounded-sm pl-4 pt-1 pb-3 object-cover" style="max-width: 7rem; max-height: 5rem; min-width: 7rem; height: auto;" :src="'/storage/flyers/'+event.flyer_front_upload">
                 </a>
                 
                 <div>

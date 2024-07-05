@@ -236,22 +236,24 @@ const submit = () => {
 								Event Info
 							</h2>
 						</div>
-						<table class="event-info-table">
-							<tr v-if="event.data.party_date">
-								<td class="px-3 pt-3 pb-2"><p class="text-white font-bold">Date</p></td>
-								<td class="px-3 pt-3 pb-2"><p class="text-white">{{ event.data.weekday_format }} {{ event.data.party_date }}</p></td>
-							</tr>
-								
-							<tr v-if="event.data.link_event">
-								<td class="px-3 pb-2"><p class="text-white font-bold">Link</p></td>
-								<td class="px-3 pb-2"><p class="text-white"><a :href="event.data.link_event">Click Here</a></p></td>
-							</tr>
+						<div class="event-info-box">
+							<table class="event-info-table">
+								<tr v-if="event.data.party_date">
+									<td class="px-3 pb-2"><p class="text-white font-bold">Date</p></td>
+									<td class="px-3 pb-2"><p class="text-white">{{ event.data.weekday_format }} {{ event.data.party_date }}</p></td>
+								</tr>
+									
+								<tr v-if="event.data.link_event">
+									<td class="px-3 pb-2"><p class="text-white font-bold">Link</p></td>
+									<td class="px-3 pb-2"><p class="text-white"><a :href="event.data.link_event">Click Here</a></p></td>
+								</tr>
 
-							<tr v-if="event.data.link_tickets">
-								<td class="px-3 pb-2"><p class="text-white font-bold">Tickets</p></td>
-								<td class="px-3 pb-2"><p class="text-white"><a :href="event.data.link_tickets">Click Here</a></p></td>
-							</tr>
-						</table>
+								<tr v-if="event.data.link_tickets">
+									<td class="px-3 pb-2"><p class="text-white font-bold">Tickets</p></td>
+									<td class="px-3 pb-2"><p class="text-white"><a :href="event.data.link_tickets">Click Here</a></p></td>
+								</tr>
+							</table>
+						</div>
 					</div>
 
 					<!-- Genres Box -->
