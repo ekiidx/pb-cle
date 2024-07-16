@@ -388,8 +388,8 @@ input[type="file"] {
 }
 @media only screen and (min-width: 1440px) {
     .main-container {
-        padding-left: 17rem;
-        padding-right: 17rem;
+        padding-left: 21rem;
+        padding-right: 21rem;
     }
     /* .post-description {
         padding-right: 3rem !important;

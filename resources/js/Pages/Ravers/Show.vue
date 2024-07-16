@@ -103,7 +103,7 @@ const props = defineProps({
                             preserve-scroll
                         >Unfollow</Link>
 
-                        <div class="flex flex-col mb-3">
+                        <div class="flex flex-col">
                             <div><Link
                                     :href="route('ravers.show', user)"
                                     class="text-electricgreen text-sm fw-600 inline-block mr-2"
@@ -135,20 +135,17 @@ const props = defineProps({
                                     {{ following_count }}
                                 </Link>
                                 <span class="inline-block text-sm">Following</span></div>
-
                         </div>
 
-                        <div v-if="user.link_one || user.link_two || user.link_three" class="mb-3">
+                        <div v-if="user.link_one || user.link_two || user.link_three" class="mb-3 mt-3" style="white-space: pre-wrap; overflow-wrap: anywhere;">
                             <h2 class="text-white fw-600 text-sm">Websites</h2>
 
                             <a v-if="user.link_one" :href="user.link_one" class="text-sm d-block">{{ user.link_one }}</a>
                             <a v-if="user.link_one" :href="user.link_two" class="text-sm d-block">{{ user.link_two }}</a>
                             <a v-if="user.link_one" :href="user.link_three" class="text-sm d-block">{{ user.link_three }}</a>
-                          
-
                         </div>
 
-                        <div v-if="user.link_four || user.link_five || user.link_six || user.link_seven || user.link_eight">
+                        <div v-if="user.link_four || user.link_five || user.link_six || user.link_seven || user.link_eight" style="white-space: pre-wrap; overflow-wrap: anywhere;">
                             <h2 class="text-white fw-600 text-sm">Socials</h2>
                             <a v-if="user.link_four" :href="user.link_four" class="text-sm d-block">{{ user.link_four }}</a>
                             <a v-if="user.link_five" :href="user.link_five" class="text-sm d-block">{{ user.link_five }}</a>

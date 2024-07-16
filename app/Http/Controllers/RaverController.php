@@ -140,6 +140,7 @@ class RaverController extends Controller
         $event_count = $user->events()->count();
         $follower_count = $user->followers()->count();
         $following_count = $user->following()->count();
+        $plur_points_count = $user->plur_points;
 
         // This is the current user
         $follower = auth()->user();
@@ -209,8 +210,16 @@ class RaverController extends Controller
 
             // }
         // }
+
+        //Only owner of post, owner of event, or admin can edit & delete
+        $id = Auth::id();
+        if($user_id !== $id) {
+            $can_update = false;
+        }else {
+            $can_update = true;
+        }
        
-        return Inertia::render('Ravers/Followers', compact('user', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check', 'followers'));
+        return Inertia::render('Ravers/Followers', compact('user', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check', 'plur_points_count', 'followers', 'can_update'));
     }
 
     public function following(String $slug)
@@ -222,6 +231,7 @@ class RaverController extends Controller
         $follower_count = $user->followers()->count();
         $following_count = $user->following()->count();
         $follower = auth()->user();
+        $plur_points_count = $user->plur_points;
 
         // Only comparing to the logged in user and the slug
         if($follower == null) {
@@ -248,7 +258,15 @@ class RaverController extends Controller
 
         $following = User::whereIn('id', $following_ids)->where('id', '!=', $user_id)->latest()->get();
 
-        return Inertia::render('Ravers/Following', compact('user', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check', 'following'));
+        //Only owner of post, owner of event, or admin can edit & delete
+        $id = Auth::id();
+        if($user_id !== $id) {
+            $can_update = false;
+        }else {
+            $can_update = true;
+        }
+
+        return Inertia::render('Ravers/Following', compact('user', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check', 'plur_points_count', 'following', 'can_update'));
     }
 
     public function events(String $slug)
@@ -260,6 +278,7 @@ class RaverController extends Controller
         $follower_count = $user->followers()->count();
         $following_count = $user->following()->count();
         $follower = auth()->user();
+        $plur_points_count = $user->plur_points;
 
         if($follower == null) {
             $follow_check = false;
@@ -279,7 +298,15 @@ class RaverController extends Controller
 
         $events = Event::with('user')->where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(20);
 
-        return Inertia::render('Ravers/Events', compact('user', 'events', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'unfollow_check'));
+        //Only owner of post, owner of event, or admin can edit & delete
+        $id = Auth::id();
+        if($user_id !== $id) {
+            $can_update = false;
+        }else {
+            $can_update = true;
+        }
+
+        return Inertia::render('Ravers/Events', compact('user', 'events', 'post_count', 'event_count', 'follower_count', 'following_count', 'follow_check', 'plur_points_count', 'unfollow_check', 'can_update'));
     }
 
     // public function posts(String $slug)
