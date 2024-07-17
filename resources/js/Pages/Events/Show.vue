@@ -161,9 +161,9 @@ const submit = () => {
 									>
 										<div class="text-sm">
 											<!-- Commented by -->
-											<a :href="'/ravers/'+event_comment.username">
+											<a :href="'/ravers/'+event_comment.user_slug">
 											<span class="font-semibold text-darkorchid mr-1">{{
-												event_comment.user_slug
+												event_comment.username
 											}}</span></a>
 											{{ event_comment.created_at }}
 										</div>
