@@ -26,7 +26,10 @@ defineProps({
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						p-3
+						"
+						style="
+						padding-top: 1.05rem;
+						padding-bottom: 1.05rem;
 						"
 						>
 						<h2 class="font-semibold text-xl text-white leading-tight">

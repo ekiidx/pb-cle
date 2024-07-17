@@ -27,7 +27,6 @@ const props = defineProps({
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						p-3
 						"
 					>
 			

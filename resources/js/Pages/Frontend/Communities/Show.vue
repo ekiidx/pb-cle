@@ -33,9 +33,7 @@ defineProps({
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						shadow-md
 						justify-between
-						p-3
 						"
 					>
 						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">

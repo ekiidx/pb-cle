@@ -27,16 +27,16 @@ a {
     background-color: #121212 !important;
   }
 .comment-btn {
-    padding-top: 0.7rem;
-    padding-right: 1.4rem;
-    padding-bottom: 0.7rem;
-    padding-left: 1.4rem;
+    padding-top: 0.6rem;
+    padding-right: 1.2rem;
+    padding-bottom: 0.6rem;
+    padding-left: 1.2rem;
 }
 .primary-btn {
-    padding-top: 0.7rem;
-    padding-right: 1.4rem;
-    padding-bottom: 0.7rem;
-    padding-left: 1.4rem;
+    padding-top: 0.6rem;
+    padding-right: 1.2rem;
+    padding-bottom: 0.6rem;
+    padding-left: 1.2rem;
 }
 .hi-cursor:hover {
     cursor: url(/assets/img/hi-cursor.gif), auto;
@@ -95,12 +95,12 @@ nav.main-nav {
     background-color: #1d1f2b;
 }
 .register-btn {
-    padding: 0.55rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 1.5rem;
     background-color: #9932cc;
 }
 .login-btn {
-    padding: 0.55rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 1.5rem;
     background-color: #1A1A1B;
     border: solid 1px #10d876; 
@@ -168,6 +168,10 @@ input[type="file"] {
 }
 .header-post-box {
     margin-bottom: 0.5rem;
+    padding-top: 0.6rem;
+    padding-right: 1rem;
+    padding-bottom: 0.6rem;
+    padding-left: 1rem;
 }
 .popular-posts-box {
     margin-bottom: 0.5rem;
@@ -239,9 +243,9 @@ input[type="file"] {
 }
 .read-more-box .comment-btn {
     padding-top: 0.4rem;
-    padding-left: 0.9rem;
-    padding-bottom: 0.5rem;
-    padding-right: 0.9rem;
+    padding-left: 0.8rem;
+    padding-bottom: 0.4rem;
+    padding-right: 0.8rem;
 }
 .home-page .post-description, .communities-show .post-description, .profile-show .post-description {
     display: none;
@@ -292,10 +296,10 @@ input[type="file"] {
         margin-right: -0.25rem;
     }
     .read-more-box .comment-btn {
-        padding-top: 0.7rem;
-        padding-left: 1.4rem;
-        padding-bottom: 0.7rem;
-        padding-right: 1.4rem;
+        padding-top: 0.6rem;
+        padding-left: 1.2rem;
+        padding-bottom: 0.6rem;
+        padding-right: 1.2rem;
     }
 }
 @media only screen and (min-width: 768px) {
@@ -367,7 +371,6 @@ input[type="file"] {
         padding-right: 3rem !important;
     } */
     .main-container {
-        margin-top: 72px;
         padding-left: 12rem;
         padding-right: 10rem;
     }
