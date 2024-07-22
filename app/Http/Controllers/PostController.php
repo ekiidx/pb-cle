@@ -15,11 +15,11 @@ class PostController extends Controller
 {
     public function show($comunity_slug, $slug)
     {
-        $community = Community::where('slug', $comunity_slug)->first();
+        $community = Community::where('slug', $comunity_slug)->firstOrFail();
 
         $community_post = Post::with(['comments', 'postVotes' => function ($query) {
             $query->where('user_id', auth()->id());
-        }])->where('slug', $slug)->first();
+        }])->where('slug', $slug)->firstOrFail();
 
         $post = new PostShowResource($community_post);
 
@@ -29,7 +29,19 @@ class PostController extends Controller
         //Only owner of post, owner of community, or admin can edit & delete
         $can_update = Auth::check() ? Auth::user()->can('update', $community_post) : false;
         $can_delete = Auth::check() ? Auth::user()->can('delete', $community_post) : false;
+        $is_user = auth::id();
 
-        return Inertia::render('Frontend/Posts/Show', compact('community', 'post', 'posts', 'can_update', 'can_delete'));
+        // if($community_post->comment()->id = auth::id()){
+        //     $can_update_comment = true;
+        // }
+       
+
+        // if($user_id !== $comment->id) {
+        //     $can_update_comment = false;
+        // }else {
+        //     $can_update_comment = true;
+        // };
+
+        return Inertia::render('Frontend/Posts/Show', compact('community', 'post', 'posts', 'can_update', 'can_delete', 'is_user'));
     }
 }

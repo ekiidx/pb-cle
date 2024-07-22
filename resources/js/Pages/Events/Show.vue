@@ -7,7 +7,8 @@ const props = defineProps({
 	genres: Object,
   	can_delete: Boolean,
 	can_update: Boolean,
-	new: Boolean
+	new: Boolean,
+	is_user: Number,
 });
 
 const form = useForm({
@@ -166,6 +167,25 @@ const submit = () => {
 												event_comment.username
 											}}</span></a>
 											{{ event_comment.created_at }}
+
+											<!-- Edit Comment -->
+											<Link
+												v-if="event_comment.user_id === props.is_user"
+												:href="
+												route('events.comments.edit', [
+													event.data.slug,
+													event_comment.id
+												])
+												"
+												class="
+												font-semibold
+												text-electricgreen
+												ml-2
+												"
+												style="
+												font-size: 0.85rem"
+												>Edit</Link
+											>
 										</div>
 										<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
 											{{ event_comment.content }}

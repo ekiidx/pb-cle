@@ -21,7 +21,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::with('user')->orderBy('created_at', 'desc')->paginate(20);
+        $events = Event::with('user')->orderBy('created_at', 'desc')->paginate(20)->onEachSide(1);
         // $events_test = Event::query()->with('user')->paginate(10);
         // $events = Event::with('user')->orderby('id', 'asc')->paginate(3);
         $events_sidebar = Event::with('user')->orderBy('created_at', 'desc')->take(6)->get();
@@ -191,8 +191,9 @@ class EventController extends Controller
             $can_update = true;
             $can_delete = true;
         }
+        $is_user = auth::id();
 
-        return Inertia::render('Events/Show', compact('event', 'genres', 'new', 'can_update', 'can_delete'));
+        return Inertia::render('Events/Show', compact('event', 'genres', 'new', 'can_update', 'can_delete', 'is_user'));
     }
 
     /**

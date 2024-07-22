@@ -17,7 +17,7 @@ class CommunityPostController extends Controller
 {
     public function create(Community $community)
     {
-        return Inertia::render('Communities/Posts/Create', compact('community')); //
+        return Inertia::render('Communities/Posts/Create', compact('community'));
     }
 
     public function store(StorePostRequest $request, Community $community)

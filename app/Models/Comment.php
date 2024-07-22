@@ -12,7 +12,9 @@ class Comment extends Model
     protected $fillable = [
         'user_id',
         'post_id',
-        'content'
+        'content',
+        'created_at',
+        'updated_at'
     ];
 
     public function post()
@@ -25,10 +27,10 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected $appends = ['created_at_diff'];
+    // protected $appends = ['created_at_diff'];
 
-    public function getCreatedAtDiffAttribute(): string 
-    { 
-      return $this->created_at->diffForHumans(); 
-    }
+    // public function getCreatedAtDiffAttribute(): string 
+    // { 
+    //     return $this->created_at->diffForHumans();
+    // }
 }

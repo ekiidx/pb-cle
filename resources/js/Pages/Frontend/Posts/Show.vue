@@ -1,5 +1,6 @@
 <script setup>
-import Guest from "@/Layouts/Guest.vue";
+// import Guest from "@/Layouts/Guest.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import { Link, useForm, Head } from "@inertiajs/vue3";
 import PostVote from "@/Components/PostVote.vue";
 import PostList from "@/Components/PostList.vue";
@@ -9,7 +10,8 @@ const props = defineProps({
 	post: Object,
 	posts: Object,
 	can_delete: Boolean,
-	can_update: Boolean
+	can_update: Boolean,
+	is_user: Number,
 });
 
 const form = useForm({
@@ -30,10 +32,11 @@ const submit = () => {
 </script>
 
 <template>
-  	<Guest>
-		<Head>
+  	<AppLayout title="Dashboard">
+
+		<!-- <Head>
 			<title>{{ community.name }} - {{ post.data.title }}</title>
-		</Head>
+		</Head> -->
 
    		<div class="main-container">
 			<div class="row gutter">
@@ -95,6 +98,7 @@ const submit = () => {
 									{{ post.data.created_at }}
 								</span>
 									
+								<!-- Edit Post -->
 								<div v-if="$page.props.auth">
 									<Link v-if="can_update"
 										:href="
@@ -172,13 +176,38 @@ const submit = () => {
 											class="flex flex-col"
 										>
 											<div class="text-sm">
+
 												<!-- Commented by -->
 												<a :href="'/ravers/'+comment.user_slug">
 												<span class="font-semibold text-darkorchid mr-1">{{
 													comment.username
 												}}</span></a>
 												{{ comment.created_at }}
+
+												<!-- Edit Comment -->
+												<Link
+													v-if="comment.user_id === props.is_user"
+													:href="
+													route('posts.comments.edit', [
+														community.slug,
+														post.data.slug,
+														comment.id
+													])
+													"
+													class="
+													font-semibold
+													text-electricgreen
+													ml-2
+													"
+													style="
+													font-size: 0.85rem"
+													>Edit</Link
+												>
 											</div>
+
+	
+											
+
 											<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
 												{{ comment.content }}
 											</div>
@@ -253,5 +282,5 @@ const submit = () => {
 				</div>
 			</div>
     	</div>
-  	</Guest>
+	</AppLayout>
 </template>

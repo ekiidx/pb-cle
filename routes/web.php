@@ -55,9 +55,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
 
     // Posts
-    Route::get('/posts/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
-    Route::get('/posts/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
-    Route::post('/posts/{community_slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
+    Route::get('/communities/{community:slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
+    Route::get('/communities/{community:slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
+    Route::post('/communities/{community:slug}/posts/{post:slug}', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
+    Route::get('/communities/{community:slug}/posts/{post:slug}/comments/{id}/edit', [PostCommentController::class, 'edit'])->name('posts.comments.edit');
+    Route::post('/communities/{community:slug}/posts/{post:slug}/comments/{id}', [PostCommentController::class, 'update'])->name('posts.comments.update');
 
     // Ravers
     Route::get('/ravers/{user:slug}/edit', [RaverController::class, 'edit'])->name('ravers.edit');
@@ -70,6 +72,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/events/{event:slug}/update', [EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{event:slug}/destroy', [EventController::class, 'destroy'])->name('events.destroy');
     Route::post('/events/{event:slug}/comments', [EventCommentController::class, 'store'])->name('events.comments');
+    Route::get('/events/{event:slug}/comments/{id}/edit', [EventCommentController::class, 'edit'])->name('events.comments.edit');
+    Route::post('/events/{event:slug}/comments/{id}', [EventCommentController::class, 'update'])->name('events.comments.update');
 
     // Follow
     Route::post('/ravers/{user:slug}/follow', [FollowController::class, 'follow'])->name('ravers.follow');

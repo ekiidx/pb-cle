@@ -16,6 +16,7 @@ class EventShowResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'is_user' => $this->user_id,
             'user_id' => $this->user_id,
             'username' => $this->user->username,
             'user_slug' => $this->user->slug,
