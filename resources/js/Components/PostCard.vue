@@ -55,7 +55,7 @@ defineProps({
       <p class="post-description font-normal text-sm text-gray-300 " style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
         {{ post.description }}
       </p>
-      <a v-if="post.post_image" :href="'/posts/'+community+'/posts/'+post.slug" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
+      <a v-if="post.post_image" :href="'/communities/'+community+'/posts/'+post.slug" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
         <img class="mb-3" style="width: 100%; height: auto;" :src="'/storage/post-images/'+post.post_image">
       </a>
 

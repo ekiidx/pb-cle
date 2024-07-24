@@ -34,9 +34,9 @@ const submit = () => {
 <template>
   	<AppLayout title="Dashboard">
 
-		<!-- <Head>
+		<Head>
 			<title>{{ community.name }} - {{ post.data.title }}</title>
-		</Head> -->
+		</Head>
 
    		<div class="main-container">
 			<div class="row gutter">
