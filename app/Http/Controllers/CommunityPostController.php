@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Models\Community;
 use App\Models\Post;
 use App\Models\PlurPoint;
+use App\Models\PostVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -41,8 +42,8 @@ class CommunityPostController extends Controller
             $post_image_file->storeAs('post-images', $post_image_slug_new, 'public');
             $post->post_image_slug = $post_image_slug;
             $post->post_image = $post_image_slug_new;
-            $post->save();
         }
+        $post->save();
 
         // PLUR Points
         $user = auth()->user();
@@ -52,6 +53,15 @@ class CommunityPostController extends Controller
             'points' => 5
         ]);
         $user->increment('plur_points', 5);
+
+        // Add a vote automatically after post creation
+        $vote = PostVote::create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+            'vote' => 1,
+        ]);
+        $post->increment('votes', 1);
+        $post->save();
 
         return Redirect::route('frontend.communities.show', $community->slug);
     }
