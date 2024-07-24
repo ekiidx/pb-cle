@@ -20,7 +20,7 @@
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Pb-Cle">
         <meta property="og:title" content="Pb-Cle">
-        <meta property="og:description" content="Welcome to the new Pb-Cle.org electronic dance music site where you'll be able to post your music and photos and look up local events. More to come soon.">
+        <meta property="og:description" content="Welcome to Pittsburgh and Cleveland's newest electronic dance music site - Pb-cle.org - where you can post your favorite music, links, photos and local events.">
         <meta property="og:image" content="https://pb-cle.org/site-thumbnail.png">
 
         <!-- Twitter Meta -->
@@ -28,7 +28,7 @@
         <meta property="twitter:domain" content="pb-cle.org">
         <meta property="twitter:url" content="https://pb-cle.org">
         <meta name ="twitter:title" content="Pb-Cle">
-        <meta name="twitter:description" content="Welcome to the new Pb-Cle.org electronic dance music site where you'll be able to post your music and photos and look up local events. More to come soon.">
+        <meta name="twitter:description" content="Welcome to Pittsburgh and Cleveland's newest electronic dance music site - Pb-cle.org - where you can post your favorite music, links, photos and local events.">
         <meta name="twitter:image" content="https://pb-cle.org/site-thumbnail.png">
         <meta data-rh="true" name="twitter:alt" content="Pb-Cle Preview">
         <meta data-rh="true" name="twitter:image:width" content="">

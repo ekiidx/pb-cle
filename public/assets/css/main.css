@@ -278,6 +278,24 @@ input[type="file"] {
     --dp-range-between-dates-text-color: var(--dp-hover-text-color, #fff);
     --dp-range-between-border-color: var(--dp-hover-color, #fff);
 }
+.pagination-vue {
+    padding-left: 0.3rem;
+    justify-content: center;
+}
+.pagination-vue-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 2.6rem;
+    max-width: 2.6rem;
+    min-height: 2.6rem;
+    max-height: 2.6rem;
+    margin-bottom: 0.25rem;
+    margin-right: 0.25rem;
+}
+.pagination-vue-item:nth-child(0), .pagination-vue-item:nth-child(1), .pagination-vue-item:nth-last-child(-n + 2) {
+    display: none;
+}
 @media only screen and (min-width: 652px) {
     /* .post-description {
         padding-right: 2.5rem !important;
@@ -361,6 +379,9 @@ input[type="file"] {
         /* display: flex;
         align-items: center; */
         margin-bottom: 0rem;
+    }
+    .pagination-vue {
+        justify-content: start;
     }
 }
 @media only screen and (min-width: 992px) {
