@@ -19,11 +19,13 @@ class Community extends Model
 
     public function sluggable(): array
     {
-        return [
-            'slug' => [
-                'source' => 'name'
-            ]
-        ];
+      return [
+        'slug' => [
+          'source' => 'name',
+          'separator' => '-',
+          'unique' => true,
+        ],
+      ];
     }
 
     public function getRouteKeyName()

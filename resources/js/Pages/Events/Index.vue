@@ -23,10 +23,10 @@ const props = defineProps({
 						header-post-box
 						flex
 						items-center
-						justify-between
 						bg-dark
 						rounded-lg
 						border border-gray-200
+						justify-between
 						"
 					>
 			

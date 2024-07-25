@@ -7,6 +7,7 @@ import Pagination from "@/Components/Pagination.vue";
 defineProps({
   communities_index: Object,
   communities: Object,
+  can_create_community: Boolean,
 });
 </script>
 
@@ -26,15 +27,18 @@ defineProps({
 						bg-dark
 						rounded-lg
 						border border-gray-200
-						"
-						style="
-						padding-top: 1.05rem;
-						padding-bottom: 1.05rem;
+						justify-between
 						"
 						>
-						<h2 class="font-semibold text-xl text-white leading-tight">
-							/Communities
-						</h2>
+							<h2 class="font-semibold text-xl text-white leading-tight">
+								/Communities
+							</h2>
+							<Link
+								v-if="can_create_community"
+								:href="route('communities.create')"
+								class="comment-btn items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
+								>Create Community</Link
+							>
 					</div>
 			
 
@@ -175,7 +179,7 @@ defineProps({
 								About Communities
 							</h2>
 						</div>
-						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">The many different threads of pb-cle.org. <span class="text-darkorchid font-bold">The communities are locked to the current topics but can be unlocked.</span></p>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">The many different threads of pb-cle.org. You must spend <span class="font-bold">100</span> <span class="text-electricgreen font-bold">PLUR Points</span> in order to create a custom community. You can obtain <span class="text-electricgreen font-bold">Points</span> by posting, commenting, and creating events!</p>
 					</div>
 
 					<CommunityList :communities="communities.data">

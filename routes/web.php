@@ -48,14 +48,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     
     // Communities
     Route::resource('/communities', CommunityController::class);
+    Route::get('/communities', [CommunityController::class, 'index'])->name('communities.index');
     Route::resource('/communities.posts', CommunityPostController::class);
+    Route::get('/communities/{community:slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
 
     // Voting
     Route::post('/posts/{post:slug}/upVote', [PostVoteController::class, 'upVote'])->name('posts.upVote');
     Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
 
     // Posts
-    Route::get('/communities/{community:slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
     Route::get('/communities/{community:slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
     Route::post('/communities/{community:slug}/posts/{post:slug}', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
     Route::get('/communities/{community:slug}/posts/{post:slug}/comments/{id}/edit', [PostCommentController::class, 'edit'])->name('posts.comments.edit');

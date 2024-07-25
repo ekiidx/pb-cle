@@ -34,7 +34,7 @@ const submit = () => {
   <AppLayout title="Dashboard">
 
     <div class="main-container">
-      <div class="row g-3">
+      <div class="row gutter">
 
 				<!-- Main Column -->
 				<div class="col-lg-8">
@@ -63,10 +63,10 @@ const submit = () => {
 					</div>
 
           <!-- Post Card -->
-          <div class="flex mb-3 bg-dark border rounded-lg text-sm">
+          <div class="post-card bg-dark border rounded-lg text-sm">
 
             <!-- Main Section -->
-            <div style="padding-right: 48px !important" class="w-full py-3 px-3">
+            <div class="w-full py-3 px-3">
               <form @submit.prevent="submit">
                 <div>
                   <Label for="title" value="Title" />
@@ -113,10 +113,7 @@ const submit = () => {
                     <input style="display:block" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()"/>
                 </div>
 
-                <div id="preview">
-                 
-                </div>
-
+                <div id="preview"></div>
 
                 <div class="flex items-center mt-4 mb-2">
                   <Button
@@ -134,18 +131,20 @@ const submit = () => {
 
         <div class="col-lg-4">
           <div class="border rounded-lg mb-3">
-            <h2
-            class="
-              font-semibold
-              bg-darkorchid
-              rounded-lg
-              text-white
-              p-3
-            "
-            >
-              About {{ community.name }}
-            </h2>
-              <p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">{{ community.description }}</p>
+            <div class="bg-darkorchid rounded-lg p-3">
+              <img class="d-inline" style="max-height: 1.1rem; max-width: 1.25rem; margin-right: 0.35rem; padding-bottom: 0.23rem" src="/assets/img/about.svg">
+              <h2
+              class="
+                font-semibold
+								text-lg
+								text-white
+								d-inline
+              "
+              >
+                About {{ community.name }}
+              </h2>
+            </div>
+            <p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">{{ community.description }}</p>
           </div>
 				</div>
       </div>

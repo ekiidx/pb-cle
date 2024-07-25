@@ -7,6 +7,10 @@ use App\Http\Requests\CommunityStoreRequest;
 use App\Http\Resources\CommunityPostResource;
 use App\Http\Resources\CommunityResource;
 use App\Models\Community;
+use App\Models\PlurPoint;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Redirect;
+// use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,8 +23,16 @@ class CommunityController extends Controller
      */
     public function index()
     {
-            // $communities = Community::where('user_id', auth()->id())->paginate(5)->through(fn ($community) => [
-            $communities_index = Community::latest()->paginate(20)->through(fn ($community) => [
+        // Check if raver has 100 plur points
+        $user = auth()->user();
+        if($user->plur_points >= 100) {
+            $can_create_community = true;
+        }else {
+            $can_create_community = false;
+        }
+        
+        // $communities = Community::where('user_id', auth()->id())->paginate(5)->through(fn ($community) => [
+        $communities_index = Community::latest()->paginate(20)->through(fn ($community) => [
             'id' => $community->id,
             'name' => $community->name,
             'slug' => $community->slug,
@@ -28,7 +40,7 @@ class CommunityController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
-        return Inertia::render('Communities/Index', compact('communities_index', 'communities'));
+        return Inertia::render('Communities/Index', compact('communities_index', 'communities', 'can_create_community'));
     }
 
     /**
@@ -38,8 +50,7 @@ class CommunityController extends Controller
      */
     public function create()
     {
-        // return Inertia::render('Communities/Create');
-        return to_route('communities.index');
+        return Inertia::render('Communities/Create');
     }
 
     /**
@@ -48,12 +59,35 @@ class CommunityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CommunityStoreRequest $request)
+    public function store(CommunityStoreRequest $request, Community $community)
     {
         // Community::create($request->validated() + ['user_id' => auth()->id()]);
         // return to_route('communities.index')->with('message', 'Community created successfully.');
 
-        return to_route('communities.index');
+        // Check if raver has 100 plur points
+        $user = auth()->user();
+        if($user->plur_points >= 100) {
+
+            $community = Community::create([
+                'user_id' => auth()->id(),
+                'name' => $request->name,
+                'description' => $request->description,
+            ]);
+    
+            // PLUR Points
+            $user = auth()->user();
+            PlurPoint::create([
+                'user_id' => $user->id,
+                'action' => 'create_community',
+                'points' => 100
+            ]);
+            $user->decrement('plur_points', 100);
+
+            return Redirect::route('frontend.communities.show', [$community->slug]);
+        
+        }else {
+            return to_route('communities.index');
+        }
     }
 
     /**

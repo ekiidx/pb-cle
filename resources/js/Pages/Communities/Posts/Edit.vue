@@ -43,7 +43,7 @@ const submit = () => {
 		</template> -->
 
       	<div class="main-container">
-        	<div class="row g-3">
+        	<div class="row gutter">
 
 				<!-- Main Column -->
 				<div class="col-lg-8">
@@ -66,10 +66,10 @@ const submit = () => {
 					</div>
 
 					<!-- Post Card -->
-					<div class="flex mb-3 bg-dark border rounded-lg text-sm">
+					<div class="post-card bg-dark border rounded-lg text-sm">
 
 						<!-- Main Section -->
-						<div style="padding-right: 48px !important" class="w-full py-3 px-3">
+						<div class="w-full py-3 px-3">
 
 							<form @submit.prevent="submit">
 								<div>
@@ -143,6 +143,7 @@ const submit = () => {
 							<h2
 							class="
 								font-semibold
+								text-lg
 								text-white
 								d-inline
 							"
@@ -150,7 +151,7 @@ const submit = () => {
 								Edit {{ community.name }} Post
 							</h2>
 						</div>
-						<p class="bg-dark font-normal text-sm text-grey-300 p-4 rounded-b-lg">You can edit your post.</p>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">You can edit your post.</p>
 					</div>
 				</div>
     		</div>
