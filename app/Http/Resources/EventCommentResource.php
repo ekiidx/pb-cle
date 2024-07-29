@@ -21,6 +21,7 @@ class EventCommentResource extends JsonResource
             'username' => $this->user->username,
             'user_slug' => $this->user->slug,
             'content' => $this->content,
+            'comment_image' => $this->comment_image,
             'created_at' => $this->created_at->diffForHumans(),
         ];
     }

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Comment extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $fillable = [
         'user_id',
@@ -16,6 +17,17 @@ class Comment extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function sluggable(): array
+    {
+      return [
+        'slug' => [
+          'source' => 'name',
+          'separator' => '-',
+          'unique' => true,
+        ],
+      ];
+    }
 
     public function post()
     {

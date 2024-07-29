@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CustomHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommunityStoreRequest;
 use App\Http\Resources\CommunityPostResource;
@@ -40,7 +41,9 @@ class CommunityController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
-        return Inertia::render('Communities/Index', compact('communities_index', 'communities', 'can_create_community'));
+        $isActive =  getNavigationColor();
+
+        return Inertia::render('Communities/Index', compact('communities_index', 'communities', 'can_create_community', 'isActive'));
     }
 
     /**
@@ -50,7 +53,9 @@ class CommunityController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Communities/Create');
+        $isActive = true;
+
+        return Inertia::render('Communities/Create', compact('isActive'));
     }
 
     /**
@@ -105,7 +110,9 @@ class CommunityController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->latest()->take(5)->get());
 
-        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts', 'communities'));
+        $isActive = true;
+
+        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts', 'communities', 'isActive'));
     }
 
     /**

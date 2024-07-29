@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\PlurPoint;
 use App\Models\EventComment;
 use App\Models\Comment;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -16,13 +17,30 @@ class EventCommentController extends Controller
     public function store(Request $request, Event $event)
     {
         $request->validate([
-            'content' => 'required',
+            'content' => 'required_if:comment_image,null,|nullable',
+            'comment_image' => 'required_if:content,null|max:2048|mimes:jpg,webp,png|nullable',
         ]);
 
-        $event->eventComments()->create([
+        $comment = $event->eventComments()->create([
             'user_id' => auth()->id(),
             'content' => $request->content
         ]);
+
+        if ($request->hasfile('comment_image')) {
+            $comment_image_file = $request->file('comment_image');
+            $comment_image_filename = $comment_image_file->getClientOriginalName();
+            $comment_image_extension = $comment_image_file->getClientOriginalExtension();
+            $comment_image_no_extension = explode('.' . $comment_image_extension, $comment_image_filename);
+
+            $comment_image_slug = SlugService::createSlug(EventComment::class, 'comment_image_slug', $comment_image_no_extension[0], ['unique' => true]);
+
+            $comment_image_slug_new = $comment_image_slug . '.' . $comment_image_extension;
+            
+            $comment_image_file->storeAs('comment-images', $comment_image_slug_new, 'public');
+            $comment->comment_image_slug = $comment_image_slug;
+            $comment->comment_image = $comment_image_slug_new;
+        }
+        $comment->save();
 
         // PLUR Points
         $user = auth()->user();
@@ -64,8 +82,29 @@ class EventCommentController extends Controller
         if($user_id !== $comment->user_id) {
             return Redirect::route('events.show', [$event]);
         }
+
+        $request->validate([
+            'content' => 'required_if:comment_image,null,|nullable',
+            'comment_image' => 'required_if:content,null|max:2048|mimes:jpg,webp,png|nullable',
+        ]);
     
         $comment->content = $request->content;
+
+        // Store the file in storage\app\public folder if file exists in the request
+        if ($request->hasfile('comment_image')) {
+            $comment_image_file = $request->file('comment_image');
+            $comment_image_filename = $comment_image_file->getClientOriginalName();
+            $comment_image_extension = $comment_image_file->getClientOriginalExtension();
+            $comment_image_no_extension = explode('.' . $comment_image_extension, $comment_image_filename);
+
+            $comment_image_slug = SlugService::createSlug(EventComment::class, 'comment_image_slug', $comment_image_no_extension[0], ['unique' => true]);
+
+            $comment_image_slug_new = $comment_image_slug . '.' . $comment_image_extension;
+            
+            $comment_image_file->storeAs('comment-images', $comment_image_slug_new, 'public');
+            $comment->comment_image_slug = $comment_image_slug;
+            $comment->comment_image = $comment_image_slug_new;
+        }
         $comment->save();
 
         return Redirect::route('events.show', [$event]);

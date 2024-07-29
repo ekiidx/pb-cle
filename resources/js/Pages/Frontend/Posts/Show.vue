@@ -12,11 +12,17 @@ const props = defineProps({
 	can_delete: Boolean,
 	can_update: Boolean,
 	is_user: Number,
+	errors: Object
 });
 
 const form = useForm({
   content: "",
+  comment_image: "",
 });
+
+function commentImagePreview() {
+  commentImageFrame.src=URL.createObjectURL(event.target.files[0])
+}
 
 const submit = () => {
   form.post(
@@ -205,47 +211,63 @@ const submit = () => {
 												>
 											</div>
 
-	
-											
-
 											<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
 												{{ comment.content }}
 											</div>
+
+											<!-- Image -->
+											<a v-if="comment.comment_image" :href="'/storage/comment-images/'+ comment.comment_image">
+												<img v-if="comment.comment_image" class="mb-3" style="width: 100%; max-width: 400px; height: auto;" :src="'/storage/comment-images/'+comment.comment_image">
+											</a>
 										</li>
 									</ul>
 								</div>
 							<!-- </div> -->
 
 							<!-- Textarea -->
-							<div v-if="$page.props.auth.user.username">
-								<form @submit.prevent="submit">
-									<div class="px-3 mb-3">
-										<textarea
-										v-model="form.content"
-										id="comment"
-										rows="5"
-										class="mt-1 block w-full bg-dark text-white"
-										placeholder="Your comment..."
-										></textarea>
-									</div>
-									<div class="px-3 mb-3">
-										<button
-										class="
-											comment-btn
-											items-center
-											border-transparent
-											bg-darkorchid
-											fw-600
-											text-white
-											font-xsss
-											text-center
-											lh-20
-											rounded-xl
-										">
-											Comment
-										</button>
-									</div>
-								</form>
+							 <div class="px-3">
+								<div v-if="$page.props.auth.user.username">
+									<form @submit.prevent="submit">
+										<div class="mb-2">
+											<textarea
+											v-model="form.content"
+											id="comment"
+											rows="5"
+											class="mt-1 block w-full bg-dark text-white"
+											placeholder="Your comment..."
+											></textarea>
+										</div>
+
+										<!-- Flyer Upload -->
+										<div class="mb-4">
+											<!-- <Label class="mb-1" for="comment_image" value="Upload Image" /> -->
+											<img 
+												style="max-width: 7rem; max-height: 5rem; height: auto;" 
+												id="commentImageFrame"
+												src="">
+												<!-- <InputError :message="errors.comment_image" /> -->
+											<input style="display:block" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" />
+										</div>
+										
+										<div class="mb-3">
+											<button
+											class="
+												comment-btn
+												items-center
+												border-transparent
+												bg-darkorchid
+												fw-600
+												text-white
+												font-xsss
+												text-center
+												lh-20
+												rounded-xl
+											">
+												Comment
+											</button>
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -37,4 +37,12 @@ class Community extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    // public function isActive($active)
+    // {
+    //    // will match routes which name starts with companies.
+    //   if (request()->routeIs('companies.*')) { 
+    //     $active = 'true'; 
+    //   }else{ $active = 'false'; }
+    // }
 }

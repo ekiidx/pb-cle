@@ -102,7 +102,6 @@ class CommunityPostController extends Controller
         $post->description = $request->description;
 
         if ($request->hasfile('post_image')) {
-
             $post_image_file = $request->file('post_image');
             $post_image_filename = $post_image_file->getClientOriginalName();
             $post_image_extension = $post_image_file->getClientOriginalExtension();

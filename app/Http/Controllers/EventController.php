@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 // use App\Http\Resources\EventResource;
-use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Genre;
 use App\Models\PlurPoint;
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class EventController extends Controller

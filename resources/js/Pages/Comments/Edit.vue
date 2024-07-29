@@ -15,7 +15,12 @@ const props = defineProps({
 // Form
 const form = useForm({
     content: props.comment?.content,
+    comment_image: props.comment?.comment_image
 });
+
+function commentImagePreview() {
+  commentImageFrame.src=URL.createObjectURL(event.target.files[0])
+}
 
 const submit = () => {
   form.post(
@@ -60,7 +65,7 @@ const submit = () => {
 
   <form @submit.prevent="submit">
 
-    <div class="mb-4">
+    <div class="mb-2">
                   <Label for="content" value="Content" />
                   <textarea
                     id="content"
@@ -71,6 +76,18 @@ const submit = () => {
                     autocomplete="content"
                   ></textarea>
                   <InputError :message="errors.content" />
+                </div>
+
+                <div class="mb-4">
+                  <Label class="mb-1" for="comment_image" value="Upload Image" />
+                  <img 
+                    v-if="props.comment.comment_image" 
+                    class="rounded-sm pb-3" 
+                    style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                    id="commentImageFrame"
+                    :src="'/storage/comment-images/'+comment.comment_image">
+                    <InputError :message="errors.upload_image" />
+                  <input style="display:block" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" />
                 </div>
 
                 <div class="mb-2">
