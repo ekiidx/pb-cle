@@ -10,8 +10,11 @@ This has been one of the larger projects I have built.
 - Create profile pages like facebook.
 
 ## Todo
-- Private Messaging App
-- Add voting to comments
-- Add edit ability to comments
+- [ ] Private Messaging
+- [ ] Add Voting to Comments
+- [x] Add images to Comments
+- [x] Edit Comments
+- [x] Add edit ability to comments
+- [ ] Add Notification system
 
 The site was built using [Laravel](https://laravel.com) with [Vue.js](https://vuejs.org) and [Inertia](https://inertiajs.com). I wanted to build something reactive, resembling a reddit like system. I also wanted to challenge myself and learn new systems and techniques.
