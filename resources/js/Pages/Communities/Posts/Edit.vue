@@ -118,7 +118,8 @@ const submit = () => {
 										:src="'/storage/post-images/'+post.post_image"
 										style="max-width: 7rem; max-height: 5rem; height: auto;">
 										<InputError :message="errors.post_image" />
-										<input style="display:block" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()"/>
+										<label for="post-image-upload" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
+										<input id="post-image-upload" style="display:none" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()" hidden />
 										
 								</div>
 

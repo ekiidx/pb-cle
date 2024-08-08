@@ -32,7 +32,7 @@ defineProps({
           >
             {{ community.name }}
           </Link>
-          <div>Posts({{ community.posts_count }})</div>
+          <div><p class="text-sm">Posts({{ community.posts_count }})</p></div>
         </div>
       </li>
     </ul>

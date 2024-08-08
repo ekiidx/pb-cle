@@ -4,6 +4,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import { Link, useForm, Head } from "@inertiajs/vue3";
 import PostVote from "@/Components/PostVote.vue";
 import PostList from "@/Components/PostList.vue";
+import InputError from "@/Components/InputError.vue";
 
 const props = defineProps({
 	community: Object,
@@ -31,7 +32,7 @@ const submit = () => {
       props.post.data.slug,
     ]),
     {
-      onSuccess: () => form.reset("content"),
+      onSuccess: () => form.reset(),
     }
   );
 };
@@ -228,7 +229,7 @@ const submit = () => {
 							 <div class="px-3">
 								<div v-if="$page.props.auth.user.username">
 									<form @submit.prevent="submit">
-										<div class="mb-2">
+										<div class="mb-1">
 											<textarea
 											v-model="form.content"
 											id="comment"
@@ -245,8 +246,9 @@ const submit = () => {
 												style="max-width: 7rem; max-height: 5rem; height: auto;" 
 												id="commentImageFrame"
 												src="">
-												<!-- <InputError :message="errors.comment_image" /> -->
-											<input style="display:block" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" />
+												<InputError :message="errors.comment_image" />
+												<label for="comment-image-upload" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
+											<input id="comment-image-upload" style="display:none" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" hidden />
 										</div>
 										
 										<div class="mb-3">

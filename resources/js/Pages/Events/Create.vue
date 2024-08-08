@@ -43,7 +43,6 @@ const options = [
     { label: 'trance', value: '21' },
     { label: 'trap', value: '22' },
     { label: 'uk hardcore', value: '23' },
-    { label: 'uk hardcore', value: '24' },
 ]
 
 const form = useForm({
@@ -228,7 +227,8 @@ const submit = () => {
                         id="flyerFrontFrame"
                         src="">
                         <InputError :message="errors.flyer_front" />
-                      <input style="display:block" name="flyer_front" type="file" @input="form.flyer_front = $event.target.files[0]" @change="flyerFrontPreview()" />
+                        <label for="event-flyer-front" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
+                      <input id="event-flyer-front" style="display:none" name="flyer_front" type="file" @input="form.flyer_front = $event.target.files[0]" @change="flyerFrontPreview()" hidden />
                   </div>
 
                   <div style="margin-bottom: 2rem;">
@@ -238,7 +238,8 @@ const submit = () => {
                         id="flyerBackFrame"
                         src="">
                         <InputError :message="errors.flyer_back" />
-                      <input style="display:block" name="flyer_back" type="file" @input="form.flyer_back = $event.target.files[0]" @change="flyerBackPreview()" />
+                        <label for="event-flyer-back" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
+                      <input id="event-flyer-back" style="display:none" name="flyer_back" type="file" @input="form.flyer_back = $event.target.files[0]" @change="flyerBackPreview()" hidden />
                   </div>
                 </div>
 

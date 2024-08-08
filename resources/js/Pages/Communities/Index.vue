@@ -8,13 +8,14 @@ defineProps({
   communities_index: Object,
   communities: Object,
   can_create_community: Boolean,
+  isActive: String
 });
 </script>
 
 <template>
 	<Head title="Communities" />
 
-	<AppLayout title="Dashboard">
+	<AppLayout title="Dashboard" isActive="rute">
 		<div class="main-container">
 			<div class="row gutter">
 				<div class="col-lg-8">
@@ -33,6 +34,8 @@ defineProps({
 							<h2 class="font-semibold text-xl text-white leading-tight">
 								/Communities
 							</h2>
+
+							<!-- {{ isActive }} -->
 							<Link
 								v-if="can_create_community"
 								:href="route('communities.create')"
@@ -179,7 +182,7 @@ defineProps({
 								About Communities
 							</h2>
 						</div>
-						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">The many different threads of pb-cle.org. You must spend <span class="font-bold">100</span> <span class="text-electricgreen font-bold">PLUR Points</span> in order to create a custom community. You can obtain <span class="text-electricgreen font-bold">Points</span> by posting, commenting, and creating events!</p>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">The many different threads of pb-cle.org. You must spend <span class="text-electricgreen font-bold">100 PLUR Points</span> in order to create a custom community. You can obtain <span class="text-electricgreen font-bold">PP</span> by posting, commenting, and creating events!</p>
 					</div>
 
 					<CommunityList :communities="communities.data">

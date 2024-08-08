@@ -85,7 +85,8 @@ const submit = () => {
               id="commentImageFrame"
               :src="'/storage/comment-images/'+comment.comment_image">
               <InputError :message="errors.upload_image" />
-            <input style="display:block" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" />
+              <label for="event-comment-upload" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
+            <input id="event-comment-upload" style="display:none" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" hidden />
         </div>
 
         <div class="mb-2">

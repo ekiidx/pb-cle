@@ -19,7 +19,7 @@ defineProps({
       <li 
         v-for="post in posts" 
         :key="post.id" 
-        class="py-2 sm:py-3"
+        class="py-3 sm:py-3"
       >
         <div class="flex items-center space-x-4">
           <Link
@@ -40,7 +40,7 @@ defineProps({
           >
             {{ post.title }}
           </Link>
-          <div>Votes({{ post.votes }})</div>
+          <div><p class="text-sm">Votes({{ post.votes }})</p></div>
         </div>
       </li>
     </ul>

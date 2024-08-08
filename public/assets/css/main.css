@@ -3,6 +3,7 @@ html, body {
     background: #121212 !important;
     font-size: 16px !important;
     touch-action: manipulation;
+    color: #56568d;
 }
 input, [type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
     background: #1a1a1b !important;
@@ -14,6 +15,16 @@ input[type="date"]::-webkit-calendar-indicator {
     background-color: #1a1a1b !important;
     color: #ffffff !important;
 }
+textarea {
+    border-color: #6868a0 !important;
+}
+textarea:focus {
+    border-color: #9932cc !important;
+    --tw-ring-color: #9932cc !important;
+}
+textarea::placeholder {
+    color: #6868a0 !important;
+  }
 a {
     color: #10d876 !important;
   }
@@ -137,6 +148,10 @@ input[type="file"] {
     border-style: none !important;
     border-color: initial !important;
     border-image: initial !important;
+}
+.image-upload-button {
+    color: #6868a0;
+    margin-left: 0.025rem;
 }
 .main-column {
     padding-top: 85px;

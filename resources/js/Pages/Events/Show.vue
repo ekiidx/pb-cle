@@ -30,7 +30,7 @@ const submit = () => {
       props.event.data.slug,
     ]),
     {
-      onSuccess: () => form.reset("content"),
+      onSuccess: () => form.reset(),
     }
   );
 };
@@ -213,7 +213,7 @@ const submit = () => {
 
 									<div class="px-3">
 										<!-- Textarea -->
-										<div class="mb-2">
+										<div class="mb-1">
 											<textarea
 											v-model="form.content"
 											id="comment"
@@ -231,7 +231,8 @@ const submit = () => {
 												id="commentImageFrame"
 												src="">
 												<InputError :message="errors.comment_image" />
-											<input style="display:block" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" />
+												<label for="comment-image-upload" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
+											<input id="comment-image-upload" style="display:hidden" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" hidden />
 										</div>
 									
 										<div class="mb-3">

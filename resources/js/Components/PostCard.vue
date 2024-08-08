@@ -61,7 +61,7 @@ defineProps({
 
       <!-- Flex -->
       <div class="post-flex read-more-box">
-        <p class="mr-4">Comments({{ post.comments_count }})</p>
+        <p class="mr-4 text-sm">Comments({{ post.comments_count }})</p>
         <Link
           :href="
             route('frontend.communities.posts.show', [community, post.slug])
