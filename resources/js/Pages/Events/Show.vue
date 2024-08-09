@@ -2,7 +2,7 @@
 import Guest from "@/Layouts/Guest.vue";
 import { Head, useForm, Link } from "@inertiajs/vue3";
 import Input from "@/Components/Input.vue";
-// import Label from "@/Components/Label.vue";
+import Label from "@/Components/Label.vue";
 import InputError from "@/Components/InputError.vue";
 
 const props = defineProps({
@@ -84,11 +84,12 @@ const submit = () => {
 						bg-dark
 						rounded-lg
 						border border-gray-200
+						text-sm
 						"
 					>
 						<!-- Main Section -->
 						<div class="w-full">
-							<div class="post-header flex flex-wrap">
+							<div class="post-header flex flex-wrap text-sm">
 								<!-- Posted by -->
 								<a :href="'/ravers/'+event.data.user_slug">
 								<span class="font-semibold mr-1 text-darkorchid">
@@ -152,7 +153,7 @@ const submit = () => {
 
 							<!-- Content -->
 							<div class="pl-4 pr-3 mb-4">
-								<p class="text-gray-300 break-words whitespace-pre-wrap">
+								<p class="text-gray-300 break-words text-sm whitespace-pre-wrap">
 									{{ event.data.content }}
 								</p>
 							</div>
@@ -167,9 +168,9 @@ const submit = () => {
 								<ul role="list">
 									<li
 										v-for="event_comment in event.data.event_comments"
-										class="flex flex-col"
+										class="flex flex-col mb-3"
 									>
-										<div class="text-sm">
+										<div class="text-sm mb-2">
 											<!-- Commented by -->
 											<a :href="'/ravers/'+event_comment.user_slug">
 											<span class="font-semibold text-darkorchid mr-1">{{
@@ -196,8 +197,10 @@ const submit = () => {
 												>Edit</Link
 											>
 										</div>
-										<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
-											{{ event_comment.content }}
+
+										<div v-if="event_comment.content"
+											class="text-gray-300 mb-2 whitespace-pre-wrap break-words mb-3">
+											<p class="text-grey-300">{{ event_comment.content }}</p>
 										</div>
 
 										<!-- Image -->

@@ -16,9 +16,14 @@ class EventCommentController extends Controller
 {
     public function store(Request $request, Event $event)
     {
+        // $request->validate([
+        //     'content' => 'required_if:comment_image,null,|nullable',
+        //     'comment_image' => 'required_if:content,null|max:2048|mimes:jpg,webp,png|nullable',
+        // ]);
+
         $request->validate([
-            'content' => 'required_if:comment_image,null,|nullable',
-            'comment_image' => 'required_if:content,null|max:2048|mimes:jpg,webp,png|nullable',
+            'content' => 'nullable', 'min:1',
+            'comment_image' => 'nullable', 'max:2048'
         ]);
 
         $comment = $event->eventComments()->create([
@@ -84,8 +89,8 @@ class EventCommentController extends Controller
         }
 
         $request->validate([
-            'content' => 'required_if:comment_image,null,|nullable',
-            'comment_image' => 'required_if:content,null|max:2048|mimes:jpg,webp,png|nullable',
+            'content' => 'nullable',
+            'comment_image' => 'required_if:content,null', 'nullable', 'max:2048'
         ]);
     
         $comment->content = $request->content;

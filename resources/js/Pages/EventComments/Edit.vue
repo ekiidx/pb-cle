@@ -2,6 +2,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Button from "@/Components/Button.vue";
 import Label from "@/Components/Label.vue";
+import Input from "@/Components/Input.vue";
 import InputError from "@/Components/InputError.vue";
 import { Head, useForm } from "@inertiajs/vue3";
 
@@ -77,14 +78,19 @@ const submit = () => {
       </div>
 
       <div class="mb-4">
-          <Label class="mb-1" for="comment_image" value="Upload Image" />
             <img 
               v-if="props.comment.comment_image" 
               class="rounded-sm pb-3" 
               style="max-width: 7rem; max-height: 5rem; height: auto;" 
               id="commentImageFrame"
               :src="'/storage/comment-images/'+comment.comment_image">
-              <InputError :message="errors.upload_image" />
+            <img 
+            v-else
+            class="rounded-sm pb-3" 
+            style="max-width: 7rem; max-height: 5rem; height: auto;" 
+            id="commentImageFrame"
+            src="">
+              <InputError :message="errors.comment_image" />
               <label for="event-comment-upload" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
             <input id="event-comment-upload" style="display:none" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" hidden />
         </div>

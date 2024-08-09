@@ -1,5 +1,4 @@
 <script setup>
-// import Guest from "@/Layouts/Guest.vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Link, useForm, Head } from "@inertiajs/vue3";
 import PostVote from "@/Components/PostVote.vue";
@@ -150,7 +149,7 @@ const submit = () => {
 								</h1>
 
 								<!-- Description -->
-								<p class="text-gray-300 px-3 pt-2" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">{{ post.data.description }}</p>
+								<p class="px-3 pt-2 text-grey-300" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">{{ post.data.description }}</p>
 								
 								<!-- Link -->
 								<div class="px-3 py-2 mb-3">
@@ -180,9 +179,9 @@ const submit = () => {
 										<li
 											v-for="(comment, index) in post.data.comments"
 											:key="index"
-											class="flex flex-col"
+											class="flex flex-col mb-3"
 										>
-											<div class="text-sm">
+											<div class="text-sm mb-2">
 
 												<!-- Commented by -->
 												<a :href="'/ravers/'+comment.user_slug">
@@ -212,13 +211,14 @@ const submit = () => {
 												>
 											</div>
 
-											<div class="text-gray-300 pt-2 pb-3 whitespace-pre-wrap break-words">
-												{{ comment.content }}
+											<div v-if="comment.content"
+												class="whitespace-pre-wrap break-words mb-3">
+												<p class="text-grey-300">{{ comment.content }}</p>
 											</div>
 
 											<!-- Image -->
 											<a v-if="comment.comment_image" :href="'/storage/comment-images/'+ comment.comment_image">
-												<img v-if="comment.comment_image" class="mb-3" style="width: 100%; max-width: 400px; height: auto;" :src="'/storage/comment-images/'+comment.comment_image">
+												<img v-if="comment.comment_image" style="width: 100%; max-width: 400px; height: auto;" :src="'/storage/comment-images/'+comment.comment_image">
 											</a>
 										</li>
 									</ul>
@@ -242,8 +242,9 @@ const submit = () => {
 										<!-- Flyer Upload -->
 										<div class="mb-4">
 											<!-- <Label class="mb-1" for="comment_image" value="Upload Image" /> -->
-											<img 
-												style="max-width: 7rem; max-height: 5rem; height: auto;" 
+											<img
+												style="max-width: 7rem; max-height: 5rem; height: auto;"
+												class="mt-2"
 												id="commentImageFrame"
 												src="">
 												<InputError :message="errors.comment_image" />

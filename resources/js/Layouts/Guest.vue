@@ -12,6 +12,7 @@ defineProps({
     canRegister: Boolean,
 });
 
+
 // const switchToTeam = (team) => {
 //     router.put(route('current-team.update'), {
 //         team_id: team.id,
@@ -47,10 +48,25 @@ const logout = () => {
           </div>
         </form> -->
 
-        <a href="/" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-home font-sm btn-round-sm text-grey-200 bg-electricgreen"></i></a>
-        <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
-        <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
-        <a v-if="$page.props.auth.user" :href="route('ravers.show', $page.props.auth.user)" href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+        <!-- <a href="/" class="p-1 text-center ms-0 menu-icon center-menu-icon"><i class="feather-home font-sm btn-round-sm text-grey-200 bg-electricgreen"></i></a> -->
+
+        <!-- {{ isActive }} -->
+        <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon">
+          <!-- <i v-if="isActive" class="feather-globe font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400"></i> -->
+          <i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+          
+
+        <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon">
+          <!-- <i v-if="isActive" class="feather-calendar font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400"></i> -->
+          <!-- <i v-else class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a> -->
+          <i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+
+        <a v-if="$page.props.auth.user"
+          :href="route('ravers.show', $page.props.auth.user)"
+          class="p-1 text-center ms-0 menu-icon center-menu-icon">
+          <i v-if="isActive" class="feather-user font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400"></i>
+          <i v-else class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
+
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="/ravers" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
@@ -174,14 +190,14 @@ const logout = () => {
           <template v-else>
             <Link
               :href="route('login')"
-              class="text-sm text-gray-700 fw-600 login-btn"
+              class="text-sm fw-600 login-btn"
             >
               Log in
             </Link>
 
             <Link
               :href="route('register')"
-              class="ml-2 text-sm text-gray-700 bg-darkorchid register-btn text-center text-white fw-600"
+              class="ml-2 text-sm bg-darkorchid register-btn text-center text-white fw-600"
             >
               Register
             </Link>

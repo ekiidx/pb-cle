@@ -38,16 +38,16 @@ a {
     background-color: #121212 !important;
   }
 .comment-btn {
-    padding-top: 0.6rem;
-    padding-right: 1.2rem;
-    padding-bottom: 0.6rem;
-    padding-left: 1.2rem;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
 }
 .primary-btn {
-    padding-top: 0.6rem;
-    padding-right: 1.2rem;
-    padding-bottom: 0.6rem;
-    padding-left: 1.2rem;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
 }
 .hi-cursor:hover {
     cursor: url(/assets/img/hi-cursor.gif), auto;
@@ -327,12 +327,6 @@ input[type="file"] {
         height: 1rem;
         margin-left: 0.25rem;
         margin-right: -0.25rem;
-    }
-    .read-more-box .comment-btn {
-        padding-top: 0.6rem;
-        padding-left: 1.2rem;
-        padding-bottom: 0.6rem;
-        padding-right: 1.2rem;
     }
 }
 @media only screen and (min-width: 768px) {
