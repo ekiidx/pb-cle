@@ -22,10 +22,10 @@
 
 
 */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"); */
 /* @import "./../vendor/owl-carousel/css/owl.carousel.min.css";
 @import "./../vendor/owl-carousel/css/owl.theme.default.css"; */
 
@@ -1082,8 +1082,7 @@
 }
 
 .display1-size {
-  /* font-size: 36px !important; */
-  font-size: 33px !important;
+  font-size: 36px !important;
 }
 
 .display2-size {
@@ -12469,10 +12468,6 @@ strong,
   font-family: "Open Sans", sans-serif;
 }
 
-.fredoka-font {
-  font-family: "Fredoka One", cursive;
-}
-
 .right-chat {
   position: fixed;
   top: 0;
@@ -12570,26 +12565,26 @@ strong,
   margin-bottom: 0px;
   white-space: nowrap;
 }
-.nav-header .nav-top a .logo-text {
+/* .nav-header .nav-top a .logo-text {
   line-height: 90px;
   transition: all 0.4s ease;
   font-size: 22px !important;
-}
-@media (max-width: 991.98px) {
+} */
+/* @media (max-width: 991.98px) {
   .nav-header .nav-top a {
     line-height: 28px;
     padding-left: 0;
     width: auto;
   }
   .nav-header .nav-top a i.feather-zap {
-    font-size: 32px !important;
+    font-size: 30px !important;
     margin-right: 3px !important;
   }
   .nav-header .nav-top a .logo-text {
     line-height: 28px;
     font-size: 22px !important;
   }
-}
+} */
 .nav-header .nav-menu {
   display: none;
   border: 0;

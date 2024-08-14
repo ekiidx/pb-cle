@@ -47,7 +47,7 @@ const submit = () => {
 						border border-gray-200
 						"
 					>
-            <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">/</span>
+            <h2 class="font-semibold text-xl text-white main-title-text leading-tight">
 							Create Community
 						</h2>
 					</div>

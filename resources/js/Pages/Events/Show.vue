@@ -139,7 +139,7 @@ const submit = () => {
 							</div>
 
 							<!-- Title -->
-							<h1 class="pl-4 pr-4 mb-4 font-bold tracking-tight text-white whitespace-break-spaces post-title">
+							<h1 class="font-bold tracking-tight text-white whitespace-break-spaces post-title" style="margin-bottom: 1rem;">
 								{{ event.data.name }}
 							</h1>
 							<!-- <p class="mb-4">Hosted by {{ event.user.username }}</p> -->
@@ -151,7 +151,7 @@ const submit = () => {
 							</div>
 
 							<!-- Content -->
-							<div class="pl-4 pr-3 mb-4">
+							<div class="post-content mb-4">
 								<p class="text-gray-300 break-words text-sm whitespace-pre-wrap">
 									{{ event.data.content }}
 								</p>
@@ -163,7 +163,7 @@ const submit = () => {
 							</div> -->
 
 							<!-- Comments -->
-							<div class="px-3 mb-5">
+							<div class="post-comments">
 								<ul role="list">
 									<li
 										v-for="comment in event.data.event_comments"
@@ -220,7 +220,7 @@ const submit = () => {
 								<form @submit.prevent="submit">
 
 									<!-- Textarea -->
-									<div class="px-3">
+									<div class="comment-textarea">
 										<div class="mb-1">
 											<textarea
 											v-model="form.content"

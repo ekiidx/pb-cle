@@ -1,9 +1,26 @@
+@font-face {
+    font-family: 'Fredoka';
+    src: url('/assets/fonts/Fredoka-VariableFontwdthwght.eot');
+    src: url('/assets/fonts/Fredoka-VariableFontwdthwght.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/Fredoka-VariableFontwdthwght.woff2') format('woff2'),
+         url('/assets/fonts/Fredoka-VariableFontwdthwght.woff') format('woff'),
+         url('/assets/fonts/Fredoka-VariableFontwdthwght.ttf')  format('truetype'),
+         url('/assets/fonts/Fredoka-VariableFontwdthwght.svg#Fredoka SemiBold') format('svg');
+}
+.fredoka-font {
+    font-family: "Fredoka", cursive;
+    font-weight: 700;
+    font-style: "Expanded";
+  }
+
 html, body {
     background-color: #121212 !important;
     background: #121212 !important;
     font-size: 16px !important;
     touch-action: manipulation;
     color: #56568d;
+    /* word-break: break-word;
+    overflow-wrap: break-word; */
 }
 input, [type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
     background: #1a1a1b !important;
@@ -80,6 +97,15 @@ a {
     /* border-bottom: 2px solid  #1a2028 !important; */
     border-bottom: 2px solid #252b33 !important;
 }
+.nav-top .pb-cle-zap-logo {
+    font-size: 32px;
+    margin-right: 2px;
+}
+.nav-header .nav-top a {
+    line-height: 28px;
+    padding-left: 0;
+    width: auto;
+  }
 .nav-top span.pb-cle-logofont {
     display: none !important;
 }
@@ -160,7 +186,7 @@ input[type="file"] {
     font-size: 1.2rem;
     line-height: 1.45rem;
     margin-bottom: 0.75rem;
-    padding-left: 1rem;
+    padding-left: 0.85rem;
     padding-right: 2.65rem;
 }
 .profile-img {
@@ -218,9 +244,30 @@ input[type="file"] {
 }
 .post-header {
     display: inline-block;
-    padding-top: 1rem;
-    padding-left: 1rem;
+    padding-top: .85rem;
+    padding-left: .85rem;
     margin-bottom: .25rem;
+    padding-right: 1.5rem;
+}
+.post-content {
+    padding-left: .85rem;
+    margin-bottom: .5rem;
+    padding-right: 1.5rem;
+}
+.post-link {
+    padding-left: .85rem;
+    margin-bottom: 1rem;
+    padding-right: 1.5rem;
+}
+.post-comments {
+    padding-left: .85rem;
+    padding-top: 1rem;
+    padding-right: 1.5rem;
+    margin-bottom: 2rem;
+}
+.comment-textarea {
+    padding-left: .85rem;
+    padding-right: .85rem;
 }
 .post-username {
     margin-left: .25rem;
@@ -242,8 +289,8 @@ input[type="file"] {
 }
 .read-more-box {
     padding-right: 0;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+    padding-left: 0.85rem;
+    margin-bottom: 0.85rem;
 }
 .read-more-box p {
     display: inline-block;
@@ -318,6 +365,11 @@ input[type="file"] {
     .nav-top span.pb-cle-logofont {
         display: inline-block !important;
         margin-right: 1rem;
+        font-size: 1.45rem;
+    }
+    .nav-top .pb-cle-zap-logo {
+        font-size: 29px;
+        margin-right: 5px;
     }
     .read-more-text {
         display: inline-block;
@@ -381,8 +433,8 @@ input[type="file"] {
     .home-page .post-description, .communities-show .post-description {
         display: block;
         padding-right: 2.65rem;
-        padding-left: 1rem;
-        margin-bottom: 1.5rem;
+        padding-left: 0.85rem;
+        margin-bottom: 1rem;
     }
     .read-more-box p {
         /* display: flex;

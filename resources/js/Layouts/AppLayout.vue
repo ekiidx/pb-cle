@@ -35,7 +35,7 @@ const logout = () => {
             <!-- navigation top-->
             <div class="nav-header bg-dark shadow-xs border-0">
                 <div class="nav-top">
-                    <a href="/"><i class="feather-zap text-electricgreen display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-darkorchid font-lg logo-text mb-0 pb-cle-logofont">Pb-Cle.org</span></a>
+                    <a href="/"><i class="pb-cle-zap-logo feather-zap text-electricgreen me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 text-darkorchid logo-text mb-0 pb-cle-logofont">Pb-Cle.org</span></a>
                     <!-- <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
                     <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
                     <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a> -->

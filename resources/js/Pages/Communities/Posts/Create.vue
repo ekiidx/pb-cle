@@ -55,7 +55,7 @@ const submit = () => {
 						border border-gray-200
 						"
 					>
-            <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">/</span>
+            <h2 class="font-semibold text-xl text-white main-title-text leading-tight">
 							<Link :href="route('frontend.communities.show', community.slug)">
 								{{ community.name }}
 							</Link>

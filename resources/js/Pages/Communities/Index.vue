@@ -32,7 +32,7 @@ defineProps({
 						"
 						>
 							<h2 class="font-semibold text-xl text-white leading-tight">
-								/Communities
+								Communities
 							</h2>
 
 							<!-- {{ isActive }} -->

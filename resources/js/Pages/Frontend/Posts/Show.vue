@@ -145,19 +145,19 @@ const submit = () => {
 
 							<div class="mb-2">
 								<!-- Title -->
-								<h1 class="pl-4 pr-4 mb-2 font-bold tracking-tight text-white post-title" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
+								<h1 class="pr-4 font-bold tracking-tight text-white post-title" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
 									{{ post.data.title }}
 								</h1>
 
 								<!-- Description -->
-								<p v-if="post.data.description" class="px-3 pt-2 text-grey-300 text-sm" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">{{ post.data.description }}</p>
+								<p v-if="post.data.description" class="post-content text-grey-300 text-sm" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">{{ post.data.description }}</p>
 								
 								<!-- Link -->
-								<div v-if="post.data.url" class="px-3 py-2 mb-3">
+								<div v-if="post.data.url" class="post-link">
 									<a
 										:href="post.data.url"
-										class="font-semibold text-electricgreen text-sm break-words"
-										style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;"
+										class="font-semibold text-electricgreen text-sm"
+										style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;  word-break: break-all;"
 										>{{ post.data.url }}</a
 									>
 								</div>
@@ -175,63 +175,65 @@ const submit = () => {
 								</div> -->
 								
 								<!-- Comments -->
-								<div v-if="props.comments != 0" class="px-3 mb-5">
-									<ul role="list">
-										<li
-											v-for="(comment, index) in props.comments"
-											:key="index"
-											class="flex flex-col mb-3"
-										>
-											<div class="flex text-sm mb-1">
-												<!-- Commented by -->
-												<a :href="'/ravers/'+comment.user_slug">
-												<span class="font-semibold text-darkorchid mr-1">{{
-													comment.username
-												}}</span></a>
-												{{ comment.created_at_diff }}
+								<div class="post-comments">
+									<div v-if="props.comments != 0" class="">
+										<ul role="list">
+											<li
+												v-for="(comment, index) in props.comments"
+												:key="index"
+												class="flex flex-col mb-3"
+											>
+												<div class="flex text-sm mb-1">
+													<!-- Commented by -->
+													<a :href="'/ravers/'+comment.user_slug">
+													<span class="font-semibold text-darkorchid mr-1">{{
+														comment.username
+													}}</span></a>
+													{{ comment.created_at_diff }}
 
-												<!-- Edit Comment -->
-												<Link
-													v-if="comment.user_id === props.is_user"
-													:href="
-													route('posts.comments.edit', [
-														community.slug,
-														post.data.slug,
-														comment.id
-													])
-													"
-													class="
-													font-semibold
-													text-electricgreen
-													ml-2
-													"
-													style="
-													font-size: 0.85rem"
-													>Edit</Link
-												>
-											</div>
+													<!-- Edit Comment -->
+													<Link
+														v-if="comment.user_id === props.is_user"
+														:href="
+														route('posts.comments.edit', [
+															community.slug,
+															post.data.slug,
+															comment.id
+														])
+														"
+														class="
+														font-semibold
+														text-electricgreen
+														ml-2
+														"
+														style="
+														font-size: 0.85rem"
+														>Edit</Link
+													>
+												</div>
 
-											<div v-if="comment.content"
-												class="whitespace-pre-wrap break-words">
-												<p class="text-grey-300 text-sm">{{ comment.content }}</p>
-											</div>
+												<div v-if="comment.content"
+													class="whitespace-pre-wrap break-words">
+													<p class="text-grey-300 text-sm">{{ comment.content }}</p>
+												</div>
 
-											<!-- Image -->
-											<a v-if="comment.comment_image" :href="'/storage/comment-images/'+ comment.comment_image" class="mt-1">
-												<img v-if="comment.comment_image" style="width: 100%; max-width: 400px; height: auto;" 
-												:src="'/storage/comment-images/'+comment.comment_image">
-											</a>
+												<!-- Image -->
+												<a v-if="comment.comment_image" :href="'/storage/comment-images/'+ comment.comment_image" class="mt-1">
+													<img v-if="comment.comment_image" style="width: 100%; max-width: 400px; height: auto;" 
+													:src="'/storage/comment-images/'+comment.comment_image">
+												</a>
 
-											<div class="mt-1">
-												<CommentVote :comment="comment" />
-											</div>
-										</li>
-									</ul>
+												<div class="mt-1">
+													<CommentVote :comment="comment" />
+												</div>
+											</li>
+										</ul>
+									</div>
 								</div>
 							<!-- </div> -->
 
 							<!-- Textarea -->
-							 <div class="px-3">
+							 <div class="comment-textarea">
 								<div v-if="$page.props.auth.user.username">
 									<form @submit.prevent="submit">
 										<div class="mb-1">
