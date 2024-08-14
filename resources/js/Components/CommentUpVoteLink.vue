@@ -2,21 +2,21 @@
 import { Link } from "@inertiajs/vue3";
 
 defineProps({
-  slug: String,
+  id: String,
 });
 </script>
 
 <template>
   <Link
-    :href="route('posts.upVote', slug)"
+    :href="route('comments.upVote', id)"
     method="post"
     as="button"
     type="button"
-    class="up-vote-arrow flex justify-center my-2"
+    class="up-vote-arrow flex"
     preserve-scroll
     ><svg
       xmlns="http://www.w3.org/2000/svg"
-      class="h-5 w-5"
+      style="width: 0.85rem; height: 0.85rem;"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"

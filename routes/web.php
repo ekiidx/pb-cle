@@ -13,6 +13,7 @@ use App\Http\Controllers\PlurPointController;
 use App\Http\Controllers\RaverController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventCommentController;
+use App\Http\Controllers\CommentVoteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -55,6 +56,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     // Voting
     Route::post('/posts/{post:slug}/upVote', [PostVoteController::class, 'upVote'])->name('posts.upVote');
     Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
+    Route::post('/comments/{comment:id}/upVote', [CommentVoteController::class, 'upVote'])->name('comments.upVote');
+    Route::post('/comments/{comment:id}/downVote', [CommentVoteController::class, 'downVote'])->name('comments.downVote');
+    // Route::post('/comments/{comment:id}/upVote', [EventCommentVoteController::class, 'upVote'])->name('comments.upVote');
+    // Route::post('/comments/{comment:id}/downVote', [CommentVoteController::class, 'downVote'])->name('comments.downVote');
 
     // Posts
     Route::get('/communities/{community:slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');

@@ -78,15 +78,12 @@ const submit = () => {
       </div>
 
       <div class="mb-4">
-            <img 
-              v-if="props.comment.comment_image" 
-              class="rounded-sm pb-3" 
+            <img v-if="props.comment.comment_image" 
+              class="mt-2" 
               style="max-width: 7rem; max-height: 5rem; height: auto;" 
               id="commentImageFrame"
               :src="'/storage/comment-images/'+comment.comment_image">
-            <img 
-            v-else
-            class="rounded-sm pb-3" 
+            <img v-else 
             style="max-width: 7rem; max-height: 5rem; height: auto;" 
             id="commentImageFrame"
             src="">

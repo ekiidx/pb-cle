@@ -95,6 +95,7 @@ const submit = () => {
 
                 <div class="mt-4">
                   <Label for="description" value="Content" />
+                  <div class="mb-1">
                   <textarea
                     id="description"
                     type="text"
@@ -103,17 +104,17 @@ const submit = () => {
                     v-model="form.description"
                     autocomplete="description"
                   ></textarea>
+                  </div>
                   <InputError :message="errors.description" />
                 </div>
-
-                <div class="mt-4">
-                  <img id="frame" src="" style="max-width: 7rem; max-height: 5rem; height: auto;">
+                
+                  <img v-if="form.post_image"
+                  style="max-width: 7rem; max-height: 5rem; height: auto;" id="frame" 
+                  class="mt-2"
+                  src="">
                   <InputError :message="errors.post_image" />
                   <label for="post-image-upload" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
                   <input id="post-image-upload" style="display:none" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()" hidden />
-                </div>
-
-                <div id="preview"></div>
 
                 <div class="flex items-center mt-4 mb-2">
                   <Button

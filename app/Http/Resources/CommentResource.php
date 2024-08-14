@@ -21,6 +21,8 @@ class CommentResource extends JsonResource
             'user_slug' => $this->user->slug,
             'content' => $this->content,
             'comment_image' => $this->comment_image,
+            'votes' => $this->votes,
+            'commentVotes' => $this->whenLoaded('commentVotes'),
             'created_at' => $this->created_at->diffForHumans(),
         ];
     }

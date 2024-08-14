@@ -2,6 +2,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Link, useForm, Head } from "@inertiajs/vue3";
 import PostVote from "@/Components/PostVote.vue";
+import CommentVote from "@/Components/CommentVote.vue";
 import PostList from "@/Components/PostList.vue";
 import InputError from "@/Components/InputError.vue";
 
@@ -9,10 +10,11 @@ const props = defineProps({
 	community: Object,
 	post: Object,
 	posts: Object,
+	comments: Object,
 	can_delete: Boolean,
 	can_update: Boolean,
 	is_user: Number,
-	errors: Object
+	errors: Object,
 });
 
 const form = useForm({
@@ -32,6 +34,7 @@ const submit = () => {
     ]),
     {
       onSuccess: () => form.reset(),
+	  preserveScroll: true,
     }
   );
 };
@@ -61,7 +64,6 @@ const submit = () => {
 						"
 					>
 						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
-							<span class="text-white">/</span>
 							<Link :href="route('frontend.communities.show', community.slug)">
 								{{ community.name }}
 							</Link>
@@ -81,7 +83,6 @@ const submit = () => {
 						bg-dark
 						border
 						rounded-lg
-						text-sm
 						"
 					>
 
@@ -142,17 +143,17 @@ const submit = () => {
 								</div>
 							</div>
 
-							<!-- <div style="padding-right: 48px !important;"> -->
+							<div class="mb-2">
 								<!-- Title -->
 								<h1 class="pl-4 pr-4 mb-2 font-bold tracking-tight text-white post-title" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">
 									{{ post.data.title }}
 								</h1>
 
 								<!-- Description -->
-								<p class="px-3 pt-2 text-grey-300" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">{{ post.data.description }}</p>
+								<p v-if="post.data.description" class="px-3 pt-2 text-grey-300 text-sm" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;">{{ post.data.description }}</p>
 								
 								<!-- Link -->
-								<div class="px-3 py-2 mb-3">
+								<div v-if="post.data.url" class="px-3 py-2 mb-3">
 									<a
 										:href="post.data.url"
 										class="font-semibold text-electricgreen text-sm break-words"
@@ -160,7 +161,7 @@ const submit = () => {
 										>{{ post.data.url }}</a
 									>
 								</div>
-							<!-- </div> -->
+							</div>
 
 							<!-- Image -->
 							<a v-if="post.data.post_image" :href="'/storage/post-images/'+ post.data.post_image">
@@ -174,21 +175,20 @@ const submit = () => {
 								</div> -->
 								
 								<!-- Comments -->
-								<div v-if="post.data.comments != 0" class="px-3 mb-3">
+								<div v-if="props.comments != 0" class="px-3 mb-5">
 									<ul role="list">
 										<li
-											v-for="(comment, index) in post.data.comments"
+											v-for="(comment, index) in props.comments"
 											:key="index"
 											class="flex flex-col mb-3"
 										>
-											<div class="text-sm mb-2">
-
+											<div class="flex text-sm mb-1">
 												<!-- Commented by -->
 												<a :href="'/ravers/'+comment.user_slug">
 												<span class="font-semibold text-darkorchid mr-1">{{
 													comment.username
 												}}</span></a>
-												{{ comment.created_at }}
+												{{ comment.created_at_diff }}
 
 												<!-- Edit Comment -->
 												<Link
@@ -212,14 +212,19 @@ const submit = () => {
 											</div>
 
 											<div v-if="comment.content"
-												class="whitespace-pre-wrap break-words mb-3">
-												<p class="text-grey-300">{{ comment.content }}</p>
+												class="whitespace-pre-wrap break-words">
+												<p class="text-grey-300 text-sm">{{ comment.content }}</p>
 											</div>
 
 											<!-- Image -->
-											<a v-if="comment.comment_image" :href="'/storage/comment-images/'+ comment.comment_image">
-												<img v-if="comment.comment_image" style="width: 100%; max-width: 400px; height: auto;" :src="'/storage/comment-images/'+comment.comment_image">
+											<a v-if="comment.comment_image" :href="'/storage/comment-images/'+ comment.comment_image" class="mt-1">
+												<img v-if="comment.comment_image" style="width: 100%; max-width: 400px; height: auto;" 
+												:src="'/storage/comment-images/'+comment.comment_image">
 											</a>
+
+											<div class="mt-1">
+												<CommentVote :comment="comment" />
+											</div>
 										</li>
 									</ul>
 								</div>
@@ -241,8 +246,7 @@ const submit = () => {
 
 										<!-- Flyer Upload -->
 										<div class="mb-4">
-											<!-- <Label class="mb-1" for="comment_image" value="Upload Image" /> -->
-											<img
+											<img v-if="form.comment_image"
 												style="max-width: 7rem; max-height: 5rem; height: auto;"
 												class="mt-2"
 												id="commentImageFrame"

@@ -1082,7 +1082,8 @@
 }
 
 .display1-size {
-  font-size: 36px !important;
+  /* font-size: 36px !important; */
+  font-size: 33px !important;
 }
 
 .display2-size {
@@ -12572,6 +12573,7 @@ strong,
 .nav-header .nav-top a .logo-text {
   line-height: 90px;
   transition: all 0.4s ease;
+  font-size: 22px !important;
 }
 @media (max-width: 991.98px) {
   .nav-header .nav-top a {
@@ -12580,12 +12582,12 @@ strong,
     width: auto;
   }
   .nav-header .nav-top a i.feather-zap {
-    font-size: 34px !important;
-    margin-right: 4px !important;
+    font-size: 32px !important;
+    margin-right: 3px !important;
   }
   .nav-header .nav-top a .logo-text {
     line-height: 28px;
-    font-size: 24px !important;
+    font-size: 22px !important;
   }
 }
 .nav-header .nav-menu {

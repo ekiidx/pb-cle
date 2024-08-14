@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('event_id')->constrained()->cascadeOnDelete();
             $table->text('content')->nullable();
             $table->string('comment_image')->nullable();
+            $table->string('comment_image_slug')->nullable();
             $table->timestamps();
         });
     }

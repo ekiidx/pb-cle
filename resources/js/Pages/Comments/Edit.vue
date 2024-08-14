@@ -66,7 +66,7 @@ const submit = () => {
 
   <form @submit.prevent="submit">
 
-    <div class="mb-2">
+    <div class="mb-1">
                   <Label for="content" value="Content" />
                   <textarea
                     id="content"
@@ -80,15 +80,12 @@ const submit = () => {
                 </div>
 
                 <div class="mb-4">
-                  <img 
-                    v-if="props.comment.comment_image" 
-                    class="rounded-sm pb-3" 
-                    style="max-width: 7rem; max-height: 5rem; height: auto;" 
+                  <img v-if="props.comment.comment_image" 
+                    style="max-width: 7rem; max-height: 5rem; height: auto;"
+                    class="mt-2"
                     id="commentImageFrame"
                     :src="'/storage/comment-images/'+comment.comment_image">
-                    <img 
-                    v-else
-                    class="rounded-sm pb-3"
+                    <img v-else
                     style="max-width: 7rem; max-height: 5rem; height: auto;" 
                     id="commentImageFrame"
                     src="">

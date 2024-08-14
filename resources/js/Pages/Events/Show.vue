@@ -60,7 +60,6 @@ const submit = () => {
 						"
 					>
 						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
-							/
 							<Link :href="route('events.index')">Events</Link>
 						</h2>
 						<Link
@@ -100,7 +99,7 @@ const submit = () => {
 								</span>
 
 								<!-- NEW -->
-								<span class="mr-2" v-if="props.new" style="color:yellow; font-weight: 600; font-size: .85rem; margin-top: 0.165rem; position: relative;">
+								<span class="mr-2" v-if="props.new" style="color: yellow; font-weight: 600;">
 									NEW
 								</span>
 
@@ -164,27 +163,27 @@ const submit = () => {
 							</div> -->
 
 							<!-- Comments -->
-							<div class="px-3 mb-3">
+							<div class="px-3 mb-5">
 								<ul role="list">
 									<li
-										v-for="event_comment in event.data.event_comments"
+										v-for="comment in event.data.event_comments"
 										class="flex flex-col mb-3"
 									>
-										<div class="text-sm mb-2">
+										<div class="flex text-sm mb-1">
 											<!-- Commented by -->
-											<a :href="'/ravers/'+event_comment.user_slug">
+											<a :href="'/ravers/'+comment.user_slug">
 											<span class="font-semibold text-darkorchid mr-1">{{
-												event_comment.username
+												comment.username
 											}}</span></a>
-											{{ event_comment.created_at }}
+											{{ comment.created_at }}
 
 											<!-- Edit Comment -->
 											<Link
-												v-if="event_comment.user_id === props.is_user"
+												v-if="comment.user_id === props.is_user"
 												:href="
 												route('events.comments.edit', [
 													event.data.slug,
-													event_comment.id
+													comment.id
 												])
 												"
 												class="
@@ -198,24 +197,30 @@ const submit = () => {
 											>
 										</div>
 
-										<div v-if="event_comment.content"
-											class="text-gray-300 mb-2 whitespace-pre-wrap break-words mb-3">
-											<p class="text-grey-300">{{ event_comment.content }}</p>
+										<div v-if="comment.content"
+											class="whitespace-pre-wrap break-words">
+											<p class="text-grey-300">{{ comment.content }}</p>
 										</div>
 
 										<!-- Image -->
-										<a v-if="event_comment.comment_image" :href="'/storage/comment-images/'+event_comment.comment_image">
-											<img v-if="event_comment.comment_image" class="mb-3" style="width: 100%; max-width: 400px; height: auto;" :src="'/storage/comment-images/'+event_comment.comment_image">
+										<a v-if="comment.comment_image" :href="'/storage/comment-images/'+comment.comment_image">
+											<img v-if="comment.comment_image" 
+											style="width: 100%; max-width: 400px; height: auto;"
+											:src="'/storage/comment-images/'+comment.comment_image">
 										</a>
+
+										<div class="mt-1">
+											<CommentVote :comment="comment" />
+										</div>
 									</li>
 								</ul>
 							</div>
-						
+							
 							<div v-if="$page.props.auth.user">
 								<form @submit.prevent="submit">
 
+									<!-- Textarea -->
 									<div class="px-3">
-										<!-- Textarea -->
 										<div class="mb-1">
 											<textarea
 											v-model="form.content"
@@ -228,14 +233,14 @@ const submit = () => {
 
 										<!-- Flyer Upload -->
 										<div class="mb-4">
-											<!-- <Label class="mb-1" for="comment_image" value="Upload Image" /> -->
-											<img 
-												style="max-width: 7rem; max-height: 5rem; height: auto;" 
+											<img v-if="form.comment_image"
+												style="max-width: 7rem; max-height: 5rem; height: auto;"
+												class="mt-2"
 												id="commentImageFrame"
 												src="">
 												<InputError :message="errors.comment_image" />
 												<label for="comment-image-upload" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
-											<input id="comment-image-upload" style="display:hidden" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" hidden />
+											<input id="comment-image-upload" style="display:none" name="comment_image" type="file" @input="form.comment_image = $event.target.files[0]" @change="commentImagePreview()" hidden />
 										</div>
 									
 										<div class="mb-3">
@@ -279,7 +284,6 @@ const submit = () => {
 							<h2
 							class="
 								font-semibold
-								text-lg
 								text-white
 								d-inline
 								"
@@ -322,7 +326,6 @@ const submit = () => {
 							<h2
 							class="
 								font-semibold
-								text-lg
 								text-white
 								d-inline
 								"

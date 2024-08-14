@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\PostShowResource;
+use App\Http\Resources\CommentResource;
 use App\Models\Community;
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -17,12 +19,17 @@ class PostController extends Controller
     {
         $community = Community::where('slug', $comunity_slug)->firstOrFail();
 
-        $community_post = Post::with(['comments', 'postVotes' => function ($query) {
+        $community_post = Post::with(['postVotes' => function ($query) {
             $query->where('user_id', auth()->id());
         }])->where('slug', $slug)->firstOrFail();
 
-        $post = new PostShowResource($community_post);
+        $comments = Comment::with(['commentVotes' => function ($query) {
+            $query->where('user_id', auth()->id());
+        }])->where('post_id', $community_post->id)->get();
 
+
+        $post = new PostShowResource($community_post);
+       
         // Sidebar posts
         $posts = PostResource::collection($community->posts()->orderBy('votes', 'desc')->take(6)->get());
 
@@ -42,6 +49,6 @@ class PostController extends Controller
         //     $can_update_comment = true;
         // };
 
-        return Inertia::render('Frontend/Posts/Show', compact('community', 'post', 'posts', 'can_update', 'can_delete', 'is_user'));
+        return Inertia::render('Frontend/Posts/Show', compact('community', 'post', 'posts', 'can_update', 'can_delete', 'is_user', 'comments'));
     }
 }

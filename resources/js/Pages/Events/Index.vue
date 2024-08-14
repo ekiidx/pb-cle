@@ -31,7 +31,7 @@ const props = defineProps({
 					>
 			
 						<h2 class="font-semibold text-xl text-white leading-tight">
-							/Events
+							Events
 						</h2>					
 						<Link
 							:href="route('events.create')"
@@ -67,7 +67,7 @@ const props = defineProps({
 								About Events
 							</h2>
 						</div>
-						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">Rad <span class="text-electricgreen font-bold">local events</span> are posted here.</p>
+						<p class="bg-dark font-normal text-sm text-grey-300 p-3 rounded-b-lg">Rad <span class="text-electricgreen font-bold">events</span> are posted here.</p>
 					</div>
 
 					<EventSidebar :events="events_sidebar">

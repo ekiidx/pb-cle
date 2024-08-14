@@ -15,7 +15,8 @@ class Comment extends Model
         'post_id',
         'content',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'votes'
     ];
 
     public function sluggable(): array
@@ -39,10 +40,25 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    // protected $appends = ['created_at_diff'];
+    protected $appends = ['created_at_diff', 'username'];
 
-    // public function getCreatedAtDiffAttribute(): string 
-    // { 
-    //     return $this->created_at->diffForHumans();
+    public function getCreatedAtDiffAttribute(): string 
+    { 
+        return $this->created_at->diffForHumans();
+    }
+
+    public function commentVotes()
+    {
+      return $this->hasMany(CommentVote::class);
+    }
+
+    public function getUsernameAttribute(): string
+    {
+      return $this->user->username;
+    }
+
+    // public function scopeIsCommentOwner(Builder $query): void
+    // {
+    //     $query->where('user_id', auth()->user())->firstOrFail();
     // }
 }

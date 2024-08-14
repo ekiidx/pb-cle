@@ -110,17 +110,20 @@ const submit = () => {
 									<InputError :message="errors.description" />
 								</div>
 
-								<div class="mt-4">
-									<Label for="post_image" value="Add Image" />
-									<img
-										v-if="props.post.post_image" 
+								<div class="">
+									<img v-if="props.post.post_image"
+										style="max-width: 7rem; max-height: 5rem; height: auto;"
+										class="mt-2"
 										id="frame"
-										:src="'/storage/post-images/'+post.post_image"
-										style="max-width: 7rem; max-height: 5rem; height: auto;">
+										:src="'/storage/post-images/'+post.post_image">
+										<img v-else
+										style="max-width: 7rem; max-height: 5rem; height: auto;"
+										class="mt-1"
+										id="frame"
+										src="">
 										<InputError :message="errors.post_image" />
 										<label for="post-image-upload" class="cursor-pointer image-upload-button"><i class="ti-image text-xl"></i></label>
 										<input id="post-image-upload" style="display:none" name="post_image" type="file" @input="form.post_image = $event.target.files[0]" @change="imagePreview()" hidden />
-										
 								</div>
 
 								<div class="flex items-center mt-4 mb-2">

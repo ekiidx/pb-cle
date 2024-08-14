@@ -41,7 +41,7 @@ defineProps({
 					>
 						<i style="margin-right: 0.6rem" class="feather-zap font-sm text-electricgreen d-inline"></i>
 						<h2 class="text-white mb-3 d-inline-block">Welcome to <span class="text-darkorchid font-bold hi-cursor">Pb-cle.org</span></h2>
-						<p class="font-normal text-sm text-grey-300"><a class="fw-600" href="http://jadedraver.com/index.php?cur=0&rl=1">Pb-cle</a> has historically been known as a local Pittsburgh - Cleveland electronic dance music scene. Feel free to post, create events, and upload flyers in and around the pb-cle area.</p>
+						<p class="font-normal text-sm text-grey-300"><a class="fw-600" href="http://jadedraver.com/index.php?cur=0&rl=1">Pb-cle</a> has historically been known as a local Pittsburgh - Cleveland electronic dance music scene, linked from <a class="fw-600" href="http://hyperreal.org">hyperreal.org</a>. Feel free to post, create events, and upload flyers in and around the pb-cle area.</p>
 					</div>
 
 					<CommunityList :communities="communities.data">
