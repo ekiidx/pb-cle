@@ -4,10 +4,13 @@ import { Head, useForm, Link } from "@inertiajs/vue3";
 import Input from "@/Components/Input.vue";
 import Label from "@/Components/Label.vue";
 import InputError from "@/Components/InputError.vue";
+import EventCommentVote from "@/Components/EventCommentVote.vue";
+
 
 const props = defineProps({
  	event: Object,
 	genres: Object,
+	comments: Object,
   	can_delete: Boolean,
 	can_update: Boolean,
 	new: Boolean,
@@ -31,6 +34,7 @@ const submit = () => {
     ]),
     {
       onSuccess: () => form.reset(),
+	  preserveScroll: true,
     }
   );
 };
@@ -164,9 +168,10 @@ const submit = () => {
 
 							<!-- Comments -->
 							<div class="post-comments">
+								<div v-if="props.comments != 0"></div>
 								<ul role="list">
 									<li
-										v-for="comment in event.data.event_comments"
+										v-for="comment in props.comments"
 										class="flex flex-col mb-3"
 									>
 										<div class="flex text-sm mb-1">
@@ -175,7 +180,7 @@ const submit = () => {
 											<span class="font-semibold text-darkorchid mr-1">{{
 												comment.username
 											}}</span></a>
-											{{ comment.created_at }}
+											{{ comment.created_at_diff }}
 
 											<!-- Edit Comment -->
 											<Link
@@ -199,18 +204,18 @@ const submit = () => {
 
 										<div v-if="comment.content"
 											class="whitespace-pre-wrap break-words">
-											<p class="text-grey-300">{{ comment.content }}</p>
+											<p class="text-grey-300 text-sm">{{ comment.content }}</p>
 										</div>
 
 										<!-- Image -->
-										<a v-if="comment.comment_image" :href="'/storage/comment-images/'+comment.comment_image">
+										<a v-if="comment.comment_image" :href="'/storage/comment-images/'+comment.comment_image" class="mt-1">
 											<img v-if="comment.comment_image" 
 											style="width: 100%; max-width: 400px; height: auto;"
 											:src="'/storage/comment-images/'+comment.comment_image">
 										</a>
 
 										<div class="mt-1">
-											<CommentVote :comment="comment" />
+											<EventCommentVote :comment="comment" />
 										</div>
 									</li>
 								</ul>

@@ -8,7 +8,7 @@ defineProps({
 
 <template>
   <Link
-    :href="route('comments.downVote', id)"
+    :href="route('eventComments.downVote', id)"
     method="post"
     as="button"
     type="button"

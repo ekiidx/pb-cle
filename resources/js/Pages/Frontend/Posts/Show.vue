@@ -176,7 +176,7 @@ const submit = () => {
 								
 								<!-- Comments -->
 								<div class="post-comments">
-									<div v-if="props.comments != 0" class="">
+									<div v-if="props.comments != 0">
 										<ul role="list">
 											<li
 												v-for="(comment, index) in props.comments"

@@ -14,6 +14,7 @@ use App\Http\Controllers\RaverController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventCommentController;
 use App\Http\Controllers\CommentVoteController;
+use App\Http\Controllers\EventCommentVoteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -58,8 +59,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
     Route::post('/comments/{comment:id}/upVote', [CommentVoteController::class, 'upVote'])->name('comments.upVote');
     Route::post('/comments/{comment:id}/downVote', [CommentVoteController::class, 'downVote'])->name('comments.downVote');
-    // Route::post('/comments/{comment:id}/upVote', [EventCommentVoteController::class, 'upVote'])->name('comments.upVote');
-    // Route::post('/comments/{comment:id}/downVote', [CommentVoteController::class, 'downVote'])->name('comments.downVote');
+    Route::post('/event-comment/{eventComment:id}/upVote', [EventCommentVoteController::class, 'upVote'])->name('eventComments.upVote');
+    Route::post('/event-comment/{eventComment:id}/downVote', [EventCommentVoteController::class, 'downVote'])->name('eventComments.downVote');
 
     // Posts
     Route::get('/communities/{community:slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');

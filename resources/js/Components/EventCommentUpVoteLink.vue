@@ -8,11 +8,11 @@ defineProps({
 
 <template>
   <Link
-    :href="route('comments.downVote', id)"
+    :href="route('eventComments.upVote', id)"
     method="post"
     as="button"
     type="button"
-    class="down-vote-arrow flex"
+    class="up-vote-arrow flex"
     preserve-scroll
     ><svg
       xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ defineProps({
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+        d="M5 10l7-7m0 0l7 7m-7-7v18"
       />
     </svg>
   </Link>

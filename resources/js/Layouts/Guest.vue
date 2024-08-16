@@ -64,8 +64,9 @@ const logout = () => {
         <a v-if="$page.props.auth.user"
           :href="route('ravers.show', $page.props.auth.user)"
           class="p-1 text-center ms-0 menu-icon center-menu-icon">
-          <i v-if="isActive" class="feather-user font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400"></i>
-          <i v-else class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
+          <!-- <i v-if="isActive" class="feather-user font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400"></i>
+          <i v-else class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a> -->
+          <i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
 
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="/ravers" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->

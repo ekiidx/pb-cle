@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Genre;
 use App\Models\PlurPoint;
+use App\Models\EventComment;
 use App\Http\Resources\EventShowResource;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -169,8 +170,12 @@ class EventController extends Controller
      */
     public function show(String $slug)
     {
-        $event_query = Event::with('user', 'eventComments')->where('slug', $slug)->firstOrFail();
+        $event_query = Event::with('user')->where('slug', $slug)->firstOrFail();
         $event = new EventShowResource($event_query);
+
+        $comments = EventComment::with(['eventCommentVotes' => function ($query) {
+            $query->where('user_id', auth()->id());
+        }])->where('event_id', $event_query->id)->get();
 
         $genres = $event->event_genres;
 
@@ -193,7 +198,7 @@ class EventController extends Controller
         }
         $is_user = auth::id();
 
-        return Inertia::render('Events/Show', compact('event', 'genres', 'new', 'can_update', 'can_delete', 'is_user'));
+        return Inertia::render('Events/Show', compact('event', 'genres', 'new', 'can_update', 'can_delete', 'is_user', 'comments'));
     }
 
     /**

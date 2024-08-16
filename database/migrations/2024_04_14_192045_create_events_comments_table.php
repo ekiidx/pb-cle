@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('comment_image')->nullable();
             $table->string('comment_image_slug')->nullable();
+            $table->smallInteger('votes');
             $table->timestamps();
         });
     }
