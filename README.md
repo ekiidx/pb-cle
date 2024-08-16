@@ -1,8 +1,6 @@
 # pb-cle.org
 [pb-cle.org](https://pb-cle.org) is a social media website for a local electronic dance music community (pittsburgh - cleveland). Post events, comment on photos, and upload flyers.
 
-This has been one of the larger projects I have built.
-
 ## Goals
 - Too many ads on social media nowadays, so wanted to move away from major social media sites.
 - Create reddit like system for posts.
@@ -11,7 +9,7 @@ This has been one of the larger projects I have built.
 
 ## Todo
 - [ ] Private Messaging
-- [ ] Add Voting to Comments
+- [x] Add Voting to Comments
 - [x] Add images to Comments
 - [x] Edit Comments
 - [x] Add edit ability to comments
