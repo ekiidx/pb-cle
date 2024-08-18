@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\PlurPoint;
 use App\Models\EventComment;
 use App\Models\Comment;
+use App\Models\Notification;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,20 @@ class EventCommentController extends Controller
             'points' => 1
         ]);
         $user->increment('plur_points', 1);
+
+        // Notification
+        Notification::create([
+            'user_id' => $user->id,
+            'receiver_id' => $event->user->id,
+            'type' => 'event_comment',
+            'message' => '💬  on ',
+            'community_slug' => NULL,
+            'post_slug' => NULL,
+            'post_title' => NULL,
+            'event_slug' => $event->slug,
+            'event_name' => $event->name
+        ]);
+        $event->user->increment('notifications', 1);
 
         return back();
     }

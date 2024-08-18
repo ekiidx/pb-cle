@@ -38,6 +38,16 @@ class Community extends Model
         return $this->hasMany(Post::class);
     }
 
+    // public function post()
+    // {
+    //   return $this->belongsTo(Post::class);
+    // }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     // public function isActive($active)
     // {
     //    // will match routes which name starts with companies.

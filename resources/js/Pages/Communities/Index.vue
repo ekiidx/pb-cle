@@ -44,7 +44,6 @@ defineProps({
 							>
 					</div>
 			
-
 					<div
 						class="
 						communities-table-box

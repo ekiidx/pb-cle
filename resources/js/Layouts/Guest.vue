@@ -24,6 +24,7 @@ defineProps({
 const logout = () => {
     router.post(route('logout'));
 };
+
 </script>
 
 <template>
@@ -32,7 +33,7 @@ const logout = () => {
     <div class="main-wrapper">
 
       <!-- navigation top-->
-      <div class="nav-header bg-dark shadow-xs">
+      <div class="nav-header bg-dark">
         <div class="nav-top">
           <a href="/"><i class="pb-cle-zap-logo feather-zap text-electricgreen"></i><span class="d-inline-block fredoka-font ls-3 logo-text text-darkorchid mb-0 pb-cle-logofont">Pb-Cle.org</span></a>
           <!--<a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
@@ -119,6 +120,13 @@ const logout = () => {
                 </Link>
             </div>
           </div> -->         
+          <div v-if="$page.props.auth.user" class="flex items-center">
+              <Link :href="route('notifications.index', $page.props.auth.user)">
+                  <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
+                  <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
+              </Link>
+          </div>
+          <!-- {{ $page.props.auth.user.notifications }} -->
 
           <!-- Settings Dropdown -->
           <div class="relative" v-if="$page.props.auth.user">
@@ -148,8 +156,12 @@ const logout = () => {
                 </div> -->
 
                 <!-- Home -->
-                <DropdownLink :href="route('welcome')">
+                <!-- <DropdownLink :href="route('welcome')">
                   Home
+                </DropdownLink> -->
+
+                <DropdownLink :href="route('notifications.index', $page.props.auth.user)">
+                  Notifications
                 </DropdownLink>
 
                 <!-- Communities -->

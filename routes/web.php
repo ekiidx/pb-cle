@@ -15,6 +15,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventCommentController;
 use App\Http\Controllers\CommentVoteController;
 use App\Http\Controllers\EventCommentVoteController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -85,6 +86,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     // Follow
     Route::post('/ravers/{user:slug}/follow', [FollowController::class, 'follow'])->name('ravers.follow');
     Route::post('/ravers/{user:slug}/unfollow', [FollowController::class, 'unfollow'])->name('ravers.unfollow');
+
+    // Notifications
+    Route::get('ravers/{user:slug}/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 });
 

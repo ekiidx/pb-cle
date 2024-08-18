@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Community;
 use App\Models\PlurPoint;
+use App\Models\Notification;
 use Carbon\Carbon;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Redirect;
@@ -57,6 +58,20 @@ class PostCommentController extends Controller
             'points' => 1
         ]);
         $user->increment('plur_points', 1);
+
+        // Notification
+        Notification::create([
+            'user_id' => $user->id,
+            'receiver_id' => $post->user->id,
+            'type' => 'post_comment',
+            'message' => '💬  on ',
+            'community_slug' => $community_slug,
+            'post_slug' => $post->slug,
+            'post_title' => $post->title,
+            'event_slug' => NULL,
+            'event_name' => NULL
+        ]);
+        $post->user->increment('notifications', 1);
 
         return back();
     }

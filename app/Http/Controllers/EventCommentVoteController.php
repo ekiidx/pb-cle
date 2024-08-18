@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\EventComment;
 use App\Models\EventCommentVote;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 class EventCommentVoteController extends Controller
@@ -29,6 +30,22 @@ class EventCommentVoteController extends Controller
                 'vote' => 1
             ]);
             $eventComment->increment('votes', 1);
+
+            // Notification
+            $user = auth()->user();
+            Notification::create([
+                'user_id' => $user->id,
+                'receiver_id' => $eventComment->user->id,
+                'type' => 'event_comment_vote',
+                'message' => '⬆  comment on ',
+                'community_slug' => NULL,
+                'post_slug' => NULL,
+                'post_title' => NULL,
+                'event_slug' => $eventComment->event->slug,
+                'event_name' => $eventComment->event->name
+            ]);
+            $eventComment->user->increment('notifications', 1);
+
             return redirect()->back();
         }
     }
@@ -53,6 +70,20 @@ class EventCommentVoteController extends Controller
                 'vote' => -1
             ]);
             $eventComment->decrement('votes', 1);
+
+            // Notification
+            $user = auth()->user();
+            Notification::create([
+                'user_id' => $user->id,
+                'receiver_id' => $eventComment->user->id,
+                'type' => 'event_comment_vote',
+                'data' => '⬇  comment on ',
+                'item_id' => $eventComment->event->id,
+                'community_slug' => $eventComment->event->slug,
+                'item_slug' => $eventComment->event->slug
+            ]);
+            $eventComment->user->increment('notifications', 1);
+
             return redirect()->back();
         }
     }

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { Link, router } from '@inertiajs/vue3';
 // import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -33,9 +33,9 @@ const logout = () => {
         <div class="main-wrapper">
 
             <!-- navigation top-->
-            <div class="nav-header bg-dark shadow-xs border-0">
+            <div class="nav-header bg-dark">
                 <div class="nav-top">
-                    <a href="/"><i class="pb-cle-zap-logo feather-zap text-electricgreen me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 text-darkorchid logo-text mb-0 pb-cle-logofont">Pb-Cle.org</span></a>
+                    <a href="/"><i class="pb-cle-zap-logo feather-zap text-electricgreen ms-0"></i><span class="d-inline-block fredoka-font ls-3 text-darkorchid logo-text mb-0 pb-cle-logofont">Pb-Cle.org</span></a>
                     <!-- <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
                     <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a>
                     <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-darkorchid"></i></a> -->
@@ -115,6 +115,14 @@ const logout = () => {
                             </div>
                         </div> -->
 
+                        <div class="flex items-center">
+                            <Link :href="route('notifications.index', $page.props.auth.user)">
+
+                                <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
+                                <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
+                            </Link>
+                        </div>
+
                         <!-- Settings Dropdown -->
                         <div class="relative">
                             <Dropdown align="right" width="48">
@@ -142,8 +150,12 @@ const logout = () => {
                                     </div> -->
 
                                     <!-- Home -->
-                                    <DropdownLink :href="route('welcome')">
+                                    <!-- <DropdownLink :href="route('welcome')">
                                         Home
+                                    </DropdownLink> -->
+
+                                    <DropdownLink :href="route('notifications.index', $page.props.auth.user)">
+                                        Notifications
                                     </DropdownLink>
 
                                     <!-- Communities -->

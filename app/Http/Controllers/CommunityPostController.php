@@ -8,6 +8,7 @@ use App\Models\Community;
 use App\Models\Post;
 use App\Models\PlurPoint;
 use App\Models\PostVote;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,20 @@ class CommunityPostController extends Controller
         ]);
         $post->increment('votes', 1);
         $post->save();
+
+        // Notification
+        Notification::create([
+            'user_id' => $user->id,
+            'receiver_id' => $community->user->id,
+            'type' => 'post_create',
+            'message' => '🔈  created post ',
+            'community_slug' => $community->slug,
+            'post_slug' => $post->slug,
+            'post_title' => $post->title,
+            'event_slug' => NULL,
+            'event_name' => NULL
+        ]);
+        $post->user->increment('notifications', 1);
 
         return Redirect::route('frontend.communities.show', $community->slug);
     }

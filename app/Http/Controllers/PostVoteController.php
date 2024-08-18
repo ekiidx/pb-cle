@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostVote;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 class PostVoteController extends Controller
@@ -29,6 +30,22 @@ class PostVoteController extends Controller
                 'vote' => 1
             ]);
             $post->increment('votes', 1);
+
+            // Notification
+            $user = auth()->user();
+            Notification::create([
+                'user_id' => $user->id,
+                'receiver_id' => $post->user->id,
+                'type' => 'post_vote',
+                'message' => '⬆  post ',
+                'community_slug' => $post->community->slug,
+                'post_slug' => $post->slug,
+                'post_title' => $post->title,
+                'event_slug' => NULL,
+                'event_name' => NULL
+            ]);
+            $post->user->increment('notifications', 1);
+
             return redirect()->back();
         }
     }
@@ -53,6 +70,23 @@ class PostVoteController extends Controller
                 'vote' => -1
             ]);
             $post->decrement('votes', 1);
+
+            // Notification
+            $user = auth()->user();
+            Notification::create([
+                'user_id' => $user->id,
+                'receiver_id' => $post->user->id,
+                'type' => 'post_vote',
+                'message' => '⬇  post ',
+                'community_slug' => $post->community->slug,
+                'item_slug' => $post->slug,
+                'post_slug' => $post->slug,
+                'post_title' => $post->title,
+                'event_slug' => NULL,
+                'event_name' => NULL
+            ]);
+            $post->user->increment('notifications', 1);
+
             return redirect()->back();
         }
     }

@@ -10,7 +10,8 @@ defineProps({
     communities: Object,
     posts: Object,
     events: Object,
-	users: Object
+	users: Object,
+	Notifications: Number
 });
 </script>
 
