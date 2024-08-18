@@ -54,18 +54,18 @@ const logout = () => {
         <!-- {{ isActive }} -->
         <a href="/communities" class="p-1 text-center ms-0 menu-icon center-menu-icon">
           <!-- <i v-if="isActive" class="feather-globe font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400"></i> -->
-          <i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+          <i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
           
 
         <a href="/events" class="p-1 text-center ms-0 menu-icon center-menu-icon">
-          <!-- <i v-if="isActive" class="feather-calendar font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400"></i> -->
-          <!-- <i v-else class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a> -->
-          <i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+          <!-- <i v-if="$page.props.isActive == 'events'" class="feather-calendar font-sm bg-electricgreen btn-round-sm theme-dark-bg text-white"></i>
+          <i v-else class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a> -->
+          <i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
 
         <a v-if="$page.props.auth.user"
           :href="route('ravers.show', $page.props.auth.user)"
           class="p-1 text-center ms-0 menu-icon center-menu-icon">
-          <!-- <i v-if="isActive" class="feather-user font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400"></i>
+          <!-- <i v-if="$page.props.isActive == 'ravers'" class="feather-user font-sm bg-electricgreen btn-round-sm theme-dark-bg text-white"></i>
           <i v-else class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a> -->
           <i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
 
@@ -122,7 +122,7 @@ const logout = () => {
           </div> -->         
           <div v-if="$page.props.auth.user" class="flex items-center">
               <Link :href="route('notifications.index', $page.props.auth.user)">
-                  <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
+                  <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-white mr-2"></i>
                   <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
               </Link>
           </div>

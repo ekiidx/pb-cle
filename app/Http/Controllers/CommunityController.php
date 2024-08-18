@@ -41,9 +41,9 @@ class CommunityController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->orderBy('posts_count', 'desc')->take(6)->get());
 
-        $isActive =  getNavigationColor();
+        // $isActive =  getNavigationColor();
 
-        return Inertia::render('Communities/Index', compact('communities_index', 'communities', 'can_create_community', 'isActive'));
+        return Inertia::render('Communities/Index', compact('communities_index', 'communities', 'can_create_community'));
     }
 
     /**
@@ -53,9 +53,7 @@ class CommunityController extends Controller
      */
     public function create()
     {
-        $isActive = true;
-
-        return Inertia::render('Communities/Create', compact('isActive'));
+        return Inertia::render('Communities/Create');
     }
 
     /**
@@ -110,9 +108,7 @@ class CommunityController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->latest()->take(5)->get());
 
-        $isActive = true;
-
-        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts', 'communities', 'isActive'));
+        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts', 'communities'));
     }
 
     /**

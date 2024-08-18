@@ -71,7 +71,10 @@ class PostCommentController extends Controller
             'event_slug' => NULL,
             'event_name' => NULL
         ]);
-        $post->user->increment('notifications', 1);
+
+        if ($post->user->id !== $user->id) {
+            $post->user->increment('notifications', 1);
+        }
 
         return back();
     }

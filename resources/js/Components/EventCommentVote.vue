@@ -14,15 +14,15 @@ defineProps({
     <EventCommentUpVoteLink
       :id="comment.id"
       :class="{
-        'text-electricgreen': comment.comment_votes && comment.comment_votes.vote ==1,
+        'text-electricgreen': comment.comment_votes[0] && comment.comment_votes[0].vote ==1,
       }"
     />
     <div
       class="font-bold"
       style="margin-left: 0.5rem; margin-right: 0.5rem;"
       :class="{
-        'text-electricgreen': comment.comment_votes && comment.comment_votes.vote == 1,
-        'text-darkorchid': comment.comment_votes && comment.comment_votes.vote == -1,
+        'text-electricgreen': comment.comment_votes[0] && comment.comment_votes[0].vote == 1,
+        'text-darkorchid': comment.comment_votes[0] && comment.comment_votes[0].vote == -1,
       }"
     >
       {{ comment.votes }}
@@ -30,7 +30,7 @@ defineProps({
     <EventCommentDownVoteLink
       :id="comment.id"
       :class="{
-       'text-darkorchid': comment.comment_votes && comment.comment_votes.vote == -1,
+       'text-darkorchid': comment.comment_votes[0] && comment.comment_votes[0].vote == -1,
       }"
     />
   </div>

@@ -17,11 +17,12 @@ class NotificationController extends Controller
         // Reset the user notification amount to 0
         $user->notifications = 0;
         $user->save();
-        $icon = 0;
-      
+
         $notifications = Notification::where('receiver_id', $user->id)->where('user_id', '!=', $user->id)->orderBy('created_at', 'desc')->get();
 
-        return Inertia::render('Notifications/Index', compact('notifications', 'user', 'icon'));
+        $notificationReset = getResetNotifications();
+
+        return Inertia::render('Notifications/Index', compact('notifications', 'user', 'notificationReset'));
     }
 
     /**

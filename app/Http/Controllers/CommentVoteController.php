@@ -45,7 +45,7 @@ class CommentVoteController extends Controller
                 'event_slug' => NULL,
                 'event_name' => NULL
             ]);
-            if($notification->receiver_id !== $user->id ) {
+            if($comment->user->id !== $user->id ) {
                 $comment->user->increment('notifications', 1);
             }
             return redirect()->back();
@@ -86,7 +86,9 @@ class CommentVoteController extends Controller
                 'event_slug' => NULL,
                 'event_name' => NULL
             ]);
-            $comment->user->increment('notifications', 1);
+            if($comment->user->id !== $user->id ) {
+                $comment->user->increment('notifications', 1);
+            }
 
             return redirect()->back();
         }

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { Link, router } from '@inertiajs/vue3';
 // import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -13,6 +13,8 @@ const props = defineProps({
 });
 
 const showingNavigationDropdown = ref(false);
+
+
 
 // const switchToTeam = (team) => {
 //     router.put(route('current-team.update'), {
@@ -53,26 +55,25 @@ const logout = () => {
                 <!-- {{ getNavigationColor }} <p>Test</p> -->
                 <a  href="/communities" 
                     class="p-1 text-center ms-0 menu-icon center-menu-icon">
-                    <!-- <i v-if="props.isActive" class="feather-globe font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400 "></i> -->
-                    <!-- <i v-else class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a> -->
+                    <!-- <i v-if="$page.props.isActive == 'communities'" class="feather-globe font-sm text-white bg-electricgreen btn-round-sm theme-dark"></i>
+                    <i v-else class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a> -->
                     <i class="feather-globe font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
 
                 <a  href="/events" 
                     class="p-1 text-center ms-0 menu-icon center-menu-icon">
-                    <!-- <i v-if="active" class="feather-calendar font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400 "></i> -->
-                    <!-- <i v-else class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a> -->
-                    <i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+                    <!-- <i v-if="$page.props.isActive == 'events'" class="feather-calendar font-sm bg-electricgreen btn-round-sm theme-dark-bg text-dark"></i>
+                    <i v-else class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a> -->
+                    <i class="feather-calendar font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
+
 
                 <a  :href="route('ravers.show', $page.props.auth.user)" 
                     class="p-1 text-center ms-0 menu-icon center-menu-icon">
-                    <!-- <i v-if="active" class="feather-user font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400 "></i> -->
-                    <!-- <i v-else class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a> -->
-                    <i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i></a>
+                    <!-- <i v-if="$page.props.isActive == 'ravers'" class="feather-user font-sm bg-electricgreen btn-round-sm theme-dark-bg text-dark"></i>
+                    <i v-else class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a> -->
+                    <i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
 
-                <!-- <a href="/ravers/" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-md bg-darkorchid btn-round-md theme-dark-bg text-grey-500 "></i></a> -->
-                <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
 
-                <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><!--<span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i>--></a>
+                <!-- <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a> -->
                 
                 <!-- <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
                 
@@ -98,29 +99,27 @@ const logout = () => {
                 <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Victor Exrixon <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 30 sec</span></h5>
                 <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
                 </div>
-                </div> -->
-                <!-- <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
+                </div>
+                <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a> -->
 
                 <nav class="main-nav">
                     <div style="display: flex; justify-content: flex-end;">
 
                         <!-- Primary Navigation Menu -->
-                    
-                        <!-- Logo -->
-                        <!-- <div class="flex">
-                            <div class="shrink-0 flex items-center">
-                                <Link :href="route('welcome')">
-                                    <ApplicationMark class="block h-9 w-auto" />
+                        <div class="flex items-center">
+
+                            <div v-if="$page.props.notificationReset == 0">
+                                <Link :href="route('notifications.index', $page.props.auth.user)">
+                                    <i class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
                                 </Link>
                             </div>
-                        </div> -->
 
-                        <div class="flex items-center">
-                            <Link :href="route('notifications.index', $page.props.auth.user)">
-
-                                <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
-                                <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
-                            </Link>
+                            <div v-else>
+                                <Link :href="route('notifications.index', $page.props.auth.user)">
+                                    <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-white mr-2"></i>
+                                    <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
+                                </Link>
+                            </div>
                         </div>
 
                         <!-- Settings Dropdown -->

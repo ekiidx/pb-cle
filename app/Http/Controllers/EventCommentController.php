@@ -69,7 +69,10 @@ class EventCommentController extends Controller
             'event_slug' => $event->slug,
             'event_name' => $event->name
         ]);
-        $event->user->increment('notifications', 1);
+
+        if($event->user->id !== $user->id ) {
+            $event->user->increment('notifications', 1);
+        }
 
         return back();
     }

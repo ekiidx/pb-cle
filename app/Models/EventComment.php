@@ -48,7 +48,7 @@ class EventComment extends Model
         return $this->created_at->diffForHumans();
     }
 
-    public function eventCommentVotes()
+    public function commentVotes()
     {
       return $this->hasMany(EventCommentVote::class);
     }

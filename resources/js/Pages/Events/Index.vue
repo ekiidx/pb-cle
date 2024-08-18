@@ -8,6 +8,7 @@ import { Link, Head } from "@inertiajs/vue3";
 const props = defineProps({
   events: Object,
   events_sidebar: Object,
+  isActive: String
 });
 </script>
 

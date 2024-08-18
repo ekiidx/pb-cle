@@ -173,7 +173,7 @@ class EventController extends Controller
         $event_query = Event::with('user')->where('slug', $slug)->firstOrFail();
         $event = new EventShowResource($event_query);
 
-        $comments = EventComment::with(['eventCommentVotes' => function ($query) {
+        $comments = EventComment::with(['commentVotes' => function ($query) {
             $query->where('user_id', auth()->id());
         }])->where('event_id', $event_query->id)->get();
 

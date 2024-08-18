@@ -7,6 +7,7 @@ import { Head, Link } from '@inertiajs/vue3';
 const props = defineProps({
     user: Object,
     notifications: Object,
+	notificationReset: Number
 });
 </script>
 

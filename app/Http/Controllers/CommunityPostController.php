@@ -19,6 +19,7 @@ class CommunityPostController extends Controller
 {
     public function create(Community $community)
     {
+
         return Inertia::render('Communities/Posts/Create', compact('community'));
     }
 
@@ -76,7 +77,9 @@ class CommunityPostController extends Controller
             'event_slug' => NULL,
             'event_name' => NULL
         ]);
-        $post->user->increment('notifications', 1);
+        if($post->user->id !== $user->id ) {
+            $post->user->increment('notifications', 1);
+        }
 
         return Redirect::route('frontend.communities.show', $community->slug);
     }
@@ -86,6 +89,7 @@ class CommunityPostController extends Controller
         //Only owner of post, owner of event, or admin can edit & delete
         $id = Auth::id();
         if($id !== $post->user_id) {
+
             return Redirect::route('frontend.communities.show', $post);
         }
 

@@ -44,7 +44,9 @@ class EventCommentVoteController extends Controller
                 'event_slug' => $eventComment->event->slug,
                 'event_name' => $eventComment->event->name
             ]);
-            $eventComment->user->increment('notifications', 1);
+            if($eventComment->user->id !== $user->id ) {
+                $eventComment->user->increment('notifications', 1);
+            }
 
             return redirect()->back();
         }
@@ -77,12 +79,16 @@ class EventCommentVoteController extends Controller
                 'user_id' => $user->id,
                 'receiver_id' => $eventComment->user->id,
                 'type' => 'event_comment_vote',
-                'data' => '⬇  comment on ',
-                'item_id' => $eventComment->event->id,
-                'community_slug' => $eventComment->event->slug,
-                'item_slug' => $eventComment->event->slug
+                'message' => '⬇  comment on ',
+                'community_slug' => NULL,
+                'post_slug' => NULL,
+                'post_title' => NULL,
+                'event_slug' => $eventComment->event->slug,
+                'event_name' => $eventComment->event->name
             ]);
-            $eventComment->user->increment('notifications', 1);
+            if($eventComment->user->id !== $user->id ) {
+                $eventComment->user->increment('notifications', 1);
+            }
 
             return redirect()->back();
         }
