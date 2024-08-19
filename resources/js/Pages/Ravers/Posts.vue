@@ -24,7 +24,7 @@ const props = defineProps({
         </Head>
 
         <div class="main-container">
-            <div class="row g-3">
+            <div class="row gutter">
                 
 				<div class="col-lg-8"></div>
 
@@ -35,7 +35,7 @@ const props = defineProps({
 						flex
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						shadow-md
                         p-3
                         flex-col

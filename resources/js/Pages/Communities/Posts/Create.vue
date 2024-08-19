@@ -52,7 +52,7 @@ const submit = () => {
 						flex
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						"
 					>
             <h2 class="font-semibold text-xl text-white main-title-text leading-tight">
@@ -95,7 +95,6 @@ const submit = () => {
 
                 <div class="mt-4">
                   <Label for="description" value="Content" />
-                  <div class="mb-1">
                   <textarea
                     id="description"
                     type="text"
@@ -104,7 +103,6 @@ const submit = () => {
                     v-model="form.description"
                     autocomplete="description"
                   ></textarea>
-                  </div>
                   <InputError :message="errors.description" />
                 </div>
                 

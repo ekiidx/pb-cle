@@ -27,7 +27,7 @@ const props = defineProps({
 						items-center
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						justify-between
 						"
 						>
@@ -41,7 +41,7 @@ const props = defineProps({
                         flex
                         bg-dark
                         rounded-lg
-                        border border-gray-200
+                        border
                         "
                     >
 						<div class="py-2 w-full">

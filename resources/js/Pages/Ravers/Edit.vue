@@ -142,7 +142,7 @@ const submit_websites = () => {
             flex
             bg-dark
             rounded-lg
-            border border-gray-200
+            border
             p-3
           "
           >

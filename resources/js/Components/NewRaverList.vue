@@ -15,13 +15,13 @@ defineProps({
       </h2>
     </div>
 
-    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-3">
+    <ul role="list" class="py-2 px-3">
       <li
         v-for="user in users"
         :key="user.id"
-        class="py-2 sm:py-3"
+        class="list-component-item"
       >
-        <div class="flex items-start items-center space-x-4">
+        <div class="py-2 flex items-start items-center space-x-4">
           <Link
             :href="route('ravers.show', user.slug)"
           >
@@ -38,7 +38,7 @@ defineProps({
             {{ user.username }}
           </Link>
          </div>
-  
+         <div class="px-3 list-border"></div>
       </li>
     </ul>
   </div>

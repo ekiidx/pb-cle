@@ -15,13 +15,13 @@ defineProps({
         <slot name="title" />
       </h2>
     </div>
-    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-3">
+    <ul role="list" class="p-3">
       <li
         v-for="event in events"
         :key="event.id"
-        class="py-2 sm:py-3"
+        class="list-component-item"
       >
-        <div class="flex items-start items-center space-x-4">
+        <div class="py-2 flex items-start items-center space-x-4">
 
         <div style="width: 2.25rem;">
           <Link
@@ -55,6 +55,7 @@ defineProps({
           <p v-if="event.new" style="color:yellow; margin-left: 0.5rem; font-weight: 600; font-size: .82rem;">NEW</p>
           <!-- <div>Posts({{ community.posts_count }})</div> -->
         </div>
+        <div class="px-3 list-border"></div>
       </li>
     </ul>
   </div>

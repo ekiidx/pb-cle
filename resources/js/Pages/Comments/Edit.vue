@@ -48,7 +48,7 @@ const submit = () => {
                 flex
                 bg-dark
                 rounded-lg
-                border border-gray-200
+                border
                 "
             >
             <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">Edit Comment</span>
@@ -66,7 +66,7 @@ const submit = () => {
 
   <form @submit.prevent="submit">
 
-    <div class="mb-1">
+    <div>
                   <Label for="content" value="Content" />
                   <textarea
                     id="content"

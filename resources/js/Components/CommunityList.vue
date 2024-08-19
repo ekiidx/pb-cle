@@ -14,17 +14,16 @@ defineProps({
         <slot name="title" />
       </h2>
     </div>
-    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-3">
+    <ul role="list" class="p-3">
       <li
         v-for="community in communities"
         :key="community.id"
-        class="py-3"
+        class="list-component-item"
       >
-        <div class="flex items-center space-x-4">
+        <div class="py-3 sm:py-2 flex items-center space-x-4">
           <Link
             :href="route('frontend.communities.show', community.slug)"
             class="
-              text-slate-800
               font-semibold
               truncate
               text-sm
@@ -34,6 +33,7 @@ defineProps({
           </Link>
           <div><p class="text-sm">Posts({{ community.posts_count }})</p></div>
         </div>
+        <div class="px-3 list-border"></div>
       </li>
     </ul>
   </div>

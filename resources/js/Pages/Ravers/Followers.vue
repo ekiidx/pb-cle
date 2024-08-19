@@ -26,7 +26,7 @@ const props = defineProps({
         </Head>
 
         <div class="main-container profile-show">
-            <div class="row g-lg-2">
+            <div class="row gutter">
                 
 				<div class="col-lg-8 order-2 order-lg-1">
 
@@ -43,7 +43,7 @@ const props = defineProps({
 						flex
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
                         p-3
                         flex-col
 						"
@@ -131,7 +131,7 @@ const props = defineProps({
                                 <span class="inline-block text-sm">Following</span></div>
                         </div>
 
-                        <div v-if="user.link_one || user.link_two || user.link_three" class="mb-3 mt-3" style="white-space: pre-wrap; overflow-wrap: anywhere;">
+                        <div v-if="user.link_one || user.link_two || user.link_three" class="mt-3" style="white-space: pre-wrap; overflow-wrap: anywhere;">
                             <h2 class="text-white fw-600 text-sm">Websites</h2>
 
                             <a v-if="user.link_one" :href="user.link_one" class="text-sm d-block">{{ user.link_one }}</a>
@@ -139,7 +139,7 @@ const props = defineProps({
                             <a v-if="user.link_one" :href="user.link_three" class="text-sm d-block">{{ user.link_three }}</a>
                         </div>
 
-                        <div v-if="user.link_four || user.link_five || user.link_six || user.link_seven || user.link_eight" style="white-space: pre-wrap; overflow-wrap: anywhere;">
+                        <div v-if="user.link_four || user.link_five || user.link_six || user.link_seven || user.link_eight" style="white-space: pre-wrap; overflow-wrap: anywhere;" class="mt-3">
                             <h2 class="text-white fw-600 text-sm">Socials</h2>
                             <a v-if="user.link_four" :href="user.link_four" class="text-sm d-block">{{ user.link_four }}</a>
                             <a v-if="user.link_five" :href="user.link_five" class="text-sm d-block">{{ user.link_five }}</a>

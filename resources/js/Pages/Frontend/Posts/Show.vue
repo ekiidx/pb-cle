@@ -59,7 +59,7 @@ const submit = () => {
 						items-center
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						justify-between
 						"
 					>
@@ -165,7 +165,7 @@ const submit = () => {
 
 							<!-- Image -->
 							<a v-if="post.data.post_image" :href="'/storage/post-images/'+ post.data.post_image">
-                    			<img v-if="post.data.post_image" class="mb-3" style="width: 100%; height: auto;" :src="'/storage/post-images/'+post.data.post_image">
+                    			<img v-if="post.data.post_image" class="mb-4" style="width: 100%; height: auto;" :src="'/storage/post-images/'+post.data.post_image">
                 			</a>
 
 							<!-- Divider -->
@@ -175,60 +175,58 @@ const submit = () => {
 								</div> -->
 								
 								<!-- Comments -->
-								<div class="post-comments">
-									<div v-if="props.comments != 0">
-										<ul role="list">
-											<li
-												v-for="(comment, index) in props.comments"
-												:key="index"
-												class="flex flex-col mb-3"
-											>
-												<div class="flex text-sm mb-1">
-													<!-- Commented by -->
-													<a :href="'/ravers/'+comment.user_slug">
-													<span class="font-semibold text-darkorchid mr-1">{{
-														comment.username
-													}}</span></a>
-													{{ comment.created_at_diff }}
+								<div v-if="props.comments != 0" class="post-comments">
+									<ul role="list">
+										<li
+											v-for="(comment, index) in props.comments"
+											:key="index"
+											class="flex flex-col mb-3"
+										>
+											<div class="flex text-sm mb-1">
+												<!-- Commented by -->
+												<a :href="'/ravers/'+comment.user_slug">
+												<span class="font-semibold text-darkorchid mr-1">{{
+													comment.username
+												}}</span></a>
+												{{ comment.created_at_diff }}
 
-													<!-- Edit Comment -->
-													<Link
-														v-if="comment.user_id === props.is_user"
-														:href="
-														route('posts.comments.edit', [
-															community.slug,
-															post.data.slug,
-															comment.id
-														])
-														"
-														class="
-														font-semibold
-														text-electricgreen
-														ml-2
-														"
-														style="
-														font-size: 0.85rem"
-														>Edit</Link
-													>
-												</div>
+												<!-- Edit Comment -->
+												<Link
+													v-if="comment.user_id === props.is_user"
+													:href="
+													route('posts.comments.edit', [
+														community.slug,
+														post.data.slug,
+														comment.id
+													])
+													"
+													class="
+													font-semibold
+													text-electricgreen
+													ml-2
+													"
+													style="
+													font-size: 0.85rem"
+													>Edit</Link
+												>
+											</div>
 
-												<div v-if="comment.content"
-													class="whitespace-pre-wrap break-words">
-													<p class="text-grey-300 text-sm">{{ comment.content }}</p>
-												</div>
+											<div v-if="comment.content"
+												class="whitespace-pre-wrap break-words">
+												<p class="text-grey-300 text-sm">{{ comment.content }}</p>
+											</div>
 
-												<!-- Image -->
-												<a v-if="comment.comment_image" :href="'/storage/comment-images/'+ comment.comment_image" class="mt-1">
-													<img v-if="comment.comment_image" style="width: 100%; max-width: 400px; height: auto;" 
-													:src="'/storage/comment-images/'+comment.comment_image">
-												</a>
+											<!-- Image -->
+											<a v-if="comment.comment_image" :href="'/storage/comment-images/'+ comment.comment_image" class="mt-1">
+												<img v-if="comment.comment_image" style="width: 100%; max-width: 400px; height: auto;" 
+												:src="'/storage/comment-images/'+comment.comment_image">
+											</a>
 
-												<div class="mt-1">
-													<CommentVote :comment="comment" />
-												</div>
-											</li>
-										</ul>
-									</div>
+											<div class="mt-1">
+												<CommentVote :comment="comment" />
+											</div>
+										</li>
+									</ul>
 								</div>
 							<!-- </div> -->
 
@@ -236,12 +234,13 @@ const submit = () => {
 							 <div class="comment-textarea">
 								<div v-if="$page.props.auth.user.username">
 									<form @submit.prevent="submit">
-										<div class="mb-1">
+
+										<div class="mt-4">
 											<textarea
 											v-model="form.content"
 											id="comment"
 											rows="5"
-											class="mt-1 block w-full bg-dark text-white"
+											class="block w-full bg-dark text-white"
 											placeholder="Your comment..."
 											></textarea>
 										</div>

@@ -27,7 +27,7 @@ defineProps({
 						items-center
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						justify-between
 						"
 						>
@@ -81,7 +81,7 @@ defineProps({
 										text-white
 										"
 									>
-										Slug
+										Posts
 									</th>
 									<th
 										scope="col"
@@ -92,8 +92,8 @@ defineProps({
 								</tr>
 							</thead>
 							
-							<tbody class="divide-y divide-gray-500 bg-dark">
-								<tr
+							<tbody class="bg-dark">
+								<tr class="table-border"
 								v-for="community in communities_index.data"
 								:key="community.id"
 								>
@@ -105,7 +105,6 @@ defineProps({
 									pr-3
 									text-sm
 									font-medium
-									text-gray-900
 									sm:pl-6
 									"
 								>
@@ -114,8 +113,6 @@ defineProps({
 										route('frontend.communities.show', community.slug)
 									"
 									class="
-										text-blue-500
-										hover:text-blue-700
 										font-semibold
 									"
 									>{{ community.name }}</Link
@@ -126,7 +123,7 @@ defineProps({
 									whitespace-nowrap
 									px-3
 									py-4
-									text-sm text-gray-500
+									text-sm
 									"
 								>
 									{{ community.slug }}

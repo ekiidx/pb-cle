@@ -11,17 +11,17 @@ defineProps({
   <div class="popular-posts-box border rounded-lg bg-dark">
     <div class="bg-darkorchid rounded-lg p-3">
       <img class="d-inline" style="max-height: 1.3rem; max-width: 1.3rem; margin-right: 0.65rem; padding-bottom: 0.35rem" src="/assets/img/fire.svg">
-      <h2 class="font-semibold text-lg text-white d-inline">
+      <h2 class="font-semibold text-white d-inline">
         <slot name="title" />
       </h2>
     </div>
-    <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-3">
+    <ul role="list" class="p-3">
       <li 
         v-for="post in posts" 
         :key="post.id" 
-        class="py-3 sm:py-3"
+        class="list-component-item"
       >
-        <div class="flex items-center space-x-4">
+        <div class="py-3 sm:py-2 flex items-center space-x-4">
           <Link
             :href="
               route('frontend.communities.posts.show', [
@@ -42,6 +42,7 @@ defineProps({
           </Link>
           <div><p class="text-sm">Votes({{ post.votes }})</p></div>
         </div>
+        <div class="px-3 list-border"></div>
       </li>
     </ul>
   </div>

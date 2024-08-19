@@ -55,7 +55,7 @@ const submit = () => {
 						flex
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						"
 					>
 						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">

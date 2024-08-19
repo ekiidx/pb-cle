@@ -71,7 +71,16 @@ const logout = () => {
                     <!-- <i v-if="$page.props.isActive == 'ravers'" class="feather-user font-sm bg-electricgreen btn-round-sm theme-dark-bg text-dark"></i>
                     <i v-else class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a> -->
                     <i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
-
+             
+                <Link v-if="$page.props.notificationReset == 0" :href="route('notifications.index', $page.props.auth.user)" class="p-1">
+                    <i class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i>
+                </Link>
+       
+                <Link v-else class="p-1" :href="route('notifications.index', $page.props.auth.user)">
+                    <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-white mr-2"></i>
+                    <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 "></i>
+                </Link>
+             
 
                 <!-- <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a> -->
                 
@@ -106,21 +115,6 @@ const logout = () => {
                     <div style="display: flex; justify-content: flex-end;">
 
                         <!-- Primary Navigation Menu -->
-                        <div class="flex items-center">
-
-                            <div v-if="$page.props.notificationReset == 0">
-                                <Link :href="route('notifications.index', $page.props.auth.user)">
-                                    <i class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
-                                </Link>
-                            </div>
-
-                            <div v-else>
-                                <Link :href="route('notifications.index', $page.props.auth.user)">
-                                    <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-white mr-2"></i>
-                                    <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
-                                </Link>
-                            </div>
-                        </div>
 
                         <!-- Settings Dropdown -->
                         <div class="relative">

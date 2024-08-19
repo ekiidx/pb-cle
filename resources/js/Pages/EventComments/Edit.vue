@@ -47,7 +47,7 @@ const submit = () => {
                 flex
                 bg-dark
                 rounded-lg
-                border border-gray-200
+                border
                 "
             >
             <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">Edit Comment</span>
@@ -64,7 +64,7 @@ const submit = () => {
 <div class="w-full py-3 px-3">
   <form @submit.prevent="submit">
   
-      <div class="mb-2">
+      <div>
         <Label for="content" value="Content" />
         <textarea
           id="content"
@@ -78,12 +78,11 @@ const submit = () => {
       </div>
 
       <div class="mb-4">
-            <img v-if="props.comment.comment_image" 
-              class="mt-2" 
+            <img v-if="props.comment.comment_image"
               style="max-width: 7rem; max-height: 5rem; height: auto;" 
               id="commentImageFrame"
               :src="'/storage/comment-images/'+comment.comment_image">
-            <img v-else 
+            <img v-else
             style="max-width: 7rem; max-height: 5rem; height: auto;" 
             id="commentImageFrame"
             src="">

@@ -100,7 +100,7 @@ const submit = () => {
                 flex
                 bg-dark
                 rounded-lg
-                border border-gray-200
+                border
                 "
             >
             <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">Events</span>
@@ -221,7 +221,7 @@ const submit = () => {
                     <Label class="mb-1" for="flyer_front" value="Flyer Front" />
                       <img 
                         v-if="props.event.flyer_front_upload" 
-                        class="rounded-sm pb-3" 
+                        class="rounded-sm mb-1" 
                         style="max-width: 7rem; max-height: 5rem; height: auto;" 
                         id="flyerFrontFrame"
                         :src="'/storage/flyers/'+event.flyer_front_upload">
@@ -234,7 +234,7 @@ const submit = () => {
                     <Label class="mb-1" for="flyer_back" value="Flyer Back" />
                       <img 
                         v-if="props.event.flyer_back_upload" 
-                        class="rounded-sm pb-3" 
+                        class="rounded-sm mb-1" 
                         style="max-width: 7rem; max-height: 5rem; height: auto;" 
                         id="flyerBackFrame"
                         :src="'/storage/flyers/'+event.flyer_back_upload">

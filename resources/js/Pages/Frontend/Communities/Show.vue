@@ -32,7 +32,7 @@ defineProps({
 						items-center
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						justify-between
 						"
 					>

@@ -110,7 +110,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'admin@pb-cle.org'),
-        'name' => env('MAIL_FROM_NAME', 'Pb-Cle'),
+        'name' => env('MAIL_FROM_NAME', 'Pb-Cle.org'),
     ],
 
 ];

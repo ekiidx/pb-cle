@@ -69,6 +69,13 @@ const logout = () => {
           <i v-else class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a> -->
           <i class="feather-user font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400"></i></a>
 
+          <Link v-if="$page.props.auth.user" :href="route('notifications.index', $page.props.auth.user)" class="p-1">
+              <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-white mr-2"></i>
+              <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
+          </Link>
+
+          <!-- {{ $page.props.auth.user.notifications }} -->
+
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="/ravers" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
         <!-- <a href="#" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-darkorchid btn-round-lg theme-dark-bg text-grey-500 "></i></a> -->
@@ -119,14 +126,7 @@ const logout = () => {
                     <ApplicationMark class="block h-9 w-auto" />
                 </Link>
             </div>
-          </div> -->         
-          <div v-if="$page.props.auth.user" class="flex items-center">
-              <Link :href="route('notifications.index', $page.props.auth.user)">
-                  <i v-if="$page.props.auth.user.notifications != 0" class="feather-bell font-sm bg-electricgreen btn-round-sm theme-dark-bg text-white mr-2"></i>
-                  <i v-else class="feather-bell font-sm bg-darkorchid btn-round-sm theme-dark-bg text-grey-400 mr-2"></i>
-              </Link>
-          </div>
-          <!-- {{ $page.props.auth.user.notifications }} -->
+          </div> -->
 
           <!-- Settings Dropdown -->
           <div class="relative" v-if="$page.props.auth.user">

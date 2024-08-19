@@ -37,7 +37,7 @@ defineProps({
 						welcome-box
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						"
 					>
 						<i style="position: absolute; font-size: 1.2rem; margin-top: 0.2rem;" class="feather-zap text-electricgreen d-inline"></i>

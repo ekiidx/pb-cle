@@ -59,7 +59,7 @@ const submit = () => {
 						items-center
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						justify-between
 						"
 					>
@@ -86,7 +86,7 @@ const submit = () => {
 						flex
 						bg-dark
 						rounded-lg
-						border border-gray-200
+						border
 						text-sm
 						"
 					>
@@ -226,12 +226,12 @@ const submit = () => {
 
 									<!-- Textarea -->
 									<div class="comment-textarea">
-										<div class="mb-1">
+										<div class="mt-4">
 											<textarea
 											v-model="form.content"
 											id="comment"
 											rows="5"
-											class="mt-1 block w-full bg-dark text-white"
+											class="block w-full bg-dark text-white"
 											placeholder="Your comment..."
 											></textarea>
 										</div>
