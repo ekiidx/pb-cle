@@ -19,7 +19,7 @@ class EventShowResource extends JsonResource
             'is_user' => $this->user_id,
             'user_id' => $this->user_id,
             'username' => $this->user->username,
-            'user_slug' => $this->user->slug,
+            'user_slug' => 'jim',
             'name' => $this->name,
             'slug' => $this->slug,
             'flyer_front_upload' => $this->flyer_front_upload,
@@ -35,7 +35,7 @@ class EventShowResource extends JsonResource
             'content' => $this->content,
             'party_date' => $this->party_date,
             'weekday_format' => $this->weekday_format,
-            'event_comments' => EventCommentResource::collection($this->whenLoaded('eventComments')),
+            //'event_comments' => EventCommentResource::collection($this->whenLoaded('eventComments')),
             // 'event_genres' => EventGenreResource::collection($this->whenLoaded('genres')),
             'created_at' => $this->created_at->diffForHumans(),
         ];

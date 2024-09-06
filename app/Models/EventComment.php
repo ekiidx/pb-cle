@@ -41,7 +41,7 @@ class EventComment extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected $appends = ['created_at_diff', 'username'];
+    protected $appends = ['created_at_diff', 'username', 'user_slug'];
 
     public function getCreatedAtDiffAttribute(): string 
     { 
@@ -56,5 +56,10 @@ class EventComment extends Model
     public function getUsernameAttribute(): string
     {
       return $this->user->username;
+    }
+
+    public function getUserSlugAttribute(): string
+    {
+      return $this->user->slug;
     }
 }
