@@ -19,7 +19,7 @@ class EventShowResource extends JsonResource
             'is_user' => $this->user_id,
             'user_id' => $this->user_id,
             'username' => $this->user->username,
-            'user_slug' => 'jim',
+            'user_slug' => $this->user->slug,
             'name' => $this->name,
             'slug' => $this->slug,
             'flyer_front_upload' => $this->flyer_front_upload,

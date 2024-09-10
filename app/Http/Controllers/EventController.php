@@ -188,14 +188,14 @@ class EventController extends Controller
 
         //Only owner of post, owner of event, or admin can edit & delete
         $id = Auth::id();
-
-        if($id !== $event->user_id) {
-            $can_update = false;
-            $can_delete = false;
-        }else {
+        if($id === $event->user_id || $id === 1) {
             $can_update = true;
             $can_delete = true;
+        }else {
+            $can_update = false;
+            $can_delete = false;
         }
+
         $is_user = auth::id();
 
         return Inertia::render('Events/Show', compact('event', 'genres', 'new', 'can_update', 'can_delete', 'is_user', 'comments'));
@@ -208,35 +208,36 @@ class EventController extends Controller
     {
         // Only owner of post, owner of event, or admin can edit & delete
         $id = Auth::id();
-        if($id !== $event->user_id) {
+        if($id === $event->user_id || $id === 1) {
+            $genres = $event->event_genres;
+            // $new_date = $event->event_date->format('m-d-Y');
+            // $new_date = Carbon::parse($event->event_date)->format('Y/m/d');
+            // dd($new_date);
+            // $new_date = '2024-05-25';
+
+            // TODO: This can be optimized like the one above in this file
+            // TODO: implement later and use table
+            // $genres = Genre::all();
+            // foreach( $genres as $genre ) {
+            //     $name = $genre->name;
+            //     $id = $genre->id;
+            //     $genre_options[] = 
+            //         array('label' => $name, 'value' => $id
+            //     );
+            // }
+            // if ($event_genres) {
+            //     foreach ($event_genres as $event_genre) {
+            //         $name = $event_genre->name;
+            //         $id = $event_genre->pivot_genre_id;
+            //         $genre_values[] = 
+            //             array('label' => $name, 'value' => $id);
+            //     } 
+            // }
+
+            return Inertia::render('Events/Edit', compact('event', 'genres'));
+        } else {
             return Redirect::route('events.index');
         }
-        $genres = $event->event_genres;
-        // $new_date = $event->event_date->format('m-d-Y');
-        // $new_date = Carbon::parse($event->event_date)->format('Y/m/d');
-        // dd($new_date);
-        // $new_date = '2024-05-25';
-
-        // TODO: This can be optimized like the one above in this file
-        // TODO: implement later and use table
-        // $genres = Genre::all();
-        // foreach( $genres as $genre ) {
-        //     $name = $genre->name;
-        //     $id = $genre->id;
-        //     $genre_options[] = 
-        //         array('label' => $name, 'value' => $id
-        //     );
-        // }
-        // if ($event_genres) {
-        //     foreach ($event_genres as $event_genre) {
-        //         $name = $event_genre->name;
-        //         $id = $event_genre->pivot_genre_id;
-        //         $genre_values[] = 
-        //             array('label' => $name, 'value' => $id);
-        //     } 
-        // }
-
-        return Inertia::render('Events/Edit', compact('event', 'genres'));
     }
 
     /**
@@ -246,97 +247,99 @@ class EventController extends Controller
     {
         //Only owner of event can update
         $id = Auth::id();
-        if($id !== $event->user_id) {
+        if($id === $event->user_id || $id === 1) {
+            $validated = $request->validate([
+                'name' => 'required|max:255',
+                'flyer_front' => 'max:2048',
+                'flyer_back' => 'max:2048',
+                'event_date' => 'required',
+            ]);
+        
+            $event->name = $request->name;
+            $event->link_event = $request->link_event;
+            $event->link_tickets = $request->link_tickets;
+            $event->content = $request->content;
+            // $event->event_date = $request->event_date;
+            // $event->time_start_hours = $start_time['hours'];
+            // $event->time_start_minutes = $start_time['minutes'];
+            $event->event_date = $request->event_date;
+            $event->event_time = $request->event_time;
+
+            // TODO: flyer_front and flyer_back being empty makes $genres have [], with an image upload it changes $genres to NULL
+            $genres = $request->genre_values;
+            if( $genres != NULL ) {
+                $count = count($genres);
+            } else {
+                $genres = NULL;
+            }
+            $event->event_genres = $genres;
+        
+            // TODO: Genre options
+            // $genres = $request->genre_values;
+            // if ($genres) {
+            //     foreach( $genres as $genre ) {
+            //         // dd($genre["value"]);
+            //         // $id = $genre->value; 
+            //         // dd($id);
+            //         $event->genres()->sync($genres);
+            //     }
+            // }else {
+            //         $genres = [];
+            // }
+            //     $genres = $request->genre_values;
+            //     // dd($genres);
+            //     // if ($genres) {
+            //     foreach ($data->genres as $genre) {
+            //     $event->genres()->sync($genres['id'] => );
+            // }
+            //   for ($row = 0; $row < count($genres); $row++ ) {
+            //   }
+            //    foreach( $genres as $genre ) {
+            //     $event->genres()->sync(
+            //         $genre["id"]
+            //     );
+            //    }
+            // //        
+            //     }
+            //     }else {
+            //         $event->genres()->sync($genres);
+            //     }
+            
+            // Store the file in storage\app\public folder if file exists in the request
+            if ($request->hasfile('flyer_front')) {
+                $flyer_front_file = $request->file('flyer_front');
+                $flyer_front_filename = $flyer_front_file->getClientOriginalName();
+                $flyer_front_extension = $flyer_front_file->getClientOriginalExtension();
+                $flyer_front_no_extension = explode('.' . $flyer_front_extension, $flyer_front_filename);
+                $flyer_front_slug = SlugService::createSlug(Event::class, 'flyer_front_slug', $flyer_front_no_extension[0], ['unique' => true]);
+
+                $flyer_front_slug_new = $flyer_front_slug . '.' . $flyer_front_extension;
+                
+                $flyer_front_file->storeAs('flyers', $flyer_front_slug_new, 'public');
+                $event->flyer_front_slug = $flyer_front_slug;
+                $event->flyer_front_upload = $flyer_front_slug_new;
+            }
+
+            if ($request->hasfile('flyer_back')) {
+                $flyer_back_file = $request->file('flyer_back');
+                $flyer_back_filename = $flyer_back_file->getClientOriginalName();
+                $flyer_back_extension = $flyer_back_file->getClientOriginalExtension();
+                $flyer_back_no_extension = explode('.' . $flyer_back_extension, $flyer_back_filename);
+                $flyer_back_slug = SlugService::createSlug(Event::class, 'flyer_back_slug', $flyer_back_no_extension[0], ['unique' => true]);
+
+                $flyer_back_slug_new = $flyer_back_slug . '.' . $flyer_back_extension;
+                
+                $flyer_back_file->storeAs('flyers', $flyer_back_slug_new, 'public');
+                $event->flyer_back_slug = $flyer_back_slug;
+                $event->flyer_back_upload = $flyer_back_slug_new;
+            }
+            $event->save();
+
+            return Redirect::route('events.show', [$event->slug]);
+        } else {
+
             return Redirect::route('events.index');
         }
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'flyer_front' => 'max:2048',
-            'flyer_back' => 'max:2048',
-            'event_date' => 'required',
-        ]);
-    
-        $event->name = $request->name;
-        $event->link_event = $request->link_event;
-        $event->link_tickets = $request->link_tickets;
-        $event->content = $request->content;
-        // $event->event_date = $request->event_date;
-        // $event->time_start_hours = $start_time['hours'];
-        // $event->time_start_minutes = $start_time['minutes'];
-        $event->event_date = $request->event_date;
-        $event->event_time = $request->event_time;
-
-        // TODO: flyer_front and flyer_back being empty makes $genres have [], with an image upload it changes $genres to NULL
-        $genres = $request->genre_values;
-        if( $genres != NULL ) {
-            $count = count($genres);
-        } else {
-            $genres = NULL;
-        }
-        $event->event_genres = $genres;
-    
-        // TODO: Genre options
-        // $genres = $request->genre_values;
-        // if ($genres) {
-        //     foreach( $genres as $genre ) {
-        //         // dd($genre["value"]);
-        //         // $id = $genre->value; 
-        //         // dd($id);
-        //         $event->genres()->sync($genres);
-        //     }
-        // }else {
-        //         $genres = [];
-        // }
-        //     $genres = $request->genre_values;
-        //     // dd($genres);
-        //     // if ($genres) {
-        //     foreach ($data->genres as $genre) {
-        //     $event->genres()->sync($genres['id'] => );
-        // }
-        //   for ($row = 0; $row < count($genres); $row++ ) {
-        //   }
-        //    foreach( $genres as $genre ) {
-        //     $event->genres()->sync(
-        //         $genre["id"]
-        //     );
-        //    }
-        // //        
-        //     }
-        //     }else {
-        //         $event->genres()->sync($genres);
-        //     }
-        
-        // Store the file in storage\app\public folder if file exists in the request
-        if ($request->hasfile('flyer_front')) {
-            $flyer_front_file = $request->file('flyer_front');
-            $flyer_front_filename = $flyer_front_file->getClientOriginalName();
-            $flyer_front_extension = $flyer_front_file->getClientOriginalExtension();
-            $flyer_front_no_extension = explode('.' . $flyer_front_extension, $flyer_front_filename);
-            $flyer_front_slug = SlugService::createSlug(Event::class, 'flyer_front_slug', $flyer_front_no_extension[0], ['unique' => true]);
-
-            $flyer_front_slug_new = $flyer_front_slug . '.' . $flyer_front_extension;
-            
-            $flyer_front_file->storeAs('flyers', $flyer_front_slug_new, 'public');
-            $event->flyer_front_slug = $flyer_front_slug;
-            $event->flyer_front_upload = $flyer_front_slug_new;
-        }
-
-        if ($request->hasfile('flyer_back')) {
-            $flyer_back_file = $request->file('flyer_back');
-            $flyer_back_filename = $flyer_back_file->getClientOriginalName();
-            $flyer_back_extension = $flyer_back_file->getClientOriginalExtension();
-            $flyer_back_no_extension = explode('.' . $flyer_back_extension, $flyer_back_filename);
-            $flyer_back_slug = SlugService::createSlug(Event::class, 'flyer_back_slug', $flyer_back_no_extension[0], ['unique' => true]);
-
-            $flyer_back_slug_new = $flyer_back_slug . '.' . $flyer_back_extension;
-            
-            $flyer_back_file->storeAs('flyers', $flyer_back_slug_new, 'public');
-            $event->flyer_back_slug = $flyer_back_slug;
-            $event->flyer_back_upload = $flyer_back_slug_new;
-        }
-        $event->save();
-
-        return Redirect::route('events.show', [$event->slug]);
     }
 
     /**
@@ -346,12 +349,14 @@ class EventController extends Controller
     {
         //Only owner of event can delete
         $id = Auth::id();
-        if($id !== $event->user_id) {
+        if($id === $event->user_id || $id === 1) {
+        
+            $event->delete();
+            // return back()->with('message', 'Event deleted successfully.');
+            return Redirect::route('events.index');
+        } else {
+            
             return Redirect::route('events.index');
         }
-        
-        $event->delete();
-        // return back()->with('message', 'Event deleted successfully.');
-        return Redirect::route('events.index');
     }
 }
