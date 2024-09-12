@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title inertia>{{ config('app.name', 'Pb-Cle') }}</title>
+        <title inertia>{{ config('app.name', 'Pb-Cle.org') }}</title>
 
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -15,27 +15,54 @@
         <meta name="msapplication-TileColor" content="#1f212a">
         <meta name="theme-color" content="#ffffff">
 
-        <!-- Open Graph -->
-        <meta property="og:url" content="https://pb-cle.org">
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="Pb-Cle">
-        <meta property="og:title" content="Pb-Cle">
-        <meta property="og:description" content="Welcome to Pittsburgh and Cleveland's newest electronic dance music site - Pb-cle.org - where you can post your favorite music, links, photos and local events.">
-        <meta property="og:image" content="https://pb-cle.org/site-thumbnail.png">
 
-        <!-- Twitter Meta -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:domain" content="pb-cle.org">
-        <meta property="twitter:url" content="https://pb-cle.org">
-        <meta name ="twitter:title" content="Pb-Cle">
-        <meta name="twitter:description" content="Welcome to Pittsburgh and Cleveland's newest electronic dance music site - Pb-cle.org - where you can post your favorite music, links, photos and local events.">
-        <meta name="twitter:image" content="https://pb-cle.org/site-thumbnail.png">
-        <meta data-rh="true" name="twitter:alt" content="Pb-Cle Preview">
-        <meta data-rh="true" name="twitter:image:width" content="">
-        <meta data-rh="true" name="twitter:image:height" content="">
-        <meta name="twitter:site" content="">
-        <meta name="twitter:creator" content="">
-        <meta name="twitter:creator:id" content="">
+        @if(!Route::is('events.event.*'))
+             <!-- Open Graph -->
+            <meta property="og:url" content="https://pb-cle.org">
+            <meta property="og:type" content="website">
+            <meta property="og:site_name" content="Pb-Cle.org">
+            <meta property="og:title" content="Pb-Cle.org">
+            <meta property="og:description" content="Welcome to Pittsburgh and Cleveland's newest electronic dance music site - Pb-cle.org - Post your favorite music, links, photos and local rave and EDM events.">
+            <meta property="og:image" content="https://pb-cle.org/site-thumbnail.png">
+
+             <!-- Twitter Meta -->
+            <meta name="twitter:card" content="summary_large_image">
+            <meta property="twitter:domain" content="pb-cle.org">
+            <meta property="twitter:url" content="https://pb-cle.org">
+            <meta name ="twitter:title" content="Pb-Cle.org">
+            <meta name="twitter:description" content="Welcome to Pittsburgh and Cleveland's newest electronic dance music site - Pb-cle.org - Post your favorite music, links, photos and local rave and EDM events.">
+            <meta name="twitter:image" content="https://pb-cle.org/site-thumbnail.png">
+            <meta data-rh="true" name="twitter:alt" content="Pb-Cle Preview">
+            <meta data-rh="true" name="twitter:image:width" content="">
+            <meta data-rh="true" name="twitter:image:height" content="">
+            <meta name="twitter:site" content="">
+            <meta name="twitter:creator" content="">
+            <meta name="twitter:creator:id" content="">
+        @endif
+
+        @if(Route::is('events.event.*'))
+            <!-- Open Graph -->
+            <meta property="og:url" content="https://pb-cle.org">
+            <meta property="og:type" content="website">
+            <meta property="og:site_name" content="Pb-Cle.org">
+            <meta property="og:title" content="Pb-Cle.org">
+            <meta property="og:description" content="<?php if(getEventPreview()) { echo getEventPreview()[1]; } ?>">
+            <meta property="og:image" content="<?php if(getEventPreview()) { echo 'https://pb-cle.org/storage/flyers/' . getEventPreview()[0]; } ?>">
+                <!-- Twitter Meta -->
+            <meta name="twitter:card" content="summary_large_image">
+            <meta property="twitter:domain" content="pb-cle.org">
+            <meta property="twitter:url" content="https://pb-cle.org">
+            <meta name ="twitter:title" content="Pb-Cle.org">
+            <meta name="twitter:description" content="<?php if(getEventPreview()) { echo getEventPreview()[1]; } ?>">
+            <meta name="twitter:image" content="<?php if(getEventPreview()) { echo 'https://pb-cle.org/storage/flyers/' . getEventPreview()[0]; } ?>">
+            <meta data-rh="true" name="twitter:alt" content="Pb-Cle Preview">
+            <meta data-rh="true" name="twitter:image:width" content="">
+            <meta data-rh="true" name="twitter:image:height" content="">
+            <meta name="twitter:site" content="">
+            <meta name="twitter:creator" content="">
+            <meta name="twitter:creator:id" content="">
+        @endif
+
 
         <!--
          _   __           ___          _

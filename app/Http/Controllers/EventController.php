@@ -162,7 +162,7 @@ class EventController extends Controller
         ]);
         $user->increment('plur_points', 10);
     
-        return Redirect::route('events.show', $event->slug);
+        return Redirect::route('events.event.show', $event->slug);
     }
 
     /**
@@ -335,7 +335,7 @@ class EventController extends Controller
             }
             $event->save();
 
-            return Redirect::route('events.show', [$event->slug]);
+            return Redirect::route('events.event.show', [$event->slug]);
         } else {
 
             return Redirect::route('events.index');

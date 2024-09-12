@@ -87,7 +87,7 @@ class EventCommentController extends Controller
         // Only owner of comment or admin can edit & delete
         $user_id = Auth::id();
         if($user_id !== $comment->user_id) {
-            return Redirect::route('events.show', [$event]);
+            return Redirect::route('events.event.show', [$event]);
         }
 
         return Inertia::render('EventComments/Edit', compact('comment', 'event'));
@@ -103,7 +103,7 @@ class EventCommentController extends Controller
         // Only owner of comment or admin can edit & delete
         $user_id = Auth::id();
         if($user_id !== $comment->user_id) {
-            return Redirect::route('events.show', [$event]);
+            return Redirect::route('events.event.show', [$event]);
         }
 
         $request->validate([
@@ -130,6 +130,6 @@ class EventCommentController extends Controller
         }
         $comment->save();
 
-        return Redirect::route('events.show', [$event]);
+        return Redirect::route('events.event.show', [$event]);
     }
 }

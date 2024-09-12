@@ -44,7 +44,7 @@ const submit = () => {
 <template>
     <Guest>
         <Head>
-            <title>{{ event.data.name }}</title>
+			<title>{{ event.data.name }}</title>
         </Head>
 
         <div class="main-container">

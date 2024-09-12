@@ -25,7 +25,7 @@ defineProps({
 
         <div style="width: 2.25rem;">
           <Link
-            :href="route('events.show', event.slug)"
+            :href="route('events.event.show', event.slug)"
             class="
               font-semibold
               truncate
@@ -42,7 +42,7 @@ defineProps({
           </Link>
         </div>
           <Link
-            :href="route('events.show', event.slug)"
+            :href="route('events.event.show', event.slug)"
             class="
               font-semibold
               truncate

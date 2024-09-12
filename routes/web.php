@@ -101,7 +101,7 @@ Route::get('/ravers/{user:slug}/events', [RaverController::class, 'events'])->na
 
 // Events
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
-Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
+Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.event.show');
 
 // 404
 Route::get('/logout', function () {
