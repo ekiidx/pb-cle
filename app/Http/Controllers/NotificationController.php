@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class NotificationController extends Controller
@@ -14,32 +15,41 @@ class NotificationController extends Controller
      */
     public function index(User $user)
     {
-        // Reset the user notification amount to 0
-        $user->notifications = 0;
-        $user->save();
+        $id = Auth::id();
 
-        $notifications = Notification::where('receiver_id', $user->id)->where('user_id', '!=', $user->id)->orderBy('created_at', 'desc')->get();
+        if($id !== $user->id) {
 
-        $notificationReset = getResetNotifications();
+            return abort('404');
 
-        return Inertia::render('Notifications/Index', compact('notifications', 'user', 'notificationReset'));
+        } elseif($id === $user->id) {
+
+            // Reset the user notification amount to 0
+            $user->notifications = 0;
+            $user->save();
+
+            $notifications = Notification::where('receiver_id', $user->id)->where('user_id', '!=', $user->id)->orderBy('created_at', 'desc')->get();
+
+            $notificationReset = getNotificationReset();
+
+            return Inertia::render('Notifications/Index', compact('notifications', 'user', 'notificationReset'));
+        }
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.
@@ -52,24 +62,24 @@ class NotificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+    // public function destroy(string $id)
+    // {
+    //     //
+    // }
 }
