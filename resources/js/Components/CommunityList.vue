@@ -22,7 +22,7 @@ defineProps({
       >
         <div class="py-3 sm:py-2 flex items-center space-x-4">
           <Link
-            :href="route('frontend.communities.show', community.slug)"
+            :href="route('communities.show', community.slug)"
             class="
               font-semibold
               truncate

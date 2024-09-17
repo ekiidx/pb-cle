@@ -51,7 +51,7 @@ const submit = () => {
                 "
             >
             <h2 class="font-semibold text-xl text-white main-title-text leading-tight"><span class="text-white">Edit Comment</span>
-							<!-- <Link :href="route('frontend.communities.show', community.slug)">
+							<!-- <Link :href="route('communities.show', community.slug)">
 								{{ community.name }}
 							</Link> -->
 						</h2>

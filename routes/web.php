@@ -4,7 +4,6 @@ use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\CommunityPostController;
 use App\Http\Controllers\PostVoteController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CommunityController as FrontendCommunityController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
@@ -50,10 +49,10 @@ Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 Route::group(['middleware' => ['auth', 'verified']], function () {
     
     // Communities
-    Route::resource('/communities', CommunityController::class);
     Route::get('/communities', [CommunityController::class, 'index'])->name('communities.index');
-    Route::resource('/communities.posts', CommunityPostController::class);
-    Route::get('/communities/{community:slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
+    Route::get('/communities/create', [CommunityController::class, 'create'])->name('communities.create');
+    Route::post('/communities', [CommunityController::class, 'store'])->name('communities.store');
+    Route::get('/communities/{community:slug}', [CommunityController::class, 'show'])->name('communities.show');
 
     // Voting
     Route::post('/posts/{post:slug}/upVote', [PostVoteController::class, 'upVote'])->name('posts.upVote');
@@ -64,8 +63,13 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/event-comment/{eventComment:id}/downVote', [EventCommentVoteController::class, 'downVote'])->name('eventComments.downVote');
 
     // Posts
-    Route::get('/communities/{community:slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
-    Route::post('/communities/{community:slug}/posts/{post:slug}', [PostCommentController::class, 'store'])->name('frontend.posts.comments');
+    Route::get('/communities/{community:slug}/posts/create', [CommunityPostController::class, 'create'])->name('communities.posts.create');
+    Route::post('/communities/{community:slug}/posts', [CommunityPostController::class, 'store'])->name('communities.posts.store');
+    Route::get('/communities/{community:slug}/posts/{post:slug}', [PostController::class, 'show'])->name('communities.posts.show');
+    Route::get('/communities/{community:slug}/posts/{post:slug}/edit', [CommunityPostController::class, 'edit'])->name('communities.posts.edit');
+    Route::post('/communities/{community:slug}/posts/{post:slug}', [CommunityPostController::class, 'update'])->name('communities.posts.update');
+    Route::delete('/communities/{community:slug}/posts/{post:slug}', [CommunityPostController::class, 'destroy'])->name('communities.posts.destroy');
+    Route::post('/communities/{community:slug}/posts/{post:slug}/comments', [PostCommentController::class, 'store'])->name('posts.comments');
     Route::get('/communities/{community:slug}/posts/{post:slug}/comments/{id}/edit', [PostCommentController::class, 'edit'])->name('posts.comments.edit');
     Route::post('/communities/{community:slug}/posts/{post:slug}/comments/{id}', [PostCommentController::class, 'update'])->name('posts.comments.update');
 
@@ -75,9 +79,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     // Events
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
-    Route::post('/events/create', [EventController::class, 'store'])->name('events.store');
+    Route::post('/events', [EventController::class, 'store'])->name('events.store');
     Route::get('/events/{event:slug}/edit', [EventController::class, 'edit'])->name('events.edit');
-    Route::post('/events/{event:slug}/update', [EventController::class, 'update'])->name('events.update');
+    Route::post('/events/{event:slug}', [EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{event:slug}/destroy', [EventController::class, 'destroy'])->name('events.destroy');
     Route::post('/events/{event:slug}/comments', [EventCommentController::class, 'store'])->name('events.comments');
     Route::get('/events/{event:slug}/comments/{id}/edit', [EventCommentController::class, 'edit'])->name('events.comments.edit');

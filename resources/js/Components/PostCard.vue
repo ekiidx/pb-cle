@@ -26,7 +26,7 @@ defineProps({
       <!-- Header -->
       <div class="post-header text-sm">
         <Link
-          :href="route('frontend.communities.show', community)"
+          :href="route('communities.show', community)"
           class="font-semibold mr-1 hover:text-indigo-700"
           >/{{ community }}</Link
         >
@@ -38,7 +38,7 @@ defineProps({
      
       </div>
       <Link
-        :href="route('frontend.communities.posts.show', [community, post.slug])"
+        :href="route('communities.posts.show', [community, post.slug])"
       >
         <h2
           class="
@@ -67,7 +67,7 @@ defineProps({
         <p class="mr-4 text-sm">Comments({{ post.comments_count }})</p>
         <Link
           :href="
-            route('frontend.communities.posts.show', [community, post.slug])
+            route('communities.posts.show', [community, post.slug])
           "
           class="comment-btn d-inline-block items-center border-transparent bg-darkorchid fw-600 text-white font-xsss text-center lh-20 rounded-xl"
         >

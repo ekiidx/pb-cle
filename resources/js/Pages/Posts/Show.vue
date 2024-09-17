@@ -28,7 +28,7 @@ function commentImagePreview() {
 
 const submit = () => {
   form.post(
-    route("frontend.posts.comments", [
+    route("posts.comments", [
       props.community.slug,
       props.post.data.slug,
     ]),
@@ -64,7 +64,7 @@ const submit = () => {
 						"
 					>
 						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
-							<Link :href="route('frontend.communities.show', community.slug)">
+							<Link :href="route('communities.show', community.slug)">
 								{{ community.name }}
 							</Link>
 						</h2>

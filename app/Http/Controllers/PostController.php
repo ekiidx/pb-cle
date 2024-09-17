@@ -49,6 +49,6 @@ class PostController extends Controller
         //     $can_update_comment = true;
         // };
 
-        return Inertia::render('Frontend/Posts/Show', compact('community', 'post', 'posts', 'can_update', 'can_delete', 'is_user', 'comments'));
+        return Inertia::render('Posts/Show', compact('community', 'post', 'posts', 'can_update', 'can_delete', 'is_user', 'comments'));
     }
 }

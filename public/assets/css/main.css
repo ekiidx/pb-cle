@@ -379,11 +379,12 @@ input[type="file"] {
     .nav-top span.pb-cle-logofont {
         display: inline-block !important;
         margin-right: 1rem;
-        font-size: 1.55rem;
+        font-size: 1.8rem;
     }
     .nav-top .pb-cle-zap-logo {
-        font-size: 29px;
+        font-size: 27px;
         margin-right: 5px;
+        font-weight: 600;
     }
     .read-more-text {
         display: inline-block;

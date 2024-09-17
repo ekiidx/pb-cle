@@ -86,7 +86,7 @@ class CommunityController extends Controller
             ]);
             $user->decrement('plur_points', 100);
 
-            return Redirect::route('frontend.communities.show', [$community->slug]);
+            return Redirect::route('communities.show', [$community->slug]);
         
         }else {
             return to_route('communities.index');
@@ -108,7 +108,7 @@ class CommunityController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->latest()->take(5)->get());
 
-        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts', 'communities'));
+        return Inertia::render('Communities/Show', compact('community', 'posts', 'communities'));
     }
 
     /**

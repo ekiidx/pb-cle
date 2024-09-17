@@ -110,7 +110,7 @@ defineProps({
 								>
 									<Link
 									:href="
-										route('frontend.communities.show', community.slug)
+										route('communities.show', community.slug)
 									"
 									class="
 										font-semibold

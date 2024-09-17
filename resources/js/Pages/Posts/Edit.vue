@@ -17,7 +17,7 @@ const form = useForm({
   description: props.post?.description,
   url: props.post?.url,
   post_image: props.post?.post_image,
-  _method: 'put'
+//   _method: 'PUT'
 });
 
 function imagePreview() {
@@ -26,7 +26,7 @@ function imagePreview() {
 
 const submit = () => {
   form.post(
-    route("communities.posts.update", [props.community.slug, props.post.slug])
+    route('communities.posts.update', [props.community.slug, props.post.slug])
   );
 };
 </script>
@@ -59,7 +59,7 @@ const submit = () => {
 						"
 					>
 						<h2 class="font-semibold text-xl text-white main-title-text leading-tight">
-							<Link :href="route('frontend.communities.show', community.slug)">
+							<Link :href="route('communities.show', community.slug)">
 								{{ community.name }}
 							</Link>
 						</h2>

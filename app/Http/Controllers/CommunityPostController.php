@@ -20,7 +20,7 @@ class CommunityPostController extends Controller
     public function create(Community $community)
     {
 
-        return Inertia::render('Communities/Posts/Create', compact('community'));
+        return Inertia::render('Posts/Create', compact('community'));
     }
 
     public function store(StorePostRequest $request, Community $community)
@@ -81,7 +81,7 @@ class CommunityPostController extends Controller
             $post->user->increment('notifications', 1);
         }
 
-        return Redirect::route('frontend.communities.show', $community->slug);
+        return Redirect::route('communities.show', $community->slug);
     }
 
     public function edit(Community $community, Post $post)
@@ -90,10 +90,10 @@ class CommunityPostController extends Controller
         $id = Auth::id();
         if($id !== $post->user_id) {
 
-            return Redirect::route('frontend.communities.show', $post);
+            return Redirect::route('communities.show', $community);
         }
 
-        return Inertia::render('Communities/Posts/Edit', compact('community', 'post'));
+        return Inertia::render('Posts/Edit', compact('community', 'post'));
     }
 
     public function update(Request $request, Community $community, Post $post)
@@ -104,7 +104,7 @@ class CommunityPostController extends Controller
         //Only owner of post, owner of event, or admin can edit & delete
         $id = Auth::id();
         if($id !== $post->user_id)  {
-            return Redirect::route('frontend.communities.show');
+            return Redirect::route('communities.show');
         }
         $validated = $request->validate([
             'title' => ['min:5'],
@@ -135,7 +135,7 @@ class CommunityPostController extends Controller
         }
         $post->save();
 
-        return Redirect::route('frontend.communities.posts.show', [$community->slug, $post->slug]);
+        return Redirect::route('communities.posts.show', [$community->slug, $post->slug]);
     }
 
     public function destroy(Community $community, Post $post)
@@ -143,9 +143,9 @@ class CommunityPostController extends Controller
         //Only owner of post, owner of event, or admin can edit & delete
         $id = Auth::id();
         if($id !== $post->user_id)  {
-            return Redirect::route('frontend.communities.show');
+            return Redirect::route('communities.show');
         }
         $post->delete();
-        return Redirect::route('frontend.communities.show', $community->slug);
+        return Redirect::route('communities.show', $community->slug);
     }
 }

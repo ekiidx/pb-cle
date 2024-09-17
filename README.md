@@ -13,6 +13,7 @@
 - [x] Add Images to Comments
 - [x] Edit Comments
 - [x] Add Notification system
+- [x] Dynamic link preview
 - [ ] Private Messaging
 - [ ] Search
 

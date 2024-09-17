@@ -97,7 +97,7 @@ class PostCommentController extends Controller
         // Only owner of comment or admin can edit & delete
         $user_id = Auth::id();
         if($user_id !== $comment->user_id) {
-            return Redirect::route('frontend.communities.posts.show', [$community, $post]);
+            return Redirect::route('communities.posts.show', [$community, $post]);
         }
 
         return Inertia::render('Comments/Edit', compact('comment', 'community', 'post'));
@@ -113,7 +113,7 @@ class PostCommentController extends Controller
         // Only owner of comment or admin can edit & delete
         $user_id = Auth::id();
         if($user_id !== $comment->user_id) {
-            return Redirect::route('frontend.communities.posts.show', [$community, $post]);
+            return Redirect::route('communities.posts.show', [$community, $post]);
         }
 
         $request->validate([
@@ -140,7 +140,7 @@ class PostCommentController extends Controller
         }
         $comment->save();
 
-        return Redirect::route('frontend.communities.posts.show', [$community, $post]);
+        return Redirect::route('communities.posts.show', [$community, $post]);
         // return back();
     }
 }

@@ -24,7 +24,7 @@ defineProps({
         <div class="py-3 sm:py-2 flex items-center space-x-4">
           <Link
             :href="
-              route('frontend.communities.posts.show', [
+              route('communities.posts.show', [
                 community.slug,
                 post.slug,
               ])
