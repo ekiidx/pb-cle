@@ -16,5 +16,6 @@
 - [x] Dynamic link preview
 - [ ] Private Messaging
 - [ ] Search
+- [ ] Awards
 
 The site was built using [Laravel](https://laravel.com) with [Vue.js](https://vuejs.org) and [Inertia](https://inertiajs.com). I wanted to build something reactive, resembling a reddit like system. I also wanted to challenge myself and learn new systems and techniques.
